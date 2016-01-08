@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5CC691DF-DBF4-4A71-BC09-82B22E97DEC2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM_4S</RootNamespace>
+    <AssemblyName>CRM_4S</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicsManager\BasicsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\BasicsView.Designer.cs">
+      <DependentUpon>BasicsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DCCManager\DCCView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\DCCView.Designer.cs">
+      <DependentUpon>DCCView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmMain.Designer.cs">
+      <DependentUpon>FmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontCustomerManager\FrontCustomerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontCustomerManager\FrontCustomerView.Designer.cs">
+      <DependentUpon>FrontCustomerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager\FmUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManager\FmUserInfo.Designer.cs">
+      <DependentUpon>FmUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManager\FmUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManager\FmUserView.Designer.cs">
+      <DependentUpon>FmUserView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BasicsManager\BasicsView.resx">
+      <DependentUpon>BasicsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\DCCView.resx">
+      <DependentUpon>DCCView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmMain.resx">
+      <DependentUpon>FmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontCustomerManager\FrontCustomerView.resx">
+      <DependentUpon>FrontCustomerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserManager\FmUserInfo.resx">
+      <DependentUpon>FmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManager\FmUserView.resx">
+      <DependentUpon>FmUserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRM_4S.Model\CRM_4S.Model.csproj">
+      <Project>{b59bc91f-7b97-43d6-916c-5a4cf9d7f064}</Project>
+      <Name>CRM_4S.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RibbonSkin.Common\RibbonSkin.Common.csproj">
+      <Project>{29e7273b-73c9-483f-9264-1819561ac8cd}</Project>
+      <Name>RibbonSkin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DExpress.Localization\DExpress.Localization.csproj">
+      <Project>{ff481efe-54d9-4b4e-926e-ef12e95ea363}</Project>
+      <Name>DExpress.Localization</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
