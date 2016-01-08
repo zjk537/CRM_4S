@@ -1,5 +1,5 @@
 ﻿/* ==============================================================================
- * 功能描述：
+ * 功能描述：用户实体类型
  * 创 建 者：zjk
  * 创建日期：2016-01-08 13:28
  * 修改日期：
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CRM_4S.Model
+namespace CRM_4S.Model.DataModel
 {
     public class UserInfo
     {
