@@ -32,39 +32,41 @@ namespace CRM_4S
             this.rPageUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rPageGroupCurUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnCurUserName = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdatePwd = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdateUserInfo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddUser = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdateUser = new DevExpress.XtraBars.BarButtonItem();
+            this.btnResetPwd = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.pageViewContainer = new DevExpress.XtraEditors.PanelControl();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.rPageFront = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFrontCustomerIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFrontCustomerOut = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnFrontCustomerImport = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFrontCustomerExport = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.rPageDCC = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rPageBasics = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddBasics = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdateBasics = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeleteBasics = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rPageAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -82,33 +84,35 @@ namespace CRM_4S
             this.ribbon.ExpandCollapseItem.Name = "";
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnCurUserName,
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem6,
-            this.barButtonItem9,
-            this.barButtonItem10,
-            this.barButtonItem7,
-            this.barButtonItem8,
+            this.btnAddUser,
+            this.btnUpdateUser,
+            this.btnResetPwd,
+            this.btnRefresh,
+            this.btnUpdatePwd,
+            this.btnUpdateUserInfo,
+            this.btnLogout,
+            this.btnFrontCustomerIn,
             this.barButtonItem11,
-            this.barButtonItem12,
-            this.barButtonItem13,
-            this.barButtonItem15,
-            this.barButtonItem16,
-            this.barButtonItem4});
-            this.ribbon.MaxItemId = 39;
+            this.btnAddBasics,
+            this.btnUpdateBasics,
+            this.btnDeleteBasics,
+            this.btnFrontCustomerOut,
+            this.btnFrontCustomerImport,
+            this.btnFrontCustomerExport,
+            this.barButtonItem1});
+            this.ribbon.MaxItemId = 44;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
             this.rPageFront,
             this.rPageDCC,
-            this.ribbonPage3,
-            this.ribbonPage1});
+            this.rPageBasics,
+            this.rPageAnalyze});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4});
-            this.ribbon.SelectedPage = this.rPageUser;
+            this.ribbon.SelectedPage = this.rPageDCC;
             resources.ApplyResources(this.ribbon, "ribbon");
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             this.ribbon.SelectedPageChanged += new System.EventHandler(this.ribbon_SelectedPageChanged);
@@ -134,73 +138,76 @@ namespace CRM_4S
             this.btnCurUserName.Id = 3;
             this.btnCurUserName.LargeImageIndex = 47;
             this.btnCurUserName.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUpdatePwd),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUpdateUserInfo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLogout, true)});
             this.btnCurUserName.Name = "btnCurUserName";
             // 
-            // barButtonItem9
+            // btnUpdatePwd
             // 
-            resources.ApplyResources(this.barButtonItem9, "barButtonItem9");
-            this.barButtonItem9.Id = 17;
-            this.barButtonItem9.ImageIndex = 25;
-            this.barButtonItem9.Name = "barButtonItem9";
+            resources.ApplyResources(this.btnUpdatePwd, "btnUpdatePwd");
+            this.btnUpdatePwd.Id = 17;
+            this.btnUpdatePwd.ImageIndex = 25;
+            this.btnUpdatePwd.Name = "btnUpdatePwd";
+            this.btnUpdatePwd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUpdatePwd_ItemClick);
             // 
-            // barButtonItem10
+            // btnUpdateUserInfo
             // 
-            resources.ApplyResources(this.barButtonItem10, "barButtonItem10");
-            this.barButtonItem10.Id = 18;
-            this.barButtonItem10.ImageIndex = 36;
-            this.barButtonItem10.Name = "barButtonItem10";
+            resources.ApplyResources(this.btnUpdateUserInfo, "btnUpdateUserInfo");
+            this.btnUpdateUserInfo.Id = 18;
+            this.btnUpdateUserInfo.ImageIndex = 36;
+            this.btnUpdateUserInfo.Name = "btnUpdateUserInfo";
+            this.btnUpdateUserInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUpdateUserInfo_ItemClick);
             // 
-            // barButtonItem7
+            // btnLogout
             // 
-            resources.ApplyResources(this.barButtonItem7, "barButtonItem7");
-            this.barButtonItem7.Id = 22;
-            this.barButtonItem7.ImageIndex = 37;
-            this.barButtonItem7.Name = "barButtonItem7";
+            resources.ApplyResources(this.btnLogout, "btnLogout");
+            this.btnLogout.Id = 22;
+            this.btnLogout.ImageIndex = 37;
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogout_ItemClick);
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnAddUser);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnUpdateUser);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnResetPwd);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             resources.ApplyResources(this.ribbonPageGroup1, "ribbonPageGroup1");
             // 
-            // barButtonItem1
+            // btnAddUser
             // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.LargeImageIndex = 40;
-            this.barButtonItem1.Name = "barButtonItem1";
+            resources.ApplyResources(this.btnAddUser, "btnAddUser");
+            this.btnAddUser.Id = 8;
+            this.btnAddUser.LargeImageIndex = 40;
+            this.btnAddUser.Name = "btnAddUser";
             // 
-            // barButtonItem2
+            // btnUpdateUser
             // 
-            resources.ApplyResources(this.barButtonItem2, "barButtonItem2");
-            this.barButtonItem2.Id = 9;
-            this.barButtonItem2.LargeImageIndex = 42;
-            this.barButtonItem2.Name = "barButtonItem2";
+            resources.ApplyResources(this.btnUpdateUser, "btnUpdateUser");
+            this.btnUpdateUser.Id = 9;
+            this.btnUpdateUser.LargeImageIndex = 42;
+            this.btnUpdateUser.Name = "btnUpdateUser";
             // 
-            // barButtonItem3
+            // btnResetPwd
             // 
-            resources.ApplyResources(this.barButtonItem3, "barButtonItem3");
-            this.barButtonItem3.Id = 10;
-            this.barButtonItem3.LargeImageIndex = 45;
-            this.barButtonItem3.Name = "barButtonItem3";
+            resources.ApplyResources(this.btnResetPwd, "btnResetPwd");
+            this.btnResetPwd.Id = 10;
+            this.btnResetPwd.LargeImageIndex = 45;
+            this.btnResetPwd.Name = "btnResetPwd";
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnRefresh);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             resources.ApplyResources(this.ribbonPageGroup3, "ribbonPageGroup3");
             // 
-            // barButtonItem6
+            // btnRefresh
             // 
-            resources.ApplyResources(this.barButtonItem6, "barButtonItem6");
-            this.barButtonItem6.Id = 13;
-            this.barButtonItem6.LargeImageIndex = 21;
-            this.barButtonItem6.Name = "barButtonItem6";
+            resources.ApplyResources(this.btnRefresh, "btnRefresh");
+            this.btnRefresh.Id = 13;
+            this.btnRefresh.LargeImageIndex = 21;
+            this.btnRefresh.Name = "btnRefresh";
             // 
             // pageViewContainer
             // 
@@ -231,49 +238,58 @@ namespace CRM_4S
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem12);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem8, true);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnFrontCustomerIn);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnFrontCustomerOut);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             resources.ApplyResources(this.ribbonPageGroup4, "ribbonPageGroup4");
             // 
-            // barButtonItem12
+            // btnFrontCustomerIn
             // 
-            resources.ApplyResources(this.barButtonItem12, "barButtonItem12");
-            this.barButtonItem12.Id = 26;
-            this.barButtonItem12.LargeImageIndex = 34;
-            this.barButtonItem12.Name = "barButtonItem12";
+            resources.ApplyResources(this.btnFrontCustomerIn, "btnFrontCustomerIn");
+            this.btnFrontCustomerIn.Id = 24;
+            this.btnFrontCustomerIn.LargeImageIndex = 29;
+            this.btnFrontCustomerIn.Name = "btnFrontCustomerIn";
             // 
-            // barButtonItem8
+            // btnFrontCustomerOut
             // 
-            resources.ApplyResources(this.barButtonItem8, "barButtonItem8");
-            this.barButtonItem8.Id = 24;
-            this.barButtonItem8.LargeImageIndex = 29;
-            this.barButtonItem8.Name = "barButtonItem8";
+            resources.ApplyResources(this.btnFrontCustomerOut, "btnFrontCustomerOut");
+            this.btnFrontCustomerOut.Id = 39;
+            this.btnFrontCustomerOut.LargeImageIndex = 32;
+            this.btnFrontCustomerOut.Name = "btnFrontCustomerOut";
             // 
             // ribbonPageGroup8
             // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnFrontCustomerImport);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnFrontCustomerExport);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             resources.ApplyResources(this.ribbonPageGroup8, "ribbonPageGroup8");
             // 
+            // btnFrontCustomerImport
+            // 
+            resources.ApplyResources(this.btnFrontCustomerImport, "btnFrontCustomerImport");
+            this.btnFrontCustomerImport.Id = 40;
+            this.btnFrontCustomerImport.LargeImageIndex = 35;
+            this.btnFrontCustomerImport.Name = "btnFrontCustomerImport";
+            // 
+            // btnFrontCustomerExport
+            // 
+            resources.ApplyResources(this.btnFrontCustomerExport, "btnFrontCustomerExport");
+            this.btnFrontCustomerExport.Id = 41;
+            this.btnFrontCustomerExport.LargeImageIndex = 17;
+            this.btnFrontCustomerExport.Name = "btnFrontCustomerExport";
+            // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnRefresh);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             resources.ApplyResources(this.ribbonPageGroup6, "ribbonPageGroup6");
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem13);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem11, true);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem11);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             resources.ApplyResources(this.ribbonPageGroup5, "ribbonPageGroup5");
-            // 
-            // barButtonItem13
-            // 
-            resources.ApplyResources(this.barButtonItem13, "barButtonItem13");
-            this.barButtonItem13.Id = 27;
-            this.barButtonItem13.LargeImageIndex = 34;
-            this.barButtonItem13.Name = "barButtonItem13";
             // 
             // barButtonItem11
             // 
@@ -293,44 +309,53 @@ namespace CRM_4S
             // 
             // ribbonPageGroup9
             // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.btnFrontCustomerImport);
+            this.ribbonPageGroup9.ItemLinks.Add(this.btnFrontCustomerExport);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             resources.ApplyResources(this.ribbonPageGroup9, "ribbonPageGroup9");
             // 
             // ribbonPageGroup7
             // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnRefresh);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             resources.ApplyResources(this.ribbonPageGroup7, "ribbonPageGroup7");
             // 
-            // ribbonPage3
+            // rPageBasics
             // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rPageBasics.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup10});
-            this.ribbonPage3.Name = "ribbonPage3";
-            resources.ApplyResources(this.ribbonPage3, "ribbonPage3");
+            this.rPageBasics.Name = "rPageBasics";
+            resources.ApplyResources(this.rPageBasics, "rPageBasics");
             // 
             // ribbonPageGroup10
             // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem15);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem16);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem6, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnAddBasics);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnUpdateBasics);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnDeleteBasics);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnRefresh, true);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             resources.ApplyResources(this.ribbonPageGroup10, "ribbonPageGroup10");
             // 
-            // barButtonItem15
+            // btnAddBasics
             // 
-            resources.ApplyResources(this.barButtonItem15, "barButtonItem15");
-            this.barButtonItem15.Id = 31;
-            this.barButtonItem15.LargeImageIndex = 29;
-            this.barButtonItem15.Name = "barButtonItem15";
+            resources.ApplyResources(this.btnAddBasics, "btnAddBasics");
+            this.btnAddBasics.Id = 31;
+            this.btnAddBasics.LargeImageIndex = 29;
+            this.btnAddBasics.Name = "btnAddBasics";
             // 
-            // barButtonItem16
+            // btnUpdateBasics
             // 
-            resources.ApplyResources(this.barButtonItem16, "barButtonItem16");
-            this.barButtonItem16.Id = 32;
-            this.barButtonItem16.LargeImageIndex = 31;
-            this.barButtonItem16.Name = "barButtonItem16";
+            resources.ApplyResources(this.btnUpdateBasics, "btnUpdateBasics");
+            this.btnUpdateBasics.Id = 32;
+            this.btnUpdateBasics.LargeImageIndex = 31;
+            this.btnUpdateBasics.Name = "btnUpdateBasics";
+            // 
+            // btnDeleteBasics
+            // 
+            resources.ApplyResources(this.btnDeleteBasics, "btnDeleteBasics");
+            this.btnDeleteBasics.Id = 38;
+            this.btnDeleteBasics.LargeImageIndex = 32;
+            this.btnDeleteBasics.Name = "btnDeleteBasics";
             // 
             // repositoryItemTextEdit3
             // 
@@ -342,24 +367,24 @@ namespace CRM_4S
             resources.ApplyResources(this.repositoryItemTextEdit4, "repositoryItemTextEdit4");
             this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
             // 
-            // barButtonItem4
+            // rPageAnalyze
             // 
-            resources.ApplyResources(this.barButtonItem4, "barButtonItem4");
-            this.barButtonItem4.Id = 38;
-            this.barButtonItem4.LargeImageIndex = 32;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rPageAnalyze.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2});
-            this.ribbonPage1.Name = "ribbonPage1";
-            resources.ApplyResources(this.ribbonPage1, "ribbonPage1");
+            this.rPageAnalyze.Name = "rPageAnalyze";
+            resources.ApplyResources(this.rPageAnalyze, "rPageAnalyze");
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
+            // 
+            // barButtonItem1
+            // 
+            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
+            this.barButtonItem1.Id = 42;
+            this.barButtonItem1.LargeImageIndex = 50;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // FmMain
             // 
@@ -388,27 +413,25 @@ namespace CRM_4S
         private DevExpress.XtraBars.Ribbon.RibbonPage rPageUser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rPageGroupCurUser;
         private DevExpress.XtraBars.BarSubItem btnCurUserName;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem btnAddUser;
+        private DevExpress.XtraBars.BarButtonItem btnUpdateUser;
+        private DevExpress.XtraBars.BarButtonItem btnResetPwd;
+        private DevExpress.XtraBars.BarButtonItem btnRefresh;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraEditors.PanelControl pageViewContainer;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem btnUpdatePwd;
+        private DevExpress.XtraBars.BarButtonItem btnUpdateUserInfo;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem btnLogout;
         private DevExpress.XtraBars.Ribbon.RibbonPage rPageFront;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem btnFrontCustomerIn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraBars.BarButtonItem btnAddBasics;
+        private DevExpress.XtraBars.BarButtonItem btnUpdateBasics;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
@@ -416,11 +439,15 @@ namespace CRM_4S
         private DevExpress.XtraBars.Ribbon.RibbonPage rPageDCC;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rPageBasics;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteBasics;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rPageAnalyze;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem btnFrontCustomerOut;
+        private DevExpress.XtraBars.BarButtonItem btnFrontCustomerImport;
+        private DevExpress.XtraBars.BarButtonItem btnFrontCustomerExport;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
 
     }
 }

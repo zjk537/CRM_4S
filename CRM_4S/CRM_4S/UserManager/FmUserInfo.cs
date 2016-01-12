@@ -1,4 +1,5 @@
-﻿using RibbonSkin.Common.FormBase;
+﻿using CRM_4S.Business.Model;
+using RibbonSkin.Common.FormBase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,14 @@ namespace CRM_4S.UserManager
         public FmUserInfo()
         {
             InitializeComponent();
+        }
+        public FmUserInfo(UserShopRoleInfo userShopRoleInfo = null)
+        {
+            InitializeComponent();
+        }
+
+        private void initForm(){
+
         }
     }
 }

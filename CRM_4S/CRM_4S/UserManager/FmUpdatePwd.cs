@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RibbonSkin.Common.FormBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CRM_4S.FrontManager
+namespace CRM_4S.UserManager
 {
-    public partial class FrontView : Form
+    public partial class FmUpdatePwd : FormSimpleDialogBase
     {
-        public FrontView()
+        public FmUpdatePwd()
         {
             InitializeComponent();
         }

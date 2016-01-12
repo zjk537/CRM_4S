@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CRM_4S.Model</RootNamespace>
     <AssemblyName>CRM_4S.Model</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\CarTypeInfo.cs" />
+    <Compile Include="DataModel\CustomerInfo.cs" />
+    <Compile Include="DataModel\DBModelBase.cs" />
+    <Compile Include="DataModel\DCCRecordInfo.cs" />
+    <Compile Include="DataModel\RoleInfo.cs" />
+    <Compile Include="DataModel\ShopInfo.cs" />
+    <Compile Include="DataModel\TradeRecordInfo.cs" />
     <Compile Include="DataModel\UserInfo.cs" />
+    <Compile Include="DataModel\VisitRecordInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

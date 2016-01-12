@@ -223,7 +223,7 @@
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 999;
-            this.labelControl1.Text = "所属店铺";
+            this.labelControl1.Text = "所属店面";
             // 
             // groupControl1
             // 

@@ -13,6 +13,8 @@ using DevExpress.XtraBars.Ribbon;
 using CRM_4S.UserManager;
 using CRM_4S.FrontManager;
 using CRM_4S.DCCManager;
+using DevExpress.XtraBars;
+using CRM_4S.BasicsManager;
 
 namespace CRM_4S
 {
@@ -20,7 +22,8 @@ namespace CRM_4S
     {
         Dictionary<RibbonPage, Form> mRibbonPages = new Dictionary<RibbonPage, Form>();
 
-        public FmMain():base(Language.Chinese)
+        public FmMain()
+            : base(Language.Chinese)
         {
             InitializeComponent();
         }
@@ -34,37 +37,70 @@ namespace CRM_4S
                 if (fmUserView == null)
                 {
                     fmUserView = new FmUserView();
+                    fmUserView.BtnAdd = btnAddUser;
+                    fmUserView.BtnUpdate = btnUpdateUser;
+                    fmUserView.BtnRefresh = btnRefresh;
                 }
                 return fmUserView;
             }
         }
 
-        FrontView fmFrontView = null;
-        FrontView mFmFrontView
+        FmFrontView fmFrontView = null;
+        FmFrontView mFmFrontView
         {
             get
             {
                 if (fmFrontView == null)
                 {
-                    fmFrontView = new FrontView();
+                    fmFrontView = new FmFrontView();
+                    fmFrontView.BtnCustomerIn = btnFrontCustomerIn;
+                    fmFrontView.BtnCustomerOut = btnFrontCustomerOut;
+                    fmFrontView.BtnRefresh = btnRefresh;
+                    fmFrontView.BtnCustomerImport = btnFrontCustomerImport;
+                    fmFrontView.BtnCustomerExport = btnFrontCustomerExport;
                 }
                 return fmFrontView;
             }
         }
 
-        DCCView fmDCCView = null;
-        DCCView mFmDCCView
+        FmDCCView fmDCCView = null;
+        FmDCCView mFmDCCView
         {
             get
             {
                 if (fmDCCView == null)
                 {
-                    fmDCCView = new DCCView();
+                    fmDCCView = new FmDCCView();
                 }
                 return fmDCCView;
             }
         }
-        
+
+        FmBasicsView fmBasicsView = null;
+        FmBasicsView mFmBasicsView
+        {
+            get
+            {
+                if (fmBasicsView == null)
+                {
+                    fmBasicsView = new FmBasicsView();
+                    fmBasicsView.BtnAdd = btnAddBasics;
+                    fmBasicsView.BtnUpdate = btnUpdateBasics;
+                    fmBasicsView.BtnDelete = btnDeleteBasics;
+                    fmBasicsView.BtnRefresh = btnRefresh;
+
+                    fmBasicsView.NavBtnLinkClicked += new EventHandler<NavBarClickedArgs>((object sender, NavBarClickedArgs args) =>
+                    {
+                        rPageBasics.Visible = true;
+                        rPageBasics.Text = string.Format("{0} - №ЬАн", args.NavMenuName);
+                        
+                    });
+                }
+                return fmBasicsView;
+            }
+        }
+
+
         #endregion
 
         /// <summary>
@@ -75,6 +111,7 @@ namespace CRM_4S
             mRibbonPages.Add(rPageUser, mFmUserView);
             mRibbonPages.Add(rPageFront, mFmFrontView);
             mRibbonPages.Add(rPageDCC, mFmDCCView);
+            mRibbonPages.Add(rPageBasics, mFmBasicsView);
 
             ribbon.SelectedPage = null;
             ribbon.SelectedPage = rPageUser;
@@ -99,6 +136,21 @@ namespace CRM_4S
                     view.Show();
                 }
             }
+        }
+
+        private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnUpdatePwd_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new FmUpdatePwd().ShowDialog();
+        }
+
+        private void btnUpdateUserInfo_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new FmUserInfo().ShowDialog();
         }
     }
 }

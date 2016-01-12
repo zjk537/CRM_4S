@@ -54,17 +54,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicsManager\BasicsView.cs">
+    <Compile Include="BasicsManager\FmBasicsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BasicsManager\BasicsView.Designer.cs">
-      <DependentUpon>BasicsView.cs</DependentUpon>
+    <Compile Include="BasicsManager\FmBasicsView.Designer.cs">
+      <DependentUpon>FmBasicsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="DCCManager\DCCView.cs">
+    <Compile Include="BasicsManager\FmCarTypeInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DCCManager\DCCView.Designer.cs">
-      <DependentUpon>DCCView.cs</DependentUpon>
+    <Compile Include="BasicsManager\FmCarTypeInfo.Designer.cs">
+      <DependentUpon>FmCarTypeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicsManager\FmShopInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\FmShopInfo.Designer.cs">
+      <DependentUpon>FmShopInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GloableCaches.cs" />
+    <Compile Include="Common\GloableConstants.cs" />
+    <Compile Include="DCCManager\FmDCCInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCInfo.Designer.cs">
+      <DependentUpon>FmDCCInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCView.Designer.cs">
+      <DependentUpon>FmDCCView.cs</DependentUpon>
     </Compile>
     <Compile Include="FmMain.cs">
       <SubType>Form</SubType>
@@ -72,11 +92,17 @@
     <Compile Include="FmMain.Designer.cs">
       <DependentUpon>FmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontCustomerManager\FrontCustomerView.cs">
+    <Compile Include="FrontManager\FmFrontCustomerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontCustomerManager\FrontCustomerView.Designer.cs">
-      <DependentUpon>FrontCustomerView.cs</DependentUpon>
+    <Compile Include="FrontManager\FmFrontCustomerInfo.Designer.cs">
+      <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontView.Designer.cs">
+      <DependentUpon>FmFrontView.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -86,6 +112,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager\FmUpdatePwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManager\FmUpdatePwd.Designer.cs">
+      <DependentUpon>FmUpdatePwd.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManager\FmUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,17 +130,26 @@
     <Compile Include="UserManager\FmUserView.Designer.cs">
       <DependentUpon>FmUserView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BasicsManager\BasicsView.resx">
-      <DependentUpon>BasicsView.cs</DependentUpon>
+    <EmbeddedResource Include="BasicsManager\FmBasicsView.resx">
+      <DependentUpon>FmBasicsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DCCManager\DCCView.resx">
-      <DependentUpon>DCCView.cs</DependentUpon>
+    <EmbeddedResource Include="BasicsManager\FmCarTypeInfo.resx">
+      <DependentUpon>FmCarTypeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicsManager\FmShopInfo.resx">
+      <DependentUpon>FmShopInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCView.resx">
+      <DependentUpon>FmDCCView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmMain.resx">
       <DependentUpon>FmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontCustomerManager\FrontCustomerView.resx">
-      <DependentUpon>FrontCustomerView.cs</DependentUpon>
+    <EmbeddedResource Include="FrontManager\FmFrontCustomerInfo.resx">
+      <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontManager\FmFrontView.resx">
+      <DependentUpon>FmFrontView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -124,12 +165,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserManager\FmUpdatePwd.resx">
+      <DependentUpon>FmUpdatePwd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserManager\FmUserInfo.resx">
       <DependentUpon>FmUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManager\FmUserView.resx">
       <DependentUpon>FmUserView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\CRM_4S.Business.Model.DCCCustomerInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Business.Model.FrontCustomerInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Business.Model.UserShopRoleInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +191,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CRM_4S.Business\CRM_4S.Business.csproj">
+      <Project>{4ae1e38c-8511-47f3-bd55-471c5c93db65}</Project>
+      <Name>CRM_4S.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CRM_4S.Model\CRM_4S.Model.csproj">
       <Project>{b59bc91f-7b97-43d6-916c-5a4cf9d7f064}</Project>
       <Name>CRM_4S.Model</Name>

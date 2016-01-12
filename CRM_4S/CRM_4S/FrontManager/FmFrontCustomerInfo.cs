@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CRM_4S.DCCManager
+namespace CRM_4S.FrontManager
 {
-    public partial class DCCView : Form
+    public partial class FmFrontCustomerInfo : Form
     {
-        public DCCView()
+        public FmFrontCustomerInfo()
         {
             InitializeComponent();
         }

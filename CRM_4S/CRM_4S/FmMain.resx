@@ -120,47 +120,53 @@
   <data name="btnCurUserName.Caption" xml:space="preserve">
     <value>当前用户</value>
   </data>
-  <data name="barButtonItem9.Caption" xml:space="preserve">
+  <data name="btnUpdatePwd.Caption" xml:space="preserve">
     <value>修改密码</value>
   </data>
-  <data name="barButtonItem10.Caption" xml:space="preserve">
+  <data name="btnUpdateUserInfo.Caption" xml:space="preserve">
     <value>修改个人信息</value>
   </data>
-  <data name="barButtonItem7.Caption" xml:space="preserve">
+  <data name="btnLogout.Caption" xml:space="preserve">
     <value>退出登录</value>
   </data>
-  <data name="barButtonItem1.Caption" xml:space="preserve">
+  <data name="btnAddUser.Caption" xml:space="preserve">
     <value>添加用户</value>
   </data>
-  <data name="barButtonItem2.Caption" xml:space="preserve">
+  <data name="btnUpdateUser.Caption" xml:space="preserve">
     <value>修改用户</value>
   </data>
-  <data name="barButtonItem3.Caption" xml:space="preserve">
+  <data name="btnResetPwd.Caption" xml:space="preserve">
     <value>重置密码</value>
   </data>
-  <data name="barButtonItem6.Caption" xml:space="preserve">
+  <data name="btnRefresh.Caption" xml:space="preserve">
     <value>刷新</value>
   </data>
-  <data name="barButtonItem8.Caption" xml:space="preserve">
-    <value>客户进店</value>
+  <data name="btnFrontCustomerIn.Caption" xml:space="preserve">
+    <value>顾客进店</value>
   </data>
   <data name="barButtonItem11.Caption" xml:space="preserve">
     <value>新增来电</value>
   </data>
-  <data name="barButtonItem12.Caption" xml:space="preserve">
-    <value>客户列表</value>
-  </data>
-  <data name="barButtonItem13.Caption" xml:space="preserve">
-    <value>来电列表</value>
-  </data>
-  <data name="barButtonItem15.Caption" xml:space="preserve">
+  <data name="btnAddBasics.Caption" xml:space="preserve">
     <value>新增</value>
   </data>
-  <data name="barButtonItem16.Caption" xml:space="preserve">
+  <data name="btnUpdateBasics.Caption" xml:space="preserve">
     <value>修改</value>
   </data>
-  <data name="barButtonItem4.Caption" xml:space="preserve">
+  <data name="btnDeleteBasics.Caption" xml:space="preserve">
     <value>删除</value>
+  </data>
+  <data name="btnFrontCustomerOut.Caption" xml:space="preserve">
+    <value>顾客离店</value>
+  </data>
+  <data name="btnFrontCustomerImport.Caption" xml:space="preserve">
+    <value>数据导入</value>
+  </data>
+  <data name="btnFrontCustomerExport.Caption" xml:space="preserve">
+    <value>数据导出</value>
+  </data>
+  <data name="barButtonItem1.Caption" xml:space="preserve">
+    <value>来电回访</value>
   </data>
   <data name="rPageUser.Text" xml:space="preserve">
     <value>用户管理</value>
@@ -169,10 +175,10 @@
     <value>前台管理</value>
   </data>
   <data name="ribbonPageGroup5.Text" xml:space="preserve">
-    <value>DCC数据</value>
+    <value>数据管理</value>
   </data>
   <data name="ribbonPageGroup9.Text" xml:space="preserve">
-    <value>数据筛选</value>
+    <value>批量操作</value>
   </data>
   <data name="ribbonPageGroup7.Text" xml:space="preserve">
     <value>其他</value>
@@ -180,13 +186,10 @@
   <data name="rPageDCC.Text" xml:space="preserve">
     <value>DCC管理</value>
   </data>
-  <data name="ribbonPage3.Text" xml:space="preserve">
+  <data name="rPageBasics.Text" xml:space="preserve">
     <value>基础数据维护</value>
   </data>
-  <data name="ribbonPageGroup2.Text" xml:space="preserve">
-    <value>ribbonPageGroup2</value>
-  </data>
-  <data name="ribbonPage1.Text" xml:space="preserve">
+  <data name="rPageAnalyze.Text" xml:space="preserve">
     <value>能力与分析</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -256,16 +259,19 @@
     <value>0</value>
   </data>
   <data name="ribbonPageGroup4.Text" xml:space="preserve">
-    <value>前台数据</value>
+    <value>数据管理</value>
   </data>
   <data name="ribbonPageGroup8.Text" xml:space="preserve">
-    <value>数据筛选</value>
+    <value>批量操作</value>
   </data>
   <data name="ribbonPageGroup6.Text" xml:space="preserve">
     <value>其他</value>
   </data>
   <data name="ribbonPageGroup10.Text" xml:space="preserve">
     <value>操作</value>
+  </data>
+  <data name="ribbonPageGroup2.Text" xml:space="preserve">
+    <value>ribbonPageGroup2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -303,22 +309,22 @@
   <data name="&gt;&gt;btnCurUserName.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem9.Name" xml:space="preserve">
-    <value>barButtonItem9</value>
+  <data name="&gt;&gt;btnUpdatePwd.Name" xml:space="preserve">
+    <value>btnUpdatePwd</value>
   </data>
-  <data name="&gt;&gt;barButtonItem9.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdatePwd.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem10.Name" xml:space="preserve">
-    <value>barButtonItem10</value>
+  <data name="&gt;&gt;btnUpdateUserInfo.Name" xml:space="preserve">
+    <value>btnUpdateUserInfo</value>
   </data>
-  <data name="&gt;&gt;barButtonItem10.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateUserInfo.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem7.Name" xml:space="preserve">
-    <value>barButtonItem7</value>
+  <data name="&gt;&gt;btnLogout.Name" xml:space="preserve">
+    <value>btnLogout</value>
   </data>
-  <data name="&gt;&gt;barButtonItem7.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnLogout.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup1.Name" xml:space="preserve">
@@ -327,22 +333,22 @@
   <data name="&gt;&gt;ribbonPageGroup1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
-    <value>barButtonItem1</value>
+  <data name="&gt;&gt;btnAddUser.Name" xml:space="preserve">
+    <value>btnAddUser</value>
   </data>
-  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnAddUser.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem2.Name" xml:space="preserve">
-    <value>barButtonItem2</value>
+  <data name="&gt;&gt;btnUpdateUser.Name" xml:space="preserve">
+    <value>btnUpdateUser</value>
   </data>
-  <data name="&gt;&gt;barButtonItem2.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateUser.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem3.Name" xml:space="preserve">
-    <value>barButtonItem3</value>
+  <data name="&gt;&gt;btnResetPwd.Name" xml:space="preserve">
+    <value>btnResetPwd</value>
   </data>
-  <data name="&gt;&gt;barButtonItem3.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnResetPwd.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup3.Name" xml:space="preserve">
@@ -351,10 +357,10 @@
   <data name="&gt;&gt;ribbonPageGroup3.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem6.Name" xml:space="preserve">
-    <value>barButtonItem6</value>
+  <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
+    <value>btnRefresh</value>
   </data>
-  <data name="&gt;&gt;barButtonItem6.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemTextEdit1.Name" xml:space="preserve">
@@ -381,16 +387,16 @@
   <data name="&gt;&gt;ribbonPageGroup4.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem12.Name" xml:space="preserve">
-    <value>barButtonItem12</value>
+  <data name="&gt;&gt;btnFrontCustomerIn.Name" xml:space="preserve">
+    <value>btnFrontCustomerIn</value>
   </data>
-  <data name="&gt;&gt;barButtonItem12.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnFrontCustomerIn.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem8.Name" xml:space="preserve">
-    <value>barButtonItem8</value>
+  <data name="&gt;&gt;btnFrontCustomerOut.Name" xml:space="preserve">
+    <value>btnFrontCustomerOut</value>
   </data>
-  <data name="&gt;&gt;barButtonItem8.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnFrontCustomerOut.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup8.Name" xml:space="preserve">
@@ -398,6 +404,18 @@
   </data>
   <data name="&gt;&gt;ribbonPageGroup8.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnFrontCustomerImport.Name" xml:space="preserve">
+    <value>btnFrontCustomerImport</value>
+  </data>
+  <data name="&gt;&gt;btnFrontCustomerImport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnFrontCustomerExport.Name" xml:space="preserve">
+    <value>btnFrontCustomerExport</value>
+  </data>
+  <data name="&gt;&gt;btnFrontCustomerExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup6.Name" xml:space="preserve">
     <value>ribbonPageGroup6</value>
@@ -410,12 +428,6 @@
   </data>
   <data name="&gt;&gt;ribbonPageGroup5.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem13.Name" xml:space="preserve">
-    <value>barButtonItem13</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem13.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;barButtonItem11.Name" xml:space="preserve">
     <value>barButtonItem11</value>
@@ -441,10 +453,10 @@
   <data name="&gt;&gt;ribbonPageGroup7.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ribbonPage3.Name" xml:space="preserve">
-    <value>ribbonPage3</value>
+  <data name="&gt;&gt;rPageBasics.Name" xml:space="preserve">
+    <value>rPageBasics</value>
   </data>
-  <data name="&gt;&gt;ribbonPage3.Type" xml:space="preserve">
+  <data name="&gt;&gt;rPageBasics.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup10.Name" xml:space="preserve">
@@ -453,16 +465,22 @@
   <data name="&gt;&gt;ribbonPageGroup10.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem15.Name" xml:space="preserve">
-    <value>barButtonItem15</value>
+  <data name="&gt;&gt;btnAddBasics.Name" xml:space="preserve">
+    <value>btnAddBasics</value>
   </data>
-  <data name="&gt;&gt;barButtonItem15.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnAddBasics.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem16.Name" xml:space="preserve">
-    <value>barButtonItem16</value>
+  <data name="&gt;&gt;btnUpdateBasics.Name" xml:space="preserve">
+    <value>btnUpdateBasics</value>
   </data>
-  <data name="&gt;&gt;barButtonItem16.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateBasics.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteBasics.Name" xml:space="preserve">
+    <value>btnDeleteBasics</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteBasics.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemTextEdit3.Name" xml:space="preserve">
@@ -477,16 +495,10 @@
   <data name="&gt;&gt;repositoryItemTextEdit4.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem4.Name" xml:space="preserve">
-    <value>barButtonItem4</value>
+  <data name="&gt;&gt;rPageAnalyze.Name" xml:space="preserve">
+    <value>rPageAnalyze</value>
   </data>
-  <data name="&gt;&gt;barButtonItem4.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;ribbonPage1.Name" xml:space="preserve">
-    <value>ribbonPage1</value>
-  </data>
-  <data name="&gt;&gt;ribbonPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;rPageAnalyze.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;ribbonPageGroup2.Name" xml:space="preserve">
@@ -494,6 +506,12 @@
   </data>
   <data name="&gt;&gt;ribbonPageGroup2.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
+    <value>barButtonItem1</value>
+  </data>
+  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FmMain</value>
