@@ -139,6 +139,9 @@
     <EmbeddedResource Include="BasicsManager\FmShopInfo.resx">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCInfo.resx">
+      <DependentUpon>FmDCCInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DCCManager\FmDCCView.resx">
       <DependentUpon>FmDCCView.cs</DependentUpon>
     </EmbeddedResource>

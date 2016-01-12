@@ -144,7 +144,7 @@
   <data name="btnFrontCustomerIn.Caption" xml:space="preserve">
     <value>顾客进店</value>
   </data>
-  <data name="barButtonItem11.Caption" xml:space="preserve">
+  <data name="btnDCCAdd.Caption" xml:space="preserve">
     <value>新增来电</value>
   </data>
   <data name="btnAddBasics.Caption" xml:space="preserve">
@@ -165,11 +165,29 @@
   <data name="btnFrontCustomerExport.Caption" xml:space="preserve">
     <value>数据导出</value>
   </data>
-  <data name="barButtonItem1.Caption" xml:space="preserve">
+  <data name="btnDCCRecall.Caption" xml:space="preserve">
     <value>来电回访</value>
+  </data>
+  <data name="rPageGroupCurUser.Text" xml:space="preserve">
+    <value>当前用户</value>
+  </data>
+  <data name="ribbonPageGroup1.Text" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="ribbonPageGroup3.Text" xml:space="preserve">
+    <value>其他</value>
   </data>
   <data name="rPageUser.Text" xml:space="preserve">
     <value>用户管理</value>
+  </data>
+  <data name="ribbonPageGroup4.Text" xml:space="preserve">
+    <value>数据管理</value>
+  </data>
+  <data name="ribbonPageGroup8.Text" xml:space="preserve">
+    <value>批量操作</value>
+  </data>
+  <data name="ribbonPageGroup6.Text" xml:space="preserve">
+    <value>其他</value>
   </data>
   <data name="rPageFront.Text" xml:space="preserve">
     <value>前台管理</value>
@@ -186,8 +204,14 @@
   <data name="rPageDCC.Text" xml:space="preserve">
     <value>DCC管理</value>
   </data>
+  <data name="ribbonPageGroup10.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
   <data name="rPageBasics.Text" xml:space="preserve">
     <value>基础数据维护</value>
+  </data>
+  <data name="ribbonPageGroup2.Text" xml:space="preserve">
+    <value>ribbonPageGroup2</value>
   </data>
   <data name="rPageAnalyze.Text" xml:space="preserve">
     <value>能力与分析</value>
@@ -221,15 +245,6 @@
   <data name="&gt;&gt;ribbon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="rPageGroupCurUser.Text" xml:space="preserve">
-    <value>当前用户</value>
-  </data>
-  <data name="ribbonPageGroup1.Text" xml:space="preserve">
-    <value>用户管理</value>
-  </data>
-  <data name="ribbonPageGroup3.Text" xml:space="preserve">
-    <value>其他</value>
-  </data>
   <data name="pageViewContainer.Appearance.BackColor" type="System.Drawing.Color, System.Drawing">
     <value>235, 236, 239</value>
   </data>
@@ -257,21 +272,6 @@
   </data>
   <data name="&gt;&gt;pageViewContainer.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="ribbonPageGroup4.Text" xml:space="preserve">
-    <value>数据管理</value>
-  </data>
-  <data name="ribbonPageGroup8.Text" xml:space="preserve">
-    <value>批量操作</value>
-  </data>
-  <data name="ribbonPageGroup6.Text" xml:space="preserve">
-    <value>其他</value>
-  </data>
-  <data name="ribbonPageGroup10.Text" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="ribbonPageGroup2.Text" xml:space="preserve">
-    <value>ribbonPageGroup2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -429,10 +429,16 @@
   <data name="&gt;&gt;ribbonPageGroup5.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem11.Name" xml:space="preserve">
-    <value>barButtonItem11</value>
+  <data name="&gt;&gt;btnDCCAdd.Name" xml:space="preserve">
+    <value>btnDCCAdd</value>
   </data>
-  <data name="&gt;&gt;barButtonItem11.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnDCCAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnDCCRecall.Name" xml:space="preserve">
+    <value>btnDCCRecall</value>
+  </data>
+  <data name="&gt;&gt;btnDCCRecall.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;rPageDCC.Name" xml:space="preserve">
@@ -506,12 +512,6 @@
   </data>
   <data name="&gt;&gt;ribbonPageGroup2.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
-    <value>barButtonItem1</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FmMain</value>

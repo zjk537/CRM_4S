@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessBase.cs" />
-    <Compile Include="GloableCaches.cs" />
-    <Compile Include="GloableConstants.cs" />
+    <Compile Include="CarTypeBusiness.cs" />
+    <Compile Include="CustomerBusiness.cs" />
     <Compile Include="Model\DCCCustomerInfo.cs" />
     <Compile Include="Model\FrontCustomerInfo.cs" />
     <Compile Include="Model\UserShopRoleInfo.cs" />

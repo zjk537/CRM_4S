@@ -113,7 +113,7 @@
             this.Controls.Add(this.TxtOldPwd);
             this.Controls.Add(this.labelControl4);
             this.Name = "FmUpdatePwd";
-            this.Text = "FmUpdatePwd";
+            this.Text = "修改密码";
             this.Controls.SetChildIndex(this.labelControl4, 0);
             this.Controls.SetChildIndex(this.TxtOldPwd, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);

@@ -74,6 +74,25 @@ namespace CRM_4S.DCCManager
             }
         }
 
+        private BarButtonItem btnDCCRefresh = null;
+        public BarButtonItem BtnDCCRefresh
+        {
+            get { return btnDCCRefresh; }
+            set
+            {
+                btnDCCRefresh = value;
+                if (btnDCCRefresh != null)
+                {
+                    btnDCCRefresh.ItemClick += btnDCCRefresh_ItemClick;
+                }
+            }
+        }
+
+        private void btnDCCRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
         private void btnDCCExport_ItemClick(object sender, ItemClickEventArgs e)
         {
             

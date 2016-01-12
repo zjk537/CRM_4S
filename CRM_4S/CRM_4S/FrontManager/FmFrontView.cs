@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraBars;
+﻿using CRM_4S.Business;
+using CRM_4S.Business.Model;
+using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +17,15 @@ namespace CRM_4S.FrontManager
         public FmFrontView()
         {
             InitializeComponent();
+            initView();
         }
 
+        private void initView()
+        {
 
-        #region public controls 
+        }
+
+        #region public controls
         private BarButtonItem btnCustomerIn = null;
         public BarButtonItem BtnCustomerIn
         {
@@ -75,37 +82,37 @@ namespace CRM_4S.FrontManager
             }
         }
 
-         private BarButtonItem btnCustomerExport = null;
-         public BarButtonItem BtnCustomerExport
-         {
-             get { return btnCustomerExport; }
-             set
-             {
-                 btnCustomerExport = value;
-                 if (btnCustomerExport != null)
-                 {
-                     btnCustomerExport.ItemClick += btnCustomerExport_ItemClick;
-                 }
-             }
-         }
+        private BarButtonItem btnCustomerExport = null;
+        public BarButtonItem BtnCustomerExport
+        {
+            get { return btnCustomerExport; }
+            set
+            {
+                btnCustomerExport = value;
+                if (btnCustomerExport != null)
+                {
+                    btnCustomerExport.ItemClick += btnCustomerExport_ItemClick;
+                }
+            }
+        }
 
-         private void btnCustomerExport_ItemClick(object sender, ItemClickEventArgs e)
-         {
-             
-         }
+        private void btnCustomerExport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
         private void btnCustomerImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
         }
 
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
         }
 
         void btnCustomerOut_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
         }
 
         void btnCustomerIn_ItemClick(object sender, ItemClickEventArgs e)
@@ -114,5 +121,30 @@ namespace CRM_4S.FrontManager
         }
 
         #endregion
+
+        List<FrontCustomerInfo> dataSource = null;
+        public List<FrontCustomerInfo> DataSource
+        {
+            get
+            {
+                if (dataSource == null)
+                {
+                    dataSource = new List<FrontCustomerInfo>();
+                    dataSource.AddRange(CustomerBusiness.Instance.GetFrontCustomerRecords());
+                }
+                return dataSource;
+            }
+            set
+            {
+                dataSource = value;
+
+            }
+        }
+
+        private void FmFrontView_Load(object sender, EventArgs e)
+        {
+            gridControlFrontRecord.DataSource = DataSource;
+        }
+
     }
 }

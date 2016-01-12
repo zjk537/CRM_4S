@@ -14,6 +14,18 @@ namespace CRM_4S.FrontManager
         public FmFrontCustomerInfo()
         {
             InitializeComponent();
+            initView();
+        }
+
+        private void initView()
+        {
+            cbCustomerNature.Properties.Items.AddRange(GloableConstants.CustomerNature);
+            cbCustomerLevel.Properties.Items.AddRange(GloableConstants.CustomerLevel);
+            cbDriveStatus.Properties.Items.AddRange(GloableConstants.BooleanDesc);
+            cbCarLicence.Properties.Items.AddRange(GloableConstants.CarLicence);
+            cbCarBrand.Properties.Items.AddRange(GloableConstants.CarBrand);
+            cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
+
         }
     }
 }

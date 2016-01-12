@@ -20,6 +20,7 @@ namespace CRM_4S.UserManager
             InitializeComponent();
         }
 
+        #region Public Controls
 
         private BarButtonItem btnAdd = null;
         public BarButtonItem BtnAdd
@@ -63,6 +64,25 @@ namespace CRM_4S.UserManager
             }
         }
 
+        private BarButtonItem btnResetPwd = null;
+        public BarButtonItem BtnResetPwd
+        {
+            get { return btnResetPwd; }
+            set
+            {
+                btnResetPwd = value;
+                if (btnResetPwd != null)
+                {
+                    btnResetPwd.ItemClick += btnResetPwd_ItemClick;
+                }
+            }
+        }
+
+        private void btnResetPwd_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("密码重置成功，新密码为：123456");
+        }
+
         void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             DataSource = UserBusiness.Instance.GetUserShopRoleInfos();
@@ -90,19 +110,27 @@ namespace CRM_4S.UserManager
         }
 
 
+        #endregion
 
         List<UserShopRoleInfo> dataSource = null;
         IList<UserShopRoleInfo> DataSource
         {
             get
             {
-                dataSource = dataSource ?? new List<UserShopRoleInfo>();
+                if (dataSource == null)
+                {
+                    dataSource = new List<UserShopRoleInfo>();
+                    dataSource.AddRange(UserBusiness.Instance.GetUserShopRoleInfos());
+                }
                 return dataSource;
             }
             set
             {
+
                 if (dataSource != null)
                     dataSource.Clear();
+                else
+                    dataSource = new List<UserShopRoleInfo>();
                 dataSource.AddRange(value);
                 userGridControl.MainView.RefreshData();
                 userGridView.ExpandAllGroups();

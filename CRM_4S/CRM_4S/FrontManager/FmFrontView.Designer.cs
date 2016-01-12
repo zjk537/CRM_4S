@@ -219,6 +219,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmFrontView";
             this.Text = "FrontView";
+            this.Load += new System.EventHandler(this.FmFrontView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).EndInit();

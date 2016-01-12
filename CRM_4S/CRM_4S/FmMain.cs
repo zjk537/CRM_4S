@@ -40,6 +40,7 @@ namespace CRM_4S
                     fmUserView.BtnAdd = btnAddUser;
                     fmUserView.BtnUpdate = btnUpdateUser;
                     fmUserView.BtnRefresh = btnRefresh;
+                    fmUserView.BtnResetPwd = btnResetPwd;
                 }
                 return fmUserView;
             }
@@ -71,6 +72,11 @@ namespace CRM_4S
                 if (fmDCCView == null)
                 {
                     fmDCCView = new FmDCCView();
+                    fmDCCView.BtnDCCAdd = btnDCCAdd;
+                    fmDCCView.BtnDCCRecall = btnDCCRecall;
+                    fmDCCView.BtnDCCImport = btnFrontCustomerImport;
+                    fmDCCView.BtnDCCExport = btnFrontCustomerExport;
+                    fmDCCView.BtnDCCRefresh = btnRefresh;
                 }
                 return fmDCCView;
             }

@@ -56,6 +56,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.navBtnUserTask = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarBasics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -77,7 +78,8 @@
             this.navBarBasics.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBtnShop,
             this.navBtnCarType,
-            this.navBtnRole});
+            this.navBtnRole,
+            this.navBtnUserTask});
             this.navBarBasics.LargeImages = this.imageList32;
             this.navBarBasics.Location = new System.Drawing.Point(0, 0);
             this.navBarBasics.Name = "navBarBasics";
@@ -94,7 +96,8 @@
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnShop),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnCarType)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnCarType),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnUserTask)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // navBtnShop
@@ -303,6 +306,12 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
+            // navBtnUserTask
+            // 
+            this.navBtnUserTask.Caption = "销售顾问任务";
+            this.navBtnUserTask.LargeImageIndex = 0;
+            this.navBtnUserTask.Name = "navBtnUserTask";
+            // 
             // FmBasicsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -354,5 +363,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraNavBar.NavBarItem navBtnUserTask;
     }
 }

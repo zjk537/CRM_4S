@@ -53,7 +53,8 @@ namespace CRM_4S
             this.btnFrontCustomerExport = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDCCAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDCCRecall = new DevExpress.XtraBars.BarButtonItem();
             this.rPageDCC = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,7 +67,6 @@ namespace CRM_4S
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.rPageAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -92,14 +92,14 @@ namespace CRM_4S
             this.btnUpdateUserInfo,
             this.btnLogout,
             this.btnFrontCustomerIn,
-            this.barButtonItem11,
+            this.btnDCCAdd,
             this.btnAddBasics,
             this.btnUpdateBasics,
             this.btnDeleteBasics,
             this.btnFrontCustomerOut,
             this.btnFrontCustomerImport,
             this.btnFrontCustomerExport,
-            this.barButtonItem1});
+            this.btnDCCRecall});
             this.ribbon.MaxItemId = 44;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
@@ -286,17 +286,24 @@ namespace CRM_4S
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem11);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnDCCAdd);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnDCCRecall);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             resources.ApplyResources(this.ribbonPageGroup5, "ribbonPageGroup5");
             // 
-            // barButtonItem11
+            // btnDCCAdd
             // 
-            resources.ApplyResources(this.barButtonItem11, "barButtonItem11");
-            this.barButtonItem11.Id = 25;
-            this.barButtonItem11.LargeImageIndex = 29;
-            this.barButtonItem11.Name = "barButtonItem11";
+            resources.ApplyResources(this.btnDCCAdd, "btnDCCAdd");
+            this.btnDCCAdd.Id = 25;
+            this.btnDCCAdd.LargeImageIndex = 29;
+            this.btnDCCAdd.Name = "btnDCCAdd";
+            // 
+            // btnDCCRecall
+            // 
+            resources.ApplyResources(this.btnDCCRecall, "btnDCCRecall");
+            this.btnDCCRecall.Id = 42;
+            this.btnDCCRecall.LargeImageIndex = 50;
+            this.btnDCCRecall.Name = "btnDCCRecall";
             // 
             // rPageDCC
             // 
@@ -379,13 +386,6 @@ namespace CRM_4S
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
-            // barButtonItem1
-            // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 42;
-            this.barButtonItem1.LargeImageIndex = 50;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // FmMain
             // 
             this.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("FmMain.Appearance.BackColor")));
@@ -395,6 +395,7 @@ namespace CRM_4S
             this.Controls.Add(this.pageViewContainer);
             this.IsMdiContainer = true;
             this.Name = "FmMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FmMain_Load);
             this.Controls.SetChildIndex(this.ribbon, 0);
             this.Controls.SetChildIndex(this.pageViewContainer, 0);
@@ -429,7 +430,7 @@ namespace CRM_4S
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem btnFrontCustomerIn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem btnDCCAdd;
         private DevExpress.XtraBars.BarButtonItem btnAddBasics;
         private DevExpress.XtraBars.BarButtonItem btnUpdateBasics;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
@@ -447,7 +448,7 @@ namespace CRM_4S
         private DevExpress.XtraBars.BarButtonItem btnFrontCustomerOut;
         private DevExpress.XtraBars.BarButtonItem btnFrontCustomerImport;
         private DevExpress.XtraBars.BarButtonItem btnFrontCustomerExport;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnDCCRecall;
 
     }
 }
