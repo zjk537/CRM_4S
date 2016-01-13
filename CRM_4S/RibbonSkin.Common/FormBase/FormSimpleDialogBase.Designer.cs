@@ -38,14 +38,12 @@ namespace RibbonSkin.Common.FormBase
             // 
             // panelControl2
             // 
-            resources.ApplyResources(this.panelControl2, "panelControl2");
             this.panelControl2.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("panelControl2.Appearance.BackColor")));
-            this.panelControl2.Appearance.GradientMode = ((System.Drawing.Drawing2D.LinearGradientMode)(resources.GetObject("panelControl2.Appearance.GradientMode")));
-            this.panelControl2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("panelControl2.Appearance.Image")));
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.panelControl2.Controls.Add(this.btnCancel);
             this.panelControl2.Controls.Add(this.btnOk);
+            resources.ApplyResources(this.panelControl2, "panelControl2");
             this.panelControl2.Name = "panelControl2";
             // 
             // btnCancel
@@ -62,11 +60,9 @@ namespace RibbonSkin.Common.FormBase
             // FormSimpleDialogBase
             // 
             this.AcceptButton = this.btnOk;
-            resources.ApplyResources(this, "$this");
             this.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("FormSimpleDialogBase.Appearance.Font")));
-            this.Appearance.GradientMode = ((System.Drawing.Drawing2D.LinearGradientMode)(resources.GetObject("FormSimpleDialogBase.Appearance.GradientMode")));
-            this.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("FormSimpleDialogBase.Appearance.Image")));
             this.Appearance.Options.UseFont = true;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.panelControl2);

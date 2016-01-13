@@ -129,6 +129,7 @@ namespace CRM_4S
         private void FmMain_Load(object sender, EventArgs e)
         {
             AddRibbonPageViews();
+            ribbon.Pages.RemoveAt(0);
         }
 
         private void ribbon_SelectedPageChanged(object sender, EventArgs e)
