@@ -109,7 +109,7 @@
             // clmCreatedDate
             // 
             this.clmCreatedDate.Caption = "创建时间";
-            this.clmCreatedDate.FieldName = "User.CreatedDate.Value";
+            this.clmCreatedDate.FieldName = "User.CreatedDate";
             this.clmCreatedDate.Name = "clmCreatedDate";
             this.clmCreatedDate.Visible = true;
             this.clmCreatedDate.VisibleIndex = 4;

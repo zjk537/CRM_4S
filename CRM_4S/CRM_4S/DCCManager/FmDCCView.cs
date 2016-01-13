@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,21 +91,26 @@ namespace CRM_4S.DCCManager
 
         private void btnDCCRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            XtraMessageBox.Show("刷新成功");
         }
 
         private void btnDCCExport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                XtraMessageBox.Show("保存成功");
+            }
         }
 
         private void btnDCCImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            new FmDCCImport().ShowDialog();
         }
         private void btnDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            new FmDCCEvaluate().ShowDialog();
         }
 
         private void btnDCCAdd_ItemClick(object sender, ItemClickEventArgs e)

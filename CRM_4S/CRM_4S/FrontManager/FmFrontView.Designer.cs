@@ -93,7 +93,7 @@
             // clmArrivalTime
             // 
             this.clmArrivalTime.Caption = "到店时间";
-            this.clmArrivalTime.FieldName = "VisitRecord.ArrivalTime.Value";
+            this.clmArrivalTime.FieldName = "VisitRecord.ArrivalTime";
             this.clmArrivalTime.Name = "clmArrivalTime";
             this.clmArrivalTime.Visible = true;
             this.clmArrivalTime.VisibleIndex = 0;
@@ -101,7 +101,7 @@
             // clmLeaveTime
             // 
             this.clmLeaveTime.Caption = "离店时间";
-            this.clmLeaveTime.FieldName = "VisitRecord.LeaveTime.Value";
+            this.clmLeaveTime.FieldName = "VisitRecord.LeaveTime";
             this.clmLeaveTime.Name = "clmLeaveTime";
             this.clmLeaveTime.Visible = true;
             this.clmLeaveTime.VisibleIndex = 1;

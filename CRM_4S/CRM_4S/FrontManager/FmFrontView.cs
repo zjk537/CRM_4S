@@ -1,6 +1,7 @@
 ﻿using CRM_4S.Business;
 using CRM_4S.Business.Model;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -98,21 +99,26 @@ namespace CRM_4S.FrontManager
 
         private void btnCustomerExport_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                XtraMessageBox.Show("保存成功");
+            }
         }
         private void btnCustomerImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            new FmFrontImport().ShowDialog();
         }
 
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            XtraMessageBox.Show("刷新成功");
         }
 
         void btnCustomerOut_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            new FmFrontEvaluate().ShowDialog();
         }
 
         void btnCustomerIn_ItemClick(object sender, ItemClickEventArgs e)

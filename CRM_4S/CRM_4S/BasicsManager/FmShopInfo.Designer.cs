@@ -35,7 +35,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.TxtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtDesc = new DevExpress.XtraEditors.TextEdit();
+            this.TxtDesc = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName.Properties)).BeginInit();
@@ -117,7 +117,7 @@
             this.TxtDesc.EditValue = "";
             this.TxtDesc.Location = new System.Drawing.Point(41, 72);
             this.TxtDesc.Name = "TxtDesc";
-            this.TxtDesc.Size = new System.Drawing.Size(429, 21);
+            this.TxtDesc.Size = new System.Drawing.Size(429, 47);
             this.TxtDesc.TabIndex = 1014;
             // 
             // FmShopInfo
@@ -126,7 +126,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 157);
+            this.ClientSize = new System.Drawing.Size(493, 177);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.TxtAddress);
             this.Controls.Add(this.labelControl2);
@@ -163,7 +163,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit TxtName;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit TxtDesc;
+        private DevExpress.XtraEditors.MemoEdit TxtDesc;
 
     }
 }

@@ -168,7 +168,7 @@
             // clmToShopTime
             // 
             this.clmToShopTime.Caption = "到店时间";
-            this.clmToShopTime.FieldName = "DCCRecord.SubscribeTime.Value";
+            this.clmToShopTime.FieldName = "DCCRecord.SubscribeTime";
             this.clmToShopTime.Name = "clmToShopTime";
             this.clmToShopTime.Visible = true;
             this.clmToShopTime.VisibleIndex = 10;

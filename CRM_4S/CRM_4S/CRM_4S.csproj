@@ -66,6 +66,18 @@
     <Compile Include="BasicsManager\FmCarTypeInfo.Designer.cs">
       <DependentUpon>FmCarTypeInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicsManager\FmConsultantTaskInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\FmConsultantTaskInfo.Designer.cs">
+      <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicsManager\FmQuestionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\FmQuestionInfo.Designer.cs">
+      <DependentUpon>FmQuestionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicsManager\FmShopInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +86,12 @@
     </Compile>
     <Compile Include="Common\GloableCaches.cs" />
     <Compile Include="Common\GloableConstants.cs" />
+    <Compile Include="DCCManager\FmDCCImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCImport.Designer.cs">
+      <DependentUpon>FmDCCImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="DCCManager\FmDCCInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,17 +104,53 @@
     <Compile Include="DCCManager\FmDCCView.Designer.cs">
       <DependentUpon>FmDCCView.cs</DependentUpon>
     </Compile>
+    <Compile Include="DCCManager\FmDCCEvaluate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCEvaluate.Designer.cs">
+      <DependentUpon>FmDCCEvaluate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCCustomTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCCustomTime.Designer.cs">
+      <DependentUpon>FmDCCCustomTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FmMain.Designer.cs">
       <DependentUpon>FmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrontManager\FmFrontCustomTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontCustomTime.Designer.cs">
+      <DependentUpon>FmFrontCustomTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontImport.Designer.cs">
+      <DependentUpon>FmFrontImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontEvaluate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontEvaluate.Designer.cs">
+      <DependentUpon>FmFrontEvaluate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontManager\FmFrontCustomerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrontManager\FmFrontCustomerInfo.Designer.cs">
       <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontSumView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontManager\FmFrontSumView.Designer.cs">
+      <DependentUpon>FmFrontSumView.cs</DependentUpon>
     </Compile>
     <Compile Include="FrontManager\FmFrontView.cs">
       <SubType>Form</SubType>
@@ -136,8 +190,17 @@
     <EmbeddedResource Include="BasicsManager\FmCarTypeInfo.resx">
       <DependentUpon>FmCarTypeInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BasicsManager\FmConsultantTaskInfo.resx">
+      <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicsManager\FmQuestionInfo.resx">
+      <DependentUpon>FmQuestionInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BasicsManager\FmShopInfo.resx">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCImport.resx">
+      <DependentUpon>FmDCCImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DCCManager\FmDCCInfo.resx">
       <DependentUpon>FmDCCInfo.cs</DependentUpon>
@@ -145,11 +208,29 @@
     <EmbeddedResource Include="DCCManager\FmDCCView.resx">
       <DependentUpon>FmDCCView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCEvaluate.resx">
+      <DependentUpon>FmDCCEvaluate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCCustomTime.resx">
+      <DependentUpon>FmDCCCustomTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FmMain.resx">
       <DependentUpon>FmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrontManager\FmFrontCustomTime.resx">
+      <DependentUpon>FmFrontCustomTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontManager\FmFrontImport.resx">
+      <DependentUpon>FmFrontImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontManager\FmFrontEvaluate.resx">
+      <DependentUpon>FmFrontEvaluate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrontManager\FmFrontCustomerInfo.resx">
       <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontManager\FmFrontSumView.resx">
+      <DependentUpon>FmFrontSumView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontManager\FmFrontView.resx">
       <DependentUpon>FmFrontView.cs</DependentUpon>
@@ -213,6 +294,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,7 +39,7 @@ namespace CRM_4S
                     fmUserView = new FmUserView();
                     fmUserView.BtnAdd = btnAddUser;
                     fmUserView.BtnUpdate = btnUpdateUser;
-                    fmUserView.BtnRefresh = btnRefresh;
+                    fmUserView.BtnRefresh = btnUserRefresh;
                     fmUserView.BtnResetPwd = btnResetPwd;
                 }
                 return fmUserView;
@@ -56,9 +56,9 @@ namespace CRM_4S
                     fmFrontView = new FmFrontView();
                     fmFrontView.BtnCustomerIn = btnFrontCustomerIn;
                     fmFrontView.BtnCustomerOut = btnFrontCustomerOut;
-                    fmFrontView.BtnRefresh = btnRefresh;
-                    fmFrontView.BtnCustomerImport = btnFrontCustomerImport;
-                    fmFrontView.BtnCustomerExport = btnFrontCustomerExport;
+                    fmFrontView.BtnRefresh = btnFrontRefresh;
+                    fmFrontView.BtnCustomerImport = btnFrontImport;
+                    fmFrontView.BtnCustomerExport = btnFrontExport;
                 }
                 return fmFrontView;
             }
@@ -74,9 +74,9 @@ namespace CRM_4S
                     fmDCCView = new FmDCCView();
                     fmDCCView.BtnDCCAdd = btnDCCAdd;
                     fmDCCView.BtnDCCRecall = btnDCCRecall;
-                    fmDCCView.BtnDCCImport = btnFrontCustomerImport;
-                    fmDCCView.BtnDCCExport = btnFrontCustomerExport;
-                    fmDCCView.BtnDCCRefresh = btnRefresh;
+                    fmDCCView.BtnDCCImport = btnDCCImport;
+                    fmDCCView.BtnDCCExport = btnDCCExport;
+                    fmDCCView.BtnDCCRefresh = btnDCCRefresh;
                 }
                 return fmDCCView;
             }
@@ -93,13 +93,16 @@ namespace CRM_4S
                     fmBasicsView.BtnAdd = btnAddBasics;
                     fmBasicsView.BtnUpdate = btnUpdateBasics;
                     fmBasicsView.BtnDelete = btnDeleteBasics;
-                    fmBasicsView.BtnRefresh = btnRefresh;
+                    fmBasicsView.BtnRefresh = btnBasicsRefresh;
 
-                    fmBasicsView.NavBtnLinkClicked += new EventHandler<NavBarClickedArgs>((object sender, NavBarClickedArgs args) =>
+
+                    fmBasicsView.NavBtnItemClicked += new EventHandler<NavBarClickedArgs>((object sender, NavBarClickedArgs args) =>
                     {
-                        rPageBasics.Visible = true;
-                        rPageBasics.Text = string.Format("{0} - 管理", args.NavMenuName);
-                        
+                        rPageGroupBasics.Text = string.Format("{0}-管理", args.NavMenuName);
+                        btnAddBasics.Caption = string.Format("新增[{0}]", args.NavMenuName);
+                        btnUpdateBasics.Caption = string.Format("更新[{0}]", args.NavMenuName);
+                        btnDeleteBasics.Caption = string.Format("删除[{0}]", args.NavMenuName);
+                        btnUserRefresh.Caption = string.Format("刷新[{0}]", args.NavMenuName);
                     });
                 }
                 return fmBasicsView;
@@ -157,6 +160,40 @@ namespace CRM_4S
         private void btnUpdateUserInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
             new FmUserInfo().ShowDialog();
+        }
+
+        private void btnThisMonth_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            showSumView();
+        }
+
+        private void btnThisQuarter_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            showSumView();
+        }
+
+        private void btnThisYear_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            showSumView();
+        }
+
+        private void btnCustomTime_ItemClick(object sender, ItemClickEventArgs e)
+        {
+           DialogResult result =  new FmFrontCustomTime().ShowDialog();
+           if (result == DialogResult.OK)
+           {
+               showSumView();
+           }
+        }
+
+        private void showSumView()
+        {
+            pageViewContainer.Controls.Clear();
+            Form sumView = new FmFrontSumView();
+            sumView.TopLevel = false;
+            sumView.Dock = DockStyle.Fill;
+            pageViewContainer.Controls.Add(sumView);
+            sumView.Show();
         }
     }
 }

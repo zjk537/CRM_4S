@@ -1,5 +1,7 @@
 ﻿using DevExpress.Utils.Drawing;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraNavBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ namespace CRM_4S.BasicsManager
 {
     public partial class FmBasicsView : Form
     {
-        public EventHandler<NavBarClickedArgs> NavBtnLinkClicked;
+        public EventHandler<NavBarClickedArgs> NavBtnItemClicked;
         public FmBasicsView()
         {
             InitializeComponent();
@@ -22,8 +24,11 @@ namespace CRM_4S.BasicsManager
 
         private void initView()
         {
-            gridControlShop.Dock = gridControlCarType.Dock = gridControlRole.Dock = DockStyle.Fill;
-            gridControlShop.Visible = gridControlCarType.Visible = gridControlRole.Visible = false;
+            navBarBasics.AllowSelectedLink = true;
+            gridControlShop.Dock = gridControlCarType.Dock = gridControlRole.Dock = 
+                gridControlConsultant.Dock = gridControlQuestion.Dock = DockStyle.Fill;
+            gridControlShop.Visible = gridControlCarType.Visible = gridControlRole.Visible = 
+                gridControlConsultant.Visible = gridControlQuestion.Visible = false;
 
             gridControlShop.Visible = true;
         }
@@ -107,16 +112,25 @@ namespace CRM_4S.BasicsManager
         {
             if (navBtnShop.Links[0].State == ObjectState.Selected)
             {
-                new FmShopInfo().ShowDialog();
+                
             }
             else if (navBtnCarType.Links[0].State == ObjectState.Selected)
             {
-                new FmCarTypeInfo().ShowDialog();
+                
             }
             else if (navBtnRole.Links[0].State == ObjectState.Selected)
             {
 
             }
+            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            {
+               
+            }
+            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            {
+               
+            }
+            XtraMessageBox.Show("删除");
         }
         void btnUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -131,6 +145,14 @@ namespace CRM_4S.BasicsManager
             else if (navBtnRole.Links[0].State == ObjectState.Selected)
             {
 
+            }
+            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            {
+                new FmConsultantTaskInfo().ShowDialog();
+            }
+            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            {
+                new FmQuestionInfo().ShowDialog();
             }
         }
         void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
@@ -147,17 +169,29 @@ namespace CRM_4S.BasicsManager
             {
 
             }
+            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            {
+                new FmConsultantTaskInfo().ShowDialog();
+            }
+            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            {
+                new FmQuestionInfo().ShowDialog();
+            }
         }
 
         #endregion
 
         private void navBtnItem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-
+            if (NavBtnItemClicked != null)
+            {
+                NavBtnItemClicked(this, new NavBarClickedArgs() { NavMenuName = ((NavBarItem)sender).Caption});
+            }
             gridControlShop.Visible = sender == navBtnShop;
             gridControlCarType.Visible = sender == navBtnCarType;
             gridControlRole.Visible = sender == navBtnRole;
-
+            gridControlConsultant.Visible = sender == navBtnConsultantTask;
+            gridControlQuestion.Visible = sender == navBtnQuestion;
         }
 
 
