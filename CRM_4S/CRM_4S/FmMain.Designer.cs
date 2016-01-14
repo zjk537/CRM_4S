@@ -77,12 +77,29 @@ namespace CRM_4S
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.rPageAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -119,8 +136,14 @@ namespace CRM_4S
             this.btnFrontRefresh,
             this.btnDCCRefresh,
             this.btnDCCImport,
-            this.btnDCCExport});
-            this.ribbon.MaxItemId = 58;
+            this.btnDCCExport,
+            this.barEditItem1,
+            this.barEditItem2,
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barEditItem3,
+            this.barEditItem4});
+            this.ribbon.MaxItemId = 64;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
             this.rPageBasics,
@@ -131,7 +154,12 @@ namespace CRM_4S
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
-            this.repositoryItemTextEdit4});
+            this.repositoryItemTextEdit4,
+            this.repositoryItemTextEdit5,
+            this.repositoryItemTextEdit6,
+            this.repositoryItemDateEdit1,
+            this.repositoryItemDateEdit2});
+            this.ribbon.SelectedPage = this.rPageAnalyze;
             resources.ApplyResources(this.ribbon, "ribbon");
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             this.ribbon.SelectedPageChanged += new System.EventHandler(this.ribbon_SelectedPageChanged);
@@ -477,14 +505,98 @@ namespace CRM_4S
             // rPageAnalyze
             // 
             this.rPageAnalyze.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup10});
             this.rPageAnalyze.Name = "rPageAnalyze";
             resources.ApplyResources(this.rPageAnalyze, "rPageAnalyze");
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.barEditItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barEditItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
+            // 
+            // barEditItem1
+            // 
+            resources.ApplyResources(this.barEditItem1, "barEditItem1");
+            this.barEditItem1.Edit = this.repositoryItemTextEdit5;
+            this.barEditItem1.EditValue = "";
+            this.barEditItem1.Id = 58;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemTextEdit5
+            // 
+            resources.ApplyResources(this.repositoryItemTextEdit5, "repositoryItemTextEdit5");
+            this.repositoryItemTextEdit5.Name = "repositoryItemTextEdit5";
+            // 
+            // barEditItem2
+            // 
+            resources.ApplyResources(this.barEditItem2, "barEditItem2");
+            this.barEditItem2.Edit = this.repositoryItemTextEdit6;
+            this.barEditItem2.EditValue = "";
+            this.barEditItem2.Id = 59;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemTextEdit6
+            // 
+            resources.ApplyResources(this.repositoryItemTextEdit6, "repositoryItemTextEdit6");
+            this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem3);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem4);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem1, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            resources.ApplyResources(this.ribbonPageGroup10, "ribbonPageGroup10");
+            // 
+            // barButtonItem1
+            // 
+            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
+            this.barButtonItem1.Id = 60;
+            this.barButtonItem1.LargeImageIndex = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            resources.ApplyResources(this.barButtonItem2, "barButtonItem2");
+            this.barButtonItem2.Id = 61;
+            this.barButtonItem2.LargeImageIndex = 15;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barEditItem3
+            // 
+            resources.ApplyResources(this.barEditItem3, "barEditItem3");
+            this.barEditItem3.Edit = this.repositoryItemDateEdit1;
+            this.barEditItem3.Id = 62;
+            this.barEditItem3.Name = "barEditItem3";
+            // 
+            // repositoryItemDateEdit1
+            // 
+            resources.ApplyResources(this.repositoryItemDateEdit1, "repositoryItemDateEdit1");
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemDateEdit1.Buttons"))))});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            // 
+            // barEditItem4
+            // 
+            resources.ApplyResources(this.barEditItem4, "barEditItem4");
+            this.barEditItem4.Edit = this.repositoryItemDateEdit2;
+            this.barEditItem4.Id = 63;
+            this.barEditItem4.Name = "barEditItem4";
+            // 
+            // repositoryItemDateEdit2
+            // 
+            resources.ApplyResources(this.repositoryItemDateEdit2, "repositoryItemDateEdit2");
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemDateEdit2.Buttons"))))});
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
+            this.repositoryItemDateEdit2.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // FmMain
             // 
@@ -505,6 +617,12 @@ namespace CRM_4S
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -559,6 +677,17 @@ namespace CRM_4S
         private DevExpress.XtraBars.BarButtonItem btnDCCRefresh;
         private DevExpress.XtraBars.BarButtonItem btnDCCImport;
         private DevExpress.XtraBars.BarButtonItem btnDCCExport;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit5;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarEditItem barEditItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraBars.BarEditItem barEditItem4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
 
     }
 }
