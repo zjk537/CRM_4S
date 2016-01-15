@@ -25,10 +25,10 @@ namespace CRM_4S.BasicsManager
         private void initView()
         {
             navBarBasics.AllowSelectedLink = true;
-            gridControlShop.Dock = gridControlCarType.Dock = gridControlRole.Dock = 
-                gridControlConsultant.Dock = gridControlQuestion.Dock = DockStyle.Fill;
-            gridControlShop.Visible = gridControlCarType.Visible = gridControlRole.Visible = 
-                gridControlConsultant.Visible = gridControlQuestion.Visible = false;
+            gridControlShop.Dock = gridControlCarType.Dock = gridControlLevel.Dock = 
+                gridControlConsultant.Dock = gridControlQuestion.Dock = gridControlAnalyse.Dock = DockStyle.Fill;
+            gridControlShop.Visible = gridControlCarType.Visible = gridControlLevel.Visible = 
+                gridControlConsultant.Visible = gridControlQuestion.Visible = gridControlAnalyse.Visible = false;
 
             gridControlShop.Visible = true;
         }
@@ -94,18 +94,8 @@ namespace CRM_4S.BasicsManager
 
         void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (navBtnShop.Links[0].State == ObjectState.Selected)
-            {
-                new FmShopInfo().ShowDialog();
-            }
-            else if (navBtnCarType.Links[0].State == ObjectState.Selected)
-            {
-                new FmCarTypeInfo().ShowDialog();
-            }
-            else if (navBtnRole.Links[0].State == ObjectState.Selected)
-            {
-
-            }
+            
+            XtraMessageBox.Show("刷新");
         }
 
         void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
@@ -118,7 +108,7 @@ namespace CRM_4S.BasicsManager
             {
                 
             }
-            else if (navBtnRole.Links[0].State == ObjectState.Selected)
+            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
 
             }
@@ -128,7 +118,11 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
-               
+
+            }
+            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            {
+                
             }
             XtraMessageBox.Show("删除");
         }
@@ -142,7 +136,7 @@ namespace CRM_4S.BasicsManager
             {
                 new FmCarTypeInfo().ShowDialog();
             }
-            else if (navBtnRole.Links[0].State == ObjectState.Selected)
+            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
 
             }
@@ -153,6 +147,10 @@ namespace CRM_4S.BasicsManager
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
                 new FmQuestionInfo().ShowDialog();
+            }
+            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            {
+                new FmAnalyseInfo().ShowDialog();
             }
         }
         void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
@@ -165,7 +163,7 @@ namespace CRM_4S.BasicsManager
             {
                 new FmCarTypeInfo().ShowDialog();
             }
-            else if (navBtnRole.Links[0].State == ObjectState.Selected)
+            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
 
             }
@@ -176,6 +174,10 @@ namespace CRM_4S.BasicsManager
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
                 new FmQuestionInfo().ShowDialog();
+            }
+            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            {
+                new FmAnalyseInfo().ShowDialog();
             }
         }
 
@@ -189,9 +191,10 @@ namespace CRM_4S.BasicsManager
             }
             gridControlShop.Visible = sender == navBtnShop;
             gridControlCarType.Visible = sender == navBtnCarType;
-            gridControlRole.Visible = sender == navBtnRole;
+            gridControlLevel.Visible = sender == navBtnLevel;
             gridControlConsultant.Visible = sender == navBtnConsultantTask;
             gridControlQuestion.Visible = sender == navBtnQuestion;
+            gridControlAnalyse.Visible = sender == navBtnAnalyse;
         }
 
 

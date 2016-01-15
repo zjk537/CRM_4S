@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicsManager\FmAnalyseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\FmAnalyseInfo.Designer.cs">
+      <DependentUpon>FmAnalyseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicsManager\FmBasicsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     <Compile Include="UserManager\FmUserView.Designer.cs">
       <DependentUpon>FmUserView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BasicsManager\FmAnalyseInfo.resx">
+      <DependentUpon>FmAnalyseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BasicsManager\FmBasicsView.resx">
       <DependentUpon>FmBasicsView.cs</DependentUpon>
     </EmbeddedResource>

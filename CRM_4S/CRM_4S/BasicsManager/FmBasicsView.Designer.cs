@@ -36,8 +36,8 @@
             this.navBtnCarType = new DevExpress.XtraNavBar.NavBarItem();
             this.navBtnConsultantTask = new DevExpress.XtraNavBar.NavBarItem();
             this.navBtnQuestion = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBtnRole = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBtnLevel = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBtnAnalyse = new DevExpress.XtraNavBar.NavBarItem();
             this.imageList32 = new System.Windows.Forms.ImageList(this.components);
             this.imageList16 = new System.Windows.Forms.ImageList(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -56,10 +56,16 @@
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControlRole = new DevExpress.XtraGrid.GridControl();
-            this.gridViewRole = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlAnalyse = new DevExpress.XtraGrid.GridControl();
+            this.gridViewAnalyse = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlLevel = new DevExpress.XtraGrid.GridControl();
+            this.gridViewLevel = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlCarType = new DevExpress.XtraGrid.GridControl();
             this.gridViewCarType = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,6 +79,10 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navBarBasics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -80,8 +90,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlRole)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCarType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCarType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).BeginInit();
@@ -93,14 +105,14 @@
             this.navBarBasics.ActiveGroup = this.navBarGroup1;
             this.navBarBasics.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarBasics.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup2});
+            this.navBarGroup1});
             this.navBarBasics.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBtnShop,
             this.navBtnCarType,
-            this.navBtnRole,
             this.navBtnConsultantTask,
-            this.navBtnQuestion});
+            this.navBtnQuestion,
+            this.navBtnLevel,
+            this.navBtnAnalyse});
             this.navBarBasics.LargeImages = this.imageList32;
             this.navBarBasics.Location = new System.Drawing.Point(0, 0);
             this.navBarBasics.Name = "navBarBasics";
@@ -119,7 +131,9 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnShop),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnCarType),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnConsultantTask),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnQuestion)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnQuestion),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnLevel),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnAnalyse)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // navBtnShop
@@ -150,22 +164,17 @@
             this.navBtnQuestion.Name = "navBtnQuestion";
             this.navBtnQuestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBtnItem_LinkClicked);
             // 
-            // navBarGroup2
+            // navBtnLevel
             // 
-            this.navBarGroup2.Caption = "权限管理";
-            this.navBarGroup2.Expanded = true;
-            this.navBarGroup2.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBtnRole)});
-            this.navBarGroup2.Name = "navBarGroup2";
-            this.navBarGroup2.Visible = false;
+            this.navBtnLevel.Caption = "顾客等级";
+            this.navBtnLevel.LargeImageIndex = 0;
+            this.navBtnLevel.Name = "navBtnLevel";
             // 
-            // navBtnRole
+            // navBtnAnalyse
             // 
-            this.navBtnRole.Caption = "角色权限";
-            this.navBtnRole.LargeImageIndex = 7;
-            this.navBtnRole.Name = "navBtnRole";
-            this.navBtnRole.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBtnItem_LinkClicked);
+            this.navBtnAnalyse.Caption = "能力分析";
+            this.navBtnAnalyse.LargeImageIndex = 5;
+            this.navBtnAnalyse.Name = "navBtnAnalyse";
             // 
             // imageList32
             // 
@@ -197,7 +206,8 @@
             // 
             this.panelControl1.Controls.Add(this.gridControlQuestion);
             this.panelControl1.Controls.Add(this.gridControlConsultant);
-            this.panelControl1.Controls.Add(this.gridControlRole);
+            this.panelControl1.Controls.Add(this.gridControlAnalyse);
+            this.panelControl1.Controls.Add(this.gridControlLevel);
             this.panelControl1.Controls.Add(this.gridControlCarType);
             this.panelControl1.Controls.Add(this.gridControlShop);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -328,38 +338,91 @@
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 6;
             // 
-            // gridControlRole
+            // gridControlAnalyse
             // 
-            this.gridControlRole.Location = new System.Drawing.Point(527, 18);
-            this.gridControlRole.MainView = this.gridViewRole;
-            this.gridControlRole.Name = "gridControlRole";
-            this.gridControlRole.Size = new System.Drawing.Size(263, 200);
-            this.gridControlRole.TabIndex = 6;
-            this.gridControlRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewRole});
+            this.gridControlAnalyse.Location = new System.Drawing.Point(527, 224);
+            this.gridControlAnalyse.MainView = this.gridViewAnalyse;
+            this.gridControlAnalyse.Name = "gridControlAnalyse";
+            this.gridControlAnalyse.Size = new System.Drawing.Size(263, 208);
+            this.gridControlAnalyse.TabIndex = 6;
+            this.gridControlAnalyse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewAnalyse});
             // 
-            // gridViewRole
+            // gridViewAnalyse
             // 
-            this.gridViewRole.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewAnalyse.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn22,
+            this.gridColumn23,
+            this.gridColumn25,
+            this.gridColumn26,
+            this.gridColumn29,
+            this.gridColumn27,
+            this.gridColumn28});
+            this.gridViewAnalyse.GridControl = this.gridControlAnalyse;
+            this.gridViewAnalyse.Name = "gridViewAnalyse";
+            this.gridViewAnalyse.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "分析指标";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 0;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "主要表现";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 1;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "主要原因";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 2;
+            // 
+            // gridControlLevel
+            // 
+            this.gridControlLevel.Location = new System.Drawing.Point(527, 18);
+            this.gridControlLevel.MainView = this.gridViewLevel;
+            this.gridControlLevel.Name = "gridControlLevel";
+            this.gridControlLevel.Size = new System.Drawing.Size(263, 200);
+            this.gridControlLevel.TabIndex = 6;
+            this.gridControlLevel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewLevel});
+            // 
+            // gridViewLevel
+            // 
+            this.gridViewLevel.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn8,
-            this.gridColumn11});
-            this.gridViewRole.GridControl = this.gridControlRole;
-            this.gridViewRole.Name = "gridViewRole";
-            this.gridViewRole.OptionsView.ShowGroupPanel = false;
+            this.gridColumn11,
+            this.gridColumn21});
+            this.gridViewLevel.GridControl = this.gridControlLevel;
+            this.gridViewLevel.Name = "gridViewLevel";
+            this.gridViewLevel.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "角色名";
+            this.gridColumn8.Caption = "顾客等级";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
             // 
             // gridColumn11
             // 
-            this.gridColumn11.Caption = "权限";
+            this.gridColumn11.Caption = "等级说明";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 1;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "创建时间";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 2;
             // 
             // gridControlCarType
             // 
@@ -467,6 +530,34 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "建议描述";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 3;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "修改时间";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 4;
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.Caption = "创建时间";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 5;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "修改人";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 4;
+            // 
             // FmBasicsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -484,8 +575,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlRole)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCarType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCarType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).EndInit();
@@ -500,13 +593,11 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarItem navBtnCarType;
         private DevExpress.XtraNavBar.NavBarItem navBtnShop;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private System.Windows.Forms.ImageList imageList16;
         private System.Windows.Forms.ImageList imageList32;
-        private DevExpress.XtraNavBar.NavBarItem navBtnRole;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraGrid.GridControl gridControlRole;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewRole;
+        private DevExpress.XtraGrid.GridControl gridControlLevel;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewLevel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.GridControl gridControlCarType;
@@ -539,5 +630,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraNavBar.NavBarItem navBtnLevel;
+        private DevExpress.XtraNavBar.NavBarItem navBtnAnalyse;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.GridControl gridControlAnalyse;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewAnalyse;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
     }
 }
