@@ -41,11 +41,11 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.ComboxRole = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.ComboxSex = new DevExpress.XtraEditors.ComboBoxEdit();
             this.权限 = new DevExpress.XtraEditors.LabelControl();
             this.ComboxShop = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtLogUserName.Properties)).BeginInit();
@@ -54,10 +54,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtRealName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboxRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxSex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboxShop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
@@ -70,7 +70,7 @@
             this.groupControl2.Controls.Add(this.TxtLogUserPwd);
             this.groupControl2.Location = new System.Drawing.Point(274, 13);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(246, 171);
+            this.groupControl2.Size = new System.Drawing.Size(246, 179);
             this.groupControl2.TabIndex = 1017;
             this.groupControl2.Text = "登录信息";
             // 
@@ -189,16 +189,6 @@
             this.ComboxRole.Size = new System.Drawing.Size(166, 21);
             this.ComboxRole.TabIndex = 1;
             // 
-            // ComboxSex
-            // 
-            this.ComboxSex.EnterMoveNextControl = true;
-            this.ComboxSex.Location = new System.Drawing.Point(67, 111);
-            this.ComboxSex.Name = "ComboxSex";
-            this.ComboxSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComboxSex.Size = new System.Drawing.Size(166, 21);
-            this.ComboxSex.TabIndex = 3;
-            // 
             // 权限
             // 
             this.权限.Location = new System.Drawing.Point(12, 59);
@@ -227,10 +217,10 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.radioGroup1);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.ComboxShop);
             this.groupControl1.Controls.Add(this.权限);
-            this.groupControl1.Controls.Add(this.ComboxSex);
             this.groupControl1.Controls.Add(this.ComboxRole);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.labelControl5);
@@ -239,9 +229,22 @@
             this.groupControl1.Controls.Add(this.TxtPhone);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(244, 172);
+            this.groupControl1.Size = new System.Drawing.Size(244, 180);
             this.groupControl1.TabIndex = 1016;
             this.groupControl1.Text = "基本信息";
+            // 
+            // radioGroup1
+            // 
+            this.radioGroup1.Location = new System.Drawing.Point(67, 108);
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "男"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "女")});
+            this.radioGroup1.Size = new System.Drawing.Size(166, 29);
+            this.radioGroup1.TabIndex = 1012;
             // 
             // FmUserInfo
             // 
@@ -249,7 +252,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 246);
+            this.ClientSize = new System.Drawing.Size(530, 245);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "FmUserInfo";
@@ -265,11 +268,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtRealName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboxRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxSex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboxShop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,10 +292,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.ComboBoxEdit ComboxRole;
-        private DevExpress.XtraEditors.ComboBoxEdit ComboxSex;
         private DevExpress.XtraEditors.LabelControl 权限;
         private DevExpress.XtraEditors.ComboBoxEdit ComboxShop;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
     }
 }

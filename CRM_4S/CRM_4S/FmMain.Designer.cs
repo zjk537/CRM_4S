@@ -82,12 +82,12 @@ namespace CRM_4S
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.btnSingleAnalyse = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGroupAnalyse = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -139,11 +139,11 @@ namespace CRM_4S
             this.btnDCCExport,
             this.barEditItem1,
             this.barEditItem2,
-            this.barButtonItem1,
-            this.barButtonItem2,
+            this.btnSingleAnalyse,
+            this.btnGroupAnalyse,
             this.barEditItem3,
             this.barEditItem4});
-            this.ribbon.MaxItemId = 64;
+            this.ribbon.MaxItemId = 66;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
             this.rPageBasics,
@@ -547,24 +547,10 @@ namespace CRM_4S
             // 
             this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem3);
             this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem4);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem1, true);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnSingleAnalyse, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnGroupAnalyse);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             resources.ApplyResources(this.ribbonPageGroup10, "ribbonPageGroup10");
-            // 
-            // barButtonItem1
-            // 
-            resources.ApplyResources(this.barButtonItem1, "barButtonItem1");
-            this.barButtonItem1.Id = 60;
-            this.barButtonItem1.LargeImageIndex = 13;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            resources.ApplyResources(this.barButtonItem2, "barButtonItem2");
-            this.barButtonItem2.Id = 61;
-            this.barButtonItem2.LargeImageIndex = 15;
-            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barEditItem3
             // 
@@ -597,6 +583,20 @@ namespace CRM_4S
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             this.repositoryItemDateEdit2.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            // 
+            // btnSingleAnalyse
+            // 
+            resources.ApplyResources(this.btnSingleAnalyse, "btnSingleAnalyse");
+            this.btnSingleAnalyse.Id = 60;
+            this.btnSingleAnalyse.LargeImageIndex = 13;
+            this.btnSingleAnalyse.Name = "btnSingleAnalyse";
+            // 
+            // btnGroupAnalyse
+            // 
+            resources.ApplyResources(this.btnGroupAnalyse, "btnGroupAnalyse");
+            this.btnGroupAnalyse.Id = 61;
+            this.btnGroupAnalyse.LargeImageIndex = 15;
+            this.btnGroupAnalyse.Name = "btnGroupAnalyse";
             // 
             // FmMain
             // 
@@ -681,8 +681,8 @@ namespace CRM_4S
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit5;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnSingleAnalyse;
+        private DevExpress.XtraBars.BarButtonItem btnGroupAnalyse;
         private DevExpress.XtraBars.BarEditItem barEditItem3;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraBars.BarEditItem barEditItem4;

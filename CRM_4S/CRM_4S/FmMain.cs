@@ -15,6 +15,7 @@ using CRM_4S.FrontManager;
 using CRM_4S.DCCManager;
 using DevExpress.XtraBars;
 using CRM_4S.BasicsManager;
+using CRM_4S.DataAnalyse;
 
 namespace CRM_4S
 {
@@ -54,7 +55,7 @@ namespace CRM_4S
                 if (fmFrontView == null)
                 {
                     fmFrontView = new FmFrontView();
-                    fmFrontView.BtnCustomerIn = btnFrontCustomerIn;
+                    fmFrontView.BtnFrontIn = btnFrontCustomerIn;
                     fmFrontView.BtnCustomerOut = btnFrontCustomerOut;
                     fmFrontView.BtnRefresh = btnFrontRefresh;
                     fmFrontView.BtnCustomerImport = btnFrontImport;
@@ -102,13 +103,28 @@ namespace CRM_4S
                         btnAddBasics.Caption = string.Format("新增[{0}]", args.NavMenuName);
                         btnUpdateBasics.Caption = string.Format("更新[{0}]", args.NavMenuName);
                         btnDeleteBasics.Caption = string.Format("删除[{0}]", args.NavMenuName);
-                        btnUserRefresh.Caption = string.Format("刷新[{0}]", args.NavMenuName);
+                        btnBasicsRefresh.Caption = string.Format("刷新[{0}]", args.NavMenuName);
                     });
                 }
                 return fmBasicsView;
             }
         }
 
+        FmDataAnalyseView fmAnalyseView = null;
+        FmDataAnalyseView mFmAnalyseView
+        {
+            get
+            {
+                if (fmAnalyseView == null)
+                {
+                    fmAnalyseView = new FmDataAnalyseView();
+                    fmAnalyseView.BtnGroupAnalyse = btnGroupAnalyse;
+                    fmAnalyseView.BtnSingleAnalyse = btnSingleAnalyse;
+                }
+
+                return fmAnalyseView;
+            }
+        }
 
         #endregion
 
@@ -121,6 +137,7 @@ namespace CRM_4S
             mRibbonPages.Add(rPageFront, mFmFrontView);
             mRibbonPages.Add(rPageDCC, mFmDCCView);
             mRibbonPages.Add(rPageBasics, mFmBasicsView);
+            mRibbonPages.Add(rPageAnalyze, mFmAnalyseView);
 
             ribbon.SelectedPage = null;
             ribbon.SelectedPage = rPageUser;

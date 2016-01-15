@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CRM_4S.DCCManager
 {
-    public partial class FmDCCEvaluate : FormSimpleDialogBase
+    public partial class FmDCCIn : FormSimpleDialogBase
     {
-        public FmDCCEvaluate()
+        public FmDCCIn()
         {
             InitializeComponent();
-        }
-
-        private void FmEvaluate_Load(object sender, EventArgs e)
-        {
-            lblLevelDesc.Text = "预计 15 天购买；\r\n回访周期;\r\n需要有好的价格支持;";
         }
     }
 }

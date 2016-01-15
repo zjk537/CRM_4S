@@ -8,18 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CRM_4S.FrontManager
+namespace CRM_4S.DataAnalyse
 {
-    public partial class FmFrontEvaluate : FormSimpleDialogBase
+    public partial class FmAnalyseResult : FormSimpleDialogBase
     {
-        public FmFrontEvaluate()
+        public FmAnalyseResult()
         {
             InitializeComponent();
         }
 
-        private void FmEvaluate_Load(object sender, EventArgs e)
+        private void FmGroupResult_Load(object sender, EventArgs e)
         {
-            lblLevelDesc.Text = "预计 15 天购买；\r\n回访周期;\r\n需要有好的价格支持;";
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }

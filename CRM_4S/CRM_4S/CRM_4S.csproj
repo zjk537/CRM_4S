@@ -39,14 +39,21 @@
     <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,29 +96,41 @@
     </Compile>
     <Compile Include="Common\GloableCaches.cs" />
     <Compile Include="Common\GloableConstants.cs" />
+    <Compile Include="DataAnalyse\FmDataAnalyseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataAnalyse\FmDataAnalyseView.Designer.cs">
+      <DependentUpon>FmDataAnalyseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAnalyse\FmAnalyseResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataAnalyse\FmAnalyseResult.Designer.cs">
+      <DependentUpon>FmAnalyseResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="DCCManager\FmDCCImport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DCCManager\FmDCCImport.Designer.cs">
       <DependentUpon>FmDCCImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="DCCManager\FmDCCInfo.cs">
+    <Compile Include="DCCManager\FmDCCIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DCCManager\FmDCCInfo.Designer.cs">
-      <DependentUpon>FmDCCInfo.cs</DependentUpon>
+    <Compile Include="DCCManager\FmDCCIn.Designer.cs">
+      <DependentUpon>FmDCCIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCRecall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DCCManager\FmDCCRecall.Designer.cs">
+      <DependentUpon>FmDCCRecall.cs</DependentUpon>
     </Compile>
     <Compile Include="DCCManager\FmDCCView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DCCManager\FmDCCView.Designer.cs">
       <DependentUpon>FmDCCView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DCCManager\FmDCCEvaluate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DCCManager\FmDCCEvaluate.Designer.cs">
-      <DependentUpon>FmDCCEvaluate.cs</DependentUpon>
     </Compile>
     <Compile Include="DCCManager\FmDCCCustomTime.cs">
       <SubType>Form</SubType>
@@ -137,17 +156,17 @@
     <Compile Include="FrontManager\FmFrontImport.Designer.cs">
       <DependentUpon>FmFrontImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontManager\FmFrontEvaluate.cs">
+    <Compile Include="FrontManager\FmFrontIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontManager\FmFrontEvaluate.Designer.cs">
-      <DependentUpon>FmFrontEvaluate.cs</DependentUpon>
+    <Compile Include="FrontManager\FmFrontIn.Designer.cs">
+      <DependentUpon>FmFrontIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontManager\FmFrontCustomerInfo.cs">
+    <Compile Include="FrontManager\FmFrontOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontManager\FmFrontCustomerInfo.Designer.cs">
-      <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    <Compile Include="FrontManager\FmFrontOut.Designer.cs">
+      <DependentUpon>FmFrontOut.cs</DependentUpon>
     </Compile>
     <Compile Include="FrontManager\FmFrontSumView.cs">
       <SubType>Form</SubType>
@@ -160,6 +179,12 @@
     </Compile>
     <Compile Include="FrontManager\FmFrontView.Designer.cs">
       <DependentUpon>FmFrontView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstallAction.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InstallAction.Designer.cs">
+      <DependentUpon>InstallAction.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -202,17 +227,24 @@
     <EmbeddedResource Include="BasicsManager\FmShopInfo.resx">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataAnalyse\FmDataAnalyseView.resx">
+      <DependentUpon>FmDataAnalyseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAnalyse\FmAnalyseResult.resx">
+      <DependentUpon>FmAnalyseResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAnalyse\Report1.rdlc" />
     <EmbeddedResource Include="DCCManager\FmDCCImport.resx">
       <DependentUpon>FmDCCImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DCCManager\FmDCCInfo.resx">
-      <DependentUpon>FmDCCInfo.cs</DependentUpon>
+    <EmbeddedResource Include="DCCManager\FmDCCIn.resx">
+      <DependentUpon>FmDCCIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCCManager\FmDCCRecall.resx">
+      <DependentUpon>FmDCCRecall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DCCManager\FmDCCView.resx">
       <DependentUpon>FmDCCView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DCCManager\FmDCCEvaluate.resx">
-      <DependentUpon>FmDCCEvaluate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DCCManager\FmDCCCustomTime.resx">
       <DependentUpon>FmDCCCustomTime.cs</DependentUpon>
@@ -226,11 +258,11 @@
     <EmbeddedResource Include="FrontManager\FmFrontImport.resx">
       <DependentUpon>FmFrontImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontManager\FmFrontEvaluate.resx">
-      <DependentUpon>FmFrontEvaluate.cs</DependentUpon>
+    <EmbeddedResource Include="FrontManager\FmFrontIn.resx">
+      <DependentUpon>FmFrontIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontManager\FmFrontCustomerInfo.resx">
-      <DependentUpon>FmFrontCustomerInfo.cs</DependentUpon>
+    <EmbeddedResource Include="FrontManager\FmFrontOut.resx">
+      <DependentUpon>FmFrontOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontManager\FmFrontSumView.resx">
       <DependentUpon>FmFrontSumView.cs</DependentUpon>
@@ -300,6 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="Register.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

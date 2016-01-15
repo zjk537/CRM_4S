@@ -27,19 +27,20 @@ namespace CRM_4S.FrontManager
         }
 
         #region public controls
-        private BarButtonItem btnCustomerIn = null;
-        public BarButtonItem BtnCustomerIn
+        private BarButtonItem btnFrontIn = null;
+        public BarButtonItem BtnFrontIn
         {
-            get { return btnCustomerIn; }
+            get { return btnFrontIn; }
             set
             {
-                btnCustomerIn = value;
-                if (btnCustomerIn != null)
+                btnFrontIn = value;
+                if (btnFrontIn != null)
                 {
-                    btnCustomerIn.ItemClick += btnCustomerIn_ItemClick;
+                    btnFrontIn.ItemClick += btnFrontIn_ItemClick;
                 }
             }
         }
+
 
         private BarButtonItem btnCustomerOut = null;
         public BarButtonItem BtnCustomerOut
@@ -118,12 +119,12 @@ namespace CRM_4S.FrontManager
 
         void btnCustomerOut_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmFrontEvaluate().ShowDialog();
+            new FmFrontOut().ShowDialog();
         }
 
-        void btnCustomerIn_ItemClick(object sender, ItemClickEventArgs e)
+        void btnFrontIn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmFrontCustomerInfo().ShowDialog();
+            new FmFrontIn().ShowDialog();
         }
 
         #endregion

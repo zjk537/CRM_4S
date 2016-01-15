@@ -145,7 +145,7 @@
     <value>顾客进店</value>
   </data>
   <data name="btnDCCAdd.Caption" xml:space="preserve">
-    <value>新增来电</value>
+    <value>新增DCC</value>
   </data>
   <data name="btnAddBasics.Caption" xml:space="preserve">
     <value>新增</value>
@@ -166,10 +166,10 @@
     <value>数据导出</value>
   </data>
   <data name="btnDCCRecall.Caption" xml:space="preserve">
-    <value>来电回访</value>
+    <value>DCC回访</value>
   </data>
   <data name="barSubItem1.Caption" xml:space="preserve">
-    <value>汇总视图</value>
+    <value>视图</value>
   </data>
   <data name="btnThisMonth.Caption" xml:space="preserve">
     <value>本月</value>
@@ -217,11 +217,11 @@
   <data name="barEditItem2.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="barButtonItem1.Caption" xml:space="preserve">
-    <value>店面销售</value>
+  <data name="btnSingleAnalyse.Caption" xml:space="preserve">
+    <value>个人能力</value>
   </data>
-  <data name="barButtonItem2.Caption" xml:space="preserve">
-    <value>DCC销售</value>
+  <data name="btnGroupAnalyse.Caption" xml:space="preserve">
+    <value>团队能力</value>
   </data>
   <data name="barEditItem3.Caption" xml:space="preserve">
     <value> 开始时间 </value>
@@ -248,44 +248,14 @@
   <data name="barEditItem4.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="rPageGroupCurUser.Text" xml:space="preserve">
-    <value>当前用户</value>
-  </data>
-  <data name="ribbonPageGroup1.Text" xml:space="preserve">
-    <value>用户管理</value>
-  </data>
-  <data name="ribbonPageGroup3.Text" xml:space="preserve">
-    <value>视图</value>
-  </data>
   <data name="rPageUser.Text" xml:space="preserve">
     <value>用户管理</value>
-  </data>
-  <data name="rPageGroupBasics.Text" xml:space="preserve">
-    <value>操作</value>
   </data>
   <data name="rPageBasics.Text" xml:space="preserve">
     <value>基础数据维护</value>
   </data>
-  <data name="ribbonPageGroup4.Text" xml:space="preserve">
-    <value>数据管理</value>
-  </data>
-  <data name="ribbonPageGroup8.Text" xml:space="preserve">
-    <value>批量操作</value>
-  </data>
-  <data name="ribbonPageGroup6.Text" xml:space="preserve">
-    <value>视图</value>
-  </data>
   <data name="rPageFront.Text" xml:space="preserve">
     <value>前台管理</value>
-  </data>
-  <data name="ribbonPageGroup5.Text" xml:space="preserve">
-    <value>数据管理</value>
-  </data>
-  <data name="ribbonPageGroup9.Text" xml:space="preserve">
-    <value>批量操作</value>
-  </data>
-  <data name="ribbonPageGroup7.Text" xml:space="preserve">
-    <value>视图</value>
   </data>
   <data name="rPageDCC.Text" xml:space="preserve">
     <value>DCC管理</value>
@@ -327,6 +297,15 @@
   <data name="&gt;&gt;ribbon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="rPageGroupCurUser.Text" xml:space="preserve">
+    <value>当前用户</value>
+  </data>
+  <data name="ribbonPageGroup1.Text" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="ribbonPageGroup3.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
   <data name="pageViewContainer.Appearance.BackColor" type="System.Drawing.Color, System.Drawing">
     <value>235, 236, 239</value>
   </data>
@@ -354,6 +333,27 @@
   </data>
   <data name="&gt;&gt;pageViewContainer.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="ribbonPageGroup4.Text" xml:space="preserve">
+    <value>数据管理</value>
+  </data>
+  <data name="ribbonPageGroup8.Text" xml:space="preserve">
+    <value>批量操作</value>
+  </data>
+  <data name="ribbonPageGroup6.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="ribbonPageGroup5.Text" xml:space="preserve">
+    <value>数据管理</value>
+  </data>
+  <data name="ribbonPageGroup9.Text" xml:space="preserve">
+    <value>批量操作</value>
+  </data>
+  <data name="ribbonPageGroup7.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="rPageGroupBasics.Text" xml:space="preserve">
+    <value>操作</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -972,18 +972,6 @@
   <data name="&gt;&gt;ribbonPageGroup10.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barButtonItem1.Name" xml:space="preserve">
-    <value>barButtonItem1</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem2.Name" xml:space="preserve">
-    <value>barButtonItem2</value>
-  </data>
-  <data name="&gt;&gt;barButtonItem2.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
   <data name="&gt;&gt;barEditItem3.Name" xml:space="preserve">
     <value>barEditItem3</value>
   </data>
@@ -1007,6 +995,18 @@
   </data>
   <data name="&gt;&gt;repositoryItemDateEdit2.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemDateEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnSingleAnalyse.Name" xml:space="preserve">
+    <value>btnSingleAnalyse</value>
+  </data>
+  <data name="&gt;&gt;btnSingleAnalyse.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnGroupAnalyse.Name" xml:space="preserve">
+    <value>btnGroupAnalyse</value>
+  </data>
+  <data name="&gt;&gt;btnGroupAnalyse.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FmMain</value>

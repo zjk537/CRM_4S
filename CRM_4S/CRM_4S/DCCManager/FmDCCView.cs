@@ -110,12 +110,12 @@ namespace CRM_4S.DCCManager
         }
         private void btnDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmDCCEvaluate().ShowDialog();
+            new FmDCCRecall().ShowDialog();
         }
 
         private void btnDCCAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmDCCInfo().ShowDialog();
+            new FmDCCIn().ShowDialog();
         }
 
         #endregion
