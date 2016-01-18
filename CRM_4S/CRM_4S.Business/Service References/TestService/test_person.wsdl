@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:test_person" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="test_person" targetNamespace="urn:test_person" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+  <wsdl:message name="sayRequest" />
+  <wsdl:message name="sayResponse">
+    <wsdl:part name="say" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="runRequest" />
+  <wsdl:message name="runResponse">
+    <wsdl:part name="run" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="test_personPort">
+    <wsdl:operation name="say">
+      <wsdl:input message="tns:sayRequest" />
+      <wsdl:output message="tns:sayResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="run">
+      <wsdl:input message="tns:runRequest" />
+      <wsdl:output message="tns:runResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="test_personBinding" type="tns:test_personPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="say">
+      <soap:operation soapAction="urn:test_person#person#say" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:test_person" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:test_person" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="run">
+      <soap:operation soapAction="urn:test_person#person#run" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:test_person" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:test_person" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="test_person">
+    <documentation />
+    <wsdl:port name="test_personPort" binding="tns:test_personBinding">
+      <soap:address location="http://localhost:80/4s_crm/Test/TestServer.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
