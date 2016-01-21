@@ -16,8 +16,8 @@ namespace CRM_4S
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FmMain());
-            Application.Run(new Login());
+            Application.Run(new FmMain());
+            //Application.Run(new Login());
         }
     }
 }

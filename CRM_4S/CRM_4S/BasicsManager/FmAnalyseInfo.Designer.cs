@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.BasicsManager
+namespace CRM_4S.BasicsManager
 {
     partial class FmAnalyseInfo
     {

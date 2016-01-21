@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.UserManager
+namespace CRM_4S.UserManager
 {
     partial class FmUpdatePwd
     {

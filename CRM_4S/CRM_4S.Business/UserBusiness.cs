@@ -1,4 +1,6 @@
-﻿using CRM_4S.Business.Model;
+using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business.Service;
+using CRM_4S.DataService.Model;
 using CRM_4S.Model.DataModel;
 using System;
 using System.Collections.Generic;
@@ -10,34 +12,94 @@ namespace CRM_4S.Business
     public class UserBusiness : BusinessBase<UserBusiness>
     {
 
+        public IList<UserInfo> GetUsers()
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetUsers";
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetUsers.uspGetUsers", true);
+
+            return DoFunctionWithLog<List<UserInfo>>(() =>
+            {
+                return ConvertToList<UserInfo>(result);
+
+            }, null, "GetUsers.ConvertToList", true);
+        }
+
+
+        public void AddUser(UserInfo info)
+        {
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspAddUser";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "AddUser.uspAddUser", true);
+        }
+
+        public void UpdateUser(UserInfo info)
+        {
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspUpdateUser";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "UpdateUser.uspUpdateUser", true);
+        }
+
+        public void DeleteUser(UserInfo info)
+        {
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspDeleteUser";
+                functionParms.Pams = new Dictionary<string, object>();
+                functionParms.Pams.Add("UserId", info.Id);
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "DeleteUser.uspDeleteUser", true);
+        }
+
+        public bool ValidateUserName(int uid, string userName)
+        {
+            ResultValue result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspValidateUserName";
+                functionParms.Pams = new Dictionary<string, object>();
+                functionParms.Pams.Add("UserId", uid);
+                functionParms.Pams.Add("UserUserName", userName);
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(functionParms);
+            }, null, "ValidateUserName.uspValidateUserName", false);
+
+            var dbUserId = 0;
+            if (result.ResultTable.Rows.Count() > 0)
+            {
+                dbUserId = Convert.ToInt32(result.ResultTable.Rows[0][0]);
+            }
+
+            return dbUserId == 0;
+        }
+
         public IList<UserShopRoleInfo> GetUserShopRoleInfos()
         {
-            List<UserShopRoleInfo> infos = new List<UserShopRoleInfo>();
-            for (int i = 1; i < 10; i++)
+            var users = GetUsers();
+            List<UserShopRoleInfo> results = new List<UserShopRoleInfo>();
+
+            foreach (UserInfo user in users)
             {
-                UserShopRoleInfo info = new UserShopRoleInfo()
-                {
-                    Shop = new ShopInfo
-                    {
-                        Id = i,
-                        Name = "测试商店名" + i
-                    },
-                    Role = new RoleInfo
-                    {
-                        Id = i,
-                        RoleName = "总经理" + i
-                    },
-                    User = new UserInfo
-                    {
-                        Id = i,
-                        UserName = "测试用户名" + i,
-                        Phone = "123123123",
-                        CreatedDate = DateTime.Now
-                    }
-                };
-                infos.Add(info);
+                results.Add(new UserShopRoleInfo() { User = user });
             }
-            return infos;
+
+            return results;
         }
     }
 }

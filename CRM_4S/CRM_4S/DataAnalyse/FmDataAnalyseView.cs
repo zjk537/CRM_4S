@@ -1,4 +1,4 @@
-﻿using DevExpress.XtraBars;
+using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

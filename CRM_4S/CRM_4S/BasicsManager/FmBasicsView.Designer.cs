@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.BasicsManager
+namespace CRM_4S.BasicsManager
 {
     partial class FmBasicsView
     {
@@ -42,62 +42,75 @@
             this.imageList16 = new System.Windows.Forms.ImageList(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControlQuestion = new DevExpress.XtraGrid.GridControl();
+            this.evaluateQuestionInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewQuestion = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmQDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmQType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmQLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmQUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmQCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlConsultant = new DevExpress.XtraGrid.GridControl();
             this.gridViewConsultant = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskStartDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskEndDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskCartType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskFinishNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlAnalyse = new DevExpress.XtraGrid.GridControl();
             this.gridViewAnalyse = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControlLevel = new DevExpress.XtraGrid.GridControl();
-            this.gridViewLevel = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControlCarType = new DevExpress.XtraGrid.GridControl();
-            this.gridViewCarType = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControlShop = new DevExpress.XtraGrid.GridControl();
-            this.gridViewShop = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlLevel = new DevExpress.XtraGrid.GridControl();
+            this.customerLevelInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewLevel = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clmLevelCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmLevelDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmLevelCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlCarType = new DevExpress.XtraGrid.GridControl();
+            this.carTypeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewCarType = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clmCarParent = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCarTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCartypeDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCarTypeCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlShop = new DevExpress.XtraGrid.GridControl();
+            this.shopInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewShop = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmShopPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmShopAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmShopDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmShopCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.userTaskInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.navBarBasics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlQuestion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerLevelInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCarType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carTypeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCarType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewShop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarBasics
@@ -218,6 +231,7 @@
             // 
             // gridControlQuestion
             // 
+            this.gridControlQuestion.DataSource = this.evaluateQuestionInfoBindingSource;
             this.gridControlQuestion.Location = new System.Drawing.Point(272, 224);
             this.gridControlQuestion.MainView = this.gridViewQuestion;
             this.gridControlQuestion.Name = "gridControlQuestion";
@@ -226,47 +240,69 @@
             this.gridControlQuestion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewQuestion});
             // 
+            // evaluateQuestionInfoBindingSource
+            // 
+            this.evaluateQuestionInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.EvaluateQuestionInfo);
+            // 
             // gridViewQuestion
             // 
             this.gridViewQuestion.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn18,
-            this.gridColumn19,
-            this.gridColumn20,
-            this.gridColumn24});
+            this.clmQDesc,
+            this.clmQType,
+            this.clmQLevel,
+            this.clmQUpdateDate,
+            this.clmQCreatedDate});
             this.gridViewQuestion.GridControl = this.gridControlQuestion;
             this.gridViewQuestion.Name = "gridViewQuestion";
             this.gridViewQuestion.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn18
+            // clmQDesc
             // 
-            this.gridColumn18.Caption = "问题名称";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 0;
+            this.clmQDesc.Caption = "问题名称";
+            this.clmQDesc.FieldName = "QDesc";
+            this.clmQDesc.Name = "clmQDesc";
+            this.clmQDesc.Visible = true;
+            this.clmQDesc.VisibleIndex = 0;
             // 
-            // gridColumn19
+            // clmQType
             // 
-            this.gridColumn19.Caption = "问题类型";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 1;
+            this.clmQType.Caption = "问题类型";
+            this.clmQType.FieldName = "QType";
+            this.clmQType.Name = "clmQType";
+            this.clmQType.Visible = true;
+            this.clmQType.VisibleIndex = 1;
             // 
-            // gridColumn20
+            // clmQLevel
             // 
-            this.gridColumn20.Caption = "问题权重";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 2;
+            this.clmQLevel.Caption = "问题权重";
+            this.clmQLevel.FieldName = "QLevel";
+            this.clmQLevel.Name = "clmQLevel";
+            this.clmQLevel.Visible = true;
+            this.clmQLevel.VisibleIndex = 2;
             // 
-            // gridColumn24
+            // clmQUpdateDate
             // 
-            this.gridColumn24.Caption = "创建时间";
-            this.gridColumn24.Name = "gridColumn24";
-            this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 3;
+            this.clmQUpdateDate.Caption = "更新时间";
+            this.clmQUpdateDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmQUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmQUpdateDate.FieldName = "UpdateDate";
+            this.clmQUpdateDate.Name = "clmQUpdateDate";
+            this.clmQUpdateDate.Visible = true;
+            this.clmQUpdateDate.VisibleIndex = 3;
+            // 
+            // clmQCreatedDate
+            // 
+            this.clmQCreatedDate.Caption = "创建时间";
+            this.clmQCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmQCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmQCreatedDate.FieldName = "CreatedDate";
+            this.clmQCreatedDate.Name = "clmQCreatedDate";
+            this.clmQCreatedDate.Visible = true;
+            this.clmQCreatedDate.VisibleIndex = 4;
             // 
             // gridControlConsultant
             // 
+            this.gridControlConsultant.DataSource = this.userTaskInfoBindingSource;
             this.gridControlConsultant.Location = new System.Drawing.Point(6, 224);
             this.gridControlConsultant.MainView = this.gridViewConsultant;
             this.gridControlConsultant.Name = "gridControlConsultant";
@@ -279,12 +315,14 @@
             // 
             this.gridViewConsultant.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clmConsultantName,
-            this.gridColumn13,
-            this.gridColumn14,
-            this.gridColumn12,
-            this.gridColumn16,
-            this.gridColumn17,
-            this.gridColumn15});
+            this.clmTaskStartDate,
+            this.clmTaskEndDate,
+            this.clmTaskCartType,
+            this.clmTaskStatus,
+            this.clmTaskNum,
+            this.clmTaskFinishNum,
+            this.clmTaskDesc,
+            this.clmTaskCreatedDate});
             this.gridViewConsultant.GridControl = this.gridControlConsultant;
             this.gridViewConsultant.Name = "gridViewConsultant";
             this.gridViewConsultant.OptionsView.ShowGroupPanel = false;
@@ -296,47 +334,61 @@
             this.clmConsultantName.Visible = true;
             this.clmConsultantName.VisibleIndex = 0;
             // 
-            // gridColumn13
+            // clmTaskStartDate
             // 
-            this.gridColumn13.Caption = "任务开始时间";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
+            this.clmTaskStartDate.Caption = "任务开始时间";
+            this.clmTaskStartDate.Name = "clmTaskStartDate";
+            this.clmTaskStartDate.Visible = true;
+            this.clmTaskStartDate.VisibleIndex = 1;
             // 
-            // gridColumn14
+            // clmTaskEndDate
             // 
-            this.gridColumn14.Caption = "任务结束时间";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
+            this.clmTaskEndDate.Caption = "任务结束时间";
+            this.clmTaskEndDate.Name = "clmTaskEndDate";
+            this.clmTaskEndDate.Visible = true;
+            this.clmTaskEndDate.VisibleIndex = 2;
             // 
-            // gridColumn12
+            // clmTaskCartType
             // 
-            this.gridColumn12.Caption = "任务车型";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 3;
+            this.clmTaskCartType.Caption = "任务车型";
+            this.clmTaskCartType.Name = "clmTaskCartType";
+            this.clmTaskCartType.Visible = true;
+            this.clmTaskCartType.VisibleIndex = 3;
             // 
-            // gridColumn16
+            // clmTaskStatus
             // 
-            this.gridColumn16.Caption = "任务数量";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 4;
+            this.clmTaskStatus.Caption = "任务状态";
+            this.clmTaskStatus.Name = "clmTaskStatus";
+            this.clmTaskStatus.Visible = true;
+            this.clmTaskStatus.VisibleIndex = 4;
             // 
-            // gridColumn17
+            // clmTaskNum
             // 
-            this.gridColumn17.Caption = "任务描述";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 5;
+            this.clmTaskNum.Caption = "任务数量";
+            this.clmTaskNum.Name = "clmTaskNum";
+            this.clmTaskNum.Visible = true;
+            this.clmTaskNum.VisibleIndex = 5;
             // 
-            // gridColumn15
+            // clmTaskFinishNum
             // 
-            this.gridColumn15.Caption = "创建时间";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 6;
+            this.clmTaskFinishNum.Caption = "已完成数量";
+            this.clmTaskFinishNum.Name = "clmTaskFinishNum";
+            this.clmTaskFinishNum.Visible = true;
+            this.clmTaskFinishNum.VisibleIndex = 6;
+            // 
+            // clmTaskDesc
+            // 
+            this.clmTaskDesc.Caption = "任务描述";
+            this.clmTaskDesc.Name = "clmTaskDesc";
+            this.clmTaskDesc.Visible = true;
+            this.clmTaskDesc.VisibleIndex = 7;
+            // 
+            // clmTaskCreatedDate
+            // 
+            this.clmTaskCreatedDate.Caption = "创建时间";
+            this.clmTaskCreatedDate.Name = "clmTaskCreatedDate";
+            this.clmTaskCreatedDate.Visible = true;
+            this.clmTaskCreatedDate.VisibleIndex = 8;
             // 
             // gridControlAnalyse
             // 
@@ -383,8 +435,37 @@
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 2;
             // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "建议描述";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 3;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "修改人";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 4;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "修改时间";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 5;
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.Caption = "创建时间";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 6;
+            // 
             // gridControlLevel
             // 
+            this.gridControlLevel.DataSource = this.customerLevelInfoBindingSource;
             this.gridControlLevel.Location = new System.Drawing.Point(527, 18);
             this.gridControlLevel.MainView = this.gridViewLevel;
             this.gridControlLevel.Name = "gridControlLevel";
@@ -393,39 +474,49 @@
             this.gridControlLevel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLevel});
             // 
+            // customerLevelInfoBindingSource
+            // 
+            this.customerLevelInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.CustomerLevelInfo);
+            // 
             // gridViewLevel
             // 
             this.gridViewLevel.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn8,
-            this.gridColumn11,
-            this.gridColumn21});
+            this.clmLevelCode,
+            this.clmLevelDesc,
+            this.clmLevelCreatedDate});
             this.gridViewLevel.GridControl = this.gridControlLevel;
             this.gridViewLevel.Name = "gridViewLevel";
             this.gridViewLevel.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn8
+            // clmLevelCode
             // 
-            this.gridColumn8.Caption = "顾客等级";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 0;
+            this.clmLevelCode.Caption = "等级代码";
+            this.clmLevelCode.FieldName = "Code";
+            this.clmLevelCode.Name = "clmLevelCode";
+            this.clmLevelCode.Visible = true;
+            this.clmLevelCode.VisibleIndex = 0;
             // 
-            // gridColumn11
+            // clmLevelDesc
             // 
-            this.gridColumn11.Caption = "等级说明";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
+            this.clmLevelDesc.Caption = "等级描述";
+            this.clmLevelDesc.FieldName = "Desc";
+            this.clmLevelDesc.Name = "clmLevelDesc";
+            this.clmLevelDesc.Visible = true;
+            this.clmLevelDesc.VisibleIndex = 1;
             // 
-            // gridColumn21
+            // clmLevelCreatedDate
             // 
-            this.gridColumn21.Caption = "创建时间";
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 2;
+            this.clmLevelCreatedDate.Caption = "创建时间";
+            this.clmLevelCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmLevelCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmLevelCreatedDate.FieldName = "CreatedDate";
+            this.clmLevelCreatedDate.Name = "clmLevelCreatedDate";
+            this.clmLevelCreatedDate.Visible = true;
+            this.clmLevelCreatedDate.VisibleIndex = 2;
             // 
             // gridControlCarType
             // 
+            this.gridControlCarType.DataSource = this.carTypeInfoBindingSource;
             this.gridControlCarType.Location = new System.Drawing.Point(272, 18);
             this.gridControlCarType.MainView = this.gridViewCarType;
             this.gridControlCarType.Name = "gridControlCarType";
@@ -434,47 +525,61 @@
             this.gridControlCarType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCarType});
             // 
+            // carTypeInfoBindingSource
+            // 
+            this.carTypeInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.CarTypeInfo);
+            // 
             // gridViewCarType
             // 
             this.gridViewCarType.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn9,
-            this.gridColumn10});
+            this.clmCarParent,
+            this.clmCarTypeName,
+            this.clmCartypeDesc,
+            this.clmCarTypeCreatedDate});
             this.gridViewCarType.GridControl = this.gridControlCarType;
             this.gridViewCarType.Name = "gridViewCarType";
-            this.gridViewCarType.OptionsView.ShowGroupPanel = false;
+            this.gridViewCarType.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewCarType.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewCarType.OptionsBehavior.Editable = false;
+            this.gridViewCarType.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
-            // gridColumn6
+            // clmCarParent
             // 
-            this.gridColumn6.Caption = "汽车品牌";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 0;
+            this.clmCarParent.Caption = "汽车品牌";
+            this.clmCarParent.FieldName = "Brand";
+            this.clmCarParent.Name = "clmCarParent";
+            this.clmCarParent.Visible = true;
+            this.clmCarParent.VisibleIndex = 0;
             // 
-            // gridColumn7
+            // clmCarTypeName
             // 
-            this.gridColumn7.Caption = "汽车型号";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 1;
+            this.clmCarTypeName.Caption = "汽车型号";
+            this.clmCarTypeName.FieldName = "Name";
+            this.clmCarTypeName.Name = "clmCarTypeName";
+            this.clmCarTypeName.Visible = true;
+            this.clmCarTypeName.VisibleIndex = 1;
             // 
-            // gridColumn9
+            // clmCartypeDesc
             // 
-            this.gridColumn9.Caption = "备注";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 2;
+            this.clmCartypeDesc.Caption = "备注";
+            this.clmCartypeDesc.FieldName = "Desc";
+            this.clmCartypeDesc.Name = "clmCartypeDesc";
+            this.clmCartypeDesc.Visible = true;
+            this.clmCartypeDesc.VisibleIndex = 2;
             // 
-            // gridColumn10
+            // clmCarTypeCreatedDate
             // 
-            this.gridColumn10.Caption = "创建时间";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 3;
+            this.clmCarTypeCreatedDate.Caption = "创建时间";
+            this.clmCarTypeCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmCarTypeCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmCarTypeCreatedDate.FieldName = "CreatedDate";
+            this.clmCarTypeCreatedDate.Name = "clmCarTypeCreatedDate";
+            this.clmCarTypeCreatedDate.Visible = true;
+            this.clmCarTypeCreatedDate.VisibleIndex = 3;
             // 
             // gridControlShop
             // 
+            this.gridControlShop.DataSource = this.shopInfoBindingSource;
             this.gridControlShop.Location = new System.Drawing.Point(6, 18);
             this.gridControlShop.MainView = this.gridViewShop;
             this.gridControlShop.Name = "gridControlShop";
@@ -483,80 +588,71 @@
             this.gridControlShop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewShop});
             // 
+            // shopInfoBindingSource
+            // 
+            this.shopInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.ShopInfo);
+            // 
             // gridViewShop
             // 
             this.gridViewShop.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5});
+            this.clmShopName,
+            this.clmShopPhone,
+            this.clmShopAddress,
+            this.clmShopDesc,
+            this.clmShopCreatedDate});
             this.gridViewShop.GridControl = this.gridControlShop;
             this.gridViewShop.Name = "gridViewShop";
+            this.gridViewShop.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewShop.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewShop.OptionsBehavior.Editable = false;
             this.gridViewShop.OptionsView.ShowGroupPanel = false;
+            this.gridViewShop.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
-            // gridColumn1
+            // clmShopName
             // 
-            this.gridColumn1.Caption = "店面名称";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.clmShopName.Caption = "店面名称";
+            this.clmShopName.FieldName = "Name";
+            this.clmShopName.Name = "clmShopName";
+            this.clmShopName.Visible = true;
+            this.clmShopName.VisibleIndex = 0;
             // 
-            // gridColumn2
+            // clmShopPhone
             // 
-            this.gridColumn2.Caption = "电话";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.clmShopPhone.Caption = "电话";
+            this.clmShopPhone.FieldName = "Phone";
+            this.clmShopPhone.Name = "clmShopPhone";
+            this.clmShopPhone.Visible = true;
+            this.clmShopPhone.VisibleIndex = 1;
             // 
-            // gridColumn3
+            // clmShopAddress
             // 
-            this.gridColumn3.Caption = "地址";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.clmShopAddress.Caption = "地址";
+            this.clmShopAddress.FieldName = "Address";
+            this.clmShopAddress.Name = "clmShopAddress";
+            this.clmShopAddress.Visible = true;
+            this.clmShopAddress.VisibleIndex = 2;
             // 
-            // gridColumn4
+            // clmShopDesc
             // 
-            this.gridColumn4.Caption = "备注";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.clmShopDesc.Caption = "备注";
+            this.clmShopDesc.FieldName = "Desc";
+            this.clmShopDesc.Name = "clmShopDesc";
+            this.clmShopDesc.Visible = true;
+            this.clmShopDesc.VisibleIndex = 3;
             // 
-            // gridColumn5
+            // clmShopCreatedDate
             // 
-            this.gridColumn5.Caption = "创建时间";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.clmShopCreatedDate.Caption = "创建时间";
+            this.clmShopCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmShopCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmShopCreatedDate.FieldName = "CreatedDate";
+            this.clmShopCreatedDate.Name = "clmShopCreatedDate";
+            this.clmShopCreatedDate.Visible = true;
+            this.clmShopCreatedDate.VisibleIndex = 4;
             // 
-            // gridColumn26
+            // userTaskInfoBindingSource
             // 
-            this.gridColumn26.Caption = "建议描述";
-            this.gridColumn26.Name = "gridColumn26";
-            this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 3;
-            // 
-            // gridColumn27
-            // 
-            this.gridColumn27.Caption = "修改时间";
-            this.gridColumn27.Name = "gridColumn27";
-            this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 4;
-            // 
-            // gridColumn28
-            // 
-            this.gridColumn28.Caption = "创建时间";
-            this.gridColumn28.Name = "gridColumn28";
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 5;
-            // 
-            // gridColumn29
-            // 
-            this.gridColumn29.Caption = "修改人";
-            this.gridColumn29.Name = "gridColumn29";
-            this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 4;
+            this.userTaskInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.UserTaskInfo);
             // 
             // FmBasicsView
             // 
@@ -572,17 +668,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlQuestion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerLevelInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCarType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carTypeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCarType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewShop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -598,41 +699,41 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControlLevel;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewLevel;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn clmLevelCode;
+        private DevExpress.XtraGrid.Columns.GridColumn clmLevelDesc;
         private DevExpress.XtraGrid.GridControl gridControlCarType;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCarType;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCarParent;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCarTypeName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCartypeDesc;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCarTypeCreatedDate;
         private DevExpress.XtraGrid.GridControl gridControlShop;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewShop;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopPhone;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopDesc;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopCreatedDate;
         private DevExpress.XtraNavBar.NavBarItem navBtnConsultantTask;
         private DevExpress.XtraNavBar.NavBarItem navBtnQuestion;
         private DevExpress.XtraGrid.GridControl gridControlConsultant;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewConsultant;
         private DevExpress.XtraGrid.Columns.GridColumn clmConsultantName;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskStartDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskEndDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskCreatedDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskCartType;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskNum;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskDesc;
         private DevExpress.XtraGrid.GridControl gridControlQuestion;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewQuestion;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn clmQDesc;
+        private DevExpress.XtraGrid.Columns.GridColumn clmQType;
+        private DevExpress.XtraGrid.Columns.GridColumn clmQLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn clmQCreatedDate;
         private DevExpress.XtraNavBar.NavBarItem navBtnLevel;
         private DevExpress.XtraNavBar.NavBarItem navBtnAnalyse;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn clmLevelCreatedDate;
         private DevExpress.XtraGrid.GridControl gridControlAnalyse;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewAnalyse;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
@@ -642,5 +743,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private System.Windows.Forms.BindingSource shopInfoBindingSource;
+        private System.Windows.Forms.BindingSource carTypeInfoBindingSource;
+        private System.Windows.Forms.BindingSource customerLevelInfoBindingSource;
+        private System.Windows.Forms.BindingSource evaluateQuestionInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmQUpdateDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskFinishNum;
+        private System.Windows.Forms.BindingSource userTaskInfoBindingSource;
     }
 }

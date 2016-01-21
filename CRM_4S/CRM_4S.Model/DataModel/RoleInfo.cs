@@ -1,38 +1,57 @@
-﻿/* ==============================================================================
- * 功能描述：角色实体类型
+/* ==============================================================================
+ * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-08 16:54
+ * 创建日期：2016-01-19 16:23
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CRM_4S.Model.DataModel
 {
-    public class RoleInfo
+    public class RoleInfo : DBModelBase
     {
-        /// <summary>
-        /// 获取或设置 角色Id
-        /// </summary>
-        public int Id { get; set; }
 
+        private int id = 0;
+        public bool IdSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 角色名称
+        /// 获取或设置 角色Id 
         /// </summary>
-        public string RoleName { get; set; }
+        [DBFieldAttribute("RoleId")]
+        public int Id { get { return id; } set { id = value; IdSpecify = true; } }
 
-        /// <summary>
-        /// 获取或设置 角色描述
-        /// </summary>
-        public string RoleDesc { get; set; }
 
+        private string name = string.Empty;
+        public bool NameSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 创建时间
+        /// 获取或设置 角色名称 
         /// </summary>
-        public DateTime? CreatedDate { get; set; }
+        [DBFieldAttribute("RoleName")]
+        public string Name { get { return name; } set { name = value; NameSpecify = true; } }
+
+
+        private string desc = string.Empty;
+        public bool DescSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 角色描述 
+        /// </summary>
+        [DBFieldAttribute("RoleDesc")]
+        public string Desc { get { return desc; } set { desc = value; DescSpecify = true; } }
+
+
+        private DateTime? createdDate = null;
+        public bool CreatedDateSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 创建时间 
+        /// </summary>
+        [DBFieldAttribute("RoleCreatedDate")]
+        public DateTime? CreatedDate { get { return createdDate; } set { createdDate = value; CreatedDateSpecify = true; } }
+
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
 
     }
 }

@@ -1,6 +1,10 @@
-﻿using DevExpress.Utils.Drawing;
+using CRM_4S.Business;
+using CRM_4S.Common;
+using CRM_4S.Model.DataModel;
+using DevExpress.Utils.Drawing;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraNavBar;
 using System;
 using System.Collections.Generic;
@@ -16,22 +20,112 @@ namespace CRM_4S.BasicsManager
     public partial class FmBasicsView : Form
     {
         public EventHandler<NavBarClickedArgs> NavBtnItemClicked;
+
+        private ColumnView defaultGridView;
         public FmBasicsView()
         {
             InitializeComponent();
             initView();
+
+            ShopBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            CarTypeBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            CustomerLevelBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            EvaluateQuestionBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
         }
 
         private void initView()
         {
             navBarBasics.AllowSelectedLink = true;
-            gridControlShop.Dock = gridControlCarType.Dock = gridControlLevel.Dock = 
+            gridControlShop.Dock = gridControlCarType.Dock = gridControlLevel.Dock =
                 gridControlConsultant.Dock = gridControlQuestion.Dock = gridControlAnalyse.Dock = DockStyle.Fill;
-            gridControlShop.Visible = gridControlCarType.Visible = gridControlLevel.Visible = 
+            gridControlShop.Visible = gridControlCarType.Visible = gridControlLevel.Visible =
                 gridControlConsultant.Visible = gridControlQuestion.Visible = gridControlAnalyse.Visible = false;
 
             gridControlShop.Visible = true;
         }
+
+        #region Refresh View
+
+        private void RefreshView()
+        {
+            try
+            {
+                RefreshShopView();
+                RefreshCarTypeView();
+                RefreshLevelView();
+                RefreshConsultantView();
+                RefreshQuestionView();
+                RefreshAnalyseView();
+            }
+            catch (Exception e)
+            {
+                XtraMessageBox.Show("获取数据失败，请稍后重试", "提示", MessageBoxButtons.OK);
+            }
+        }
+
+        private void RefreshShopView()
+        {
+            if (gridControlShop.Visible)
+            {
+                var listResult = ShopBusiness.Instance.GetShops();
+                gridControlShop.DataSource = listResult;
+                gridControlShop.DefaultView.RefreshData();
+                defaultGridView = gridControlShop.DefaultView as ColumnView;
+            }
+        }
+
+        private void RefreshCarTypeView()
+        {
+            if (gridControlCarType.Visible)
+            {
+                var listResult = CarTypeBusiness.Instance.GetCarTypes();
+                gridControlCarType.DataSource = listResult;
+                gridControlCarType.DefaultView.RefreshData();
+                defaultGridView = gridControlCarType.DefaultView as ColumnView;
+            }
+        }
+        private void RefreshLevelView()
+        {
+            if (gridControlLevel.Visible)
+            {
+                var listResult = ShopBusiness.Instance.GetShops();
+                gridControlLevel.DataSource = listResult;
+                gridControlLevel.DefaultView.RefreshData();
+                defaultGridView = gridControlLevel.DefaultView as ColumnView;
+            }
+        }
+        private void RefreshConsultantView()
+        {
+            if (gridControlConsultant.Visible)
+            {
+                var listResult = ShopBusiness.Instance.GetShops();
+                gridControlConsultant.DataSource = listResult;
+                gridControlConsultant.DefaultView.RefreshData();
+                defaultGridView = gridControlConsultant.DefaultView as ColumnView;
+            }
+        }
+        private void RefreshQuestionView()
+        {
+            if (gridControlQuestion.Visible)
+            {
+                var listResult = EvaluateQuestionBusiness.Instance.GetEvaluateQuestions();
+                gridControlQuestion.DataSource = listResult;
+                gridControlQuestion.DefaultView.RefreshData();
+                defaultGridView = gridControlQuestion.DefaultView as ColumnView;
+            }
+        }
+        private void RefreshAnalyseView()
+        {
+            if (gridControlAnalyse.Visible)
+            {
+                var listResult = ShopBusiness.Instance.GetShops();
+                gridControlAnalyse.DataSource = listResult;
+                gridControlAnalyse.DefaultView.RefreshData();
+                defaultGridView = gridControlAnalyse.DefaultView as ColumnView;
+            }
+        }
+
+        #endregion
 
 
         #region init public button
@@ -94,51 +188,66 @@ namespace CRM_4S.BasicsManager
 
         void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
-            XtraMessageBox.Show("刷新");
+            RefreshView();
         }
 
         void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if (defaultGridView == null || defaultGridView.SelectedRowsCount <= 0)
+            {
+                return;
+            }
+
+            if (!UICommon.DeleteConfirm())
+            {
+                return;
+            }
+
+            Object rowData = defaultGridView.GetRow(defaultGridView.GetSelectedRows()[0]);
             if (navBtnShop.Links[0].State == ObjectState.Selected)
             {
-                
+                ShopBusiness.Instance.DeleteShop(rowData as ShopInfo);
             }
             else if (navBtnCarType.Links[0].State == ObjectState.Selected)
             {
-                
+                CarTypeBusiness.Instance.DeleteCarType(rowData as CarTypeInfo);
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-
+                CustomerLevelBusiness.Instance.DeleteCustomerLevel(rowData as CustomerLevelInfo);
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
-               
+
             }
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
-
+                EvaluateQuestionBusiness.Instance.DeleteEvaluateQuestion(rowData as EvaluateQuestionInfo);
             }
             else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
             {
-                
+
             }
-            XtraMessageBox.Show("删除");
         }
         void btnUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if (defaultGridView == null || defaultGridView.SelectedRowsCount <= 0)
+            {
+                return;
+            }
+
+            Object rowData = defaultGridView.GetRow(defaultGridView.GetSelectedRows()[0]);
             if (navBtnShop.Links[0].State == ObjectState.Selected)
             {
-                new FmShopInfo().ShowDialog();
+                new FmShopInfo(rowData as ShopInfo).ShowDialog();
             }
             else if (navBtnCarType.Links[0].State == ObjectState.Selected)
             {
-                new FmCarTypeInfo().ShowDialog();
+                new FmCarTypeInfo(rowData as CarTypeInfo).ShowDialog();
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-
+                new FmCustomerLevelInfo(rowData as CustomerLevelInfo).ShowDialog();
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
@@ -146,7 +255,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
-                new FmQuestionInfo().ShowDialog();
+                new FmQuestionInfo(rowData as EvaluateQuestionInfo).ShowDialog();
             }
             else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
             {
@@ -165,7 +274,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-
+                new FmCustomerLevelInfo().ShowDialog();
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
@@ -187,7 +296,7 @@ namespace CRM_4S.BasicsManager
         {
             if (NavBtnItemClicked != null)
             {
-                NavBtnItemClicked(this, new NavBarClickedArgs() { NavMenuName = ((NavBarItem)sender).Caption});
+                NavBtnItemClicked(this, new NavBarClickedArgs() { NavMenuName = ((NavBarItem)sender).Caption });
             }
             gridControlShop.Visible = sender == navBtnShop;
             gridControlCarType.Visible = sender == navBtnCarType;
@@ -195,8 +304,28 @@ namespace CRM_4S.BasicsManager
             gridControlConsultant.Visible = sender == navBtnConsultantTask;
             gridControlQuestion.Visible = sender == navBtnQuestion;
             gridControlAnalyse.Visible = sender == navBtnAnalyse;
+
+            RefreshView();
         }
 
+        private void defaultGridView_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            defaultGridView = sender as ColumnView;
+
+            if (defaultGridView != null)
+            {
+                if (defaultGridView.IsRowSelected(e.ControllerRow))
+                {
+                    defaultGridView.SelectRow(e.ControllerRow);
+                }
+                //ButtonUpdate.Enabled = GridDefaultView.SelectedRowsCount > 0;
+            }
+        }
+
+        private void defaultGridView_DoubleClick(object sender, EventArgs e)
+        {
+            btnUpdate_ItemClick(sender, null);
+        }
 
     }
 

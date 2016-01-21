@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.UserManager
+namespace CRM_4S.UserManager
 {
     partial class FmUserInfo
     {
@@ -28,62 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.TxtLogUserName = new DevExpress.XtraEditors.TextEdit();
+            this.txtUserName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtAgainPwd = new DevExpress.XtraEditors.TextEdit();
+            this.txtAgainPwd = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtLogUserPwd = new DevExpress.XtraEditors.TextEdit();
-            this.TxtPhone = new DevExpress.XtraEditors.TextEdit();
+            this.txtPwd = new DevExpress.XtraEditors.TextEdit();
+            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtRealName = new DevExpress.XtraEditors.TextEdit();
+            this.txtRealName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.ComboxRole = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.权限 = new DevExpress.XtraEditors.LabelControl();
-            this.ComboxShop = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbShop = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
+            this.cbSex = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtLogUserName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtAgainPwd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtLogUserPwd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtRealName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxShop.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgainPwd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRealName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbShop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.TxtLogUserName);
+            this.groupControl2.Controls.Add(this.txtUserName);
             this.groupControl2.Controls.Add(this.labelControl3);
-            this.groupControl2.Controls.Add(this.TxtAgainPwd);
+            this.groupControl2.Controls.Add(this.txtAgainPwd);
             this.groupControl2.Controls.Add(this.labelControl4);
             this.groupControl2.Controls.Add(this.labelControl7);
-            this.groupControl2.Controls.Add(this.TxtLogUserPwd);
+            this.groupControl2.Controls.Add(this.txtPwd);
             this.groupControl2.Location = new System.Drawing.Point(274, 13);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(246, 179);
             this.groupControl2.TabIndex = 1017;
             this.groupControl2.Text = "登录信息";
             // 
-            // TxtLogUserName
+            // txtUserName
             // 
-            this.TxtLogUserName.EditValue = "";
-            this.TxtLogUserName.EnterMoveNextControl = true;
-            this.TxtLogUserName.Location = new System.Drawing.Point(69, 56);
-            this.TxtLogUserName.Name = "TxtLogUserName";
-            this.TxtLogUserName.Properties.NullValuePrompt = "默认为空";
-            this.TxtLogUserName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtLogUserName.Size = new System.Drawing.Size(166, 21);
-            this.TxtLogUserName.TabIndex = 0;
+            this.txtUserName.EditValue = "";
+            this.txtUserName.EnterMoveNextControl = true;
+            this.txtUserName.Location = new System.Drawing.Point(69, 56);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Properties.NullValuePrompt = "默认为空";
+            this.txtUserName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtUserName.Size = new System.Drawing.Size(166, 21);
+            this.txtUserName.TabIndex = 0;
             // 
             // labelControl3
             // 
@@ -93,17 +96,17 @@
             this.labelControl3.TabIndex = 1007;
             this.labelControl3.Text = "登录用户";
             // 
-            // TxtAgainPwd
+            // txtAgainPwd
             // 
-            this.TxtAgainPwd.EditValue = "";
-            this.TxtAgainPwd.EnterMoveNextControl = true;
-            this.TxtAgainPwd.Location = new System.Drawing.Point(69, 110);
-            this.TxtAgainPwd.Name = "TxtAgainPwd";
-            this.TxtAgainPwd.Properties.NullValuePrompt = "默认为空";
-            this.TxtAgainPwd.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtAgainPwd.Properties.PasswordChar = '*';
-            this.TxtAgainPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtAgainPwd.TabIndex = 2;
+            this.txtAgainPwd.EditValue = "";
+            this.txtAgainPwd.EnterMoveNextControl = true;
+            this.txtAgainPwd.Location = new System.Drawing.Point(69, 110);
+            this.txtAgainPwd.Name = "txtAgainPwd";
+            this.txtAgainPwd.Properties.NullValuePrompt = "默认为空";
+            this.txtAgainPwd.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtAgainPwd.Properties.PasswordChar = '*';
+            this.txtAgainPwd.Size = new System.Drawing.Size(166, 21);
+            this.txtAgainPwd.TabIndex = 2;
             // 
             // labelControl4
             // 
@@ -121,28 +124,28 @@
             this.labelControl7.TabIndex = 1013;
             this.labelControl7.Text = "重复密码";
             // 
-            // TxtLogUserPwd
+            // txtPwd
             // 
-            this.TxtLogUserPwd.EditValue = "";
-            this.TxtLogUserPwd.EnterMoveNextControl = true;
-            this.TxtLogUserPwd.Location = new System.Drawing.Point(69, 83);
-            this.TxtLogUserPwd.Name = "TxtLogUserPwd";
-            this.TxtLogUserPwd.Properties.NullValuePrompt = "默认为空";
-            this.TxtLogUserPwd.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtLogUserPwd.Properties.PasswordChar = '*';
-            this.TxtLogUserPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtLogUserPwd.TabIndex = 1;
+            this.txtPwd.EditValue = "";
+            this.txtPwd.EnterMoveNextControl = true;
+            this.txtPwd.Location = new System.Drawing.Point(69, 83);
+            this.txtPwd.Name = "txtPwd";
+            this.txtPwd.Properties.NullValuePrompt = "默认为空";
+            this.txtPwd.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtPwd.Properties.PasswordChar = '*';
+            this.txtPwd.Size = new System.Drawing.Size(166, 21);
+            this.txtPwd.TabIndex = 1;
             // 
-            // TxtPhone
+            // txtPhone
             // 
-            this.TxtPhone.EditValue = "";
-            this.TxtPhone.EnterMoveNextControl = true;
-            this.TxtPhone.Location = new System.Drawing.Point(67, 138);
-            this.TxtPhone.Name = "TxtPhone";
-            this.TxtPhone.Properties.NullValuePrompt = "默认为空";
-            this.TxtPhone.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtPhone.Size = new System.Drawing.Size(166, 21);
-            this.TxtPhone.TabIndex = 4;
+            this.txtPhone.EditValue = "";
+            this.txtPhone.EnterMoveNextControl = true;
+            this.txtPhone.Location = new System.Drawing.Point(67, 138);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Properties.NullValuePrompt = "默认为空";
+            this.txtPhone.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtPhone.Size = new System.Drawing.Size(166, 21);
+            this.txtPhone.TabIndex = 4;
             // 
             // labelControl2
             // 
@@ -152,16 +155,16 @@
             this.labelControl2.TabIndex = 1005;
             this.labelControl2.Text = "联系方式";
             // 
-            // TxtRealName
+            // txtRealName
             // 
-            this.TxtRealName.EditValue = "";
-            this.TxtRealName.EnterMoveNextControl = true;
-            this.TxtRealName.Location = new System.Drawing.Point(67, 84);
-            this.TxtRealName.Name = "TxtRealName";
-            this.TxtRealName.Properties.NullValuePrompt = "默认为空";
-            this.TxtRealName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtRealName.Size = new System.Drawing.Size(166, 21);
-            this.TxtRealName.TabIndex = 2;
+            this.txtRealName.EditValue = "";
+            this.txtRealName.EnterMoveNextControl = true;
+            this.txtRealName.Location = new System.Drawing.Point(67, 84);
+            this.txtRealName.Name = "txtRealName";
+            this.txtRealName.Properties.NullValuePrompt = "默认为空";
+            this.txtRealName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtRealName.Size = new System.Drawing.Size(166, 21);
+            this.txtRealName.TabIndex = 2;
             // 
             // labelControl5
             // 
@@ -173,21 +176,21 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 113);
+            this.labelControl6.Location = new System.Drawing.Point(12, 114);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(24, 14);
             this.labelControl6.TabIndex = 1011;
             this.labelControl6.Text = "性别";
             // 
-            // ComboxRole
+            // cbRole
             // 
-            this.ComboxRole.EnterMoveNextControl = true;
-            this.ComboxRole.Location = new System.Drawing.Point(67, 57);
-            this.ComboxRole.Name = "ComboxRole";
-            this.ComboxRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbRole.EnterMoveNextControl = true;
+            this.cbRole.Location = new System.Drawing.Point(67, 57);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComboxRole.Size = new System.Drawing.Size(166, 21);
-            this.ComboxRole.TabIndex = 1;
+            this.cbRole.Size = new System.Drawing.Size(166, 21);
+            this.cbRole.TabIndex = 1;
             // 
             // 权限
             // 
@@ -197,15 +200,15 @@
             this.权限.TabIndex = 1001;
             this.权限.Text = "职位";
             // 
-            // ComboxShop
+            // cbShop
             // 
-            this.ComboxShop.EnterMoveNextControl = true;
-            this.ComboxShop.Location = new System.Drawing.Point(67, 30);
-            this.ComboxShop.Name = "ComboxShop";
-            this.ComboxShop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbShop.EnterMoveNextControl = true;
+            this.cbShop.Location = new System.Drawing.Point(67, 30);
+            this.cbShop.Name = "cbShop";
+            this.cbShop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComboxShop.Size = new System.Drawing.Size(166, 21);
-            this.ComboxShop.TabIndex = 0;
+            this.cbShop.Size = new System.Drawing.Size(166, 21);
+            this.cbShop.TabIndex = 0;
             // 
             // labelControl1
             // 
@@ -217,34 +220,35 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.radioGroup1);
+            this.groupControl1.Controls.Add(this.cbSex);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Controls.Add(this.ComboxShop);
+            this.groupControl1.Controls.Add(this.cbShop);
             this.groupControl1.Controls.Add(this.权限);
-            this.groupControl1.Controls.Add(this.ComboxRole);
+            this.groupControl1.Controls.Add(this.cbRole);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.labelControl5);
-            this.groupControl1.Controls.Add(this.TxtRealName);
+            this.groupControl1.Controls.Add(this.txtRealName);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.TxtPhone);
+            this.groupControl1.Controls.Add(this.txtPhone);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(244, 180);
             this.groupControl1.TabIndex = 1016;
             this.groupControl1.Text = "基本信息";
             // 
-            // radioGroup1
+            // cbSex
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(67, 108);
-            this.radioGroup1.Name = "radioGroup1";
-            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "男"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "女")});
-            this.radioGroup1.Size = new System.Drawing.Size(166, 29);
-            this.radioGroup1.TabIndex = 1012;
+            this.cbSex.EnterMoveNextControl = true;
+            this.cbSex.Location = new System.Drawing.Point(67, 111);
+            this.cbSex.Name = "cbSex";
+            this.cbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSex.Size = new System.Drawing.Size(166, 21);
+            this.cbSex.TabIndex = 1012;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmUserInfo
             // 
@@ -262,17 +266,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtLogUserName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtAgainPwd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtLogUserPwd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtRealName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboxShop.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgainPwd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRealName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbShop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,22 +285,23 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.TextEdit TxtLogUserName;
+        private DevExpress.XtraEditors.TextEdit txtUserName;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit TxtAgainPwd;
+        private DevExpress.XtraEditors.TextEdit txtAgainPwd;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit TxtLogUserPwd;
-        private DevExpress.XtraEditors.TextEdit TxtPhone;
+        private DevExpress.XtraEditors.TextEdit txtPwd;
+        private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit TxtRealName;
+        private DevExpress.XtraEditors.TextEdit txtRealName;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.ComboBoxEdit ComboxRole;
+        private DevExpress.XtraEditors.ComboBoxEdit cbRole;
         private DevExpress.XtraEditors.LabelControl 权限;
-        private DevExpress.XtraEditors.ComboBoxEdit ComboxShop;
+        private DevExpress.XtraEditors.ComboBoxEdit cbShop;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.RadioGroup radioGroup1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSex;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
     }
 }

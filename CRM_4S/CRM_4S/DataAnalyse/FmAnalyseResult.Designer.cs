@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.DataAnalyse
+namespace CRM_4S.DataAnalyse
 {
     partial class FmAnalyseResult
     {

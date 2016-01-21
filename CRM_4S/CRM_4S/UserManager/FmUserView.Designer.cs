@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.UserManager
+namespace CRM_4S.UserManager
 {
     partial class FmUserView
     {
@@ -30,21 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.userGridControl = new DevExpress.XtraGrid.GridControl();
-            this.SourceUserShopRole = new System.Windows.Forms.BindingSource(this.components);
+            this.userShopRoleInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUserName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmRealName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRoleName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmUserGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceUserShopRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userShopRoleInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // userGridControl
             // 
-            this.userGridControl.DataSource = this.SourceUserShopRole;
+            this.userGridControl.DataSource = this.userShopRoleInfoBindingSource;
             this.userGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userGridControl.Location = new System.Drawing.Point(0, 0);
             this.userGridControl.MainView = this.userGridView;
@@ -54,17 +58,21 @@
             this.userGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.userGridView});
             // 
-            // SourceUserShopRole
+            // userShopRoleInfoBindingSource
             // 
-            this.SourceUserShopRole.DataSource = typeof(CRM_4S.Business.Model.UserShopRoleInfo);
+            this.userShopRoleInfoBindingSource.DataSource = typeof(CRM_4S.Business.BusinessModel.UserShopRoleInfo);
             // 
             // userGridView
             // 
             this.userGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clmShopName,
             this.clmUserName,
+            this.clmRealName,
+            this.clmSex,
             this.clmRoleName,
             this.clmPhone,
+            this.clmUserGroup,
+            this.clmUpdateDate,
             this.clmCreatedDate});
             this.userGridView.GridControl = this.userGridControl;
             this.userGridView.Name = "userGridView";
@@ -73,6 +81,9 @@
             this.userGridView.OptionsBehavior.Editable = false;
             this.userGridView.OptionsBehavior.ReadOnly = true;
             this.userGridView.OptionsView.ShowGroupPanel = false;
+            this.userGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.userGridView_CustomDrawCell);
+            this.userGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.userGridView_FocusedRowChanged);
+            this.userGridView.DoubleClick += new System.EventHandler(this.userGridView_DoubleClick);
             // 
             // clmShopName
             // 
@@ -84,19 +95,37 @@
             // 
             // clmUserName
             // 
-            this.clmUserName.Caption = "用户名";
+            this.clmUserName.Caption = "登录用户名";
             this.clmUserName.FieldName = "User.UserName";
             this.clmUserName.Name = "clmUserName";
             this.clmUserName.Visible = true;
             this.clmUserName.VisibleIndex = 1;
             // 
+            // clmRealName
+            // 
+            this.clmRealName.Caption = "真实姓名";
+            this.clmRealName.FieldName = "User.RealName";
+            this.clmRealName.Name = "clmRealName";
+            this.clmRealName.Visible = true;
+            this.clmRealName.VisibleIndex = 2;
+            // 
+            // clmSex
+            // 
+            this.clmSex.AppearanceCell.Options.UseTextOptions = true;
+            this.clmSex.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmSex.Caption = "性别";
+            this.clmSex.FieldName = "User.Sex";
+            this.clmSex.Name = "clmSex";
+            this.clmSex.Visible = true;
+            this.clmSex.VisibleIndex = 3;
+            // 
             // clmRoleName
             // 
             this.clmRoleName.Caption = "用户职位";
-            this.clmRoleName.FieldName = "Role.RoleName";
+            this.clmRoleName.FieldName = "Role.Name";
             this.clmRoleName.Name = "clmRoleName";
             this.clmRoleName.Visible = true;
-            this.clmRoleName.VisibleIndex = 2;
+            this.clmRoleName.VisibleIndex = 4;
             // 
             // clmPhone
             // 
@@ -104,15 +133,35 @@
             this.clmPhone.FieldName = "User.Phone";
             this.clmPhone.Name = "clmPhone";
             this.clmPhone.Visible = true;
-            this.clmPhone.VisibleIndex = 3;
+            this.clmPhone.VisibleIndex = 5;
+            // 
+            // clmUserGroup
+            // 
+            this.clmUserGroup.Caption = "分组";
+            this.clmUserGroup.FieldName = "UserGroup.Name";
+            this.clmUserGroup.Name = "clmUserGroup";
+            this.clmUserGroup.Visible = true;
+            this.clmUserGroup.VisibleIndex = 6;
+            // 
+            // clmUpdateDate
+            // 
+            this.clmUpdateDate.Caption = "最近更新";
+            this.clmUpdateDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmUpdateDate.FieldName = "User.UpdateDate";
+            this.clmUpdateDate.Name = "clmUpdateDate";
+            this.clmUpdateDate.Visible = true;
+            this.clmUpdateDate.VisibleIndex = 7;
             // 
             // clmCreatedDate
             // 
             this.clmCreatedDate.Caption = "创建时间";
+            this.clmCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmCreatedDate.FieldName = "User.CreatedDate";
             this.clmCreatedDate.Name = "clmCreatedDate";
             this.clmCreatedDate.Visible = true;
-            this.clmCreatedDate.VisibleIndex = 4;
+            this.clmCreatedDate.VisibleIndex = 8;
             // 
             // FmUserView
             // 
@@ -129,7 +178,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FmUserView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceUserShopRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userShopRoleInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -143,7 +192,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn clmUserName;
         private DevExpress.XtraGrid.Columns.GridColumn clmRoleName;
         private DevExpress.XtraGrid.Columns.GridColumn clmPhone;
-        private System.Windows.Forms.BindingSource SourceUserShopRole;
         private DevExpress.XtraGrid.Columns.GridColumn clmCreatedDate;
+        private System.Windows.Forms.BindingSource userShopRoleInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmRealName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmUserGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn clmUpdateDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmSex;
     }
 }

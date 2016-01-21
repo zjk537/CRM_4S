@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_4S.Business;
+using CRM_4S.Model.DataModel;
 
 namespace CRM_4S
 {
@@ -20,8 +21,9 @@ namespace CRM_4S
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PHPWebServiceTest test = new PHPWebServiceTest();
-            this.label1.Text = test.TestSay();
+            IList<RoleInfo> roleList = RoleBusiness.Instance.GetRoles();
+
+            this.label1.Text = roleList.ToString();
         }
     }
 }

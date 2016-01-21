@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.FrontManager
+namespace CRM_4S.FrontManager
 {
     partial class FmFrontView
     {
@@ -66,7 +66,7 @@
             // 
             // sourceFrontCustomer
             // 
-            this.sourceFrontCustomer.DataSource = typeof(CRM_4S.Business.Model.FrontCustomerInfo);
+            this.sourceFrontCustomer.DataSource = typeof(CRM_4S.Business.BusinessModel.FrontCustomerInfo);
             // 
             // gridViewFrontRecord
             // 

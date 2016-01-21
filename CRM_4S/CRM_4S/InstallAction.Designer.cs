@@ -1,4 +1,4 @@
-﻿namespace CRM_4S
+namespace CRM_4S
 {
     partial class InstallAction
     {

@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.DCCManager
+namespace CRM_4S.DCCManager
 {
     partial class FmDCCView
     {
@@ -64,7 +64,7 @@
             // 
             // sourceDCCRecord
             // 
-            this.sourceDCCRecord.DataSource = typeof(CRM_4S.Business.Model.DCCCustomerInfo);
+            this.sourceDCCRecord.DataSource = typeof(CRM_4S.Business.BusinessModel.DCCCustomerInfo);
             // 
             // gridViewDCCRecord
             // 

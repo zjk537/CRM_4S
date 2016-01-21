@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.BasicsManager
+namespace CRM_4S.BasicsManager
 {
     partial class FmShopInfo
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.TxtAddress = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -36,10 +37,12 @@
             this.TxtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.TxtDesc = new DevExpress.XtraEditors.MemoEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TxtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDesc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl3
@@ -59,7 +62,7 @@
             this.TxtAddress.Name = "TxtAddress";
             this.TxtAddress.Properties.NullValuePrompt = "<必填>";
             this.TxtAddress.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtAddress.Size = new System.Drawing.Size(429, 21);
+            this.TxtAddress.Size = new System.Drawing.Size(390, 21);
             this.TxtAddress.TabIndex = 1012;
             // 
             // labelControl2
@@ -74,7 +77,7 @@
             // 
             this.TxtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtPhone.EditValue = "";
-            this.TxtPhone.Location = new System.Drawing.Point(305, 12);
+            this.TxtPhone.Location = new System.Drawing.Point(266, 12);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Properties.NullValuePrompt = "<必填>";
             this.TxtPhone.Properties.NullValuePromptShowForEmptyValue = true;
@@ -84,7 +87,7 @@
             // labelControl1
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(275, 15);
+            this.labelControl1.Location = new System.Drawing.Point(236, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(24, 14);
             this.labelControl1.TabIndex = 1011;
@@ -99,7 +102,7 @@
             this.TxtName.Name = "TxtName";
             this.TxtName.Properties.NullValuePrompt = "<必填>";
             this.TxtName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtName.Size = new System.Drawing.Size(227, 21);
+            this.TxtName.Size = new System.Drawing.Size(188, 21);
             this.TxtName.TabIndex = 1008;
             // 
             // labelControl7
@@ -117,8 +120,12 @@
             this.TxtDesc.EditValue = "";
             this.TxtDesc.Location = new System.Drawing.Point(41, 72);
             this.TxtDesc.Name = "TxtDesc";
-            this.TxtDesc.Size = new System.Drawing.Size(429, 47);
+            this.TxtDesc.Size = new System.Drawing.Size(390, 47);
             this.TxtDesc.TabIndex = 1014;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmShopInfo
             // 
@@ -126,7 +133,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 177);
+            this.ClientSize = new System.Drawing.Size(454, 181);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.TxtAddress);
             this.Controls.Add(this.labelControl2);
@@ -149,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDesc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +172,7 @@
         private DevExpress.XtraEditors.TextEdit TxtName;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.MemoEdit TxtDesc;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
 
     }
 }

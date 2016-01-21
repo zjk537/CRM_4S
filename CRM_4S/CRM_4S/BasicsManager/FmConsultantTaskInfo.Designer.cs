@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.BasicsManager
+namespace CRM_4S.BasicsManager
 {
     partial class FmConsultantTaskInfo
     {
@@ -30,10 +30,10 @@
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -44,10 +44,10 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -74,18 +74,18 @@
             this.comboBoxEdit1.Size = new System.Drawing.Size(258, 21);
             this.comboBoxEdit1.TabIndex = 1;
             // 
-            // dateEdit1
+            // dtStartDate
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(100, 49);
-            this.dateEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtStartDate.EditValue = null;
+            this.dtStartDate.Location = new System.Drawing.Point(100, 49);
+            this.dtStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtStartDate.Name = "dtStartDate";
+            this.dtStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit1.Size = new System.Drawing.Size(258, 21);
-            this.dateEdit1.TabIndex = 2;
+            this.dtStartDate.Size = new System.Drawing.Size(258, 21);
+            this.dtStartDate.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -105,18 +105,18 @@
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "结束时间";
             // 
-            // dateEdit2
+            // dtEndDate
             // 
-            this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(100, 80);
-            this.dateEdit2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtEndDate.EditValue = null;
+            this.dtEndDate.Location = new System.Drawing.Point(100, 80);
+            this.dtEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit2.Size = new System.Drawing.Size(258, 21);
-            this.dateEdit2.TabIndex = 2;
+            this.dtEndDate.Size = new System.Drawing.Size(258, 21);
+            this.dtEndDate.TabIndex = 2;
             // 
             // labelControl4
             // 
@@ -208,8 +208,8 @@
             this.Controls.Add(this.textEdit3);
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.dateEdit2);
-            this.Controls.Add(this.dateEdit1);
+            this.Controls.Add(this.dtEndDate);
+            this.Controls.Add(this.dtStartDate);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.comboBoxEdit3);
@@ -233,16 +233,16 @@
             this.Controls.SetChildIndex(this.comboBoxEdit3, 0);
             this.Controls.SetChildIndex(this.labelControl7, 0);
             this.Controls.SetChildIndex(this.labelControl3, 0);
-            this.Controls.SetChildIndex(this.dateEdit1, 0);
-            this.Controls.SetChildIndex(this.dateEdit2, 0);
+            this.Controls.SetChildIndex(this.dtStartDate, 0);
+            this.Controls.SetChildIndex(this.dtEndDate, 0);
             this.Controls.SetChildIndex(this.textEdit1, 0);
             this.Controls.SetChildIndex(this.textEdit2, 0);
             this.Controls.SetChildIndex(this.textEdit3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
@@ -257,10 +257,10 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dtStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.DateEdit dateEdit2;
+        private DevExpress.XtraEditors.DateEdit dtEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;

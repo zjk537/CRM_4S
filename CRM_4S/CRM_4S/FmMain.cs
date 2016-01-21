@@ -7,8 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using RibbonSkin.Common.FormBase;
-using RibbonSkin.Common;
+using CRM_4S.Common.FormBase;
+using CRM_4S.Common;
 using DevExpress.XtraBars.Ribbon;
 using CRM_4S.UserManager;
 using CRM_4S.FrontManager;
@@ -16,6 +16,8 @@ using CRM_4S.DCCManager;
 using DevExpress.XtraBars;
 using CRM_4S.BasicsManager;
 using CRM_4S.DataAnalyse;
+using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business;
 
 namespace CRM_4S
 {
@@ -99,11 +101,11 @@ namespace CRM_4S
 
                     fmBasicsView.NavBtnItemClicked += new EventHandler<NavBarClickedArgs>((object sender, NavBarClickedArgs args) =>
                     {
-                        rPageGroupBasics.Text = string.Format("{0}-π‹¿Ì", args.NavMenuName);
-                        btnAddBasics.Caption = string.Format("–¬‘ˆ[{0}]", args.NavMenuName);
-                        btnUpdateBasics.Caption = string.Format("∏¸–¬[{0}]", args.NavMenuName);
-                        btnDeleteBasics.Caption = string.Format("…æ≥˝[{0}]", args.NavMenuName);
-                        btnBasicsRefresh.Caption = string.Format("À¢–¬[{0}]", args.NavMenuName);
+                        rPageGroupBasics.Text = string.Format("{0}-ÁÆ°ÁêÜ", args.NavMenuName);
+                        btnAddBasics.Caption = string.Format("Êñ∞Â¢û[{0}]", args.NavMenuName);
+                        btnUpdateBasics.Caption = string.Format("Êõ¥Êñ∞[{0}]", args.NavMenuName);
+                        btnDeleteBasics.Caption = string.Format("Âà†Èô§[{0}]", args.NavMenuName);
+                        btnBasicsRefresh.Caption = string.Format("Âà∑Êñ∞[{0}]", args.NavMenuName);
                     });
                 }
                 return fmBasicsView;
@@ -129,7 +131,7 @@ namespace CRM_4S
         #endregion
 
         /// <summary>
-        /// ÃÌº” ◊”¥∞ÃÂ
+        /// Ê∑ªÂä† Â≠êÁ™ó‰Ωì
         /// </summary>
         private void AddRibbonPageViews()
         {
@@ -147,6 +149,8 @@ namespace CRM_4S
         {
             AddRibbonPageViews();
             ribbon.Pages.RemoveAt(0);
+
+            LoggerHelper.Logger.Info("test");
         }
 
         private void ribbon_SelectedPageChanged(object sender, EventArgs e)
@@ -177,7 +181,7 @@ namespace CRM_4S
 
         private void btnUpdateUserInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmUserInfo().ShowDialog();
+            new FmUserInfo(new UserShopRoleInfo() { User = GloableCaches.Instance.CurUser }).ShowDialog();
         }
 
         private void btnThisMonth_ItemClick(object sender, ItemClickEventArgs e)
@@ -197,11 +201,11 @@ namespace CRM_4S
 
         private void btnCustomTime_ItemClick(object sender, ItemClickEventArgs e)
         {
-           DialogResult result =  new FmFrontCustomTime().ShowDialog();
-           if (result == DialogResult.OK)
-           {
-               showSumView();
-           }
+            DialogResult result = new FmFrontCustomTime().ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                showSumView();
+            }
         }
 
         private void showSumView()

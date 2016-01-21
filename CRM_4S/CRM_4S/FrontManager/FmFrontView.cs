@@ -1,5 +1,5 @@
-﻿using CRM_4S.Business;
-using CRM_4S.Business.Model;
+using CRM_4S.Business;
+using CRM_4S.Business.BusinessModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;

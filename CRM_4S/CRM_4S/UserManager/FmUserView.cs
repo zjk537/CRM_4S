@@ -1,4 +1,4 @@
-﻿using DevExpress.XtraBars;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CRM_4S.Business;
-using CRM_4S.Business.Model;
+using CRM_4S.Business.BusinessModel;
 
 namespace CRM_4S.UserManager
 {
@@ -18,6 +18,9 @@ namespace CRM_4S.UserManager
         public FmUserView()
         {
             InitializeComponent();
+
+            clmShopName.Group();
+            UserBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
         }
 
         #region Public Controls
@@ -80,12 +83,34 @@ namespace CRM_4S.UserManager
 
         private void btnResetPwd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("密码重置成功，新密码为：123456");
+            if (SelectedUser == null)
+            {
+                return;
+            }
+
+            try
+            {
+                SelectedUser.User.IdSpecify = true;
+                SelectedUser.User.Pwd = "123456";
+                UserBusiness.Instance.UpdateUser(SelectedUser.User);
+
+                XtraMessageBox.Show("密码重置成功，默认为123456", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (SelectedUser.User.Id == GloableCaches.Instance.CurUser.Id)
+                {
+                    GloableCaches.Instance.CurUser.Pwd = SelectedUser.User.Pwd;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(string.Format("密码重置失败：\r\n{0}", ex.Message), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DataSource = UserBusiness.Instance.GetUserShopRoleInfos();
+            RefreshView();
         }
 
         void btnUpdate_ItemClick(object sender, ItemClickEventArgs e)
@@ -105,41 +130,60 @@ namespace CRM_4S.UserManager
 
         void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Form fmUserInfo = new FmUserInfo();
+            FmUserInfo fmUserInfo = new FmUserInfo();
             fmUserInfo.ShowDialog();
         }
 
 
         #endregion
 
-        List<UserShopRoleInfo> dataSource = null;
-        IList<UserShopRoleInfo> DataSource
+
+        private void RefreshView()
+        {
+            var dataSource = UserBusiness.Instance.GetUserShopRoleInfos();
+            userGridControl.DataSource = dataSource;
+            userGridControl.MainView.RefreshData();
+            userGridView.ExpandAllGroups();
+
+        }
+
+        UserShopRoleInfo SelectedUser
         {
             get
             {
-                if (dataSource == null)
-                {
-                    dataSource = new List<UserShopRoleInfo>();
-                    dataSource.AddRange(UserBusiness.Instance.GetUserShopRoleInfos());
-                }
-                return dataSource;
-            }
-            set
-            {
-
-                if (dataSource != null)
-                    dataSource.Clear();
-                else
-                    dataSource = new List<UserShopRoleInfo>();
-                dataSource.AddRange(value);
-                userGridControl.MainView.RefreshData();
-                userGridView.ExpandAllGroups();
+                return userGridView.GetRow(userGridView.GetSelectedRows().FirstOrDefault()) as UserShopRoleInfo;
             }
         }
+       
 
         private void FmUserView_Load(object sender, EventArgs e)
         {
-            userGridControl.DataSource = DataSource;
+            RefreshView();
+        }
+
+        private void userGridView_DoubleClick(object sender, EventArgs e)
+        {
+            btnUpdate_ItemClick(sender, null);
+        }
+
+        private void userGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "clmSex")
+            {
+                String sexName = GloableConstants.SexNames[(int)e.CellValue];
+                e.DisplayText = sexName;
+            }
+        }
+
+        private void userGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            // button 权限设置
+            if (SelectedUser == null)
+            {
+                return;
+            }
+
+
         }
 
 

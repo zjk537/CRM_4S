@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.DCCManager
+namespace CRM_4S.DCCManager
 {
     partial class FmDCCCustomTime
     {

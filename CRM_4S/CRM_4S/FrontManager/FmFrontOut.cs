@@ -1,4 +1,5 @@
-﻿using RibbonSkin.Common.FormBase;
+using CRM_4S.Business;
+using CRM_4S.Common.FormBase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace CRM_4S.FrontManager
             cbCustomerLevel.Properties.Items.AddRange(GloableConstants.CustomerLevel);
             cbDriveStatus.Properties.Items.AddRange(GloableConstants.BooleanDesc);
             cbCarLicence.Properties.Items.AddRange(GloableConstants.CarLicence);
-            cbCarBrand.Properties.Items.AddRange(GloableConstants.CarBrand);
+            cbCarBrand.Properties.Items.AddRange(GloableConstants.CarBrands);
             cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
 
         }

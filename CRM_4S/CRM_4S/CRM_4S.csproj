@@ -47,6 +47,9 @@
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="log4net">
+      <HintPath>..\..\Dependence\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
@@ -88,6 +91,12 @@
     <Compile Include="BasicsManager\FmConsultantTaskInfo.Designer.cs">
       <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicsManager\FmCustomerLevelInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicsManager\FmCustomerLevelInfo.Designer.cs">
+      <DependentUpon>FmCustomerLevelInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicsManager\FmQuestionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,8 +109,7 @@
     <Compile Include="BasicsManager\FmShopInfo.Designer.cs">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\GloableCaches.cs" />
-    <Compile Include="Common\GloableConstants.cs" />
+    <Compile Include="Common\UICommon.cs" />
     <Compile Include="DataAnalyse\FmDataAnalyseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +238,9 @@
     <EmbeddedResource Include="BasicsManager\FmConsultantTaskInfo.resx">
       <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BasicsManager\FmCustomerLevelInfo.resx">
+      <DependentUpon>FmCustomerLevelInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BasicsManager\FmQuestionInfo.resx">
       <DependentUpon>FmQuestionInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,9 +313,17 @@
     <EmbeddedResource Include="UserManager\FmUserView.resx">
       <DependentUpon>FmUserView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\DataSources\CRM_4S.Business.BusinessModel.UserShopRoleInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.Model.DCCCustomerInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.Model.FrontCustomerInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.Model.UserShopRoleInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.CarTypeInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.CustomerLevelInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.EvaluateQuestionInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.ShopInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -327,9 +346,9 @@
       <Project>{b59bc91f-7b97-43d6-916c-5a4cf9d7f064}</Project>
       <Name>CRM_4S.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RibbonSkin.Common\RibbonSkin.Common.csproj">
+    <ProjectReference Include="..\CRM_4S.Common\CRM_4S.Common.csproj">
       <Project>{29e7273b-73c9-483f-9264-1819561ac8cd}</Project>
-      <Name>RibbonSkin.Common</Name>
+      <Name>CRM_4S.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DExpress.Localization\DExpress.Localization.csproj">
       <Project>{ff481efe-54d9-4b4e-926e-ef12e95ea363}</Project>

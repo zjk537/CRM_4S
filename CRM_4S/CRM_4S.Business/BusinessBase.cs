@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
 using System.Reflection;
 using CRM_4S.Model.DataModel;
+using CRM_4S.DataService.Model;
+using CRM_4S.Model;
 
 
 namespace CRM_4S.Business
@@ -12,6 +14,8 @@ namespace CRM_4S.Business
     [Serializable]
     public class BusinessBase<TBusiness> where TBusiness : new()
     {
+        public event EventHandler<CusEventArgs> OnDataChanged;
+
         private static TBusiness mInstance = default(TBusiness);
         public static TBusiness Instance
         {
@@ -37,33 +41,21 @@ namespace CRM_4S.Business
             }
         }
 
-        //private void LogSourceFail(ResultValue result, string functionName, bool isThrow = false)
-        //{
-        //    if (result.Faild)
-        //    {
-        //        File.AppendAllText(mLogPath, string.Format("{0} Error:{1}\r\n{2}", functionName, result.Message, result.StackTrace));
+        private void LogSourceFail(ResultValue result, string functionName, bool isThrow = false)
+        {
+            if (result.Faild)
+            {
+                File.AppendAllText(mLogPath, string.Format("{0} Error:{1}\r\n{2}", functionName, result.Message, result.StackTrace));
 
-        //        if (isThrow) throw new Exception(result.Message);
-        //    }
-        //}
+                if (isThrow) throw new Exception(result.Message);
+            }
+        }
 
         private void LogRunFail(Exception ex, string functionName, bool isThrow = false)
         {
             File.AppendAllText(mLogPath, string.Format("{0} Error:{1}\r\n{2}", functionName, ex.Message, ex.StackTrace));
 
             if (isThrow) throw ex;
-        }
-
-        protected void DoUpdateFunctionWithLog(Action action, EventHandler<EventArgs> CallBack, string functionName, bool isThrow = false)
-        {
-            try
-            {
-                action();
-            }
-            catch (Exception ex)
-            {
-                LogRunFail(ex, functionName, isThrow);
-            }
         }
 
         protected T DoUpdateFunctionWithLog<T>(Func<T> action, T defaultT, object sender, EventHandler<T> CallBack, string functionName, bool isThrow = false) where T : CusEventArgs
@@ -95,59 +87,85 @@ namespace CRM_4S.Business
             return defaultT;
         }
 
-        //protected T DoFunctionWithLog<T>(Func<T> action, T defaultT, string functionName, bool isThrow = false)
-        //{
-        //    try
-        //    {
-        //        var resultValue = action();
-        //        if (typeof(T) == typeof(ResultValue))
-        //        {
-        //            LogSourceFail(resultValue as ResultValue, functionName, isThrow);
-        //        }
+        protected T DoFunctionWithLog<T>(Func<T> action, T defaultT, string functionName, bool isThrow = false)
+        {
+            try
+            {
+                var resultValue = action();
+                if (typeof(T) == typeof(ResultValue))
+                {
+                    LogSourceFail(resultValue as ResultValue, functionName, isThrow);
+                }
 
-        //        return resultValue;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogRunFail(ex, functionName, isThrow);
-        //    }
+                return resultValue;
+            }
+            catch (Exception ex)
+            {
+                LogRunFail(ex, functionName, isThrow);
+            }
 
-        //    return defaultT;
-        //}
+            return defaultT;
+        }
 
-        //protected List<T> ConvertToList<T>(ResultValue result) where T : DBModelBase, new()
-        //{
-        //    var itemList = new List<T>();
+        protected void DoUpdateFunctionWithLog<T>(Func<T> action, string functionName, bool isThrow = false)
+        {
+            try
+            {
+                var actionResult = action();
 
-        //    if (result != null && result.ResultTable != null)
-        //    {
-        //        foreach (var row in result.ResultTable.Rows)
-        //        {
-        //            var item = new T();
+                if (typeof(T) == typeof(ResultValue))
+                {
+                    var resultValue = actionResult as ResultValue;
+                    if (resultValue.Faild)
+                    {
+                        LogSourceFail(resultValue,functionName,isThrow);
+                        return;
+                    }
+                    if (OnDataChanged != null)
+                    {
+                        OnDataChanged(this, new CusEventArgs());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogRunFail(ex, functionName, isThrow);
+            }
+        }
 
-        //            Dictionary<string, object> itemDict = new Dictionary<string, object>();
-        //            var resultColumns = result.ResultTable.Columns;
-        //            for (int i = 0; i < resultColumns.Length; i++)
-        //            {
-        //                var columnName = resultColumns[i];
-        //                var isPrivacyColumn = SharedVariables.Instance.TableColumnInfos.Where(e => (e.TableName + e.ColumnName) == columnName).Count() > 0;
-        //                if (isPrivacyColumn)
-        //                {
-        //                    var loginUserColumns = SharedVariables.Instance.LoginUser.RoleColumns;
-        //                    if (loginUserColumns == null) continue;
-        //                    var hasAuthor = loginUserColumns.Where(e => (e.TableName + e.ColumnName) == columnName).Count() > 0;
-        //                    if (!hasAuthor) continue;
-        //                }
-        //                itemDict.Add(columnName, row[i]);
-        //            }
+        protected List<T> ConvertToList<T>(ResultValue result) where T : DBModelBase, new()
+        {
+            var itemList = new List<T>();
 
-        //            item.SetValues(itemDict);
-        //            itemList.Add(item);
-        //        }
-        //    }
+            if (result != null && result.ResultTable != null)
+            {
+                foreach (var row in result.ResultTable.Rows)
+                {
+                    var item = new T();
 
-        //    return itemList;
-        //}
+                    Dictionary<string, object> itemDict = new Dictionary<string, object>();
+                    var resultColumns = result.ResultTable.Columns;
+                    for (int i = 0; i < resultColumns.Length; i++)
+                    {
+                        var columnName = resultColumns[i];
+                        //var isPrivacyColumn = SharedVariables.Instance.TableColumnInfos.Where(e => (e.TableName + e.ColumnName) == columnName).Count() > 0;
+                        //if (isPrivacyColumn)
+                        //{
+                        //    var loginUserColumns = SharedVariables.Instance.LoginUser.RoleColumns;
+                        //    if (loginUserColumns == null) continue;
+                        //    var hasAuthor = loginUserColumns.Where(e => (e.TableName + e.ColumnName) == columnName).Count() > 0;
+                        //    if (!hasAuthor) continue;
+                        //}
+                        itemDict.Add(columnName, row[i]);
+                    }
+
+                    item.SetValues(itemDict);
+                    itemList.Add(item);
+                }
+            }
+
+            return itemList;
+        }
 
 
     }

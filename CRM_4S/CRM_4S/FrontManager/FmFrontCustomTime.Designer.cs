@@ -1,4 +1,4 @@
-﻿namespace CRM_4S.FrontManager
+namespace CRM_4S.FrontManager
 {
     partial class FmFrontCustomTime
     {

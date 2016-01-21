@@ -1,4 +1,4 @@
-﻿using CRM_4S.Business.Model;
+using CRM_4S.Business.BusinessModel;
 using CRM_4S.Model.DataModel;
 using System;
 using System.Collections.Generic;
