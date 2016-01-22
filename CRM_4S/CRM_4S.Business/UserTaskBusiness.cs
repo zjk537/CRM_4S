@@ -27,7 +27,6 @@ namespace CRM_4S.Business
             }, null, "GetUserTasks.ConvertToList", true);
         }
 
-
         public void AddUserTask(UserTaskInfo info)
         {
             DoUpdateFunctionWithLog<ResultValue>(() =>

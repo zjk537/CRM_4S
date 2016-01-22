@@ -50,6 +50,7 @@ namespace CRM_4S.BasicsManager
             this.clmQUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmQCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlConsultant = new DevExpress.XtraGrid.GridControl();
+            this.userTaskInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewConsultant = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskStartDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,7 +91,6 @@ namespace CRM_4S.BasicsManager
             this.clmShopAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmShopDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmShopCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.userTaskInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.navBarBasics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -98,6 +98,7 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).BeginInit();
@@ -110,7 +111,6 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shopInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewShop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarBasics
@@ -311,6 +311,10 @@ namespace CRM_4S.BasicsManager
             this.gridControlConsultant.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewConsultant});
             // 
+            // userTaskInfoBindingSource
+            // 
+            this.userTaskInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.UserTaskInfo);
+            // 
             // gridViewConsultant
             // 
             this.gridViewConsultant.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -330,6 +334,7 @@ namespace CRM_4S.BasicsManager
             // clmConsultantName
             // 
             this.clmConsultantName.Caption = "销售顾问名称";
+            this.clmConsultantName.FieldName = "ConsultantName";
             this.clmConsultantName.Name = "clmConsultantName";
             this.clmConsultantName.Visible = true;
             this.clmConsultantName.VisibleIndex = 0;
@@ -650,10 +655,6 @@ namespace CRM_4S.BasicsManager
             this.clmShopCreatedDate.Visible = true;
             this.clmShopCreatedDate.VisibleIndex = 4;
             // 
-            // userTaskInfoBindingSource
-            // 
-            this.userTaskInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.UserTaskInfo);
-            // 
             // FmBasicsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -671,6 +672,7 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).EndInit();
@@ -683,7 +685,6 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.gridControlShop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shopInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewShop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

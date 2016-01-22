@@ -22,7 +22,7 @@ namespace CRM_4S.Business
         static object lockObj = new object();
 
         #region Single Instance
-        
+
         private static GloableCaches instance = null;
         public static GloableCaches Instance
         {
@@ -47,7 +47,7 @@ namespace CRM_4S.Business
             {
                 lock (lockObj)
                 {
-                    curUser = curUser ?? new UserInfo();
+                    curUser = curUser ?? new UserInfo() { ShopId = 6 };
                 }
                 return curUser;
             }
@@ -65,7 +65,7 @@ namespace CRM_4S.Business
                     carTypes = new List<CarTypeInfo>();
                     carTypes.AddRange(CarTypeBusiness.Instance.GetCarTypes());
                 }
-                
+
                 return carTypes;
             }
         }

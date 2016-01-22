@@ -131,7 +131,7 @@ namespace CRM_4S.Model.DataModel
 
         public override string ToString()
         {
-            return "";
+            return this.realName;
         }
 
     }

@@ -324,6 +324,7 @@
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.CustomerLevelInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.EvaluateQuestionInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.ShopInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.UserTaskInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

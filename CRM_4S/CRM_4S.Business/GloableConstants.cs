@@ -40,6 +40,15 @@ namespace CRM_4S.Business
 
         public static List<string> BooleanDesc = new List<string>() { "是", "否", "" };
 
+        /// <summary>
+        /// 系统管理员角色Id
+        /// </summary>
+        public static int RoleIdSysAdmin = 1;
+        /// <summary>
+        /// 销售顾问角色Id
+        /// </summary>
+        public static int RoleIdConsultant = 6;
+
 
     }
 }

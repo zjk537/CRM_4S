@@ -68,7 +68,7 @@ namespace CRM_4S.Model.DataModel
 
         public override string ToString()
         {
-            return this.Name;
+            return this.Brand + " "+ this.Name;
         }
 
     }

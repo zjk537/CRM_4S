@@ -98,7 +98,7 @@ namespace CRM_4S.BasicsManager
         {
             if (gridControlConsultant.Visible)
             {
-                var listResult = ShopBusiness.Instance.GetShops();
+                var listResult = UserTaskBusiness.Instance.GetUserTasks();
                 gridControlConsultant.DataSource = listResult;
                 gridControlConsultant.DefaultView.RefreshData();
                 defaultGridView = gridControlConsultant.DefaultView as ColumnView;

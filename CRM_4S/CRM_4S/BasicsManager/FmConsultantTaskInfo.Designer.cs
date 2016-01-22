@@ -28,31 +28,29 @@ namespace CRM_4S.BasicsManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbConsultant = new DevExpress.XtraEditors.ComboBoxEdit();
             this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbCarType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtTaskNum = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            this.txtTaskDesc = new DevExpress.XtraEditors.MemoEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaskNum.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaskDesc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -64,24 +62,29 @@ namespace CRM_4S.BasicsManager
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "销售顾问";
             // 
-            // comboBoxEdit1
+            // cbConsultant
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(100, 18);
-            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbConsultant.Location = new System.Drawing.Point(100, 18);
+            this.cbConsultant.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbConsultant.Name = "cbConsultant";
+            this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(258, 21);
-            this.comboBoxEdit1.TabIndex = 1;
+            this.cbConsultant.Size = new System.Drawing.Size(258, 21);
+            this.cbConsultant.TabIndex = 1;
             // 
             // dtStartDate
             // 
-            this.dtStartDate.EditValue = null;
+            this.dtStartDate.EditValue = new System.DateTime(2016, 1, 22, 11, 26, 28, 0);
             this.dtStartDate.Location = new System.Drawing.Point(100, 49);
             this.dtStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtStartDate.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtStartDate.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtStartDate.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
             this.dtStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtStartDate.Size = new System.Drawing.Size(258, 21);
@@ -107,12 +110,17 @@ namespace CRM_4S.BasicsManager
             // 
             // dtEndDate
             // 
-            this.dtEndDate.EditValue = null;
+            this.dtEndDate.EditValue = new System.DateTime(2016, 1, 22, 11, 29, 5, 28);
             this.dtEndDate.Location = new System.Drawing.Point(100, 80);
             this.dtEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtEndDate.Name = "dtEndDate";
             this.dtEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtEndDate.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtEndDate.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtEndDate.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
             this.dtEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtEndDate.Size = new System.Drawing.Size(258, 21);
@@ -127,25 +135,15 @@ namespace CRM_4S.BasicsManager
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "车型";
             // 
-            // comboBoxEdit2
+            // cbCarType
             // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(100, 111);
-            this.comboBoxEdit2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbCarType.Location = new System.Drawing.Point(100, 111);
+            this.cbCarType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbCarType.Name = "cbCarType";
+            this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(124, 21);
-            this.comboBoxEdit2.TabIndex = 1;
-            // 
-            // comboBoxEdit3
-            // 
-            this.comboBoxEdit3.Location = new System.Drawing.Point(234, 111);
-            this.comboBoxEdit3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxEdit3.Name = "comboBoxEdit3";
-            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit3.Size = new System.Drawing.Size(124, 21);
-            this.comboBoxEdit3.TabIndex = 1;
+            this.cbCarType.Size = new System.Drawing.Size(258, 21);
+            this.cbCarType.TabIndex = 1;
             // 
             // labelControl5
             // 
@@ -156,13 +154,19 @@ namespace CRM_4S.BasicsManager
             this.labelControl5.TabIndex = 0;
             this.labelControl5.Text = "任务数量";
             // 
-            // textEdit1
+            // txtTaskNum
             // 
-            this.textEdit1.Location = new System.Drawing.Point(100, 142);
-            this.textEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(258, 21);
-            this.textEdit1.TabIndex = 3;
+            this.txtTaskNum.Location = new System.Drawing.Point(100, 142);
+            this.txtTaskNum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTaskNum.Name = "txtTaskNum";
+            this.txtTaskNum.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTaskNum.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTaskNum.Properties.Mask.EditMask = "##0";
+            this.txtTaskNum.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTaskNum.Properties.Mask.SaveLiteral = false;
+            this.txtTaskNum.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTaskNum.Size = new System.Drawing.Size(258, 21);
+            this.txtTaskNum.TabIndex = 3;
             // 
             // labelControl6
             // 
@@ -173,30 +177,17 @@ namespace CRM_4S.BasicsManager
             this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "任务描述";
             // 
-            // textEdit2
+            // txtTaskDesc
             // 
-            this.textEdit2.Location = new System.Drawing.Point(100, 173);
-            this.textEdit2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(258, 21);
-            this.textEdit2.TabIndex = 3;
+            this.txtTaskDesc.Location = new System.Drawing.Point(100, 173);
+            this.txtTaskDesc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTaskDesc.Name = "txtTaskDesc";
+            this.txtTaskDesc.Size = new System.Drawing.Size(258, 61);
+            this.txtTaskDesc.TabIndex = 3;
             // 
-            // labelControl7
+            // errorProvider
             // 
-            this.labelControl7.Location = new System.Drawing.Point(20, 209);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(48, 14);
-            this.labelControl7.TabIndex = 0;
-            this.labelControl7.Text = "任务描述";
-            // 
-            // textEdit3
-            // 
-            this.textEdit3.Location = new System.Drawing.Point(100, 204);
-            this.textEdit3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(258, 21);
-            this.textEdit3.TabIndex = 3;
+            this.errorProvider.ContainerControl = this;
             // 
             // FmConsultantTaskInfo
             // 
@@ -205,49 +196,42 @@ namespace CRM_4S.BasicsManager
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 283);
-            this.Controls.Add(this.textEdit3);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.txtTaskNum);
             this.Controls.Add(this.dtEndDate);
             this.Controls.Add(this.dtStartDate);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.comboBoxEdit3);
             this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.comboBoxEdit2);
+            this.Controls.Add(this.cbCarType);
             this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.comboBoxEdit1);
+            this.Controls.Add(this.cbConsultant);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.txtTaskDesc);
             this.Margin = new System.Windows.Forms.Padding(21, 32, 21, 32);
             this.Name = "FmConsultantTaskInfo";
             this.Text = "销售顾问任务安排";
+            this.Controls.SetChildIndex(this.txtTaskDesc, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);
             this.Controls.SetChildIndex(this.labelControl2, 0);
             this.Controls.SetChildIndex(this.labelControl4, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit1, 0);
+            this.Controls.SetChildIndex(this.cbConsultant, 0);
             this.Controls.SetChildIndex(this.labelControl5, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit2, 0);
+            this.Controls.SetChildIndex(this.cbCarType, 0);
             this.Controls.SetChildIndex(this.labelControl6, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit3, 0);
-            this.Controls.SetChildIndex(this.labelControl7, 0);
             this.Controls.SetChildIndex(this.labelControl3, 0);
             this.Controls.SetChildIndex(this.dtStartDate, 0);
             this.Controls.SetChildIndex(this.dtEndDate, 0);
-            this.Controls.SetChildIndex(this.textEdit1, 0);
-            this.Controls.SetChildIndex(this.textEdit2, 0);
-            this.Controls.SetChildIndex(this.textEdit3, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            this.Controls.SetChildIndex(this.txtTaskNum, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaskNum.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaskDesc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,19 +240,17 @@ namespace CRM_4S.BasicsManager
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbConsultant;
         private DevExpress.XtraEditors.DateEdit dtStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.DateEdit dtEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
+        private DevExpress.XtraEditors.ComboBoxEdit cbCarType;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtTaskNum;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.MemoEdit txtTaskDesc;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
     }
 }

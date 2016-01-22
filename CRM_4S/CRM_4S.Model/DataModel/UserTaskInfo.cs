@@ -20,14 +20,24 @@ namespace CRM_4S.Model.DataModel
         [DBFieldAttribute("UserTaskId")]
         public int Id { get { return id; } set { id = value; IdSpecify = true; } }
 
-
         private int consultantId = 0;
         public bool ConsultantIdSpecify { get; set; }
+
         /// <summary>
         /// 获取或设置 销售顾问Id 
         /// </summary>
         [DBFieldAttribute("UserTaskConsultantId")]
         public int ConsultantId { get { return consultantId; } set { consultantId = value; ConsultantIdSpecify = true; } }
+
+
+        private string consultantName;
+        public bool ConsultantNameSpecify { get; set; }
+
+        /// <summary>
+        /// 获取或设置 销售顾问名字 
+        /// </summary>
+        [DBFieldAttribute("UserTaskConsultantName")]
+        public string ConsultantName { get { return consultantName; } set { consultantName = value; ConsultantNameSpecify = true;} }
 
 
         private DateTime? startDate = null;
@@ -39,13 +49,13 @@ namespace CRM_4S.Model.DataModel
         public DateTime? StartDate { get { return startDate; } set { startDate = value; StartDateSpecify = true; } }
 
 
-        private DateTime? enddate = null;
-        public bool EnddateSpecify { get; set; }
+        private DateTime? endDate = null;
+        public bool EndDateSpecify { get; set; }
         /// <summary>
         /// 获取或设置 任务结束时间 
         /// </summary>
-        [DBFieldAttribute("UserTaskEnddate")]
-        public DateTime? Enddate { get { return enddate; } set { enddate = value; EnddateSpecify = true; } }
+        [DBFieldAttribute("UserTaskEndDate")]
+        public DateTime? EndDate { get { return endDate; } set { endDate = value; EndDateSpecify = true; } }
 
 
         private int? carType = null;

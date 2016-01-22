@@ -12,12 +12,22 @@ namespace CRM_4S.Business
     public class UserBusiness : BusinessBase<UserBusiness>
     {
 
-        public IList<UserInfo> GetUsers()
+        public IList<UserInfo> GetUsers(UserInfo info = null)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetUsers";
+                if (info != null)
+                {
+                    funcParms.Pams = info.GetPams();
+                }
+                else
+                {
+                    funcParms.Pams = new Dictionary<string, object>();
+                    funcParms.Pams.Add("UserShopId", null);
+                    funcParms.Pams.Add("UserRoleId", null);
+                }
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetUsers.uspGetUsers", true);
