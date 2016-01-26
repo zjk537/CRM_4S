@@ -38,6 +38,8 @@ namespace CRM_4S.Business
         /// </summary>
         public static List<string> DCCStatus = new List<string>() { "有效", "无效", "重复" };
 
+        public static List<string> UserTaskStatus = new List<string>() { "未知", "未完成", "已完成" };
+
         public static List<string> BooleanDesc = new List<string>() { "是", "否", "" };
 
         /// <summary>

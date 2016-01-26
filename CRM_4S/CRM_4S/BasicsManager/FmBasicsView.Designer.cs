@@ -50,26 +50,28 @@ namespace CRM_4S.BasicsManager
             this.clmQUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmQCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlConsultant = new DevExpress.XtraGrid.GridControl();
-            this.userTaskInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userCarTypeTaskInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewConsultant = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskStartDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskEndDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskCartType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmTaskNum = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmTaskFinishNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskCnt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmTaskFinishCnt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmTaskCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlAnalyse = new DevExpress.XtraGrid.GridControl();
+            this.analyseKPIInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewAnalyse = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKValue = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKPerform = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKReason = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKSuggest = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmKCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlLevel = new DevExpress.XtraGrid.GridControl();
             this.customerLevelInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewLevel = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -98,9 +100,10 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userCarTypeTaskInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analyseKPIInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerLevelInfoBindingSource)).BeginInit();
@@ -182,12 +185,14 @@ namespace CRM_4S.BasicsManager
             this.navBtnLevel.Caption = "顾客等级";
             this.navBtnLevel.LargeImageIndex = 0;
             this.navBtnLevel.Name = "navBtnLevel";
+            this.navBtnLevel.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBtnItem_LinkClicked);
             // 
             // navBtnAnalyse
             // 
             this.navBtnAnalyse.Caption = "能力分析";
             this.navBtnAnalyse.LargeImageIndex = 5;
             this.navBtnAnalyse.Name = "navBtnAnalyse";
+            this.navBtnAnalyse.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBtnItem_LinkClicked);
             // 
             // imageList32
             // 
@@ -254,7 +259,9 @@ namespace CRM_4S.BasicsManager
             this.clmQCreatedDate});
             this.gridViewQuestion.GridControl = this.gridControlQuestion;
             this.gridViewQuestion.Name = "gridViewQuestion";
-            this.gridViewQuestion.OptionsView.ShowGroupPanel = false;
+            this.gridViewQuestion.OptionsBehavior.Editable = false;
+            this.gridViewQuestion.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
+            this.gridViewQuestion.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
             // clmQDesc
             // 
@@ -302,7 +309,7 @@ namespace CRM_4S.BasicsManager
             // 
             // gridControlConsultant
             // 
-            this.gridControlConsultant.DataSource = this.userTaskInfoBindingSource;
+            this.gridControlConsultant.DataSource = this.userCarTypeTaskInfoBindingSource;
             this.gridControlConsultant.Location = new System.Drawing.Point(6, 224);
             this.gridControlConsultant.MainView = this.gridViewConsultant;
             this.gridControlConsultant.Name = "gridControlConsultant";
@@ -311,9 +318,9 @@ namespace CRM_4S.BasicsManager
             this.gridControlConsultant.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewConsultant});
             // 
-            // userTaskInfoBindingSource
+            // userCarTypeTaskInfoBindingSource
             // 
-            this.userTaskInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.UserTaskInfo);
+            this.userCarTypeTaskInfoBindingSource.DataSource = typeof(CRM_4S.Business.BusinessModel.UserCarTypeTaskInfo);
             // 
             // gridViewConsultant
             // 
@@ -323,18 +330,20 @@ namespace CRM_4S.BasicsManager
             this.clmTaskEndDate,
             this.clmTaskCartType,
             this.clmTaskStatus,
-            this.clmTaskNum,
-            this.clmTaskFinishNum,
+            this.clmTaskCnt,
+            this.clmTaskFinishCnt,
             this.clmTaskDesc,
             this.clmTaskCreatedDate});
             this.gridViewConsultant.GridControl = this.gridControlConsultant;
             this.gridViewConsultant.Name = "gridViewConsultant";
-            this.gridViewConsultant.OptionsView.ShowGroupPanel = false;
+            this.gridViewConsultant.OptionsBehavior.Editable = false;
+            this.gridViewConsultant.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
+            this.gridViewConsultant.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
             // clmConsultantName
             // 
             this.clmConsultantName.Caption = "销售顾问名称";
-            this.clmConsultantName.FieldName = "ConsultantName";
+            this.clmConsultantName.FieldName = "UserTask.ConsultantName";
             this.clmConsultantName.Name = "clmConsultantName";
             this.clmConsultantName.Visible = true;
             this.clmConsultantName.VisibleIndex = 0;
@@ -342,6 +351,9 @@ namespace CRM_4S.BasicsManager
             // clmTaskStartDate
             // 
             this.clmTaskStartDate.Caption = "任务开始时间";
+            this.clmTaskStartDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmTaskStartDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmTaskStartDate.FieldName = "UserTask.StartDate";
             this.clmTaskStartDate.Name = "clmTaskStartDate";
             this.clmTaskStartDate.Visible = true;
             this.clmTaskStartDate.VisibleIndex = 1;
@@ -349,6 +361,9 @@ namespace CRM_4S.BasicsManager
             // clmTaskEndDate
             // 
             this.clmTaskEndDate.Caption = "任务结束时间";
+            this.clmTaskEndDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmTaskEndDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmTaskEndDate.FieldName = "UserTask.EndDate";
             this.clmTaskEndDate.Name = "clmTaskEndDate";
             this.clmTaskEndDate.Visible = true;
             this.clmTaskEndDate.VisibleIndex = 2;
@@ -356,6 +371,7 @@ namespace CRM_4S.BasicsManager
             // clmTaskCartType
             // 
             this.clmTaskCartType.Caption = "任务车型";
+            this.clmTaskCartType.FieldName = "CarType";
             this.clmTaskCartType.Name = "clmTaskCartType";
             this.clmTaskCartType.Visible = true;
             this.clmTaskCartType.VisibleIndex = 3;
@@ -363,27 +379,31 @@ namespace CRM_4S.BasicsManager
             // clmTaskStatus
             // 
             this.clmTaskStatus.Caption = "任务状态";
+            this.clmTaskStatus.FieldName = "UserTask.Status";
             this.clmTaskStatus.Name = "clmTaskStatus";
             this.clmTaskStatus.Visible = true;
             this.clmTaskStatus.VisibleIndex = 4;
             // 
-            // clmTaskNum
+            // clmTaskCnt
             // 
-            this.clmTaskNum.Caption = "任务数量";
-            this.clmTaskNum.Name = "clmTaskNum";
-            this.clmTaskNum.Visible = true;
-            this.clmTaskNum.VisibleIndex = 5;
+            this.clmTaskCnt.Caption = "任务数量";
+            this.clmTaskCnt.FieldName = "UserTask.Cnt";
+            this.clmTaskCnt.Name = "clmTaskCnt";
+            this.clmTaskCnt.Visible = true;
+            this.clmTaskCnt.VisibleIndex = 5;
             // 
-            // clmTaskFinishNum
+            // clmTaskFinishCnt
             // 
-            this.clmTaskFinishNum.Caption = "已完成数量";
-            this.clmTaskFinishNum.Name = "clmTaskFinishNum";
-            this.clmTaskFinishNum.Visible = true;
-            this.clmTaskFinishNum.VisibleIndex = 6;
+            this.clmTaskFinishCnt.Caption = "已完成数量";
+            this.clmTaskFinishCnt.FieldName = "UserTask.FinishCnt";
+            this.clmTaskFinishCnt.Name = "clmTaskFinishCnt";
+            this.clmTaskFinishCnt.Visible = true;
+            this.clmTaskFinishCnt.VisibleIndex = 6;
             // 
             // clmTaskDesc
             // 
             this.clmTaskDesc.Caption = "任务描述";
+            this.clmTaskDesc.FieldName = "UserTask.Desc";
             this.clmTaskDesc.Name = "clmTaskDesc";
             this.clmTaskDesc.Visible = true;
             this.clmTaskDesc.VisibleIndex = 7;
@@ -391,12 +411,16 @@ namespace CRM_4S.BasicsManager
             // clmTaskCreatedDate
             // 
             this.clmTaskCreatedDate.Caption = "创建时间";
+            this.clmTaskCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmTaskCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmTaskCreatedDate.FieldName = "UserTask.CreatedDate";
             this.clmTaskCreatedDate.Name = "clmTaskCreatedDate";
             this.clmTaskCreatedDate.Visible = true;
             this.clmTaskCreatedDate.VisibleIndex = 8;
             // 
             // gridControlAnalyse
             // 
+            this.gridControlAnalyse.DataSource = this.analyseKPIInfoBindingSource;
             this.gridControlAnalyse.Location = new System.Drawing.Point(527, 224);
             this.gridControlAnalyse.MainView = this.gridViewAnalyse;
             this.gridControlAnalyse.Name = "gridControlAnalyse";
@@ -404,69 +428,98 @@ namespace CRM_4S.BasicsManager
             this.gridControlAnalyse.TabIndex = 6;
             this.gridControlAnalyse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAnalyse});
+            this.gridControlAnalyse.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            // 
+            // analyseKPIInfoBindingSource
+            // 
+            this.analyseKPIInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.AnalyseKPIInfo);
             // 
             // gridViewAnalyse
             // 
             this.gridViewAnalyse.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn22,
-            this.gridColumn23,
-            this.gridColumn25,
-            this.gridColumn26,
-            this.gridColumn29,
-            this.gridColumn27,
-            this.gridColumn28});
+            this.clmKName,
+            this.clmKValue,
+            this.clmKPerform,
+            this.clmKReason,
+            this.clmKSuggest,
+            this.clmKDesc,
+            this.clmKUpdateDate,
+            this.clmKCreatedDate});
             this.gridViewAnalyse.GridControl = this.gridControlAnalyse;
             this.gridViewAnalyse.Name = "gridViewAnalyse";
+            this.gridViewAnalyse.OptionsBehavior.Editable = false;
             this.gridViewAnalyse.OptionsView.ShowGroupPanel = false;
+            this.gridViewAnalyse.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             // 
-            // gridColumn22
+            // clmKName
             // 
-            this.gridColumn22.Caption = "分析指标";
-            this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 0;
+            this.clmKName.Caption = "分析指标";
+            this.clmKName.FieldName = "Name";
+            this.clmKName.Name = "clmKName";
+            this.clmKName.Visible = true;
+            this.clmKName.VisibleIndex = 0;
             // 
-            // gridColumn23
+            // clmKValue
             // 
-            this.gridColumn23.Caption = "主要表现";
-            this.gridColumn23.Name = "gridColumn23";
-            this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 1;
+            this.clmKValue.AppearanceCell.Options.UseTextOptions = true;
+            this.clmKValue.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmKValue.Caption = "临界值";
+            this.clmKValue.FieldName = "KValue";
+            this.clmKValue.Name = "clmKValue";
+            this.clmKValue.Visible = true;
+            this.clmKValue.VisibleIndex = 1;
             // 
-            // gridColumn25
+            // clmKPerform
             // 
-            this.gridColumn25.Caption = "主要原因";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 2;
+            this.clmKPerform.Caption = "主要表现";
+            this.clmKPerform.FieldName = "Perform";
+            this.clmKPerform.Name = "clmKPerform";
+            this.clmKPerform.Visible = true;
+            this.clmKPerform.VisibleIndex = 2;
             // 
-            // gridColumn26
+            // clmKReason
             // 
-            this.gridColumn26.Caption = "建议描述";
-            this.gridColumn26.Name = "gridColumn26";
-            this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 3;
+            this.clmKReason.Caption = "主要原因";
+            this.clmKReason.FieldName = "Reason";
+            this.clmKReason.Name = "clmKReason";
+            this.clmKReason.Visible = true;
+            this.clmKReason.VisibleIndex = 3;
             // 
-            // gridColumn29
+            // clmKSuggest
             // 
-            this.gridColumn29.Caption = "修改人";
-            this.gridColumn29.Name = "gridColumn29";
-            this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 4;
+            this.clmKSuggest.Caption = "建议描述";
+            this.clmKSuggest.FieldName = "Suggest";
+            this.clmKSuggest.Name = "clmKSuggest";
+            this.clmKSuggest.Visible = true;
+            this.clmKSuggest.VisibleIndex = 4;
             // 
-            // gridColumn27
+            // clmKDesc
             // 
-            this.gridColumn27.Caption = "修改时间";
-            this.gridColumn27.Name = "gridColumn27";
-            this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 5;
+            this.clmKDesc.Caption = "备注";
+            this.clmKDesc.FieldName = "Desc";
+            this.clmKDesc.Name = "clmKDesc";
+            this.clmKDesc.Visible = true;
+            this.clmKDesc.VisibleIndex = 5;
             // 
-            // gridColumn28
+            // clmKUpdateDate
             // 
-            this.gridColumn28.Caption = "创建时间";
-            this.gridColumn28.Name = "gridColumn28";
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 6;
+            this.clmKUpdateDate.Caption = "修改时间";
+            this.clmKUpdateDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmKUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmKUpdateDate.FieldName = "UpdateDate";
+            this.clmKUpdateDate.Name = "clmKUpdateDate";
+            this.clmKUpdateDate.Visible = true;
+            this.clmKUpdateDate.VisibleIndex = 6;
+            // 
+            // clmKCreatedDate
+            // 
+            this.clmKCreatedDate.Caption = "创建时间";
+            this.clmKCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmKCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmKCreatedDate.FieldName = "CreatedDate";
+            this.clmKCreatedDate.Name = "clmKCreatedDate";
+            this.clmKCreatedDate.Visible = true;
+            this.clmKCreatedDate.VisibleIndex = 7;
             // 
             // gridControlLevel
             // 
@@ -492,6 +545,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewLevel.GridControl = this.gridControlLevel;
             this.gridViewLevel.Name = "gridViewLevel";
             this.gridViewLevel.OptionsView.ShowGroupPanel = false;
+            this.gridViewLevel.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
             // clmLevelCode
             // 
@@ -672,9 +726,10 @@ namespace CRM_4S.BasicsManager
             ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userTaskInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userCarTypeTaskInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlAnalyse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analyseKPIInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAnalyse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerLevelInfoBindingSource)).EndInit();
@@ -724,7 +779,6 @@ namespace CRM_4S.BasicsManager
         private DevExpress.XtraGrid.Columns.GridColumn clmTaskEndDate;
         private DevExpress.XtraGrid.Columns.GridColumn clmTaskCreatedDate;
         private DevExpress.XtraGrid.Columns.GridColumn clmTaskCartType;
-        private DevExpress.XtraGrid.Columns.GridColumn clmTaskNum;
         private DevExpress.XtraGrid.Columns.GridColumn clmTaskDesc;
         private DevExpress.XtraGrid.GridControl gridControlQuestion;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewQuestion;
@@ -737,20 +791,23 @@ namespace CRM_4S.BasicsManager
         private DevExpress.XtraGrid.Columns.GridColumn clmLevelCreatedDate;
         private DevExpress.XtraGrid.GridControl gridControlAnalyse;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewAnalyse;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKPerform;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKReason;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKSuggest;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKUpdateDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKCreatedDate;
         private System.Windows.Forms.BindingSource shopInfoBindingSource;
         private System.Windows.Forms.BindingSource carTypeInfoBindingSource;
         private System.Windows.Forms.BindingSource customerLevelInfoBindingSource;
         private System.Windows.Forms.BindingSource evaluateQuestionInfoBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn clmQUpdateDate;
         private DevExpress.XtraGrid.Columns.GridColumn clmTaskStatus;
-        private DevExpress.XtraGrid.Columns.GridColumn clmTaskFinishNum;
-        private System.Windows.Forms.BindingSource userTaskInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskFinishCnt;
+        private System.Windows.Forms.BindingSource userCarTypeTaskInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmTaskCnt;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKValue;
+        private System.Windows.Forms.BindingSource analyseKPIInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmKDesc;
     }
 }

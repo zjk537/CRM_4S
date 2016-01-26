@@ -1,4 +1,5 @@
-﻿using CRM_4S.Business.Service;
+﻿using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business.Service;
 using CRM_4S.DataService.Model;
 using CRM_4S.Model.DataModel;
 using System;
@@ -10,7 +11,7 @@ namespace CRM_4S.Business
 {
     public class UserTaskBusiness : BusinessBase<UserTaskBusiness>
     {
-        public IList<UserTaskInfo> GetUserTasks()
+        public IList<UserCarTypeTaskInfo> GetUserCarTypeTasks()
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
@@ -20,11 +21,18 @@ namespace CRM_4S.Business
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetUserTasks.uspGetUserTasks", true);
 
-            return DoFunctionWithLog<List<UserTaskInfo>>(() =>
+            List<UserTaskInfo> userTaskList = DoFunctionWithLog<List<UserTaskInfo>>(() =>
             {
                 return ConvertToList<UserTaskInfo>(result);
 
             }, null, "GetUserTasks.ConvertToList", true);
+
+            List<UserCarTypeTaskInfo> userCarTypeTasks = new List<UserCarTypeTaskInfo>();
+            userTaskList.ForEach(userTask => {
+                userCarTypeTasks.Add(new UserCarTypeTaskInfo() { UserTask = userTask });
+            });
+
+            return userCarTypeTasks;
         }
 
         public void AddUserTask(UserTaskInfo info)

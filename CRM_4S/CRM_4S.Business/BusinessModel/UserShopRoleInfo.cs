@@ -16,6 +16,9 @@ namespace CRM_4S.Business.BusinessModel
             set
             {
                 user = value;
+                Shop = null;
+                Role = null;
+                UserGroup = null;
             }
         }
 

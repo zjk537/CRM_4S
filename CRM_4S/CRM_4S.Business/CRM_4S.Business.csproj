@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyseKPIBusiness.cs" />
     <Compile Include="BusinessBase.cs" />
+    <Compile Include="BusinessModel\UserCarTypeTaskInfo.cs" />
     <Compile Include="CarTypeBusiness.cs" />
     <Compile Include="CustomerBusiness.cs" />
     <Compile Include="BusinessModel\DCCCustomerInfo.cs" />

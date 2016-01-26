@@ -47,7 +47,7 @@ namespace CRM_4S.Business
             {
                 lock (lockObj)
                 {
-                    curUser = curUser ?? new UserInfo() { ShopId = 6 };
+                    curUser = curUser ?? new UserInfo() { ShopId = 6, Id = 2 };
                 }
                 return curUser;
             }

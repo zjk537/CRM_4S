@@ -58,13 +58,13 @@ namespace CRM_4S.Model.DataModel
         public DateTime? EndDate { get { return endDate; } set { endDate = value; EndDateSpecify = true; } }
 
 
-        private int? carType = null;
-        public bool CarTypeSpecify { get; set; }
+        private int? carTypeId = null;
+        public bool CarTypeIdSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 汽车类型 
+        /// 获取或设置 汽车类型Id 
         /// </summary>
-        [DBFieldAttribute("UserTaskCarType")]
-        public int? CarType { get { return carType; } set { carType = value; CarTypeSpecify = true; } }
+        [DBFieldAttribute("UserTaskCarTypeId")]
+        public int? CarTypeId { get { return carTypeId; } set { carTypeId = value; CarTypeIdSpecify = true; } }
 
 
         private int? status = null;
@@ -76,22 +76,22 @@ namespace CRM_4S.Model.DataModel
         public int? Status { get { return status; } set { status = value; StatusSpecify = true; } }
 
 
-        private int? num = null;
-        public bool NumSpecify { get; set; }
+        private int? cnt = null;
+        public bool CntSpecify { get; set; }
         /// <summary>
         /// 获取或设置 任务数量 
         /// </summary>
-        [DBFieldAttribute("UserTaskNum")]
-        public int? Num { get { return num; } set { num = value; NumSpecify = true; } }
+        [DBFieldAttribute("UserTaskCnt")]
+        public int? Cnt { get { return cnt; } set { cnt = value; CntSpecify = true; } }
 
 
-        private int? finishNum = null;
-        public bool FinishNumSpecify { get; set; }
+        private int? finishCnt = null;
+        public bool FinishCntSpecify { get; set; }
         /// <summary>
         /// 获取或设置 已完成数量 
         /// </summary>
-        [DBFieldAttribute("UserTaskFinishNum")]
-        public int? FinishNum { get { return finishNum; } set { finishNum = value; FinishNumSpecify = true; } }
+        [DBFieldAttribute("UserTaskFinishCnt")]
+        public int? FinishCnt { get { return finishCnt; } set { finishCnt = value; FinishCntSpecify = true; } }
 
 
         private string desc = string.Empty;

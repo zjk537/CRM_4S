@@ -1,4 +1,5 @@
 using CRM_4S.Business;
+using CRM_4S.Business.BusinessModel;
 using CRM_4S.Common.FormBase;
 using CRM_4S.Model;
 using CRM_4S.Model.DataModel;
@@ -17,22 +18,24 @@ namespace CRM_4S.BasicsManager
 {
     public partial class FmConsultantTaskInfo : FormSimpleDialogBase
     {
-        UserTaskInfo taskInfo = null;
-        UserTaskInfo newTaskInfo = new UserTaskInfo();
+        UserCarTypeTaskInfo taskInfo = null;
+        UserCarTypeTaskInfo newTaskInfo = new UserCarTypeTaskInfo();
 
         private bool IsNew { get { return taskInfo == null; } }
-        public FmConsultantTaskInfo(UserTaskInfo info = null)
+        public FmConsultantTaskInfo(UserCarTypeTaskInfo info = null)
         {
             InitializeComponent();
 
             initForm(info);
         }
 
-        private void initForm(UserTaskInfo info)
+        private void initForm(UserCarTypeTaskInfo info)
         {
             if (info != null)
             {
-                DBModelBase.Clone<UserTaskInfo>(info, ref newTaskInfo);
+                UserTaskInfo tmpUserTask = new UserTaskInfo();
+                DBModelBase.Clone<UserTaskInfo>(info.UserTask, ref tmpUserTask);
+                newTaskInfo.UserTask = tmpUserTask;
                 taskInfo = info;
             }
 
@@ -45,24 +48,17 @@ namespace CRM_4S.BasicsManager
                 RoleId = GloableConstants.RoleIdConsultant
             }).ToArray());
             cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
-            cbConsultant.EditValue = IsNew ? "" : newTaskInfo.ConsultantName;
 
-            //cbConsultant.DataBindings.Add("EditValue", newTaskInfo, "ConsultantName");
-            //dtStartDate.DataBindings.Add("EditValue", newTaskInfo, "StartDate");
-            //dtEndDate.DataBindings.Add("EditValue", newTaskInfo, "EndDate");
-            //cbCarType.DataBindings.Add("EditValue", newTaskInfo, "CarType");
-            //txtTaskNum.DataBindings.Add("Text", newTaskInfo, "Num");
+            UserTaskInfo tmpUserTaskInfo = newTaskInfo.UserTask;
+            cbConsultant.EditValue = tmpUserTaskInfo.ConsultantName;
 
-            txtTaskDesc.DataBindings.Add("Text", newTaskInfo, "Desc");
-            dtStartDate.EditValue = newTaskInfo.StartDate.HasValue ? newTaskInfo.StartDate.Value : DateTime.Now;
-            dtEndDate.EditValue = newTaskInfo.EndDate.HasValue ? newTaskInfo.EndDate : DateTime.Now.AddMonths(1);
-            txtTaskNum.EditValue = newTaskInfo.Num;
+            cbCarType.DataBindings.Add("EditValue", newTaskInfo, "CarType");
+            txtTaskDesc.DataBindings.Add("Text", tmpUserTaskInfo, "Desc");
+            dtStartDate.EditValue = tmpUserTaskInfo.StartDate.HasValue ? tmpUserTaskInfo.StartDate.Value : DateTime.Now;
+            dtEndDate.EditValue = tmpUserTaskInfo.EndDate.HasValue ? tmpUserTaskInfo.EndDate : DateTime.Now.AddMonths(1);
+            txtTaskNum.EditValue = tmpUserTaskInfo.Cnt ?? 1;
 
-            cbConsultant.SelectedText = IsNew ? "" : newTaskInfo.ConsultantName;
-            cbCarType.SelectedItem = IsNew ? null : newTaskInfo.CarType;
-
-
-
+            cbConsultant.SelectedText = tmpUserTaskInfo.ConsultantName;
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
@@ -70,37 +66,39 @@ namespace CRM_4S.BasicsManager
             try
             {
                 if (!Validation()) return;
-                if (IsNew || newTaskInfo.ConsultantName != cbConsultant.EditValue.ToString())
+
+
+                if (IsNew || newTaskInfo.UserTask.ConsultantName != cbConsultant.EditValue.ToString())
                 {
-                    newTaskInfo.ConsultantId = ((UserInfo)cbConsultant.SelectedItem).Id;
+                    newTaskInfo.UserTask.ConsultantId = ((UserInfo)cbConsultant.SelectedItem).Id;
                 }
-                if (IsNew || newTaskInfo.StartDate.Value.ToString() != dtStartDate.EditValue.ToString())
+                if (IsNew || newTaskInfo.UserTask.StartDate.Value.ToString() != dtStartDate.EditValue.ToString())
                 {
-                    newTaskInfo.StartDate = (DateTime)dtStartDate.EditValue;
+                    newTaskInfo.UserTask.StartDate = (DateTime)dtStartDate.EditValue;
                 }
-                if (IsNew || newTaskInfo.EndDate.Value.ToString() != dtEndDate.EditValue.ToString())
+                if (IsNew || newTaskInfo.UserTask.EndDate.Value.ToString() != dtEndDate.EditValue.ToString())
                 {
-                    newTaskInfo.EndDate = (DateTime)dtEndDate.EditValue;
+                    newTaskInfo.UserTask.EndDate = (DateTime)dtEndDate.EditValue;
                 }
-                if (IsNew || newTaskInfo.CarType.Value != ((CarTypeInfo)cbCarType.SelectedItem).Id)
+                if (IsNew || newTaskInfo.CarType != (CarTypeInfo)cbCarType.SelectedItem)
                 {
-                    newTaskInfo.CarType = ((CarTypeInfo)cbCarType.SelectedItem).Id;
+                    newTaskInfo.CarType = ((CarTypeInfo)cbCarType.SelectedItem);
                 }
-                if (IsNew || taskInfo.Num != (int)txtTaskNum.EditValue)
+                if (IsNew || newTaskInfo.UserTask.Cnt != (int)txtTaskNum.EditValue)
                 {
-                    newTaskInfo.Num = (int)txtTaskNum.EditValue;
+                    newTaskInfo.UserTask.Cnt = (int)txtTaskNum.EditValue;
                 }
 
                 if (!newTaskInfo.Equals(taskInfo))
                 {
                     if (IsNew)
                     {
-                        UserTaskBusiness.Instance.AddUserTask(newTaskInfo);
+                        UserTaskBusiness.Instance.AddUserTask(newTaskInfo.UserTask);
                     }
                     else
                     {
-                        newTaskInfo.Id = taskInfo.Id;
-                        UserTaskBusiness.Instance.UpdateUserTask(newTaskInfo);
+                        newTaskInfo.UserTask.Id = taskInfo.UserTask.Id;
+                        UserTaskBusiness.Instance.UpdateUserTask(newTaskInfo.UserTask);
                     }
 
                     this.DialogResult = DialogResult.OK;

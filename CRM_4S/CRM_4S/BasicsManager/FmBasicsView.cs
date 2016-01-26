@@ -1,6 +1,8 @@
 using CRM_4S.Business;
+using CRM_4S.Business.BusinessModel;
 using CRM_4S.Common;
 using CRM_4S.Model.DataModel;
+using CRM_4S.Model.EnumType;
 using DevExpress.Utils.Drawing;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
@@ -31,6 +33,8 @@ namespace CRM_4S.BasicsManager
             CarTypeBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             CustomerLevelBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             EvaluateQuestionBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            UserTaskBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            AnalyseKPIBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
         }
 
         private void initView()
@@ -88,7 +92,7 @@ namespace CRM_4S.BasicsManager
         {
             if (gridControlLevel.Visible)
             {
-                var listResult = ShopBusiness.Instance.GetShops();
+                var listResult = CustomerLevelBusiness.Instance.GetCustomerLevels();
                 gridControlLevel.DataSource = listResult;
                 gridControlLevel.DefaultView.RefreshData();
                 defaultGridView = gridControlLevel.DefaultView as ColumnView;
@@ -98,7 +102,7 @@ namespace CRM_4S.BasicsManager
         {
             if (gridControlConsultant.Visible)
             {
-                var listResult = UserTaskBusiness.Instance.GetUserTasks();
+                var listResult = UserTaskBusiness.Instance.GetUserCarTypeTasks();
                 gridControlConsultant.DataSource = listResult;
                 gridControlConsultant.DefaultView.RefreshData();
                 defaultGridView = gridControlConsultant.DefaultView as ColumnView;
@@ -118,7 +122,7 @@ namespace CRM_4S.BasicsManager
         {
             if (gridControlAnalyse.Visible)
             {
-                var listResult = ShopBusiness.Instance.GetShops();
+                var listResult = AnalyseKPIBusiness.Instance.GetAnalyseKPIs();
                 gridControlAnalyse.DataSource = listResult;
                 gridControlAnalyse.DefaultView.RefreshData();
                 defaultGridView = gridControlAnalyse.DefaultView as ColumnView;
@@ -218,7 +222,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
-
+                UserTaskBusiness.Instance.DeleteUserTask((rowData as UserCarTypeTaskInfo).UserTask);
             }
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
@@ -226,7 +230,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
             {
-
+                AnalyseKPIBusiness.Instance.DeleteAnalyseKPI(rowData as AnalyseKPIInfo);
             }
         }
         void btnUpdate_ItemClick(object sender, ItemClickEventArgs e)
@@ -251,7 +255,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
-                new FmConsultantTaskInfo().ShowDialog();
+                new FmConsultantTaskInfo(rowData as UserCarTypeTaskInfo).ShowDialog();
             }
             else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
             {
@@ -259,7 +263,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
             {
-                new FmAnalyseInfo().ShowDialog();
+                new FmAnalyseInfo(rowData as AnalyseKPIInfo).ShowDialog();
             }
         }
         void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
@@ -327,6 +331,26 @@ namespace CRM_4S.BasicsManager
             btnUpdate_ItemClick(sender, null);
         }
 
+        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "clmTaskStatus")
+            {
+                e.DisplayText = GloableConstants.UserTaskStatus[(int)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "clmQType")
+            {
+                e.DisplayText = GloableConstants.QuestionTypes[(QuestionType)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "clmKValue")
+            {
+                var rowData = (AnalyseKPIInfo) defaultGridView.GetRow(e.RowHandle);
+                e.DisplayText = rowData.KValue + rowData.KUnit;
+            }
+        }
     }
 
     public class NavBarClickedArgs : EventArgs

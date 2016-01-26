@@ -28,21 +28,29 @@ namespace CRM_4S.BasicsManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.MemoEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.MemoEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            this.txtPerform = new DevExpress.XtraEditors.MemoEdit();
+            this.txtReason = new DevExpress.XtraEditors.MemoEdit();
+            this.txtSuggest = new DevExpress.XtraEditors.MemoEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtKValue = new DevExpress.XtraEditors.TextEdit();
+            this.cbKUnit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.txtKDesc = new DevExpress.XtraEditors.MemoEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPerform.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReason.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSuggest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKUnit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKDesc.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -53,31 +61,13 @@ namespace CRM_4S.BasicsManager
             this.labelControl1.TabIndex = 998;
             this.labelControl1.Text = "指标名称";
             // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(66, 18);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(186, 21);
-            this.comboBoxEdit1.TabIndex = 999;
-            // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 54);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(36, 14);
             this.labelControl2.TabIndex = 998;
-            this.labelControl2.Text = "指标值";
-            // 
-            // comboBoxEdit2
-            // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(66, 51);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(186, 21);
-            this.comboBoxEdit2.TabIndex = 1000;
+            this.labelControl2.Text = "临界值";
             // 
             // labelControl3
             // 
@@ -103,26 +93,83 @@ namespace CRM_4S.BasicsManager
             this.labelControl5.TabIndex = 998;
             this.labelControl5.Text = "建议";
             // 
-            // textEdit1
+            // txtPerform
             // 
-            this.textEdit1.Location = new System.Drawing.Point(66, 84);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(186, 49);
-            this.textEdit1.TabIndex = 1001;
+            this.txtPerform.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPerform.Location = new System.Drawing.Point(66, 84);
+            this.txtPerform.Name = "txtPerform";
+            this.txtPerform.Size = new System.Drawing.Size(333, 49);
+            this.txtPerform.TabIndex = 1001;
             // 
-            // textEdit2
+            // txtReason
             // 
-            this.textEdit2.Location = new System.Drawing.Point(66, 145);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(186, 49);
-            this.textEdit2.TabIndex = 1001;
+            this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReason.Location = new System.Drawing.Point(66, 145);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(333, 49);
+            this.txtReason.TabIndex = 1001;
             // 
-            // textEdit3
+            // txtSuggest
             // 
-            this.textEdit3.Location = new System.Drawing.Point(66, 206);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(186, 49);
-            this.textEdit3.TabIndex = 1001;
+            this.txtSuggest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSuggest.Location = new System.Drawing.Point(66, 206);
+            this.txtSuggest.Name = "txtSuggest";
+            this.txtSuggest.Size = new System.Drawing.Size(333, 49);
+            this.txtSuggest.TabIndex = 1001;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(66, 18);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(333, 21);
+            this.txtName.TabIndex = 1002;
+            // 
+            // txtKValue
+            // 
+            this.txtKValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKValue.Location = new System.Drawing.Point(66, 51);
+            this.txtKValue.Name = "txtKValue";
+            this.txtKValue.Size = new System.Drawing.Size(244, 21);
+            this.txtKValue.TabIndex = 1002;
+            // 
+            // cbKUnit
+            // 
+            this.cbKUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbKUnit.Location = new System.Drawing.Point(316, 51);
+            this.cbKUnit.Name = "cbKUnit";
+            this.cbKUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbKUnit.Properties.Items.AddRange(new object[] {
+            "%"});
+            this.cbKUnit.Size = new System.Drawing.Size(83, 21);
+            this.cbKUnit.TabIndex = 1003;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(12, 264);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(24, 14);
+            this.labelControl6.TabIndex = 1004;
+            this.labelControl6.Text = "备注";
+            // 
+            // txtKDesc
+            // 
+            this.txtKDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKDesc.Location = new System.Drawing.Point(66, 261);
+            this.txtKDesc.Name = "txtKDesc";
+            this.txtKDesc.Size = new System.Drawing.Size(333, 49);
+            this.txtKDesc.TabIndex = 1005;
             // 
             // FmAnalyseInfo
             // 
@@ -130,34 +177,43 @@ namespace CRM_4S.BasicsManager
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 312);
-            this.Controls.Add(this.comboBoxEdit2);
-            this.Controls.Add(this.comboBoxEdit1);
+            this.ClientSize = new System.Drawing.Size(416, 374);
+            this.Controls.Add(this.labelControl6);
+            this.Controls.Add(this.txtKDesc);
+            this.Controls.Add(this.cbKUnit);
+            this.Controls.Add(this.txtKValue);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit3);
+            this.Controls.Add(this.txtPerform);
+            this.Controls.Add(this.txtReason);
+            this.Controls.Add(this.txtSuggest);
             this.Name = "FmAnalyseInfo";
             this.Text = "销顾人员分析指标";
-            this.Controls.SetChildIndex(this.textEdit3, 0);
-            this.Controls.SetChildIndex(this.textEdit2, 0);
-            this.Controls.SetChildIndex(this.textEdit1, 0);
+            this.Controls.SetChildIndex(this.txtSuggest, 0);
+            this.Controls.SetChildIndex(this.txtReason, 0);
+            this.Controls.SetChildIndex(this.txtPerform, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);
             this.Controls.SetChildIndex(this.labelControl2, 0);
             this.Controls.SetChildIndex(this.labelControl3, 0);
             this.Controls.SetChildIndex(this.labelControl4, 0);
             this.Controls.SetChildIndex(this.labelControl5, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit1, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit2, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            this.Controls.SetChildIndex(this.txtName, 0);
+            this.Controls.SetChildIndex(this.txtKValue, 0);
+            this.Controls.SetChildIndex(this.cbKUnit, 0);
+            this.Controls.SetChildIndex(this.txtKDesc, 0);
+            this.Controls.SetChildIndex(this.labelControl6, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.txtPerform.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReason.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSuggest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKUnit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKDesc.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,14 +222,18 @@ namespace CRM_4S.BasicsManager
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.MemoEdit textEdit1;
-        private DevExpress.XtraEditors.MemoEdit textEdit2;
-        private DevExpress.XtraEditors.MemoEdit textEdit3;
+        private DevExpress.XtraEditors.MemoEdit txtPerform;
+        private DevExpress.XtraEditors.MemoEdit txtReason;
+        private DevExpress.XtraEditors.MemoEdit txtSuggest;
+        private DevExpress.XtraEditors.TextEdit txtName;
+        private DevExpress.XtraEditors.TextEdit txtKValue;
+        private DevExpress.XtraEditors.ComboBoxEdit cbKUnit;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.MemoEdit txtKDesc;
     }
 }
