@@ -49,7 +49,7 @@ namespace CRM_4S.UserManager
             this.TxtNewPwd2.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtNewPwd2.Properties.PasswordChar = '*';
             this.TxtNewPwd2.Size = new System.Drawing.Size(166, 21);
-            this.TxtNewPwd2.TabIndex = 1018;
+            this.TxtNewPwd2.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -69,7 +69,7 @@ namespace CRM_4S.UserManager
             this.TxtNewPwd.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtNewPwd.Properties.PasswordChar = '*';
             this.TxtNewPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtNewPwd.TabIndex = 1017;
+            this.TxtNewPwd.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -89,7 +89,7 @@ namespace CRM_4S.UserManager
             this.TxtOldPwd.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtOldPwd.Properties.PasswordChar = '*';
             this.TxtOldPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtOldPwd.TabIndex = 1016;
+            this.TxtOldPwd.TabIndex = 0;
             // 
             // labelControl4
             // 

@@ -49,10 +49,11 @@
     <Compile Include="CarTypeBusiness.cs" />
     <Compile Include="CustomerBusiness.cs" />
     <Compile Include="BusinessModel\DCCCustomerInfo.cs" />
-    <Compile Include="BusinessModel\FrontCustomerInfo.cs" />
+    <Compile Include="BusinessModel\FrontCustomerRecordInfo.cs" />
     <Compile Include="BusinessModel\UserShopRoleInfo.cs" />
     <Compile Include="CustomerLevelBusiness.cs" />
     <Compile Include="EvaluateQuestionBusiness.cs" />
+    <Compile Include="FrontRecordBusiness.cs" />
     <Compile Include="GloableCaches.cs" />
     <Compile Include="GloableConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -53,7 +53,7 @@
     <Compile Include="DataModel\UserGroupInfo.cs" />
     <Compile Include="DataModel\UserInfo.cs" />
     <Compile Include="DataModel\UserTaskInfo.cs" />
-    <Compile Include="DataModel\VisitRecordInfo.cs" />
+    <Compile Include="DataModel\FrontRecordInfo.cs" />
     <Compile Include="DBModelBase.cs" />
     <Compile Include="EnumType\QuestionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -44,12 +44,13 @@
             this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCode.EditValue = "";
+            this.txtCode.EnterMoveNextControl = true;
             this.txtCode.Location = new System.Drawing.Point(66, 12);
             this.txtCode.Name = "txtCode";
             this.txtCode.Properties.NullValuePrompt = "<必填>";
             this.txtCode.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtCode.Size = new System.Drawing.Size(191, 21);
-            this.txtCode.TabIndex = 1010;
+            this.txtCode.TabIndex = 0;
             // 
             // labelControl7
             // 
@@ -72,12 +73,13 @@
             this.txtDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc.EditValue = "";
+            this.txtDesc.EnterMoveNextControl = true;
             this.txtDesc.Location = new System.Drawing.Point(66, 39);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Properties.NullValuePrompt = "<必填>";
             this.txtDesc.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtDesc.Size = new System.Drawing.Size(191, 71);
-            this.txtDesc.TabIndex = 1010;
+            this.txtDesc.TabIndex = 1;
             // 
             // errorProvider
             // 

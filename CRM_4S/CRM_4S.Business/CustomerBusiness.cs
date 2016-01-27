@@ -1,4 +1,6 @@
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business.Service;
+using CRM_4S.DataService.Model;
 using CRM_4S.Model.DataModel;
 using System;
 using System.Collections.Generic;
@@ -9,45 +11,60 @@ namespace CRM_4S.Business
 {
     public class CustomerBusiness : BusinessBase<CustomerBusiness>
     {
-
-        public IList<FrontCustomerInfo> GetFrontCustomerRecords()
+        /// <summary>
+        /// ªÒ»°πÀøÕ–≈œ¢
+        /// </summary>
+        /// <param name="shopId">Œ™0  ± ªÒ»°À˘”–œµÕ≥µÍ√ÊµƒÀ˘”–”√ªß </param>
+        /// <returns></returns>
+        public IList<CustomerInfo> GetCustomers(int shopId = 0)
         {
-            List<FrontCustomerInfo> frontRecords = new List<FrontCustomerInfo>();
-            for (int i = 0; i < 10; i++)
+            var result = DoFunctionWithLog<ResultValue>(() =>
             {
-                FrontCustomerInfo info = new FrontCustomerInfo
-                {
-                    ConsultantUser = new UserInfo { Id = i, RealName = "ÈîÄÂîÆÈ°æÈóÆ" + i },
-                    Customer = new CustomerInfo
-                    {
-                        Id = i,
-                        Name = "È°æÂÆ¢" + i,
-                        Address = "Âåó‰∫¨ Âåó‰∫¨",
-                        Industry = "Ê±ΩËΩ¶ÈîÄÂîÆ",
-                        Level = "C",
-                        Nature = 2,
-                        Phone = "123456" + i,
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetCustomers";
+                funcParms.Pams = new Dictionary<string, object>();
+                funcParms.Pams.Add("CustomerShopId", shopId);
 
-                    },
-                    VisitRecord = new VisitRecordInfo
-                    {
-                        Id = i,
-                        CarLicence = 1,
-                        ConsultantId = 1,
-                        ArrivalTime = DateTime.Now,
-                        LeaveTime = DateTime.Now.AddMinutes(10),
-                        CustomerId = 1,
-                        CustomerNum = 3,
-                        DriveStatus = 1,
-                        DurationTime = "10:00",
-                        PurposeCar = 2,
-                        Remark = "ÊµãËØïÊï∞ÊçÆ_" + i,
-                    }
-                };
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetFrontCustomerRecords.uspGetCustomers", true);
 
-                frontRecords.Add(info);
+            return DoFunctionWithLog<List<CustomerInfo>>(() =>
+            {
+                return ConvertToList<CustomerInfo>(result);
+
+            }, null, "GetFrontCustomerRecords.ConvertToList", true);
+        }
+
+
+
+
+        public void AddCustomer(CustomerInfo info)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspAddCustomer";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncGetResults(functionParms);
+            }, new ResultValue(), "AddCustomer.uspAddCustomer", true);
+
+            if (!result.Faild)
+            {
+                info.Id = Convert.ToInt32(result.ResultTable.Rows[0][0]);
             }
-            return frontRecords;
+        }
+
+        public void UpdateCustomer(CustomerInfo info)
+        {
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspUpdateCustomer";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "AddCustomer.uspUpdateCustomer", true);
         }
     }
 }

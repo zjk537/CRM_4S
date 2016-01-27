@@ -55,7 +55,7 @@ namespace CRM_4S.BasicsManager
             this.txtCarType.Location = new System.Drawing.Point(66, 40);
             this.txtCarType.Name = "txtCarType";
             this.txtCarType.Size = new System.Drawing.Size(219, 21);
-            this.txtCarType.TabIndex = 999;
+            this.txtCarType.TabIndex = 1;
             // 
             // cbCarBrand
             // 
@@ -65,7 +65,7 @@ namespace CRM_4S.BasicsManager
             this.cbCarBrand.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCarBrand.Size = new System.Drawing.Size(219, 21);
-            this.cbCarBrand.TabIndex = 1000;
+            this.cbCarBrand.TabIndex = 0;
             // 
             // labelControl2
             // 
@@ -88,7 +88,7 @@ namespace CRM_4S.BasicsManager
             this.txtDesc.Location = new System.Drawing.Point(66, 72);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(219, 55);
-            this.txtDesc.TabIndex = 999;
+            this.txtDesc.TabIndex = 2;
             // 
             // errorProvider
             // 

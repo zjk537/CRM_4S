@@ -56,15 +56,26 @@ namespace CRM_4S.Business
 
 
         List<CarTypeInfo> carTypes = null;
+        const String cacheKeyCarType = "CarTypes";
         public List<CarTypeInfo> CarTypes
         {
             get
             {
-                if (carTypes == null)
+                lock (lockObj)
                 {
-                    carTypes = new List<CarTypeInfo>();
-                    carTypes.AddRange(CarTypeBusiness.Instance.GetCarTypes());
+                    if (NeedRefrenceCache(cacheKeyCarType))
+                    {
+                        if (carTypes != null) carTypes.Clear();
+                        else carTypes = new List<CarTypeInfo>();
+
+                        carTypes.AddRange(CarTypeBusiness.Instance.GetCarTypes());
+                        if (carTypes.Count == 0)
+                        {
+                            this.CacheLastUpdatedTimes.Remove(cacheKeyCarType);
+                        }
+                    }
                 }
+
 
                 return carTypes;
             }
@@ -102,6 +113,7 @@ namespace CRM_4S.Business
 
 
         List<RoleInfo> roleInfos = null;
+        const String cacheKeyRole = "RoleInfos";
         /// <summary>
         /// 角色列表
         /// </summary>
@@ -109,17 +121,59 @@ namespace CRM_4S.Business
         {
             get
             {
-                if (roleInfos == null)
+                lock (lockObj)
                 {
-                    roleInfos = new List<RoleInfo>();
-                    roleInfos.AddRange(RoleBusiness.Instance.GetRoles());
+                    if (NeedRefrenceCache(cacheKeyRole))
+                    {
+                        if (roleInfos != null) roleInfos.Clear();
+                        else roleInfos = new List<RoleInfo>();
+
+                        roleInfos.AddRange(RoleBusiness.Instance.GetRoles());
+                        if (roleInfos.Count == 0)
+                        {
+                            this.CacheLastUpdatedTimes.Remove(cacheKeyRole);
+                        }
+                    }
                 }
+
 
                 return roleInfos;
             }
         }
 
 
+        List<UserInfo> consultantInfos = null;
+        const String cacheKeyConsultant = "ConsultantInfos";
+        /// <summary>
+        /// 销售顾问列表
+        /// </summary>
+        public List<UserInfo> ConsultantInfos
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    if (NeedRefrenceCache(cacheKeyConsultant))
+                    {
+                        if (consultantInfos != null) consultantInfos.Clear();
+                        else consultantInfos = new List<UserInfo>();
+
+                        consultantInfos.AddRange(UserBusiness.Instance.GetUsers(new UserInfo()
+                        {
+                            ShopId = GloableCaches.Instance.CurUser.ShopId,
+                            RoleId = GloableConstants.RoleIdConsultant
+                        }));
+                        if (roleInfos.Count == 0)
+                        {
+                            this.CacheLastUpdatedTimes.Remove(cacheKeyConsultant);
+                        }
+                    }
+                }
+
+
+                return consultantInfos;
+            }
+        }
 
 
 

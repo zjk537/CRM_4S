@@ -40,7 +40,7 @@ namespace CRM_4S.Business
 
         public static List<string> UserTaskStatus = new List<string>() { "未知", "未完成", "已完成" };
 
-        public static List<string> BooleanDesc = new List<string>() { "是", "否", "" };
+        public static List<string> BooleanDesc = new List<string>() { "", "是", "否" };
 
         /// <summary>
         /// 系统管理员角色Id

@@ -58,12 +58,13 @@ namespace CRM_4S.BasicsManager
             this.TxtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtAddress.EditValue = "";
+            this.TxtAddress.EnterMoveNextControl = true;
             this.TxtAddress.Location = new System.Drawing.Point(41, 42);
             this.TxtAddress.Name = "TxtAddress";
             this.TxtAddress.Properties.NullValuePrompt = "<必填>";
             this.TxtAddress.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtAddress.Size = new System.Drawing.Size(390, 21);
-            this.TxtAddress.TabIndex = 1012;
+            this.TxtAddress.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -77,12 +78,13 @@ namespace CRM_4S.BasicsManager
             // 
             this.TxtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtPhone.EditValue = "";
+            this.TxtPhone.EnterMoveNextControl = true;
             this.TxtPhone.Location = new System.Drawing.Point(266, 12);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Properties.NullValuePrompt = "<必填>";
             this.TxtPhone.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtPhone.Size = new System.Drawing.Size(166, 21);
-            this.TxtPhone.TabIndex = 1010;
+            this.TxtPhone.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -98,12 +100,13 @@ namespace CRM_4S.BasicsManager
             this.TxtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtName.EditValue = "";
+            this.TxtName.EnterMoveNextControl = true;
             this.TxtName.Location = new System.Drawing.Point(41, 12);
             this.TxtName.Name = "TxtName";
             this.TxtName.Properties.NullValuePrompt = "<必填>";
             this.TxtName.Properties.NullValuePromptShowForEmptyValue = true;
             this.TxtName.Size = new System.Drawing.Size(188, 21);
-            this.TxtName.TabIndex = 1008;
+            this.TxtName.TabIndex = 0;
             // 
             // labelControl7
             // 
@@ -118,10 +121,11 @@ namespace CRM_4S.BasicsManager
             this.TxtDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtDesc.EditValue = "";
+            this.TxtDesc.EnterMoveNextControl = true;
             this.TxtDesc.Location = new System.Drawing.Point(41, 72);
             this.TxtDesc.Name = "TxtDesc";
             this.TxtDesc.Size = new System.Drawing.Size(390, 47);
-            this.TxtDesc.TabIndex = 1014;
+            this.TxtDesc.TabIndex = 3;
             // 
             // errorProvider
             // 

@@ -54,10 +54,11 @@ namespace CRM_4S.BasicsManager
             // 
             this.txtQDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQDesc.EnterMoveNextControl = true;
             this.txtQDesc.Location = new System.Drawing.Point(72, 56);
             this.txtQDesc.Name = "txtQDesc";
             this.txtQDesc.Size = new System.Drawing.Size(250, 59);
-            this.txtQDesc.TabIndex = 999;
+            this.txtQDesc.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -72,10 +73,11 @@ namespace CRM_4S.BasicsManager
             this.txtQLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQLevel.EditValue = 1;
+            this.txtQLevel.EnterMoveNextControl = true;
             this.txtQLevel.Location = new System.Drawing.Point(72, 133);
             this.txtQLevel.Name = "txtQLevel";
             this.txtQLevel.Size = new System.Drawing.Size(250, 21);
-            this.txtQLevel.TabIndex = 1000;
+            this.txtQLevel.TabIndex = 2;
             // 
             // labelControl3
             // 
@@ -89,12 +91,13 @@ namespace CRM_4S.BasicsManager
             // 
             this.cbQType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbQType.EnterMoveNextControl = true;
             this.cbQType.Location = new System.Drawing.Point(72, 19);
             this.cbQType.Name = "cbQType";
             this.cbQType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbQType.Size = new System.Drawing.Size(250, 21);
-            this.cbQType.TabIndex = 1001;
+            this.cbQType.TabIndex = 0;
             // 
             // errorProvider
             // 

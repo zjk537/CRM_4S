@@ -97,50 +97,56 @@ namespace CRM_4S.BasicsManager
             // 
             this.txtPerform.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPerform.EnterMoveNextControl = true;
             this.txtPerform.Location = new System.Drawing.Point(66, 84);
             this.txtPerform.Name = "txtPerform";
             this.txtPerform.Size = new System.Drawing.Size(333, 49);
-            this.txtPerform.TabIndex = 1001;
+            this.txtPerform.TabIndex = 3;
             // 
             // txtReason
             // 
             this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReason.EnterMoveNextControl = true;
             this.txtReason.Location = new System.Drawing.Point(66, 145);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(333, 49);
-            this.txtReason.TabIndex = 1001;
+            this.txtReason.TabIndex = 4;
             // 
             // txtSuggest
             // 
             this.txtSuggest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSuggest.EnterMoveNextControl = true;
             this.txtSuggest.Location = new System.Drawing.Point(66, 206);
             this.txtSuggest.Name = "txtSuggest";
             this.txtSuggest.Size = new System.Drawing.Size(333, 49);
-            this.txtSuggest.TabIndex = 1001;
+            this.txtSuggest.TabIndex = 5;
             // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.EnterMoveNextControl = true;
             this.txtName.Location = new System.Drawing.Point(66, 18);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(333, 21);
-            this.txtName.TabIndex = 1002;
+            this.txtName.TabIndex = 0;
             // 
             // txtKValue
             // 
             this.txtKValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKValue.EnterMoveNextControl = true;
             this.txtKValue.Location = new System.Drawing.Point(66, 51);
             this.txtKValue.Name = "txtKValue";
             this.txtKValue.Size = new System.Drawing.Size(244, 21);
-            this.txtKValue.TabIndex = 1002;
+            this.txtKValue.TabIndex = 1;
             // 
             // cbKUnit
             // 
             this.cbKUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbKUnit.EnterMoveNextControl = true;
             this.cbKUnit.Location = new System.Drawing.Point(316, 51);
             this.cbKUnit.Name = "cbKUnit";
             this.cbKUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -148,7 +154,7 @@ namespace CRM_4S.BasicsManager
             this.cbKUnit.Properties.Items.AddRange(new object[] {
             "%"});
             this.cbKUnit.Size = new System.Drawing.Size(83, 21);
-            this.cbKUnit.TabIndex = 1003;
+            this.cbKUnit.TabIndex = 2;
             // 
             // errorProvider
             // 
@@ -166,10 +172,11 @@ namespace CRM_4S.BasicsManager
             // 
             this.txtKDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKDesc.EnterMoveNextControl = true;
             this.txtKDesc.Location = new System.Drawing.Point(66, 261);
             this.txtKDesc.Name = "txtKDesc";
             this.txtKDesc.Size = new System.Drawing.Size(333, 49);
-            this.txtKDesc.TabIndex = 1005;
+            this.txtKDesc.TabIndex = 6;
             // 
             // FmAnalyseInfo
             // 

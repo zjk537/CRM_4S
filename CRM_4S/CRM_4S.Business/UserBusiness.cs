@@ -39,7 +39,6 @@ namespace CRM_4S.Business
             }, null, "GetUsers.ConvertToList", true);
         }
 
-
         public void AddUser(UserInfo info)
         {
             DoUpdateFunctionWithLog<ResultValue>(() =>

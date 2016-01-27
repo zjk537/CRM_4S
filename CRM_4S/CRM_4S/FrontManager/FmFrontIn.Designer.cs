@@ -28,19 +28,22 @@ namespace CRM_4S.FrontManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dtArralTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtCNum = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbConsultant = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.MemoEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            this.txtDesc = new DevExpress.XtraEditors.MemoEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dtArralTime.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtArralTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCNum.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -51,21 +54,23 @@ namespace CRM_4S.FrontManager
             this.labelControl1.TabIndex = 998;
             this.labelControl1.Text = "进店时间";
             // 
-            // dateEdit1
+            // dtArralTime
             // 
-            this.dateEdit1.EditValue = new System.DateTime(2016, 1, 15, 9, 58, 7, 0);
-            this.dateEdit1.Location = new System.Drawing.Point(66, 14);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtArralTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtArralTime.EditValue = new System.DateTime(2016, 1, 15, 9, 58, 7, 0);
+            this.dtArralTime.Location = new System.Drawing.Point(66, 14);
+            this.dtArralTime.Name = "dtArralTime";
+            this.dtArralTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
-            this.dateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
-            this.dateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtArralTime.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtArralTime.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtArralTime.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtArralTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtArralTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit1.Size = new System.Drawing.Size(179, 21);
-            this.dateEdit1.TabIndex = 999;
+            this.dtArralTime.Size = new System.Drawing.Size(249, 21);
+            this.dtArralTime.TabIndex = 999;
             // 
             // labelControl2
             // 
@@ -75,13 +80,15 @@ namespace CRM_4S.FrontManager
             this.labelControl2.TabIndex = 998;
             this.labelControl2.Text = "进店人数";
             // 
-            // textEdit1
+            // txtCNum
             // 
-            this.textEdit1.EditValue = 1;
-            this.textEdit1.Location = new System.Drawing.Point(66, 45);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(179, 21);
-            this.textEdit1.TabIndex = 1000;
+            this.txtCNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCNum.EditValue = 1;
+            this.txtCNum.Location = new System.Drawing.Point(66, 45);
+            this.txtCNum.Name = "txtCNum";
+            this.txtCNum.Size = new System.Drawing.Size(249, 21);
+            this.txtCNum.TabIndex = 1000;
             // 
             // labelControl3
             // 
@@ -91,14 +98,16 @@ namespace CRM_4S.FrontManager
             this.labelControl3.TabIndex = 998;
             this.labelControl3.Text = "销售顾问";
             // 
-            // comboBoxEdit1
+            // cbConsultant
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(66, 76);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbConsultant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbConsultant.Location = new System.Drawing.Point(66, 76);
+            this.cbConsultant.Name = "cbConsultant";
+            this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(179, 21);
-            this.comboBoxEdit1.TabIndex = 1001;
+            this.cbConsultant.Size = new System.Drawing.Size(249, 21);
+            this.cbConsultant.TabIndex = 1001;
             // 
             // labelControl4
             // 
@@ -108,13 +117,19 @@ namespace CRM_4S.FrontManager
             this.labelControl4.TabIndex = 998;
             this.labelControl4.Text = "备注";
             // 
-            // textEdit2
+            // txtDesc
             // 
-            this.textEdit2.EditValue = 1;
-            this.textEdit2.Location = new System.Drawing.Point(66, 111);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(179, 52);
-            this.textEdit2.TabIndex = 1000;
+            this.txtDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDesc.EditValue = 1;
+            this.txtDesc.Location = new System.Drawing.Point(66, 111);
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(249, 69);
+            this.txtDesc.TabIndex = 1000;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmFrontIn
             // 
@@ -122,31 +137,32 @@ namespace CRM_4S.FrontManager
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 225);
-            this.Controls.Add(this.comboBoxEdit1);
-            this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.dateEdit1);
+            this.ClientSize = new System.Drawing.Size(334, 239);
+            this.Controls.Add(this.cbConsultant);
+            this.Controls.Add(this.txtCNum);
+            this.Controls.Add(this.dtArralTime);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit2);
+            this.Controls.Add(this.txtDesc);
             this.Margin = new System.Windows.Forms.Padding(21, 32, 21, 32);
             this.Name = "FmFrontIn";
             this.Text = "顾客进店";
-            this.Controls.SetChildIndex(this.textEdit2, 0);
+            this.Controls.SetChildIndex(this.txtDesc, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);
             this.Controls.SetChildIndex(this.labelControl2, 0);
             this.Controls.SetChildIndex(this.labelControl3, 0);
             this.Controls.SetChildIndex(this.labelControl4, 0);
-            this.Controls.SetChildIndex(this.dateEdit1, 0);
-            this.Controls.SetChildIndex(this.textEdit1, 0);
-            this.Controls.SetChildIndex(this.comboBoxEdit1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            this.Controls.SetChildIndex(this.dtArralTime, 0);
+            this.Controls.SetChildIndex(this.txtCNum, 0);
+            this.Controls.SetChildIndex(this.cbConsultant, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.dtArralTime.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtArralTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCNum.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,12 +171,13 @@ namespace CRM_4S.FrontManager
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dtArralTime;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtCNum;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbConsultant;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.MemoEdit textEdit2;
+        private DevExpress.XtraEditors.MemoEdit txtDesc;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
     }
 }

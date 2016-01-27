@@ -204,6 +204,7 @@ namespace CRM_4S
             DialogResult result = new FmFrontCustomTime().ShowDialog();
             if (result == DialogResult.OK)
             {
+                
                 showSumView();
             }
         }

@@ -244,7 +244,7 @@ namespace CRM_4S.UserManager
             this.cbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbSex.Size = new System.Drawing.Size(166, 21);
-            this.cbSex.TabIndex = 1012;
+            this.cbSex.TabIndex = 3;
             // 
             // errorProvider
             // 

@@ -19,6 +19,7 @@ namespace CRM_4S.FrontManager
         {
             InitializeComponent();
             initView();
+            FrontRecordBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshFrontRecordView(); });
         }
 
         private void initView()
@@ -114,12 +115,13 @@ namespace CRM_4S.FrontManager
 
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("刷新成功");
+            RefreshFrontRecordView();
         }
 
         void btnCustomerOut_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmFrontOut().ShowDialog();
+            Object rowData = gridViewFrontRecord.GetRow(gridViewFrontRecord.GetSelectedRows()[0]);
+            new FmFrontOut(rowData as FrontCustomerRecordInfo).ShowDialog();
         }
 
         void btnFrontIn_ItemClick(object sender, ItemClickEventArgs e)
@@ -129,29 +131,45 @@ namespace CRM_4S.FrontManager
 
         #endregion
 
-        List<FrontCustomerInfo> dataSource = null;
-        public List<FrontCustomerInfo> DataSource
-        {
-            get
-            {
-                if (dataSource == null)
-                {
-                    dataSource = new List<FrontCustomerInfo>();
-                    dataSource.AddRange(CustomerBusiness.Instance.GetFrontCustomerRecords());
-                }
-                return dataSource;
-            }
-            set
-            {
-                dataSource = value;
 
-            }
-        }
 
         private void FmFrontView_Load(object sender, EventArgs e)
         {
-            gridControlFrontRecord.DataSource = DataSource;
+            RefreshFrontRecordView();
         }
 
+        private void RefreshFrontRecordView()
+        {
+            var listResults = FrontRecordBusiness.Instance.GetFrontRecords();
+            gridControlFrontRecord.DataSource = listResults;
+            gridControlFrontRecord.DefaultView.RefreshData();
+        }
+
+        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "clmCNature")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloableConstants.CustomerNature[(int)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "clmCarLicence")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloableConstants.CarLicence[(int)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "clmPurposeCar")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloableCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                return;
+            }
+
+            if (e.Column.Name == "clmDriveStatus")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloableConstants.DriveStatus[(int)e.CellValue];
+                return;
+            }
+        }
     }
 }

@@ -48,14 +48,20 @@ namespace CRM_4S.FrontManager
             // 
             // DateEnd
             // 
+            this.DateEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DateEnd.EditValue = null;
             this.DateEnd.Location = new System.Drawing.Point(68, 56);
             this.DateEnd.Name = "DateEnd";
             this.DateEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DateEnd.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.DateEnd.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.DateEnd.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.DateEnd.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DateEnd.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.DateEnd.Size = new System.Drawing.Size(229, 21);
+            this.DateEnd.Size = new System.Drawing.Size(246, 21);
             this.DateEnd.TabIndex = 1004;
             // 
             // labStartDate
@@ -68,14 +74,20 @@ namespace CRM_4S.FrontManager
             // 
             // DateStart
             // 
+            this.DateStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DateStart.EditValue = null;
             this.DateStart.Location = new System.Drawing.Point(68, 12);
             this.DateStart.Name = "DateStart";
             this.DateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DateStart.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.DateStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.DateStart.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.DateStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DateStart.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.DateStart.Size = new System.Drawing.Size(229, 21);
+            this.DateStart.Size = new System.Drawing.Size(246, 21);
             this.DateStart.TabIndex = 1002;
             // 
             // FmFrontCustomTime

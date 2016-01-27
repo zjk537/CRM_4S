@@ -64,17 +64,19 @@ namespace CRM_4S.BasicsManager
             // 
             // cbConsultant
             // 
+            this.cbConsultant.EnterMoveNextControl = true;
             this.cbConsultant.Location = new System.Drawing.Point(100, 18);
             this.cbConsultant.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbConsultant.Name = "cbConsultant";
             this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbConsultant.Size = new System.Drawing.Size(258, 21);
-            this.cbConsultant.TabIndex = 1;
+            this.cbConsultant.TabIndex = 0;
             // 
             // dtStartDate
             // 
             this.dtStartDate.EditValue = new System.DateTime(2016, 1, 22, 11, 26, 28, 0);
+            this.dtStartDate.EnterMoveNextControl = true;
             this.dtStartDate.Location = new System.Drawing.Point(100, 49);
             this.dtStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtStartDate.Name = "dtStartDate";
@@ -88,7 +90,7 @@ namespace CRM_4S.BasicsManager
             this.dtStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtStartDate.Size = new System.Drawing.Size(258, 21);
-            this.dtStartDate.TabIndex = 2;
+            this.dtStartDate.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -111,6 +113,7 @@ namespace CRM_4S.BasicsManager
             // dtEndDate
             // 
             this.dtEndDate.EditValue = new System.DateTime(2016, 1, 22, 11, 29, 5, 28);
+            this.dtEndDate.EnterMoveNextControl = true;
             this.dtEndDate.Location = new System.Drawing.Point(100, 80);
             this.dtEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtEndDate.Name = "dtEndDate";
@@ -137,13 +140,14 @@ namespace CRM_4S.BasicsManager
             // 
             // cbCarType
             // 
+            this.cbCarType.EnterMoveNextControl = true;
             this.cbCarType.Location = new System.Drawing.Point(100, 111);
             this.cbCarType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbCarType.Name = "cbCarType";
             this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCarType.Size = new System.Drawing.Size(258, 21);
-            this.cbCarType.TabIndex = 1;
+            this.cbCarType.TabIndex = 3;
             // 
             // labelControl5
             // 
@@ -156,6 +160,7 @@ namespace CRM_4S.BasicsManager
             // 
             // txtTaskNum
             // 
+            this.txtTaskNum.EnterMoveNextControl = true;
             this.txtTaskNum.Location = new System.Drawing.Point(100, 142);
             this.txtTaskNum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaskNum.Name = "txtTaskNum";
@@ -166,7 +171,7 @@ namespace CRM_4S.BasicsManager
             this.txtTaskNum.Properties.Mask.SaveLiteral = false;
             this.txtTaskNum.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtTaskNum.Size = new System.Drawing.Size(258, 21);
-            this.txtTaskNum.TabIndex = 3;
+            this.txtTaskNum.TabIndex = 4;
             // 
             // labelControl6
             // 
@@ -179,11 +184,12 @@ namespace CRM_4S.BasicsManager
             // 
             // txtTaskDesc
             // 
+            this.txtTaskDesc.EnterMoveNextControl = true;
             this.txtTaskDesc.Location = new System.Drawing.Point(100, 173);
             this.txtTaskDesc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaskDesc.Name = "txtTaskDesc";
             this.txtTaskDesc.Size = new System.Drawing.Size(258, 61);
-            this.txtTaskDesc.TabIndex = 3;
+            this.txtTaskDesc.TabIndex = 5;
             // 
             // errorProvider
             // 

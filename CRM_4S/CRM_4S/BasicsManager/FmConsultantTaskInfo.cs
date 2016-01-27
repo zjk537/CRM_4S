@@ -42,11 +42,7 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbConsultant.Properties.Items.AddRange(UserBusiness.Instance.GetUsers(new UserInfo()
-            {
-                ShopId = GloableCaches.Instance.CurUser.ShopId,
-                RoleId = GloableConstants.RoleIdConsultant
-            }).ToArray());
+            cbConsultant.Properties.Items.AddRange(GloableCaches.Instance.ConsultantInfos);
             cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
 
             UserTaskInfo tmpUserTaskInfo = newTaskInfo.UserTask;

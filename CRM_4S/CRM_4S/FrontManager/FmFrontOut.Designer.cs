@@ -28,10 +28,12 @@ namespace CRM_4S.FrontManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControlVisitRecord = new DevExpress.XtraGrid.GridControl();
-            this.gridViewVisitRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlFrontRecord = new DevExpress.XtraGrid.GridControl();
+            this.frontRecordInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmVisitIn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmVisitOut = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,35 +55,39 @@ namespace CRM_4S.FrontManager
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.dtLeaveTime = new DevExpress.XtraEditors.DateEdit();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.cbCustomerLevel = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbCLevel = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txtVisitorCnt = new DevExpress.XtraEditors.TextEdit();
+            this.txtCustomerNum = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.cbDriveStatus = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbCarType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.cbCarBrand = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbCarType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.cbCarLicence = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCustomerIndustry = new DevExpress.XtraEditors.TextEdit();
+            this.txtCIndustry = new DevExpress.XtraEditors.TextEdit();
             this.权限 = new DevExpress.XtraEditors.LabelControl();
-            this.cbCustomerNature = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbCNature = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCustomerPhone = new DevExpress.XtraEditors.TextEdit();
-            this.TxtCustomerName = new DevExpress.XtraEditors.TextEdit();
-            this.txtCustomerAddress = new DevExpress.XtraEditors.MemoEdit();
+            this.txtCPhone = new DevExpress.XtraEditors.TextEdit();
+            this.txtCName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCAddress = new DevExpress.XtraEditors.MemoEdit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlVisitRecord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewVisitRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -95,18 +101,20 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCustomerLevel.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVisitorCnt.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLeaveTime.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLeaveTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCLevel.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerNum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbDriveStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCarBrand.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarLicence.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerIndustry.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCustomerNature.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCustomerName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerAddress.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCIndustry.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCNature.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -116,33 +124,38 @@ namespace CRM_4S.FrontManager
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(796, 465);
+            this.panelControl1.Size = new System.Drawing.Size(831, 471);
             this.panelControl1.TabIndex = 999;
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.gridControlVisitRecord);
+            this.groupControl3.Controls.Add(this.gridControlFrontRecord);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(2, 258);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(792, 205);
+            this.groupControl3.Size = new System.Drawing.Size(827, 211);
             this.groupControl3.TabIndex = 1012;
             this.groupControl3.Text = "进店记录";
             // 
-            // gridControlVisitRecord
+            // gridControlFrontRecord
             // 
-            this.gridControlVisitRecord.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlVisitRecord.Location = new System.Drawing.Point(2, 23);
-            this.gridControlVisitRecord.MainView = this.gridViewVisitRecord;
-            this.gridControlVisitRecord.Name = "gridControlVisitRecord";
-            this.gridControlVisitRecord.Size = new System.Drawing.Size(788, 180);
-            this.gridControlVisitRecord.TabIndex = 0;
-            this.gridControlVisitRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewVisitRecord});
+            this.gridControlFrontRecord.DataSource = this.frontRecordInfoBindingSource;
+            this.gridControlFrontRecord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlFrontRecord.Location = new System.Drawing.Point(2, 23);
+            this.gridControlFrontRecord.MainView = this.gridViewFrontRecord;
+            this.gridControlFrontRecord.Name = "gridControlFrontRecord";
+            this.gridControlFrontRecord.Size = new System.Drawing.Size(823, 186);
+            this.gridControlFrontRecord.TabIndex = 0;
+            this.gridControlFrontRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewFrontRecord});
             // 
-            // gridViewVisitRecord
+            // frontRecordInfoBindingSource
             // 
-            this.gridViewVisitRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.frontRecordInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.FrontRecordInfo);
+            // 
+            // gridViewFrontRecord
+            // 
+            this.gridViewFrontRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clmVisitIn,
             this.clmVisitOut,
             this.clmCustomerNum,
@@ -152,14 +165,18 @@ namespace CRM_4S.FrontManager
             this.clmConsultantName,
             this.clmDurationTime,
             this.clmRemark});
-            this.gridViewVisitRecord.GridControl = this.gridControlVisitRecord;
-            this.gridViewVisitRecord.Name = "gridViewVisitRecord";
-            this.gridViewVisitRecord.OptionsView.ShowGroupPanel = false;
+            this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
+            this.gridViewFrontRecord.Name = "gridViewFrontRecord";
+            this.gridViewFrontRecord.OptionsBehavior.Editable = false;
+            this.gridViewFrontRecord.OptionsView.ShowGroupPanel = false;
+            this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             // 
             // clmVisitIn
             // 
             this.clmVisitIn.Caption = "进店时间";
-            this.clmVisitIn.FieldName = "VisitRecord.ArrivalTime.Value";
+            this.clmVisitIn.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmVisitIn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmVisitIn.FieldName = "ArrivalTime";
             this.clmVisitIn.Name = "clmVisitIn";
             this.clmVisitIn.Visible = true;
             this.clmVisitIn.VisibleIndex = 0;
@@ -167,39 +184,49 @@ namespace CRM_4S.FrontManager
             // clmVisitOut
             // 
             this.clmVisitOut.Caption = "离店时间";
-            this.clmVisitOut.FieldName = "VisitRecord.LeaveTime.Value";
+            this.clmVisitOut.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmVisitOut.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmVisitOut.FieldName = "LeaveTime";
             this.clmVisitOut.Name = "clmVisitOut";
             this.clmVisitOut.Visible = true;
             this.clmVisitOut.VisibleIndex = 1;
             // 
             // clmCustomerNum
             // 
+            this.clmCustomerNum.AppearanceCell.Options.UseTextOptions = true;
+            this.clmCustomerNum.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmCustomerNum.Caption = "进店人数";
-            this.clmCustomerNum.FieldName = "VisitRecord.CustomerNum";
+            this.clmCustomerNum.FieldName = "CustomerNum";
             this.clmCustomerNum.Name = "clmCustomerNum";
             this.clmCustomerNum.Visible = true;
             this.clmCustomerNum.VisibleIndex = 2;
             // 
             // clmCarLicence
             // 
+            this.clmCarLicence.AppearanceCell.Options.UseTextOptions = true;
+            this.clmCarLicence.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmCarLicence.Caption = "牌照状况";
-            this.clmCarLicence.FieldName = "VisitRecord.CarLicence";
+            this.clmCarLicence.FieldName = "CarLicence";
             this.clmCarLicence.Name = "clmCarLicence";
             this.clmCarLicence.Visible = true;
             this.clmCarLicence.VisibleIndex = 3;
             // 
             // clmPurposeCar
             // 
+            this.clmPurposeCar.AppearanceCell.Options.UseTextOptions = true;
+            this.clmPurposeCar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmPurposeCar.Caption = "意向车型";
-            this.clmPurposeCar.FieldName = "VisitRecord.PurposeCar";
+            this.clmPurposeCar.FieldName = "PurposeCar";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
             this.clmPurposeCar.VisibleIndex = 4;
             // 
             // clmDriveStatus
             // 
+            this.clmDriveStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.clmDriveStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmDriveStatus.Caption = "是否试驾";
-            this.clmDriveStatus.FieldName = "VisitRecord.DriveStatus";
+            this.clmDriveStatus.FieldName = "DriveStatus";
             this.clmDriveStatus.Name = "clmDriveStatus";
             this.clmDriveStatus.Visible = true;
             this.clmDriveStatus.VisibleIndex = 5;
@@ -207,7 +234,7 @@ namespace CRM_4S.FrontManager
             // clmConsultantName
             // 
             this.clmConsultantName.Caption = "销售顾问";
-            this.clmConsultantName.FieldName = "ConsultantUser.RealName";
+            this.clmConsultantName.FieldName = "ConsultantId";
             this.clmConsultantName.Name = "clmConsultantName";
             this.clmConsultantName.Visible = true;
             this.clmConsultantName.VisibleIndex = 6;
@@ -215,7 +242,7 @@ namespace CRM_4S.FrontManager
             // clmDurationTime
             // 
             this.clmDurationTime.Caption = "接待时长";
-            this.clmDurationTime.FieldName = "VisitRecord.DurationTime";
+            this.clmDurationTime.FieldName = "DurationTime";
             this.clmDurationTime.Name = "clmDurationTime";
             this.clmDurationTime.Visible = true;
             this.clmDurationTime.VisibleIndex = 7;
@@ -223,7 +250,7 @@ namespace CRM_4S.FrontManager
             // clmRemark
             // 
             this.clmRemark.Caption = "需求描述";
-            this.clmRemark.FieldName = "VisitRecord.Remark";
+            this.clmRemark.FieldName = "Remark";
             this.clmRemark.Name = "clmRemark";
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 8;
@@ -235,7 +262,7 @@ namespace CRM_4S.FrontManager
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(2, 2);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(792, 256);
+            this.panelControl4.Size = new System.Drawing.Size(827, 256);
             this.panelControl4.TabIndex = 2;
             // 
             // groupControl1
@@ -250,7 +277,7 @@ namespace CRM_4S.FrontManager
             this.groupControl1.Location = new System.Drawing.Point(2, 2);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(258, 252);
+            this.groupControl1.Size = new System.Drawing.Size(293, 252);
             this.groupControl1.TabIndex = 1036;
             this.groupControl1.Text = "离店评估";
             // 
@@ -262,7 +289,7 @@ namespace CRM_4S.FrontManager
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl5.Location = new System.Drawing.Point(2, 189);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(254, 61);
+            this.panelControl5.Size = new System.Drawing.Size(289, 61);
             this.panelControl5.TabIndex = 2;
             // 
             // labelControl12
@@ -338,35 +365,62 @@ namespace CRM_4S.FrontManager
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.dtLeaveTime);
+            this.groupControl2.Controls.Add(this.btnSave);
             this.groupControl2.Controls.Add(this.labelControl4);
-            this.groupControl2.Controls.Add(this.cbCustomerLevel);
+            this.groupControl2.Controls.Add(this.cbCLevel);
             this.groupControl2.Controls.Add(this.labelControl6);
-            this.groupControl2.Controls.Add(this.txtVisitorCnt);
+            this.groupControl2.Controls.Add(this.txtCustomerNum);
+            this.groupControl2.Controls.Add(this.labelControl13);
             this.groupControl2.Controls.Add(this.labelControl10);
             this.groupControl2.Controls.Add(this.labelControl9);
             this.groupControl2.Controls.Add(this.cbDriveStatus);
-            this.groupControl2.Controls.Add(this.cbCarType);
             this.groupControl2.Controls.Add(this.labelControl8);
-            this.groupControl2.Controls.Add(this.cbCarBrand);
+            this.groupControl2.Controls.Add(this.cbCarType);
             this.groupControl2.Controls.Add(this.labelControl7);
             this.groupControl2.Controls.Add(this.cbCarLicence);
             this.groupControl2.Controls.Add(this.txtRemark);
             this.groupControl2.Controls.Add(this.labelControl3);
             this.groupControl2.Controls.Add(this.labelControl2);
-            this.groupControl2.Controls.Add(this.txtCustomerIndustry);
+            this.groupControl2.Controls.Add(this.txtCIndustry);
             this.groupControl2.Controls.Add(this.权限);
-            this.groupControl2.Controls.Add(this.cbCustomerNature);
+            this.groupControl2.Controls.Add(this.cbCNature);
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.labelControl5);
-            this.groupControl2.Controls.Add(this.txtCustomerPhone);
-            this.groupControl2.Controls.Add(this.TxtCustomerName);
-            this.groupControl2.Controls.Add(this.txtCustomerAddress);
+            this.groupControl2.Controls.Add(this.txtCPhone);
+            this.groupControl2.Controls.Add(this.txtCName);
+            this.groupControl2.Controls.Add(this.txtCAddress);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupControl2.Location = new System.Drawing.Point(260, 2);
+            this.groupControl2.Location = new System.Drawing.Point(295, 2);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(530, 252);
             this.groupControl2.TabIndex = 1035;
             this.groupControl2.Text = "顾客信息";
+            // 
+            // dtLeaveTime
+            // 
+            this.dtLeaveTime.EditValue = null;
+            this.dtLeaveTime.Location = new System.Drawing.Point(335, 154);
+            this.dtLeaveTime.Name = "dtLeaveTime";
+            this.dtLeaveTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtLeaveTime.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtLeaveTime.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtLeaveTime.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtLeaveTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtLeaveTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dtLeaveTime.Size = new System.Drawing.Size(181, 21);
+            this.dtLeaveTime.TabIndex = 1057;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(474, 189);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(44, 46);
+            this.btnSave.TabIndex = 1056;
+            this.btnSave.Text = "保存";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // labelControl4
             // 
@@ -376,34 +430,42 @@ namespace CRM_4S.FrontManager
             this.labelControl4.TabIndex = 1055;
             this.labelControl4.Text = "顾客等级";
             // 
-            // cbCustomerLevel
+            // cbCLevel
             // 
-            this.cbCustomerLevel.EnterMoveNextControl = true;
-            this.cbCustomerLevel.Location = new System.Drawing.Point(71, 96);
-            this.cbCustomerLevel.Name = "cbCustomerLevel";
-            this.cbCustomerLevel.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbCLevel.EnterMoveNextControl = true;
+            this.cbCLevel.Location = new System.Drawing.Point(71, 96);
+            this.cbCLevel.Name = "cbCLevel";
+            this.cbCLevel.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCustomerLevel.Size = new System.Drawing.Size(182, 21);
-            this.cbCustomerLevel.TabIndex = 1054;
+            this.cbCLevel.Size = new System.Drawing.Size(182, 21);
+            this.cbCLevel.TabIndex = 1054;
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(282, 157);
+            this.labelControl6.Location = new System.Drawing.Point(281, 129);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(48, 14);
             this.labelControl6.TabIndex = 1053;
             this.labelControl6.Text = "进店人数";
             // 
-            // txtVisitorCnt
+            // txtCustomerNum
             // 
-            this.txtVisitorCnt.EditValue = "";
-            this.txtVisitorCnt.EnterMoveNextControl = true;
-            this.txtVisitorCnt.Location = new System.Drawing.Point(336, 154);
-            this.txtVisitorCnt.Name = "txtVisitorCnt";
-            this.txtVisitorCnt.Properties.NullValuePrompt = "默认为空";
-            this.txtVisitorCnt.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtVisitorCnt.Size = new System.Drawing.Size(182, 21);
-            this.txtVisitorCnt.TabIndex = 1052;
+            this.txtCustomerNum.EditValue = "1";
+            this.txtCustomerNum.EnterMoveNextControl = true;
+            this.txtCustomerNum.Location = new System.Drawing.Point(335, 126);
+            this.txtCustomerNum.Name = "txtCustomerNum";
+            this.txtCustomerNum.Properties.NullValuePrompt = "默认为空";
+            this.txtCustomerNum.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCustomerNum.Size = new System.Drawing.Size(182, 21);
+            this.txtCustomerNum.TabIndex = 1052;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(282, 157);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(48, 14);
+            this.labelControl13.TabIndex = 1051;
+            this.labelControl13.Text = "离店时间";
             // 
             // labelControl10
             // 
@@ -415,7 +477,7 @@ namespace CRM_4S.FrontManager
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(282, 128);
+            this.labelControl9.Location = new System.Drawing.Point(281, 100);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(48, 14);
             this.labelControl9.TabIndex = 1049;
@@ -424,22 +486,12 @@ namespace CRM_4S.FrontManager
             // cbDriveStatus
             // 
             this.cbDriveStatus.EnterMoveNextControl = true;
-            this.cbDriveStatus.Location = new System.Drawing.Point(336, 125);
+            this.cbDriveStatus.Location = new System.Drawing.Point(335, 97);
             this.cbDriveStatus.Name = "cbDriveStatus";
             this.cbDriveStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbDriveStatus.Size = new System.Drawing.Size(182, 21);
             this.cbDriveStatus.TabIndex = 1048;
-            // 
-            // cbCarType
-            // 
-            this.cbCarType.EnterMoveNextControl = true;
-            this.cbCarType.Location = new System.Drawing.Point(336, 96);
-            this.cbCarType.Name = "cbCarType";
-            this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCarType.Size = new System.Drawing.Size(182, 21);
-            this.cbCarType.TabIndex = 1047;
             // 
             // labelControl8
             // 
@@ -449,15 +501,15 @@ namespace CRM_4S.FrontManager
             this.labelControl8.TabIndex = 1046;
             this.labelControl8.Text = "意向车型";
             // 
-            // cbCarBrand
+            // cbCarType
             // 
-            this.cbCarBrand.EnterMoveNextControl = true;
-            this.cbCarBrand.Location = new System.Drawing.Point(336, 67);
-            this.cbCarBrand.Name = "cbCarBrand";
-            this.cbCarBrand.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbCarType.EnterMoveNextControl = true;
+            this.cbCarType.Location = new System.Drawing.Point(336, 67);
+            this.cbCarType.Name = "cbCarType";
+            this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCarBrand.Size = new System.Drawing.Size(182, 21);
-            this.cbCarBrand.TabIndex = 1045;
+            this.cbCarType.Size = new System.Drawing.Size(182, 21);
+            this.cbCarType.TabIndex = 1045;
             // 
             // labelControl7
             // 
@@ -480,11 +532,11 @@ namespace CRM_4S.FrontManager
             // txtRemark
             // 
             this.txtRemark.EditValue = "";
-            this.txtRemark.Location = new System.Drawing.Point(336, 183);
+            this.txtRemark.Location = new System.Drawing.Point(335, 183);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Properties.NullValuePrompt = "默认为空";
             this.txtRemark.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtRemark.Size = new System.Drawing.Size(182, 57);
+            this.txtRemark.Size = new System.Drawing.Size(133, 57);
             this.txtRemark.TabIndex = 1050;
             // 
             // labelControl3
@@ -503,16 +555,16 @@ namespace CRM_4S.FrontManager
             this.labelControl2.TabIndex = 1042;
             this.labelControl2.Text = "居住地址";
             // 
-            // txtCustomerIndustry
+            // txtCIndustry
             // 
-            this.txtCustomerIndustry.EditValue = "";
-            this.txtCustomerIndustry.EnterMoveNextControl = true;
-            this.txtCustomerIndustry.Location = new System.Drawing.Point(71, 154);
-            this.txtCustomerIndustry.Name = "txtCustomerIndustry";
-            this.txtCustomerIndustry.Properties.NullValuePrompt = "默认为空";
-            this.txtCustomerIndustry.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCustomerIndustry.Size = new System.Drawing.Size(182, 21);
-            this.txtCustomerIndustry.TabIndex = 1039;
+            this.txtCIndustry.EditValue = "";
+            this.txtCIndustry.EnterMoveNextControl = true;
+            this.txtCIndustry.Location = new System.Drawing.Point(71, 154);
+            this.txtCIndustry.Name = "txtCIndustry";
+            this.txtCIndustry.Properties.NullValuePrompt = "默认为空";
+            this.txtCIndustry.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCIndustry.Size = new System.Drawing.Size(182, 21);
+            this.txtCIndustry.TabIndex = 1039;
             // 
             // 权限
             // 
@@ -522,15 +574,15 @@ namespace CRM_4S.FrontManager
             this.权限.TabIndex = 1038;
             this.权限.Text = "性质分类";
             // 
-            // cbCustomerNature
+            // cbCNature
             // 
-            this.cbCustomerNature.EnterMoveNextControl = true;
-            this.cbCustomerNature.Location = new System.Drawing.Point(71, 125);
-            this.cbCustomerNature.Name = "cbCustomerNature";
-            this.cbCustomerNature.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbCNature.EnterMoveNextControl = true;
+            this.cbCNature.Location = new System.Drawing.Point(71, 125);
+            this.cbCNature.Name = "cbCNature";
+            this.cbCNature.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCustomerNature.Size = new System.Drawing.Size(182, 21);
-            this.cbCustomerNature.TabIndex = 1037;
+            this.cbCNature.Size = new System.Drawing.Size(182, 21);
+            this.cbCNature.TabIndex = 1037;
             // 
             // labelControl1
             // 
@@ -548,37 +600,41 @@ namespace CRM_4S.FrontManager
             this.labelControl5.TabIndex = 1036;
             this.labelControl5.Text = "顾客姓名";
             // 
-            // txtCustomerPhone
+            // txtCPhone
             // 
-            this.txtCustomerPhone.EditValue = "";
-            this.txtCustomerPhone.EnterMoveNextControl = true;
-            this.txtCustomerPhone.Location = new System.Drawing.Point(71, 67);
-            this.txtCustomerPhone.Name = "txtCustomerPhone";
-            this.txtCustomerPhone.Properties.NullValuePrompt = "默认为空";
-            this.txtCustomerPhone.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCustomerPhone.Size = new System.Drawing.Size(182, 21);
-            this.txtCustomerPhone.TabIndex = 1033;
+            this.txtCPhone.EditValue = "";
+            this.txtCPhone.EnterMoveNextControl = true;
+            this.txtCPhone.Location = new System.Drawing.Point(71, 67);
+            this.txtCPhone.Name = "txtCPhone";
+            this.txtCPhone.Properties.NullValuePrompt = "默认为空";
+            this.txtCPhone.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCPhone.Size = new System.Drawing.Size(182, 21);
+            this.txtCPhone.TabIndex = 1033;
             // 
-            // TxtCustomerName
+            // txtCName
             // 
-            this.TxtCustomerName.EditValue = "";
-            this.TxtCustomerName.EnterMoveNextControl = true;
-            this.TxtCustomerName.Location = new System.Drawing.Point(71, 38);
-            this.TxtCustomerName.Name = "TxtCustomerName";
-            this.TxtCustomerName.Properties.NullValuePrompt = "默认为空";
-            this.TxtCustomerName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtCustomerName.Size = new System.Drawing.Size(182, 21);
-            this.TxtCustomerName.TabIndex = 1034;
+            this.txtCName.EditValue = "";
+            this.txtCName.EnterMoveNextControl = true;
+            this.txtCName.Location = new System.Drawing.Point(71, 38);
+            this.txtCName.Name = "txtCName";
+            this.txtCName.Properties.NullValuePrompt = "默认为空";
+            this.txtCName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCName.Size = new System.Drawing.Size(182, 21);
+            this.txtCName.TabIndex = 1034;
             // 
-            // txtCustomerAddress
+            // txtCAddress
             // 
-            this.txtCustomerAddress.EditValue = "";
-            this.txtCustomerAddress.Location = new System.Drawing.Point(71, 183);
-            this.txtCustomerAddress.Name = "txtCustomerAddress";
-            this.txtCustomerAddress.Properties.NullValuePrompt = "默认为空";
-            this.txtCustomerAddress.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCustomerAddress.Size = new System.Drawing.Size(182, 57);
-            this.txtCustomerAddress.TabIndex = 1040;
+            this.txtCAddress.EditValue = "";
+            this.txtCAddress.Location = new System.Drawing.Point(71, 183);
+            this.txtCAddress.Name = "txtCAddress";
+            this.txtCAddress.Properties.NullValuePrompt = "默认为空";
+            this.txtCAddress.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCAddress.Size = new System.Drawing.Size(182, 57);
+            this.txtCAddress.TabIndex = 1040;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmFrontOut
             // 
@@ -586,7 +642,7 @@ namespace CRM_4S.FrontManager
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 509);
+            this.ClientSize = new System.Drawing.Size(831, 515);
             this.Controls.Add(this.panelControl1);
             this.Name = "FmFrontOut";
             this.Text = "顾客离店";
@@ -595,8 +651,9 @@ namespace CRM_4S.FrontManager
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlVisitRecord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewVisitRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -612,18 +669,20 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCustomerLevel.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVisitorCnt.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLeaveTime.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLeaveTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCLevel.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerNum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbDriveStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCarBrand.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarLicence.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerIndustry.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCustomerNature.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCustomerName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerAddress.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCIndustry.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCNature.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -632,8 +691,8 @@ namespace CRM_4S.FrontManager
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.XtraGrid.GridControl gridControlVisitRecord;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewVisitRecord;
+        private DevExpress.XtraGrid.GridControl gridControlFrontRecord;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewFrontRecord;
         private DevExpress.XtraGrid.Columns.GridColumn clmVisitIn;
         private DevExpress.XtraGrid.Columns.GridColumn clmVisitOut;
         private DevExpress.XtraGrid.Columns.GridColumn clmCustomerNum;
@@ -656,28 +715,32 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCustomerLevel;
+        private DevExpress.XtraEditors.ComboBoxEdit cbCLevel;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit txtVisitorCnt;
+        private DevExpress.XtraEditors.TextEdit txtCustomerNum;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.ComboBoxEdit cbDriveStatus;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCarType;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCarBrand;
+        private DevExpress.XtraEditors.ComboBoxEdit cbCarType;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.ComboBoxEdit cbCarLicence;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit txtCustomerIndustry;
+        private DevExpress.XtraEditors.TextEdit txtCIndustry;
         private DevExpress.XtraEditors.LabelControl 权限;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCustomerNature;
+        private DevExpress.XtraEditors.ComboBoxEdit cbCNature;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit txtCustomerPhone;
-        private DevExpress.XtraEditors.TextEdit TxtCustomerName;
-        private DevExpress.XtraEditors.MemoEdit txtCustomerAddress;
+        private DevExpress.XtraEditors.TextEdit txtCPhone;
+        private DevExpress.XtraEditors.TextEdit txtCName;
+        private DevExpress.XtraEditors.MemoEdit txtCAddress;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+        private System.Windows.Forms.BindingSource frontRecordInfoBindingSource;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.DateEdit dtLeaveTime;
 
 
     }
