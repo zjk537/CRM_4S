@@ -39,9 +39,9 @@ namespace CRM_4S.UserManager
 
                 userShopRoleInfo = info;
             }
-            cbRole.Properties.Items.AddRange(GloableCaches.Instance.RoleInfos);
-            cbShop.Properties.Items.AddRange(GloableCaches.Instance.ShopInfos);
-            cbSex.Properties.Items.AddRange(GloableConstants.SexNames);
+            cbRole.Properties.Items.AddRange(GloablCaches.Instance.RoleInfos);
+            cbShop.Properties.Items.AddRange(GloablCaches.Instance.ShopInfos);
+            cbSex.Properties.Items.AddRange(GloablConstants.SexNames);
 
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;

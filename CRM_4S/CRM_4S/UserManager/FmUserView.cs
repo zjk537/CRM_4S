@@ -96,9 +96,9 @@ namespace CRM_4S.UserManager
 
                 XtraMessageBox.Show("密码重置成功，默认为123456", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (SelectedUser.User.Id == GloableCaches.Instance.CurUser.Id)
+                if (SelectedUser.User.Id == GloablCaches.Instance.CurUser.Id)
                 {
-                    GloableCaches.Instance.CurUser.Pwd = SelectedUser.User.Pwd;
+                    GloablCaches.Instance.CurUser.Pwd = SelectedUser.User.Pwd;
                 }
 
             }
@@ -170,7 +170,7 @@ namespace CRM_4S.UserManager
         {
             if (e.Column.Name == "clmSex")
             {
-                String sexName = GloableConstants.SexNames[(int)e.CellValue];
+                String sexName = GloablConstants.SexNames[(int)e.CellValue];
                 e.DisplayText = sexName;
             }
         }

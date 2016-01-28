@@ -26,7 +26,7 @@ namespace CRM_4S.Business.BusinessModel
              {
                  if (shop == null && frontRecord != null)
                  {
-                     shop = GloableCaches.Instance.ShopInfos.FirstOrDefault(e => e.Id == frontRecord.ShopId);
+                     shop = GloablCaches.Instance.ShopInfos.FirstOrDefault(e => e.Id == frontRecord.ShopId);
                  }
                  return shop;
              }
@@ -48,7 +48,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (consultantUser == null && frontRecord != null)
                 {
-                    consultantUser = GloableCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == frontRecord.ConsultantId);
+                    consultantUser = GloablCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == frontRecord.ConsultantId);
                 }
                 return consultantUser;
             }

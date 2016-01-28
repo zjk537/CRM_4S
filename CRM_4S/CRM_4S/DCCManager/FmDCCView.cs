@@ -1,3 +1,5 @@
+using CRM_4S.Business;
+using CRM_4S.Business.BusinessModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
@@ -16,6 +18,12 @@ namespace CRM_4S.DCCManager
         public FmDCCView()
         {
             InitializeComponent();
+            initView();
+            DCCRecordBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshDCCRecordView(); });
+        }
+
+        private void initView()
+        {
         }
 
         #region Public control
@@ -91,7 +99,7 @@ namespace CRM_4S.DCCManager
 
         private void btnDCCRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("刷新成功");
+            RefreshDCCRecordView();
         }
 
         private void btnDCCExport_ItemClick(object sender, ItemClickEventArgs e)
@@ -110,7 +118,8 @@ namespace CRM_4S.DCCManager
         }
         private void btnDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmDCCRecall().ShowDialog();
+            var rowData = gridViewDCCRecord.GetRow(gridViewDCCRecord.GetSelectedRows()[0]);
+            new FmDCCRecall(rowData as DCCCustomerRecordInfo).ShowDialog();
         }
 
         private void btnDCCAdd_ItemClick(object sender, ItemClickEventArgs e)
@@ -119,5 +128,55 @@ namespace CRM_4S.DCCManager
         }
 
         #endregion
+
+
+        private void RefreshDCCRecordView()
+        {
+            var listResults = DCCRecordBusiness.Instance.GetDCCRecords(GloablCaches.Instance.CurUser.ShopId);
+            gridControlDCCRecord.DataSource = listResults;
+            gridControlDCCRecord.DefaultView.RefreshData();
+        }
+
+        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "clmDCCSource")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCSource[(int)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "cmlDCCStatus")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCStatus[(int)e.CellValue];
+                return;
+            }
+
+            if (e.Column.Name == "clmPurposeCar")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                return;
+            }
+
+            if (e.Column.Name == "clmIsLogin")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue];
+                return;
+            }
+            if (e.Column.Name == "clmPromiseShop")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue];
+                return;
+            }
+        }
+
+        private void gridViewFrontRecord_DoubleClick(object sender, EventArgs e)
+        {
+            btnDCCRecall_ItemClick(sender, null);
+        }
+
+        private void FmDCCView_Load(object sender, EventArgs e)
+        {
+            RefreshDCCRecordView();
+        }
     }
 }

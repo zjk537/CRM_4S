@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CRM_4S.Business
 {
-    public class GloableCaches
+    public class GloablCaches
     {
         /// <summary>
         /// 数据仓储超时时间
@@ -23,17 +23,17 @@ namespace CRM_4S.Business
 
         #region Single Instance
 
-        private static GloableCaches instance = null;
-        public static GloableCaches Instance
+        private static GloablCaches instance = null;
+        public static GloablCaches Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new GloableCaches();
+                    instance = new GloablCaches();
                 return instance;
             }
         }
-        private GloableCaches()
+        private GloablCaches()
         {
 
         }
@@ -160,10 +160,10 @@ namespace CRM_4S.Business
 
                         consultantInfos.AddRange(UserBusiness.Instance.GetUsers(new UserInfo()
                         {
-                            ShopId = GloableCaches.Instance.CurUser.ShopId,
-                            RoleId = GloableConstants.RoleIdConsultant
+                            ShopId = GloablCaches.Instance.CurUser.ShopId,
+                            RoleId = GloablConstants.RoleIdConsultant
                         }));
-                        if (roleInfos.Count == 0)
+                        if (consultantInfos.Count == 0)
                         {
                             this.CacheLastUpdatedTimes.Remove(cacheKeyConsultant);
                         }

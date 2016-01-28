@@ -233,6 +233,8 @@ namespace CRM_4S.FrontManager
             // 
             // clmConsultantName
             // 
+            this.clmConsultantName.AppearanceCell.Options.UseTextOptions = true;
+            this.clmConsultantName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmConsultantName.Caption = "销售顾问";
             this.clmConsultantName.FieldName = "ConsultantId";
             this.clmConsultantName.Name = "clmConsultantName";
@@ -610,6 +612,7 @@ namespace CRM_4S.FrontManager
             this.txtCPhone.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtCPhone.Size = new System.Drawing.Size(182, 21);
             this.txtCPhone.TabIndex = 1033;
+            this.txtCPhone.Leave += new System.EventHandler(this.txtCPhone_Leave);
             // 
             // txtCName
             // 
@@ -646,6 +649,7 @@ namespace CRM_4S.FrontManager
             this.Controls.Add(this.panelControl1);
             this.Name = "FmFrontOut";
             this.Text = "顾客离店";
+            this.Load += new System.EventHandler(this.FmFrontOut_Load);
             this.Controls.SetChildIndex(this.panelControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

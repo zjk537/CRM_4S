@@ -14,8 +14,8 @@ namespace CRM_4S.Business
 
         public IList<FrontCustomerRecordInfo> GetFrontRecords(int shopId = 0)
         {
-            var customerRecords = GetFrontCustomerRecords();
-            var customers = CustomerBusiness.Instance.GetCustomers(shopId);
+            var customerRecords = GetFrontCustomerRecords(shopId);
+            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = shopId });
             List<FrontCustomerRecordInfo> listResults = new List<FrontCustomerRecordInfo>();
             FrontCustomerRecordInfo customerRecord = null;
             foreach (FrontRecordInfo info in customerRecords)
@@ -41,19 +41,21 @@ namespace CRM_4S.Business
                         RecordCnt = 1
                     };
                     listResults.Add(customerRecord);
+                    continue;
                 }
                 customerRecord.RecordCnt++;
             }
             return listResults;
         }
 
-        public IList<FrontRecordInfo> GetFrontCustomerRecords(int customerId = 0, int recordId = 0)
+        public IList<FrontRecordInfo> GetFrontCustomerRecords(int shopId = 0, int customerId = 0, int recordId = 0)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetFrontCustomerRecords";
                 funcParms.Pams = new Dictionary<string, object>();
+                funcParms.Pams.Add("FrontRecordShopId", shopId);
                 funcParms.Pams.Add("FrontRecordId", recordId);
                 funcParms.Pams.Add("FrontRecordCustomerId", customerId);
 

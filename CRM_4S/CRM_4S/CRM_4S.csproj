@@ -182,12 +182,6 @@
     <Compile Include="FrontManager\FmFrontOut.Designer.cs">
       <DependentUpon>FmFrontOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontManager\FmFrontSumView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrontManager\FmFrontSumView.Designer.cs">
-      <DependentUpon>FmFrontSumView.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrontManager\FmFrontView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,9 +278,6 @@
     <EmbeddedResource Include="FrontManager\FmFrontOut.resx">
       <DependentUpon>FmFrontOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontManager\FmFrontSumView.resx">
-      <DependentUpon>FmFrontSumView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrontManager\FmFrontView.resx">
       <DependentUpon>FmFrontView.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +307,7 @@
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\DataSources\CRM_4S.Business.BusinessModel.DCCCustomerRecordInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.BusinessModel.UserShopRoleInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.BusinessModel.UsertCarTypeInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Business.Model.DCCCustomerInfo.datasource" />
@@ -324,6 +316,7 @@
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.AnalyseKPIInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.CarTypeInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.CustomerLevelInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.DCCRecordInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.EvaluateQuestionInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.FrontRecordInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.ShopInfo.datasource" />

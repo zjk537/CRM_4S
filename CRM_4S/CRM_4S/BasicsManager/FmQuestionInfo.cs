@@ -39,12 +39,12 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbQType.Properties.Items.AddRange(GloableConstants.QuestionTypes.Values);
+            cbQType.Properties.Items.AddRange(GloablConstants.QuestionTypes.Values);
 
             txtQDesc.DataBindings.Add("Text", newQInfo, "QDesc");
             //txtQLevel.DataBindings.Add("EditValue", newQInfo, "QLevel");
 
-            cbQType.Text = IsNew ? GloableConstants.QuestionTypes[QuestionType.All] : GloableConstants.QuestionTypes[(QuestionType)newQInfo.QType];
+            cbQType.Text = IsNew ? GloablConstants.QuestionTypes[QuestionType.All] : GloablConstants.QuestionTypes[(QuestionType)newQInfo.QType];
             txtQLevel.EditValue = newQInfo.QLevel ?? 100;
         }
 
@@ -54,9 +54,9 @@ namespace CRM_4S.BasicsManager
             {
                 if (!Validation()) return;
 
-                if (IsNew || GloableConstants.QuestionTypes[(QuestionType)newQInfo.QType] != cbQType.SelectedItem.ToString())
+                if (IsNew || GloablConstants.QuestionTypes[(QuestionType)newQInfo.QType] != cbQType.SelectedItem.ToString())
                 {
-                    QuestionType qType = GloableConstants.QuestionTypes.FirstOrDefault(qt => { return qt.Value == cbQType.SelectedItem.ToString(); }).Key;
+                    QuestionType qType = GloablConstants.QuestionTypes.FirstOrDefault(qt => { return qt.Value == cbQType.SelectedItem.ToString(); }).Key;
                     newQInfo.QType = (int)qType;
                 }
                 int qLevel = Convert.ToInt32(txtQLevel.EditValue);

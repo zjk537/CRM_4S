@@ -42,8 +42,8 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbConsultant.Properties.Items.AddRange(GloableCaches.Instance.ConsultantInfos);
-            cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
+            cbConsultant.Properties.Items.AddRange(GloablCaches.Instance.ConsultantInfos);
+            cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
 
             UserTaskInfo tmpUserTaskInfo = newTaskInfo.UserTask;
             cbConsultant.EditValue = tmpUserTaskInfo.ConsultantName;

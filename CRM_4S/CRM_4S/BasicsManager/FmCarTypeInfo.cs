@@ -38,11 +38,11 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbCarBrand.Properties.Items.AddRange(GloableConstants.CarBrands);
+            cbCarBrand.Properties.Items.AddRange(GloablConstants.CarBrands);
             txtCarType.DataBindings.Add("Text", newCarTypeInfo, "Name");
             txtDesc.DataBindings.Add("Text", newCarTypeInfo, "Desc");
 
-            int brandIndex = IsNew ? 0 : GloableConstants.CarBrands.IndexOf(newCarTypeInfo.Brand);
+            int brandIndex = IsNew ? 0 : GloablConstants.CarBrands.IndexOf(newCarTypeInfo.Brand);
             cbCarBrand.SelectedIndex = brandIndex;
         }
 

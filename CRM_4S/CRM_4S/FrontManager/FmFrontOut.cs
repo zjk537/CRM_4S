@@ -22,18 +22,16 @@ namespace CRM_4S.FrontManager
 
         FrontCustomerRecordInfo newRecordInfo = new FrontCustomerRecordInfo();
 
-
+        IList<CustomerLevelInfo> customerLevels = null;
         public FmFrontOut(FrontCustomerRecordInfo info)
         {
             InitializeComponent();
-            initView(info);
-
-            RefreshFrontRecordView(info.FrontRecord);
+            initForm(info);
 
             FrontRecordBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshFrontRecordView(newRecordInfo.FrontRecord); });
         }
 
-        private void initView(FrontCustomerRecordInfo info)
+        private void initForm(FrontCustomerRecordInfo info)
         {
             FrontRecordInfo frontInfo = new FrontRecordInfo();
             CustomerInfo customerInfo = new CustomerInfo();
@@ -47,23 +45,24 @@ namespace CRM_4S.FrontManager
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", customerInfo, "Industry");
             this.txtCAddress.DataBindings.Add("Text", customerInfo, "Address");
-            IList<CustomerLevelInfo> customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
+            customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
             this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
-            this.cbCNature.Properties.Items.AddRange(GloableConstants.CustomerNature);
+            this.cbCNature.Properties.Items.AddRange(GloablConstants.CustomerNature);
             this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
             this.cbCNature.SelectedIndex = customerInfo.Nature ?? 0;
 
-            this.cbCarLicence.Properties.Items.AddRange(GloableConstants.CarLicence);
-            this.cbCarType.Properties.Items.AddRange(GloableCaches.Instance.CarTypes);
-            this.cbDriveStatus.Properties.Items.AddRange(GloableConstants.BooleanDesc);
+            this.cbCarLicence.Properties.Items.AddRange(GloablConstants.CarLicence);
+            this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
+            this.cbDriveStatus.Properties.Items.AddRange(GloablConstants.BooleanDesc);
             this.cbCarLicence.SelectedIndex = frontInfo.CarLicence ?? 0;
-            this.cbCarType.SelectedItem = GloableCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
+            this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
             this.cbDriveStatus.SelectedIndex = frontInfo.DriveStatus ?? 0;
             this.txtCustomerNum.EditValue = frontInfo.CustomerNum;
-            this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
             this.dtLeaveTime.EditValue = frontInfo.LeaveTime ?? DateTime.Now;
+            this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
 
             this.Btn_OK.Visible = false;
+
 
         }
 
@@ -97,30 +96,29 @@ namespace CRM_4S.FrontManager
         {
             if (!(Validate())) return;
 
+            if (!string.IsNullOrEmpty(recordInfo.Customer.Phone) && string.IsNullOrEmpty(newRecordInfo.Customer.Phone))
+            {
+                errorProvider.SetError(this.txtCPhone, "不能为空", ErrorType.Warning);
+                return;
+            }
+
             try
             {
                 newRecordInfo.Customer.LevelCode = this.cbCLevel.SelectedText;
                 newRecordInfo.Customer.Nature = this.cbCNature.SelectedIndex;
-                newRecordInfo.Customer.ShopId = GloableCaches.Instance.CurUser.ShopId;
+                newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
                 newRecordInfo.FrontRecord.CarLicence = this.cbCarLicence.SelectedIndex;
                 newRecordInfo.FrontRecord.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
                 newRecordInfo.FrontRecord.DriveStatus = this.cbDriveStatus.SelectedIndex;
                 newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCustomerNum.EditValue);
 
                 // 在添加customer成功后，会给当前customer 赋Id
-                if (recordInfo.Customer.Id == 0)
+                if (newRecordInfo.Customer.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(newRecordInfo.Customer);
                 else
-                {
-                    if (!string.IsNullOrEmpty(recordInfo.Customer.Phone) && string.IsNullOrEmpty(newRecordInfo.Customer.Phone))
-                    {
-                        errorProvider.SetError(this.txtCPhone, "不能为空", ErrorType.Warning);
-                        return;
-                    }
                     CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
-                }
 
-                newRecordInfo.FrontRecord.IdSpecify = true;
+                newRecordInfo.FrontRecord.Id = recordInfo.FrontRecord.Id;
                 newRecordInfo.FrontRecord.CustomerId = newRecordInfo.Customer.Id;
                 newRecordInfo.FrontRecord.LeaveTime = (DateTime)this.dtLeaveTime.EditValue;
                 TimeSpan durationTime = newRecordInfo.FrontRecord.LeaveTime.Value - newRecordInfo.FrontRecord.ArrivalTime.Value;
@@ -141,7 +139,7 @@ namespace CRM_4S.FrontManager
             {
                 recordId = recordInfo.Id;
             }
-            var listResult = FrontRecordBusiness.Instance.GetFrontCustomerRecords(recordInfo.CustomerId, recordId);
+            var listResult = FrontRecordBusiness.Instance.GetFrontCustomerRecords(recordInfo.ShopId, recordInfo.CustomerId, recordId);
             gridControlFrontRecord.DataSource = listResult;
             gridControlFrontRecord.DefaultView.RefreshData();
         }
@@ -151,21 +149,79 @@ namespace CRM_4S.FrontManager
 
             if (e.Column.Name == "clmCarLicence")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableConstants.CarLicence[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CarLicence[(int)e.CellValue];
                 return;
             }
 
             if (e.Column.Name == "clmPurposeCar")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
                 return;
             }
 
             if (e.Column.Name == "clmDriveStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableConstants.DriveStatus[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DriveStatus[(int)e.CellValue];
                 return;
             }
+
+            if (e.Column.Name == "clmConsultantName")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConsultantInfos.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+            }
+        }
+
+        private void FmFrontOut_Load(object sender, EventArgs e)
+        {
+            RefreshFrontRecordView(recordInfo.FrontRecord);
+
+        }
+
+        private void txtCPhone_Leave(object sender, EventArgs e)
+        {
+            string phone = this.txtCPhone.Text.Trim();
+            if (string.IsNullOrEmpty(phone))
+            {
+                if (!string.IsNullOrEmpty(recordInfo.Customer.Phone))
+                    errorProvider.SetError(this.txtCPhone, "不能为空", ErrorType.Warning);
+                return;
+            }
+            // 未做修改，不查询
+            if (newRecordInfo.Customer.Phone == phone)
+            {
+                return;
+            }
+
+            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId, Phone = phone });
+            CustomerInfo info = null;
+            if (customers == null || customers.Count == 0)
+                info = new CustomerInfo()
+                {
+                    Phone = phone,
+                    Name = this.txtCName.Text.Trim(),
+                    Industry = this.txtCIndustry.Text.Trim(),
+                    Address = this.txtCAddress.Text.Trim()
+                };
+            else
+                info = customers.FirstOrDefault();
+
+            newRecordInfo.FrontRecord.CustomerId = info.Id;
+            // 如果根据 手机号查询出的顾客存在 就取顾客的记录，如果不存在 就取当前记录
+            newRecordInfo.FrontRecord.Id = info.Id == 0 ? newRecordInfo.FrontRecord.Id : 0;
+            newRecordInfo.Customer = info;
+
+            this.txtCName.DataBindings.Clear();
+            this.txtCPhone.DataBindings.Clear();
+            this.txtCIndustry.DataBindings.Clear();
+            this.txtCAddress.DataBindings.Clear();
+
+            this.txtCName.DataBindings.Add("Text", info, "Name");
+            this.txtCPhone.DataBindings.Add("Text", info, "Phone");
+            this.txtCIndustry.DataBindings.Add("Text", info, "Industry");
+            this.txtCAddress.DataBindings.Add("Text", info, "Address");
+            this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(obj => obj.Code == info.LevelCode);
+            this.cbCNature.SelectedIndex = info.Nature ?? 0;
+            RefreshFrontRecordView(newRecordInfo.FrontRecord);
         }
     }
 }

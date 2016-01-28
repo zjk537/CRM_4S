@@ -32,6 +32,7 @@ namespace CRM_4S.FrontManager
             this.gridControlFrontRecord = new DevExpress.XtraGrid.GridControl();
             this.sourceFrontCustomer = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmArrivalTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmLeaveTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRecordCnt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +49,6 @@ namespace CRM_4S.FrontManager
             this.clmDurationTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
@@ -94,6 +94,15 @@ namespace CRM_4S.FrontManager
             this.gridViewFrontRecord.Name = "gridViewFrontRecord";
             this.gridViewFrontRecord.OptionsBehavior.Editable = false;
             this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
+            this.gridViewFrontRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
+            // 
+            // clmShopName
+            // 
+            this.clmShopName.Caption = "店面名称";
+            this.clmShopName.FieldName = "Shop.Name";
+            this.clmShopName.Name = "clmShopName";
+            this.clmShopName.Visible = true;
+            this.clmShopName.VisibleIndex = 0;
             // 
             // clmArrivalTime
             // 
@@ -238,14 +247,6 @@ namespace CRM_4S.FrontManager
             this.clmRemark.Name = "clmRemark";
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 16;
-            // 
-            // clmShopName
-            // 
-            this.clmShopName.Caption = "店面名称";
-            this.clmShopName.FieldName = "Shop.Name";
-            this.clmShopName.Name = "clmShopName";
-            this.clmShopName.Visible = true;
-            this.clmShopName.VisibleIndex = 0;
             // 
             // FmFrontView
             // 

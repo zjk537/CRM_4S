@@ -181,7 +181,7 @@ namespace CRM_4S
 
         private void btnUpdateUserInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmUserInfo(new UserShopRoleInfo() { User = GloableCaches.Instance.CurUser }).ShowDialog();
+            new FmUserInfo(new UserShopRoleInfo() { User = GloablCaches.Instance.CurUser }).ShowDialog();
         }
 
         private void btnThisMonth_ItemClick(object sender, ItemClickEventArgs e)
@@ -211,12 +211,12 @@ namespace CRM_4S
 
         private void showSumView()
         {
-            pageViewContainer.Controls.Clear();
-            Form sumView = new FmFrontSumView();
-            sumView.TopLevel = false;
-            sumView.Dock = DockStyle.Fill;
-            pageViewContainer.Controls.Add(sumView);
-            sumView.Show();
+            //pageViewContainer.Controls.Clear();
+            //Form sumView = new FmFrontSumView();
+            //sumView.TopLevel = false;
+            //sumView.Dock = DockStyle.Fill;
+            //pageViewContainer.Controls.Add(sumView);
+            //sumView.Show();
         }
     }
 }

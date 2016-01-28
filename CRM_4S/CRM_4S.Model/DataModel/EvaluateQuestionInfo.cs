@@ -1,7 +1,7 @@
 ﻿/* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-21 10:33
+ * 创建日期：2016-01-28 16:24
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -21,6 +21,15 @@ namespace CRM_4S.Model.DataModel
         public int Id { get { return id; } set { id = value; IdSpecify = true; } }
 
 
+        private int shopId = 0;
+        public bool ShopIdSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 店面Id 
+        /// </summary>
+        [DBFieldAttribute("EvaluateQuestionShopId")]
+        public int ShopId { get { return shopId; } set { shopId = value; ShopIdSpecify = true; } }
+
+
         private string qDesc = string.Empty;
         public bool QDescSpecify { get; set; }
         /// <summary>
@@ -33,7 +42,7 @@ namespace CRM_4S.Model.DataModel
         private int? qType = null;
         public bool QTypeSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 问题类型：1、店面；2、DCC 3：all
+        /// 获取或设置 问题类型：1、店面；2、DCC 
         /// </summary>
         [DBFieldAttribute("EvaluateQuestionQType")]
         public int? QType { get { return qType; } set { qType = value; QTypeSpecify = true; } }

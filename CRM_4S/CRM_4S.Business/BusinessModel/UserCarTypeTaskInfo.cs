@@ -27,7 +27,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (carType == null && userTask != null)
                 {
-                    carType = GloableCaches.Instance.CarTypes.FirstOrDefault(obj => { return obj.Id == userTask.CarTypeId; });
+                    carType = GloablCaches.Instance.CarTypes.FirstOrDefault(obj => { return obj.Id == userTask.CarTypeId; });
                 }
                 return carType;
             }

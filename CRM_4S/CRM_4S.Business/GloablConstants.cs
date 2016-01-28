@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CRM_4S.Business
 {
-    public class GloableConstants
+    public class GloablConstants
     {
         public static List<string> SexNames = new List<string>() { "未知", "男", "女" };
 

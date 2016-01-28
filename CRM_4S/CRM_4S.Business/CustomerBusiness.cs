@@ -14,16 +14,15 @@ namespace CRM_4S.Business
         /// <summary>
         /// 获取顾客信息
         /// </summary>
-        /// <param name="shopId">为0 时 获取所有系统店面的所有用户 </param>
+        /// <param name="shop">shopId为0 时 获取所有系统店面的所有用户 </param>
         /// <returns></returns>
-        public IList<CustomerInfo> GetCustomers(int shopId = 0)
+        public IList<CustomerInfo> GetCustomers(CustomerInfo shop)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetCustomers";
-                funcParms.Pams = new Dictionary<string, object>();
-                funcParms.Pams.Add("CustomerShopId", shopId);
+                funcParms.Pams = shop.GetPams();
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetFrontCustomerRecords.uspGetCustomers", true);
@@ -34,9 +33,6 @@ namespace CRM_4S.Business
 
             }, null, "GetFrontCustomerRecords.ConvertToList", true);
         }
-
-
-
 
         public void AddCustomer(CustomerInfo info)
         {

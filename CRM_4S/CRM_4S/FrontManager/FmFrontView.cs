@@ -140,7 +140,7 @@ namespace CRM_4S.FrontManager
 
         private void RefreshFrontRecordView()
         {
-            var listResults = FrontRecordBusiness.Instance.GetFrontRecords();
+            var listResults = FrontRecordBusiness.Instance.GetFrontRecords(GloablCaches.Instance.CurUser.ShopId);
             gridControlFrontRecord.DataSource = listResults;
             gridControlFrontRecord.DefaultView.RefreshData();
         }
@@ -149,27 +149,32 @@ namespace CRM_4S.FrontManager
         {
             if (e.Column.Name == "clmCNature")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableConstants.CustomerNature[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CustomerNature[(int)e.CellValue];
                 return;
             }
 
             if (e.Column.Name == "clmCarLicence")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableConstants.CarLicence[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CarLicence[(int)e.CellValue];
                 return;
             }
 
             if (e.Column.Name == "clmPurposeCar")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
                 return;
             }
 
             if (e.Column.Name == "clmDriveStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloableConstants.DriveStatus[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DriveStatus[(int)e.CellValue];
                 return;
             }
+        }
+
+        private void gridViewFrontRecord_DoubleClick(object sender, EventArgs e)
+        {
+            btnCustomerOut_ItemClick(sender, null);
         }
     }
 }

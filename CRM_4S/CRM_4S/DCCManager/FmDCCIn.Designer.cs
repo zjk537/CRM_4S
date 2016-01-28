@@ -28,24 +28,25 @@ namespace CRM_4S.DCCManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCustomerPhone = new DevExpress.XtraEditors.TextEdit();
-            this.TxtCustomerName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCPhone = new DevExpress.XtraEditors.TextEdit();
+            this.txtCName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.cbDCCSource = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbCarType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.cbCarBrand = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.cbCarType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.dtVisitTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCustomerName.Properties)).BeginInit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbDCCSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCarBrand.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtVisitTime.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtVisitTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -64,27 +65,32 @@ namespace CRM_4S.DCCManager
             this.labelControl5.TabIndex = 1013;
             this.labelControl5.Text = "顾客姓名";
             // 
-            // txtCustomerPhone
+            // txtCPhone
             // 
-            this.txtCustomerPhone.EditValue = "";
-            this.txtCustomerPhone.EnterMoveNextControl = true;
-            this.txtCustomerPhone.Location = new System.Drawing.Point(72, 41);
-            this.txtCustomerPhone.Name = "txtCustomerPhone";
-            this.txtCustomerPhone.Properties.NullValuePrompt = "默认为空";
-            this.txtCustomerPhone.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCustomerPhone.Size = new System.Drawing.Size(182, 21);
-            this.txtCustomerPhone.TabIndex = 1010;
+            this.txtCPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCPhone.EditValue = "";
+            this.txtCPhone.EnterMoveNextControl = true;
+            this.txtCPhone.Location = new System.Drawing.Point(72, 41);
+            this.txtCPhone.Name = "txtCPhone";
+            this.txtCPhone.Properties.NullValuePrompt = "默认为空";
+            this.txtCPhone.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCPhone.Size = new System.Drawing.Size(183, 21);
+            this.txtCPhone.TabIndex = 1;
+            this.txtCPhone.Leave += new System.EventHandler(this.txtCPhone_Leave);
             // 
-            // TxtCustomerName
+            // txtCName
             // 
-            this.TxtCustomerName.EditValue = "";
-            this.TxtCustomerName.EnterMoveNextControl = true;
-            this.TxtCustomerName.Location = new System.Drawing.Point(72, 12);
-            this.TxtCustomerName.Name = "TxtCustomerName";
-            this.TxtCustomerName.Properties.NullValuePrompt = "默认为空";
-            this.TxtCustomerName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtCustomerName.Size = new System.Drawing.Size(182, 21);
-            this.TxtCustomerName.TabIndex = 1011;
+            this.txtCName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCName.EditValue = "";
+            this.txtCName.EnterMoveNextControl = true;
+            this.txtCName.Location = new System.Drawing.Point(72, 12);
+            this.txtCName.Name = "txtCName";
+            this.txtCName.Properties.NullValuePrompt = "默认为空";
+            this.txtCName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCName.Size = new System.Drawing.Size(183, 21);
+            this.txtCName.TabIndex = 0;
             // 
             // labelControl7
             // 
@@ -96,23 +102,15 @@ namespace CRM_4S.DCCManager
             // 
             // cbDCCSource
             // 
+            this.cbDCCSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDCCSource.EnterMoveNextControl = true;
             this.cbDCCSource.Location = new System.Drawing.Point(72, 96);
             this.cbDCCSource.Name = "cbDCCSource";
             this.cbDCCSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbDCCSource.Size = new System.Drawing.Size(182, 21);
-            this.cbDCCSource.TabIndex = 1014;
-            // 
-            // cbCarType
-            // 
-            this.cbCarType.EnterMoveNextControl = true;
-            this.cbCarType.Location = new System.Drawing.Point(72, 151);
-            this.cbCarType.Name = "cbCarType";
-            this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCarType.Size = new System.Drawing.Size(182, 21);
-            this.cbCarType.TabIndex = 1019;
+            this.cbDCCSource.Size = new System.Drawing.Size(183, 21);
+            this.cbDCCSource.TabIndex = 3;
             // 
             // labelControl8
             // 
@@ -122,31 +120,36 @@ namespace CRM_4S.DCCManager
             this.labelControl8.TabIndex = 1018;
             this.labelControl8.Text = "意向车型";
             // 
-            // cbCarBrand
+            // cbCarType
             // 
-            this.cbCarBrand.EnterMoveNextControl = true;
-            this.cbCarBrand.Location = new System.Drawing.Point(72, 124);
-            this.cbCarBrand.Name = "cbCarBrand";
-            this.cbCarBrand.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbCarType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCarType.EditValue = "";
+            this.cbCarType.EnterMoveNextControl = true;
+            this.cbCarType.Location = new System.Drawing.Point(72, 124);
+            this.cbCarType.Name = "cbCarType";
+            this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCarBrand.Size = new System.Drawing.Size(182, 21);
-            this.cbCarBrand.TabIndex = 1017;
+            this.cbCarType.Size = new System.Drawing.Size(183, 21);
+            this.cbCarType.TabIndex = 4;
             // 
-            // dateEdit1
+            // dtVisitTime
             // 
-            this.dateEdit1.EditValue = new System.DateTime(2016, 1, 15, 9, 58, 7, 0);
-            this.dateEdit1.Location = new System.Drawing.Point(72, 69);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtVisitTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtVisitTime.EditValue = new System.DateTime(2016, 1, 15, 9, 58, 7, 0);
+            this.dtVisitTime.Location = new System.Drawing.Point(72, 69);
+            this.dtVisitTime.Name = "dtVisitTime";
+            this.dtVisitTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
-            this.dateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
-            this.dateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtVisitTime.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtVisitTime.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtVisitTime.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.dtVisitTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtVisitTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit1.Size = new System.Drawing.Size(182, 21);
-            this.dateEdit1.TabIndex = 1021;
+            this.dtVisitTime.Size = new System.Drawing.Size(183, 21);
+            this.dtVisitTime.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -156,44 +159,46 @@ namespace CRM_4S.DCCManager
             this.labelControl2.TabIndex = 1020;
             this.labelControl2.Text = "访问时间";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FmDCCIn
             // 
             this.Appearance.Font = new System.Drawing.Font("Tahoma", 13F);
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 238);
-            this.Controls.Add(this.dateEdit1);
+            this.ClientSize = new System.Drawing.Size(271, 204);
+            this.Controls.Add(this.dtVisitTime);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.cbCarType);
             this.Controls.Add(this.labelControl8);
-            this.Controls.Add(this.cbCarBrand);
+            this.Controls.Add(this.cbCarType);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.cbDCCSource);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.txtCustomerPhone);
-            this.Controls.Add(this.TxtCustomerName);
+            this.Controls.Add(this.txtCPhone);
+            this.Controls.Add(this.txtCName);
             this.Name = "FmDCCIn";
-            this.Text = "FmDCCIn";
-            this.Controls.SetChildIndex(this.TxtCustomerName, 0);
-            this.Controls.SetChildIndex(this.txtCustomerPhone, 0);
+            this.Text = "新增访问";
+            this.Controls.SetChildIndex(this.txtCName, 0);
+            this.Controls.SetChildIndex(this.txtCPhone, 0);
             this.Controls.SetChildIndex(this.labelControl5, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);
             this.Controls.SetChildIndex(this.cbDCCSource, 0);
             this.Controls.SetChildIndex(this.labelControl7, 0);
-            this.Controls.SetChildIndex(this.cbCarBrand, 0);
-            this.Controls.SetChildIndex(this.labelControl8, 0);
             this.Controls.SetChildIndex(this.cbCarType, 0);
+            this.Controls.SetChildIndex(this.labelControl8, 0);
             this.Controls.SetChildIndex(this.labelControl2, 0);
-            this.Controls.SetChildIndex(this.dateEdit1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCustomerName.Properties)).EndInit();
+            this.Controls.SetChildIndex(this.dtVisitTime, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbDCCSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCarType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCarBrand.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtVisitTime.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtVisitTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,14 +208,14 @@ namespace CRM_4S.DCCManager
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit txtCustomerPhone;
-        private DevExpress.XtraEditors.TextEdit TxtCustomerName;
+        private DevExpress.XtraEditors.TextEdit txtCPhone;
+        private DevExpress.XtraEditors.TextEdit txtCName;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.ComboBoxEdit cbDCCSource;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCarType;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCarBrand;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbCarType;
+        private DevExpress.XtraEditors.DateEdit dtVisitTime;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
     }
 }

@@ -335,13 +335,13 @@ namespace CRM_4S.BasicsManager
         {
             if (e.Column.Name == "clmTaskStatus")
             {
-                e.DisplayText = GloableConstants.UserTaskStatus[(int)e.CellValue];
+                e.DisplayText = GloablConstants.UserTaskStatus[(int)e.CellValue];
                 return;
             }
 
             if (e.Column.Name == "clmQType")
             {
-                e.DisplayText = GloableConstants.QuestionTypes[(QuestionType)e.CellValue];
+                e.DisplayText = GloablConstants.QuestionTypes[(QuestionType)e.CellValue];
                 return;
             }
 
