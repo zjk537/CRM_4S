@@ -181,6 +181,7 @@ namespace CRM_4S.DCCManager
 
         private void FmDCCRecall_Load(object sender, EventArgs e)
         {
+            BindQuestions();
             RefreshDCCRecordView(recordInfo.DCCRecord);
         }
 
@@ -227,6 +228,38 @@ namespace CRM_4S.DCCManager
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
 
             RefreshDCCRecordView(newRecordInfo.DCCRecord);
+        }
+
+        private void BindQuestions()
+        {
+
+            var listQuestions = EvaluateQuestionBusiness.Instance.GetEvaluateQuestions();
+            if (listQuestions == null || listQuestions.Count == 0)
+            {
+                this.ckListQuestions.DataSource = new EvaluateQuestionInfo() { QDesc = "暂无评估问题" };
+                return;
+            }
+
+            this.ckListQuestions.DataSource = listQuestions;
+        }
+
+        private void btnEvaluate_Click(object sender, EventArgs e)
+        {
+            var lists = this.ckListQuestions.CheckedItems;
+            if (lists == null || lists.Count == 0)
+            {
+                this.lblCLevel.Text = "O";
+                this.txtLevelDesc.Text = "请选择评估问题后再点评估";
+                return;
+            }
+            List<EvaluateQuestionInfo> eqInfos = new List<EvaluateQuestionInfo>();
+            foreach (EvaluateQuestionInfo info in lists)
+            {
+                eqInfos.Add(info);
+            }
+            this.lblCLevel.Text = "B";
+            this.txtLevelDesc.Text = "购买意向很高的客户，需要在细微处关怀提升期望值，促进成交（精品、保养等）";
+
         }
     }
 }

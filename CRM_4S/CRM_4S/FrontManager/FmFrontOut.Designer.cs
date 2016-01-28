@@ -45,15 +45,12 @@ namespace CRM_4S.FrontManager
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ckListQuestions = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.evaluateQuestionInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.lblCLevel = new DevExpress.XtraEditors.LabelControl();
+            this.btnEvaluate = new DevExpress.XtraEditors.SimpleButton();
+            this.txtLevelDesc = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dtLeaveTime = new DevExpress.XtraEditors.DateEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -92,13 +89,11 @@ namespace CRM_4S.FrontManager
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckListQuestions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLevelDesc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtLeaveTime.Properties.VistaTimeProperties)).BeginInit();
@@ -269,12 +264,8 @@ namespace CRM_4S.FrontManager
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.ckListQuestions);
             this.groupControl1.Controls.Add(this.panelControl5);
-            this.groupControl1.Controls.Add(this.checkEdit5);
-            this.groupControl1.Controls.Add(this.checkEdit4);
-            this.groupControl1.Controls.Add(this.checkEdit3);
-            this.groupControl1.Controls.Add(this.checkEdit2);
-            this.groupControl1.Controls.Add(this.checkEdit1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(2, 2);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
@@ -283,87 +274,71 @@ namespace CRM_4S.FrontManager
             this.groupControl1.TabIndex = 1036;
             this.groupControl1.Text = "离店评估";
             // 
+            // ckListQuestions
+            // 
+            this.ckListQuestions.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.ckListQuestions.Appearance.BackColor2 = System.Drawing.SystemColors.Control;
+            this.ckListQuestions.Appearance.Options.UseBackColor = true;
+            this.ckListQuestions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.ckListQuestions.DataSource = this.evaluateQuestionInfoBindingSource;
+            this.ckListQuestions.DisplayMember = "QDesc";
+            this.ckListQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ckListQuestions.ItemHeight = 25;
+            this.ckListQuestions.Location = new System.Drawing.Point(2, 23);
+            this.ckListQuestions.Name = "ckListQuestions";
+            this.ckListQuestions.Padding = new System.Windows.Forms.Padding(3);
+            this.ckListQuestions.Size = new System.Drawing.Size(289, 166);
+            this.ckListQuestions.TabIndex = 3;
+            // 
+            // evaluateQuestionInfoBindingSource
+            // 
+            this.evaluateQuestionInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.EvaluateQuestionInfo);
+            // 
             // panelControl5
             // 
-            this.panelControl5.Controls.Add(this.labelControl12);
-            this.panelControl5.Controls.Add(this.labelControl11);
-            this.panelControl5.Controls.Add(this.simpleButton1);
+            this.panelControl5.Controls.Add(this.lblCLevel);
+            this.panelControl5.Controls.Add(this.btnEvaluate);
+            this.panelControl5.Controls.Add(this.txtLevelDesc);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl5.Location = new System.Drawing.Point(2, 189);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(289, 61);
             this.panelControl5.TabIndex = 2;
             // 
-            // labelControl12
+            // lblCLevel
             // 
-            this.labelControl12.Location = new System.Drawing.Point(118, 5);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(77, 14);
-            this.labelControl12.TabIndex = 2;
-            this.labelControl12.Text = "labelControl12";
+            this.lblCLevel.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
+            this.lblCLevel.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCLevel.Location = new System.Drawing.Point(75, 13);
+            this.lblCLevel.Name = "lblCLevel";
+            this.lblCLevel.Size = new System.Drawing.Size(0, 33);
+            this.lblCLevel.TabIndex = 1;
             // 
-            // labelControl11
+            // btnEvaluate
             // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelControl11.Location = new System.Drawing.Point(75, 13);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(18, 33);
-            this.labelControl11.TabIndex = 1;
-            this.labelControl11.Text = "A";
+            this.btnEvaluate.Location = new System.Drawing.Point(3, 5);
+            this.btnEvaluate.Name = "btnEvaluate";
+            this.btnEvaluate.Size = new System.Drawing.Size(56, 49);
+            this.btnEvaluate.TabIndex = 0;
+            this.btnEvaluate.Text = "评估";
+            this.btnEvaluate.Click += new System.EventHandler(this.btnEvaluate_Click);
             // 
-            // simpleButton1
+            // txtLevelDesc
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(3, 5);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(56, 49);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "评估";
-            // 
-            // checkEdit5
-            // 
-            this.checkEdit5.Location = new System.Drawing.Point(9, 151);
-            this.checkEdit5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkEdit5.Name = "checkEdit5";
-            this.checkEdit5.Properties.Caption = "客户对车不感兴趣";
-            this.checkEdit5.Size = new System.Drawing.Size(132, 19);
-            this.checkEdit5.TabIndex = 1;
-            // 
-            // checkEdit4
-            // 
-            this.checkEdit4.Location = new System.Drawing.Point(9, 122);
-            this.checkEdit4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkEdit4.Name = "checkEdit4";
-            this.checkEdit4.Properties.Caption = "客户对车不感兴趣";
-            this.checkEdit4.Size = new System.Drawing.Size(132, 19);
-            this.checkEdit4.TabIndex = 1;
-            // 
-            // checkEdit3
-            // 
-            this.checkEdit3.Location = new System.Drawing.Point(9, 93);
-            this.checkEdit3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkEdit3.Name = "checkEdit3";
-            this.checkEdit3.Properties.Caption = "客户对车不感兴趣";
-            this.checkEdit3.Size = new System.Drawing.Size(132, 19);
-            this.checkEdit3.TabIndex = 1;
-            // 
-            // checkEdit2
-            // 
-            this.checkEdit2.Location = new System.Drawing.Point(9, 64);
-            this.checkEdit2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "客户对车不感兴趣";
-            this.checkEdit2.Size = new System.Drawing.Size(132, 19);
-            this.checkEdit2.TabIndex = 1;
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.Location = new System.Drawing.Point(9, 35);
-            this.checkEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "客户对车不感兴趣";
-            this.checkEdit1.Size = new System.Drawing.Size(132, 19);
-            this.checkEdit1.TabIndex = 1;
+            this.txtLevelDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLevelDesc.Enabled = false;
+            this.txtLevelDesc.Location = new System.Drawing.Point(110, 6);
+            this.txtLevelDesc.Name = "txtLevelDesc";
+            this.txtLevelDesc.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.txtLevelDesc.Properties.Appearance.Options.UseBackColor = true;
+            this.txtLevelDesc.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtLevelDesc.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.txtLevelDesc.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.txtLevelDesc.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtLevelDesc.Size = new System.Drawing.Size(174, 50);
+            this.txtLevelDesc.TabIndex = 2;
             // 
             // groupControl2
             // 
@@ -662,14 +637,12 @@ namespace CRM_4S.FrontManager
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ckListQuestions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evaluateQuestionInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLevelDesc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -709,14 +682,8 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.CheckEdit checkEdit5;
-        private DevExpress.XtraEditors.CheckEdit checkEdit4;
-        private DevExpress.XtraEditors.CheckEdit checkEdit3;
-        private DevExpress.XtraEditors.CheckEdit checkEdit2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.LabelControl lblCLevel;
+        private DevExpress.XtraEditors.SimpleButton btnEvaluate;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.ComboBoxEdit cbCLevel;
@@ -745,6 +712,9 @@ namespace CRM_4S.FrontManager
         private System.Windows.Forms.BindingSource frontRecordInfoBindingSource;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.DateEdit dtLeaveTime;
+        private DevExpress.XtraEditors.CheckedListBoxControl ckListQuestions;
+        private System.Windows.Forms.BindingSource evaluateQuestionInfoBindingSource;
+        private DevExpress.XtraEditors.MemoEdit txtLevelDesc;
 
 
     }

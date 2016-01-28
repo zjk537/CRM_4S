@@ -13,6 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 
 namespace CRM_4S.FrontManager
 {
@@ -62,8 +63,6 @@ namespace CRM_4S.FrontManager
             this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
 
             this.Btn_OK.Visible = false;
-
-
         }
 
         private bool Validation()
@@ -173,6 +172,7 @@ namespace CRM_4S.FrontManager
 
         private void FmFrontOut_Load(object sender, EventArgs e)
         {
+            BindQuestions();
             RefreshFrontRecordView(recordInfo.FrontRecord);
 
         }
@@ -223,5 +223,39 @@ namespace CRM_4S.FrontManager
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
             RefreshFrontRecordView(newRecordInfo.FrontRecord);
         }
+
+
+        private void BindQuestions()
+        {
+
+            var listQuestions = EvaluateQuestionBusiness.Instance.GetEvaluateQuestions();
+            if (listQuestions == null || listQuestions.Count == 0)
+            {
+                this.ckListQuestions.DataSource = new EvaluateQuestionInfo() { QDesc = "暂无评估问题" };
+                return;
+            }
+
+            this.ckListQuestions.DataSource = listQuestions;
+        }
+
+        private void btnEvaluate_Click(object sender, EventArgs e)
+        {
+            var lists = this.ckListQuestions.CheckedItems;
+            if (lists == null || lists.Count == 0)
+            {
+                this.lblCLevel.Text = "O";
+                this.txtLevelDesc.Text = "请选择评估问题后再点评估";
+                return;
+            }
+            List<EvaluateQuestionInfo> eqInfos = new List<EvaluateQuestionInfo>();
+            foreach (EvaluateQuestionInfo info in lists)
+            {
+                eqInfos.Add(info);
+            }
+            this.lblCLevel.Text = "B";
+            this.txtLevelDesc.Text = "购买意向很高的客户，需要在细微处关怀提升期望值，促进成交（精品、保养等）";
+
+        }
+
     }
 }
