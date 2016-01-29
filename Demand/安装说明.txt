@@ -1,0 +1,14 @@
+﻿1、根据自己操作系统 选择安装 wampserver 默认安装
+2、设置mysql 数据库 root 用户 密码 空
+3、执行数据库脚本 crm_4s.sql 创建数据库
+4、执行 initDB.sql 初始化数据库
+5、安装程序 添加 测试数据 
+
+6、 记录下那些操作不合理的 或 出错的地方 及操作步骤 方便以后修复
+
+
+7、安装 WAMP 过程中如果遇到报错：丢失MSVCR110.dll的警告 
+  请安装 https://www.microsoft.com/zh-CN/download/details.aspx?id=30679
+
+8、数据库访问地址：http://localhost/phpmyadmin/ 安装完 wamp之后可访问 ，在这个页面执行数据初始化
+

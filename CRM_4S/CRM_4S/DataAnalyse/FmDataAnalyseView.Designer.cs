@@ -33,6 +33,7 @@ namespace CRM_4S.DataAnalyse
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmGroupName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@ namespace CRM_4S.DataAnalyse
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
+            this.gridColumn3,
             this.gridColumn2,
             this.clmGroupName});
             this.gridView1.GridControl = this.gridControl1;
@@ -70,14 +72,21 @@ namespace CRM_4S.DataAnalyse
             this.gridColumn2.Caption = "进店时间";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 3;
             // 
             // clmGroupName
             // 
             this.clmGroupName.Caption = "团队名称";
             this.clmGroupName.Name = "clmGroupName";
             this.clmGroupName.Visible = true;
-            this.clmGroupName.VisibleIndex = 1;
+            this.clmGroupName.VisibleIndex = 2;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "联系方式";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
             // 
             // FmDataAnalyseView
             // 
@@ -101,5 +110,6 @@ namespace CRM_4S.DataAnalyse
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn clmGroupName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }
