@@ -18,18 +18,68 @@ using CRM_4S.BasicsManager;
 using CRM_4S.DataAnalyse;
 using CRM_4S.Business.BusinessModel;
 using CRM_4S.Business;
+using System.Threading;
+using System.Runtime.Remoting.Messaging;
+using DevExpress.XtraEditors;
 
 namespace CRM_4S
 {
     public partial class FmMain : RibbonFormSimpleDialogBase
     {
-        Dictionary<RibbonPage, Form> mRibbonPages = new Dictionary<RibbonPage, Form>();
+
+        #region Login 
+        
+        private ManualResetEvent waitInitializeHandler = new ManualResetEvent(false);
+        private ManualResetEvent waitloginHandler = null;
+        private delegate void FormShowHandler();
+        public DialogResult loginResult = DialogResult.Abort;
+
+
+        private void Login()
+        {
+            FmLogin flogin = new FmLogin(waitInitializeHandler);
+            waitloginHandler = flogin.waitLoginHandler;
+            flogin.SetDialogResult += SetDialogResult;
+
+            loginResult = flogin.ShowDialog();
+        }
+
+        private void SetDialogResult(DialogResult dialogResult)
+        {
+            this.loginResult = dialogResult;
+        }
+
+        private void LoginCallback(IAsyncResult ar)
+        {
+            try
+            {
+                AsyncResult result = (AsyncResult)ar;
+
+                ((FormShowHandler)result.AsyncDelegate).EndInvoke(ar);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(string.Format("Method: LoginCallback \r\bMssage:{0}", ex.Message));
+            }
+        }
+
+        #endregion
 
         public FmMain()
             : base(Language.Chinese)
         {
             InitializeComponent();
+
+            new FormShowHandler(Login).BeginInvoke(new AsyncCallback(LoginCallback), null);
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+
+            waitInitializeHandler.WaitOne();
         }
+
+
+
+        Dictionary<RibbonPage, Form> mRibbonPages = new Dictionary<RibbonPage, Form>();
 
         #region ribbon page views
         FmUserView fmUserView = null;
@@ -147,10 +197,37 @@ namespace CRM_4S
 
         private void FmMain_Load(object sender, EventArgs e)
         {
-            AddRibbonPageViews();
-            ribbon.Pages.RemoveAt(0);
+            try
+            {
+                if (loginResult == DialogResult.OK)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                    this.ShowInTaskbar = true;
 
-            LoggerHelper.Logger.Info("test");
+                    AddRibbonPageViews();
+                    ribbon.Pages.RemoveAt(0);
+
+
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Logger.Error(ex.Message);
+            }
+            finally
+            {
+                if (waitloginHandler != null)
+                {
+                    waitloginHandler.Set();
+                }
+            }
+            
+
+           
         }
 
         private void ribbon_SelectedPageChanged(object sender, EventArgs e)

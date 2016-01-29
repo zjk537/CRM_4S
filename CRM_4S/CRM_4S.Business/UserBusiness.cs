@@ -110,5 +110,10 @@ namespace CRM_4S.Business
 
             return results;
         }
+
+        public UserInfo GetUserByName(string p1, string p2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
