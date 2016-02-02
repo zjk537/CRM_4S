@@ -47,7 +47,7 @@ namespace CRM_4S
             this.btnLogin.Location = new System.Drawing.Point(92, 152);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -63,10 +63,14 @@ namespace CRM_4S
             // 
             // txtUserName
             // 
+            this.txtUserName.EnterMoveNextControl = true;
             this.txtUserName.Location = new System.Drawing.Point(73, 58);
             this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Properties.NullValuePrompt = "用户名";
+            this.txtUserName.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtUserName.Size = new System.Drawing.Size(204, 21);
-            this.txtUserName.TabIndex = 2;
+            this.txtUserName.TabIndex = 0;
+            this.txtUserName.TextChanged += new System.EventHandler(this.TextEdit_TextChanged);
             // 
             // label2
             // 
@@ -79,17 +83,21 @@ namespace CRM_4S
             // 
             // txtPwd
             // 
+            this.txtPwd.EnterMoveNextControl = true;
             this.txtPwd.Location = new System.Drawing.Point(73, 102);
             this.txtPwd.Name = "txtPwd";
+            this.txtPwd.Properties.NullValuePrompt = "用户密码";
+            this.txtPwd.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtPwd.Size = new System.Drawing.Size(204, 21);
-            this.txtPwd.TabIndex = 2;
+            this.txtPwd.TabIndex = 1;
+            this.txtPwd.TextChanged += new System.EventHandler(this.TextEdit_TextChanged);
             // 
             // btnCanel
             // 
             this.btnCanel.Location = new System.Drawing.Point(188, 152);
             this.btnCanel.Name = "btnCanel";
             this.btnCanel.Size = new System.Drawing.Size(75, 23);
-            this.btnCanel.TabIndex = 0;
+            this.btnCanel.TabIndex = 3;
             this.btnCanel.Text = "取消";
             this.btnCanel.UseVisualStyleBackColor = true;
             this.btnCanel.Click += new System.EventHandler(this.btnCanel_Click);

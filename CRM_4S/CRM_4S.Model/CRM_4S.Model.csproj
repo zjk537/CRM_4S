@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel\AnalyseKPIInfo.cs" />
+    <Compile Include="DataModel\BasicConstantInfo.cs" />
     <Compile Include="DataModel\CarTypeInfo.cs" />
     <Compile Include="DataModel\CustomerInfo.cs" />
     <Compile Include="DataModel\CustomerLevelInfo.cs" />
+    <Compile Include="DataModel\RegionInfo.cs" />
     <Compile Include="DataModel\DCCRecordInfo.cs" />
     <Compile Include="DataModel\EvaluateQuestionInfo.cs" />
     <Compile Include="DataModel\RoleInfo.cs" />
@@ -55,7 +57,7 @@
     <Compile Include="DataModel\UserTaskInfo.cs" />
     <Compile Include="DataModel\FrontRecordInfo.cs" />
     <Compile Include="DBModelBase.cs" />
-    <Compile Include="EnumType\QuestionType.cs" />
+    <Compile Include="EnumType\BasicConstantType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -47,7 +47,7 @@ namespace CRM_4S.Business
             {
                 lock (lockObj)
                 {
-                    curUser = curUser ?? new UserInfo() { ShopId = 6, Id = 2 };
+                    curUser = curUser ?? new UserInfo();
                 }
                 return curUser;
             }
@@ -176,8 +176,43 @@ namespace CRM_4S.Business
         }
 
 
+        List<BasicConstantInfo> constantInfos = null;
+        /// <summary>
+        /// 系统基础常量
+        /// </summary>
+        public List<BasicConstantInfo> ConstantInfos
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    if (constantInfos == null)
+                    {
+                        constantInfos = BasicsConstantBusiness.Instance.GetBasicConstants(this.CurUser.ShopId).ToList();
+                    }
+                    return constantInfos;
+                }
+            }
+        }
 
-
+        List<RegionInfo> regionInfos = null;
+        /// <summary>
+        /// 系统基础常量
+        /// </summary>
+        public List<RegionInfo> RegionInfos
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    if (regionInfos == null)
+                    {
+                        regionInfos = BasicsConstantBusiness.Instance.GetRegions(this.CurUser.ShopId).ToList();
+                    }
+                    return regionInfos;
+                }
+            }
+        }
 
         #region Private Method
 

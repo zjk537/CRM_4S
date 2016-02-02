@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-27 11:16
+ * 创建日期：2016-02-02 14:18
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -60,7 +60,7 @@ namespace CRM_4S.Model.DataModel
         private int? carLicence = null;
         public bool CarLicenceSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 牌照状况：已有牌照；待拍牌照；旧车退牌；郊区牌照；外省上牌 
+        /// 获取或设置 牌照状况：对应 basic_constant.TypeKey = CarLicence 
         /// </summary>
         [DBFieldAttribute("FrontRecordCarLicence")]
         public int? CarLicence { get { return carLicence; } set { carLicence = value; CarLicenceSpecify = true; } }
@@ -78,10 +78,64 @@ namespace CRM_4S.Model.DataModel
         private int? driveStatus = null;
         public bool DriveStatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 试驾状态：0""; 1是; 2否; 
+        /// 获取或设置 试驾状态：1是 2否 
         /// </summary>
         [DBFieldAttribute("FrontRecordDriveStatus")]
         public int? DriveStatus { get { return driveStatus; } set { driveStatus = value; DriveStatusSpecify = true; } }
+
+
+        private int? source = null;
+        public bool SourceSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 客户来源 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordSource")]
+        public int? Source { get { return source; } set { source = value; SourceSpecify = true; } }
+
+
+        private int? replace = null;
+        public bool ReplaceSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否二手置换 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordReplace")]
+        public int? Replace { get { return replace; } set { replace = value; ReplaceSpecify = true; } }
+
+
+        private int? solarFilm = null;
+        public bool SolarFilmSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否推荐太阳膜 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordSolarFilm")]
+        public int? SolarFilm { get { return solarFilm; } set { solarFilm = value; SolarFilmSpecify = true; } }
+
+
+        private int? installment = null;
+        public bool InstallmentSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否分期付款 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordInstallment")]
+        public int? Installment { get { return installment; } set { installment = value; InstallmentSpecify = true; } }
+
+
+        private int? alloyWheel = null;
+        public bool AlloyWheelSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否推荐合金轮毂 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordAlloyWheel")]
+        public int? AlloyWheel { get { return alloyWheel; } set { alloyWheel = value; AlloyWheelSpecify = true; } }
+
+
+        private int? dermis = null;
+        public bool DermisSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否推荐真皮 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordDermis")]
+        public int? Dermis { get { return dermis; } set { dermis = value; DermisSpecify = true; } }
 
 
         private string remark = string.Empty;
@@ -120,19 +174,19 @@ namespace CRM_4S.Model.DataModel
         public string DurationTime { get { return durationTime; } set { durationTime = value; DurationTimeSpecify = true; } }
 
 
-        private int operatorId = 0;
-        public bool OperatorIdSpecify { get; set; }
+        private string recorder = string.Empty;
+        public bool RecorderSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 录入人员Id 
+        /// 获取或设置 录入人员 姓名 
         /// </summary>
-        [DBFieldAttribute("FrontRecordOperatorId")]
-        public int OperatorId { get { return operatorId; } set { operatorId = value; OperatorIdSpecify = true; } }
+        [DBFieldAttribute("FrontRecordRecorder")]
+        public string Recorder { get { return recorder; } set { recorder = value; RecorderSpecify = true; } }
 
 
         private DateTime? updateDate = null;
         public bool UpdateDateSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 最后一次更新时间 
         /// </summary>
         [DBFieldAttribute("FrontRecordUpdateDate")]
         public DateTime? UpdateDate { get { return updateDate; } set { updateDate = value; UpdateDateSpecify = true; } }
@@ -141,7 +195,7 @@ namespace CRM_4S.Model.DataModel
         private DateTime? createdDate = null;
         public bool CreatedDateSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 创建时间 
         /// </summary>
         [DBFieldAttribute("FrontRecordCreatedDate")]
         public DateTime? CreatedDate { get { return createdDate; } set { createdDate = value; CreatedDateSpecify = true; } }

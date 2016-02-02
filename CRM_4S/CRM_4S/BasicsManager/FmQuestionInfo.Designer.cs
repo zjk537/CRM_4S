@@ -57,6 +57,8 @@ namespace CRM_4S.BasicsManager
             this.txtQDesc.EnterMoveNextControl = true;
             this.txtQDesc.Location = new System.Drawing.Point(72, 56);
             this.txtQDesc.Name = "txtQDesc";
+            this.txtQDesc.Properties.NullValuePrompt = "<必填>";
+            this.txtQDesc.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtQDesc.Size = new System.Drawing.Size(250, 59);
             this.txtQDesc.TabIndex = 1;
             // 
@@ -96,6 +98,8 @@ namespace CRM_4S.BasicsManager
             this.cbQType.Name = "cbQType";
             this.cbQType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbQType.Properties.NullValuePrompt = "<必填>";
+            this.cbQType.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbQType.Size = new System.Drawing.Size(250, 21);
             this.cbQType.TabIndex = 0;
             // 

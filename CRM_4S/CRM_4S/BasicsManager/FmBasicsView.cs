@@ -341,7 +341,7 @@ namespace CRM_4S.BasicsManager
 
             if (e.Column.Name == "clmQType")
             {
-                e.DisplayText = GloablConstants.QuestionTypes[(QuestionType)e.CellValue];
+                e.DisplayText = GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 
@@ -349,6 +349,13 @@ namespace CRM_4S.BasicsManager
             {
                 var rowData = (AnalyseKPIInfo) defaultGridView.GetRow(e.RowHandle);
                 e.DisplayText = rowData.KValue + rowData.KUnit;
+            }
+
+            if (e.Column.Name == "clmShopAddress")
+            {
+                var rowData = (ShopInfo)defaultGridView.GetRow(e.RowHandle);
+                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.RegionId);
+                e.DisplayText = string.Format("{0} {1}", region, rowData.Address);
             }
         }
     }

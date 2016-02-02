@@ -1,6 +1,7 @@
 using CRM_4S.Business;
 using CRM_4S.Common.FormBase;
 using CRM_4S.Model.DataModel;
+using CRM_4S.Model.EnumType;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
 using System;
@@ -29,7 +30,7 @@ namespace CRM_4S.DCCManager
             this.txtCName.DataBindings.Add("Text", customerInfo, "Name");
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.dtVisitTime.EditValue = DateTime.Now;
-            this.cbDCCSource.Properties.Items.AddRange(GloablConstants.DCCSource);
+            this.cbDCCSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
             this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
             this.Btn_OK.Click += Btn_OK_Click;
         }

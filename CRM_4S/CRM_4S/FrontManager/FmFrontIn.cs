@@ -26,7 +26,6 @@ namespace CRM_4S.FrontManager
         {
             this.Btn_OK.Click += Btn_OK_Click;
 
-            this.dtArralTime.EditValue = DateTime.Now;
             cbConsultant.Properties.Items.AddRange(GloablCaches.Instance.ConsultantInfos);
         }
 
@@ -39,11 +38,11 @@ namespace CRM_4S.FrontManager
                 FrontRecordInfo recordInfo = new FrontRecordInfo()
                 {
                     ShopId = GloablCaches.Instance.CurUser.ShopId,
-                    ArrivalTime = (DateTime)this.dtArralTime.EditValue,
+                    ArrivalTime = DateTime.Now,
                     CustomerNum = Convert.ToInt32(this.txtCNum.Text),
                     ConsultantId = ((UserInfo)this.cbConsultant.SelectedItem).Id,
                     Remark = this.txtDesc.Text,
-                    OperatorId = GloablCaches.Instance.CurUser.Id
+                    Recorder = GloablCaches.Instance.CurUser.RealName
                 };
                 FrontRecordBusiness.Instance.AddFrontRecord(recordInfo);
 
@@ -64,6 +63,10 @@ namespace CRM_4S.FrontManager
             {
                 errorProvider.SetError(this.cbConsultant, "不能为空", ErrorType.Warning);
             }
+            if (string.IsNullOrEmpty(this.txtCNum.Text.Trim()))
+            {
+                errorProvider.SetError(this.txtCNum, "不能为空", ErrorType.Warning);
+            }
             return !errorProvider.HasErrors;
         }
 
@@ -74,7 +77,7 @@ namespace CRM_4S.FrontManager
 
         private void TextEdit_TextChanged(object sender, EventArgs e)
         {
-            Validate();
+            Validation();
         }
 
         private void TextEdit_Enter(object sender, EventArgs e)

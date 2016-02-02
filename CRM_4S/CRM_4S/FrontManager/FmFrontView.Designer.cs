@@ -35,18 +35,20 @@ namespace CRM_4S.FrontManager
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmArrivalTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmLeaveTime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmRecordCnt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCNature = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmCarLicence = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPurposeCar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmInstallment = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmReplace = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmDriveStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmIndustry = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmLevel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCarLicence = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmSource = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmIndustry = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmDurationTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
@@ -76,23 +78,27 @@ namespace CRM_4S.FrontManager
             this.clmShopName,
             this.clmArrivalTime,
             this.clmLeaveTime,
-            this.clmRecordCnt,
+            this.clmConsultantName,
             this.clmCustomerName,
             this.clmCustomerPhone,
             this.clmCNature,
-            this.clmCarLicence,
             this.clmPurposeCar,
+            this.clmInstallment,
+            this.clmReplace,
             this.clmDriveStatus,
-            this.clmIndustry,
-            this.clmAddress,
             this.clmLevel,
-            this.clmConsultantName,
+            this.clmCarLicence,
+            this.clmSource,
+            this.clmIndustry,
             this.clmDurationTime,
+            this.clmAddress,
             this.clmCustomerNum,
             this.clmRemark});
             this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
             this.gridViewFrontRecord.Name = "gridViewFrontRecord";
             this.gridViewFrontRecord.OptionsBehavior.Editable = false;
+            this.gridViewFrontRecord.OptionsView.EnableAppearanceOddRow = true;
+            this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
             this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewFrontRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
             // 
@@ -101,8 +107,6 @@ namespace CRM_4S.FrontManager
             this.clmShopName.Caption = "店面名称";
             this.clmShopName.FieldName = "Shop.Name";
             this.clmShopName.Name = "clmShopName";
-            this.clmShopName.Visible = true;
-            this.clmShopName.VisibleIndex = 0;
             // 
             // clmArrivalTime
             // 
@@ -111,8 +115,6 @@ namespace CRM_4S.FrontManager
             this.clmArrivalTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmArrivalTime.FieldName = "FrontRecord.ArrivalTime";
             this.clmArrivalTime.Name = "clmArrivalTime";
-            this.clmArrivalTime.Visible = true;
-            this.clmArrivalTime.VisibleIndex = 1;
             // 
             // clmLeaveTime
             // 
@@ -121,18 +123,14 @@ namespace CRM_4S.FrontManager
             this.clmLeaveTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmLeaveTime.FieldName = "FrontRecord.LeaveTime";
             this.clmLeaveTime.Name = "clmLeaveTime";
-            this.clmLeaveTime.Visible = true;
-            this.clmLeaveTime.VisibleIndex = 2;
             // 
-            // clmRecordCnt
+            // clmConsultantName
             // 
-            this.clmRecordCnt.AppearanceCell.Options.UseTextOptions = true;
-            this.clmRecordCnt.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.clmRecordCnt.Caption = "进店次数";
-            this.clmRecordCnt.FieldName = "RecordCnt";
-            this.clmRecordCnt.Name = "clmRecordCnt";
-            this.clmRecordCnt.Visible = true;
-            this.clmRecordCnt.VisibleIndex = 3;
+            this.clmConsultantName.Caption = "销售顾问";
+            this.clmConsultantName.FieldName = "ConsultantUser.RealName";
+            this.clmConsultantName.Name = "clmConsultantName";
+            this.clmConsultantName.Visible = true;
+            this.clmConsultantName.VisibleIndex = 0;
             // 
             // clmCustomerName
             // 
@@ -140,7 +138,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerName.FieldName = "Customer.Name";
             this.clmCustomerName.Name = "clmCustomerName";
             this.clmCustomerName.Visible = true;
-            this.clmCustomerName.VisibleIndex = 4;
+            this.clmCustomerName.VisibleIndex = 1;
             // 
             // clmCustomerPhone
             // 
@@ -148,7 +146,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerPhone.FieldName = "Customer.Phone";
             this.clmCustomerPhone.Name = "clmCustomerPhone";
             this.clmCustomerPhone.Visible = true;
-            this.clmCustomerPhone.VisibleIndex = 5;
+            this.clmCustomerPhone.VisibleIndex = 2;
             // 
             // clmCNature
             // 
@@ -158,17 +156,7 @@ namespace CRM_4S.FrontManager
             this.clmCNature.FieldName = "Customer.Nature";
             this.clmCNature.Name = "clmCNature";
             this.clmCNature.Visible = true;
-            this.clmCNature.VisibleIndex = 6;
-            // 
-            // clmCarLicence
-            // 
-            this.clmCarLicence.AppearanceCell.Options.UseTextOptions = true;
-            this.clmCarLicence.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.clmCarLicence.Caption = "牌照状况";
-            this.clmCarLicence.FieldName = "FrontRecord.CarLicence";
-            this.clmCarLicence.Name = "clmCarLicence";
-            this.clmCarLicence.Visible = true;
-            this.clmCarLicence.VisibleIndex = 7;
+            this.clmCNature.VisibleIndex = 3;
             // 
             // clmPurposeCar
             // 
@@ -178,7 +166,23 @@ namespace CRM_4S.FrontManager
             this.clmPurposeCar.FieldName = "FrontRecord.PurposeCar";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
-            this.clmPurposeCar.VisibleIndex = 8;
+            this.clmPurposeCar.VisibleIndex = 4;
+            // 
+            // clmInstallment
+            // 
+            this.clmInstallment.AppearanceCell.Options.UseTextOptions = true;
+            this.clmInstallment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmInstallment.Caption = "是否分期";
+            this.clmInstallment.FieldName = "FrontRecord.Installment";
+            this.clmInstallment.Name = "clmInstallment";
+            // 
+            // clmReplace
+            // 
+            this.clmReplace.AppearanceCell.Options.UseTextOptions = true;
+            this.clmReplace.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmReplace.Caption = "是否置换";
+            this.clmReplace.FieldName = "FrontRecord.Replace";
+            this.clmReplace.Name = "clmReplace";
             // 
             // clmDriveStatus
             // 
@@ -188,23 +192,7 @@ namespace CRM_4S.FrontManager
             this.clmDriveStatus.FieldName = "FrontRecord.DriveStatus";
             this.clmDriveStatus.Name = "clmDriveStatus";
             this.clmDriveStatus.Visible = true;
-            this.clmDriveStatus.VisibleIndex = 9;
-            // 
-            // clmIndustry
-            // 
-            this.clmIndustry.Caption = "行业";
-            this.clmIndustry.FieldName = "Customer.Industry";
-            this.clmIndustry.Name = "clmIndustry";
-            this.clmIndustry.Visible = true;
-            this.clmIndustry.VisibleIndex = 10;
-            // 
-            // clmAddress
-            // 
-            this.clmAddress.Caption = "居住区域";
-            this.clmAddress.FieldName = "Customer.Address";
-            this.clmAddress.Name = "clmAddress";
-            this.clmAddress.Visible = true;
-            this.clmAddress.VisibleIndex = 11;
+            this.clmDriveStatus.VisibleIndex = 5;
             // 
             // clmLevel
             // 
@@ -212,15 +200,31 @@ namespace CRM_4S.FrontManager
             this.clmLevel.FieldName = "Customer.LevelCode";
             this.clmLevel.Name = "clmLevel";
             this.clmLevel.Visible = true;
-            this.clmLevel.VisibleIndex = 12;
+            this.clmLevel.VisibleIndex = 6;
             // 
-            // clmConsultantName
+            // clmCarLicence
             // 
-            this.clmConsultantName.Caption = "销售顾问";
-            this.clmConsultantName.FieldName = "ConsultantUser.RealName";
-            this.clmConsultantName.Name = "clmConsultantName";
-            this.clmConsultantName.Visible = true;
-            this.clmConsultantName.VisibleIndex = 13;
+            this.clmCarLicence.AppearanceCell.Options.UseTextOptions = true;
+            this.clmCarLicence.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmCarLicence.Caption = "牌照状况";
+            this.clmCarLicence.FieldName = "FrontRecord.CarLicence";
+            this.clmCarLicence.Name = "clmCarLicence";
+            // 
+            // clmSource
+            // 
+            this.clmSource.AppearanceCell.Options.UseTextOptions = true;
+            this.clmSource.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmSource.Caption = "客户来源";
+            this.clmSource.FieldName = "FrontRecord.Source";
+            this.clmSource.Name = "clmSource";
+            this.clmSource.Visible = true;
+            this.clmSource.VisibleIndex = 7;
+            // 
+            // clmIndustry
+            // 
+            this.clmIndustry.Caption = "行业";
+            this.clmIndustry.FieldName = "Customer.Industry";
+            this.clmIndustry.Name = "clmIndustry";
             // 
             // clmDurationTime
             // 
@@ -228,7 +232,15 @@ namespace CRM_4S.FrontManager
             this.clmDurationTime.FieldName = "FrontRecord.DurationTime";
             this.clmDurationTime.Name = "clmDurationTime";
             this.clmDurationTime.Visible = true;
-            this.clmDurationTime.VisibleIndex = 14;
+            this.clmDurationTime.VisibleIndex = 8;
+            // 
+            // clmAddress
+            // 
+            this.clmAddress.Caption = "居住地址";
+            this.clmAddress.FieldName = "Customer.Address";
+            this.clmAddress.Name = "clmAddress";
+            this.clmAddress.Visible = true;
+            this.clmAddress.VisibleIndex = 9;
             // 
             // clmCustomerNum
             // 
@@ -237,8 +249,6 @@ namespace CRM_4S.FrontManager
             this.clmCustomerNum.Caption = "接待人数";
             this.clmCustomerNum.FieldName = "FrontRecord.CustomerNum";
             this.clmCustomerNum.Name = "clmCustomerNum";
-            this.clmCustomerNum.Visible = true;
-            this.clmCustomerNum.VisibleIndex = 15;
             // 
             // clmRemark
             // 
@@ -246,7 +256,7 @@ namespace CRM_4S.FrontManager
             this.clmRemark.FieldName = "FrontRecord.Remark";
             this.clmRemark.Name = "clmRemark";
             this.clmRemark.Visible = true;
-            this.clmRemark.VisibleIndex = 16;
+            this.clmRemark.VisibleIndex = 10;
             // 
             // FmFrontView
             // 
@@ -285,8 +295,10 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraGrid.Columns.GridColumn clmCustomerNum;
         private DevExpress.XtraGrid.Columns.GridColumn clmRemark;
         private System.Windows.Forms.BindingSource sourceFrontCustomer;
-        private DevExpress.XtraGrid.Columns.GridColumn clmRecordCnt;
         private DevExpress.XtraGrid.Columns.GridColumn clmShopName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmInstallment;
+        private DevExpress.XtraGrid.Columns.GridColumn clmReplace;
+        private DevExpress.XtraGrid.Columns.GridColumn clmSource;
 
     }
 }

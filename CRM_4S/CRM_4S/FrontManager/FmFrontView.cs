@@ -1,5 +1,6 @@
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Model.DataModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
@@ -147,34 +148,40 @@ namespace CRM_4S.FrontManager
 
         private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (e.Column.Name == "clmCNature")
+            if (e.Column.Name == "clmCNature" || e.Column.Name == "clmCarLicence" || e.Column.Name == "clmSource")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CustomerNature[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name; 
                 return;
             }
-
-            if (e.Column.Name == "clmCarLicence")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CarLicence[(int)e.CellValue];
-                return;
-            }
-
             if (e.Column.Name == "clmPurposeCar")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(info => info.Id == (int)e.CellValue).ToString();
+            }
+            if (e.Column.Name == "clmDriveStatus" || e.Column.Name == "clmInstallment" || e.Column.Name == "clmReplace")
+            {
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue - 1];
                 return;
             }
 
-            if (e.Column.Name == "clmDriveStatus")
+            if (e.Column.Name == "clmAddress")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DriveStatus[(int)e.CellValue];
-                return;
+                var rowData = (FrontCustomerRecordInfo)this.gridViewFrontRecord.GetRow(e.RowHandle);
+                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
+                e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
             }
         }
 
         private void gridViewFrontRecord_DoubleClick(object sender, EventArgs e)
         {
             btnCustomerOut_ItemClick(sender, null);
+        }
+
+        private void gridViewFrontRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = Convert.ToString(e.RowHandle + 1);
+            }
         }
     }
 }

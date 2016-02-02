@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Model.DataModel;
 
 namespace CRM_4S.UserManager
 {
@@ -154,7 +155,7 @@ namespace CRM_4S.UserManager
                 return userGridView.GetRow(userGridView.GetSelectedRows().FirstOrDefault()) as UserShopRoleInfo;
             }
         }
-       
+
 
         private void FmUserView_Load(object sender, EventArgs e)
         {
@@ -170,8 +171,7 @@ namespace CRM_4S.UserManager
         {
             if (e.Column.Name == "clmSex")
             {
-                String sexName = GloablConstants.SexNames[(int)e.CellValue];
-                e.DisplayText = sexName;
+                e.DisplayText = GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
             }
         }
 

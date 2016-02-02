@@ -13,6 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using CRM_4S.Business;
 using DevExpress.XtraEditors.DXErrorProvider;
+using CRM_4S.Model.EnumType;
 
 namespace CRM_4S.DCCManager
 {
@@ -47,12 +48,12 @@ namespace CRM_4S.DCCManager
             this.txtCAddress.DataBindings.Add("Text", customerInfo, "Address");
             customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
             this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
-            this.cbCNature.Properties.Items.AddRange(GloablConstants.CustomerNature);
+            this.cbCNature.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
             this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
             this.cbCNature.SelectedIndex = customerInfo.Nature ?? 0;
 
-            this.cbDCCSource.Properties.Items.AddRange(GloablConstants.DCCSource);
-            this.cbDCCStatus.Properties.Items.AddRange(GloablConstants.DCCStatus);
+            this.cbDCCSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
+            this.cbDCCStatus.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCStatus).ToArray());
             this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
             this.cbIsLogin.Properties.Items.AddRange(GloablConstants.BooleanDesc);
             this.cbToShop.Properties.Items.AddRange(GloablConstants.BooleanDesc);
@@ -145,7 +146,7 @@ namespace CRM_4S.DCCManager
 
             if (e.Column.Name == "clmDCCSource")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCSource[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 
@@ -163,7 +164,7 @@ namespace CRM_4S.DCCManager
 
             if (e.Column.Name == "clmDCCStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCStatus[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 

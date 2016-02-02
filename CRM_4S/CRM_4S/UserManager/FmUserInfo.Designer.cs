@@ -161,7 +161,7 @@ namespace CRM_4S.UserManager
             this.txtRealName.EnterMoveNextControl = true;
             this.txtRealName.Location = new System.Drawing.Point(67, 84);
             this.txtRealName.Name = "txtRealName";
-            this.txtRealName.Properties.NullValuePrompt = "默认为空";
+            this.txtRealName.Properties.NullValuePrompt = "<必填>";
             this.txtRealName.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtRealName.Size = new System.Drawing.Size(166, 21);
             this.txtRealName.TabIndex = 2;
@@ -189,6 +189,8 @@ namespace CRM_4S.UserManager
             this.cbRole.Name = "cbRole";
             this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbRole.Properties.NullValuePrompt = "<必填>";
+            this.cbRole.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbRole.Size = new System.Drawing.Size(166, 21);
             this.cbRole.TabIndex = 1;
             // 
@@ -207,6 +209,8 @@ namespace CRM_4S.UserManager
             this.cbShop.Name = "cbShop";
             this.cbShop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbShop.Properties.NullValuePrompt = "<必填>";
+            this.cbShop.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbShop.Size = new System.Drawing.Size(166, 21);
             this.cbShop.TabIndex = 0;
             // 

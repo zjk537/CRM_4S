@@ -70,6 +70,8 @@ namespace CRM_4S.BasicsManager
             this.cbConsultant.Name = "cbConsultant";
             this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbConsultant.Properties.NullValuePrompt = "<必填>";
+            this.cbConsultant.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbConsultant.Size = new System.Drawing.Size(258, 21);
             this.cbConsultant.TabIndex = 0;
             // 
@@ -146,6 +148,8 @@ namespace CRM_4S.BasicsManager
             this.cbCarType.Name = "cbCarType";
             this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbCarType.Properties.NullValuePrompt = "<必填>";
+            this.cbCarType.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbCarType.Size = new System.Drawing.Size(258, 21);
             this.cbCarType.TabIndex = 3;
             // 

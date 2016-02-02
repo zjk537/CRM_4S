@@ -27,7 +27,6 @@ namespace CRM_4S.Business
                     {
                         Customer = new CustomerInfo(),
                         FrontRecord = info,
-                        RecordCnt = 1
                     });
                     continue;
                 }
@@ -38,12 +37,10 @@ namespace CRM_4S.Business
                     {
                         Customer = customers.FirstOrDefault(e => e.Id == info.CustomerId),
                         FrontRecord = info,
-                        RecordCnt = 1
                     };
                     listResults.Add(customerRecord);
                     continue;
                 }
-                customerRecord.RecordCnt++;
             }
             return listResults;
         }

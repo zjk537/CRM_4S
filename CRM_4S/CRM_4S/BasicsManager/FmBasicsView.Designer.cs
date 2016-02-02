@@ -81,7 +81,7 @@ namespace CRM_4S.BasicsManager
             this.gridControlCarType = new DevExpress.XtraGrid.GridControl();
             this.carTypeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridViewCarType = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.clmCarParent = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCarBrand = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCarTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCartypeDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCarTypeCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -273,6 +273,8 @@ namespace CRM_4S.BasicsManager
             // 
             // clmQType
             // 
+            this.clmQType.AppearanceCell.Options.UseTextOptions = true;
+            this.clmQType.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmQType.Caption = "问题类型";
             this.clmQType.FieldName = "QType";
             this.clmQType.Name = "clmQType";
@@ -281,6 +283,8 @@ namespace CRM_4S.BasicsManager
             // 
             // clmQLevel
             // 
+            this.clmQLevel.AppearanceCell.Options.UseTextOptions = true;
+            this.clmQLevel.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmQLevel.Caption = "问题权重";
             this.clmQLevel.FieldName = "QLevel";
             this.clmQLevel.Name = "clmQLevel";
@@ -378,6 +382,8 @@ namespace CRM_4S.BasicsManager
             // 
             // clmTaskStatus
             // 
+            this.clmTaskStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.clmTaskStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmTaskStatus.Caption = "任务状态";
             this.clmTaskStatus.FieldName = "UserTask.Status";
             this.clmTaskStatus.Name = "clmTaskStatus";
@@ -591,7 +597,7 @@ namespace CRM_4S.BasicsManager
             // gridViewCarType
             // 
             this.gridViewCarType.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.clmCarParent,
+            this.clmCarBrand,
             this.clmCarTypeName,
             this.clmCartypeDesc,
             this.clmCarTypeCreatedDate});
@@ -602,13 +608,13 @@ namespace CRM_4S.BasicsManager
             this.gridViewCarType.OptionsBehavior.Editable = false;
             this.gridViewCarType.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
-            // clmCarParent
+            // clmCarBrand
             // 
-            this.clmCarParent.Caption = "汽车品牌";
-            this.clmCarParent.FieldName = "Brand";
-            this.clmCarParent.Name = "clmCarParent";
-            this.clmCarParent.Visible = true;
-            this.clmCarParent.VisibleIndex = 0;
+            this.clmCarBrand.Caption = "汽车品牌";
+            this.clmCarBrand.FieldName = "Brand";
+            this.clmCarBrand.Name = "clmCarBrand";
+            this.clmCarBrand.Visible = true;
+            this.clmCarBrand.VisibleIndex = 0;
             // 
             // clmCarTypeName
             // 
@@ -759,7 +765,7 @@ namespace CRM_4S.BasicsManager
         private DevExpress.XtraGrid.Columns.GridColumn clmLevelDesc;
         private DevExpress.XtraGrid.GridControl gridControlCarType;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCarType;
-        private DevExpress.XtraGrid.Columns.GridColumn clmCarParent;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCarBrand;
         private DevExpress.XtraGrid.Columns.GridColumn clmCarTypeName;
         private DevExpress.XtraGrid.Columns.GridColumn clmCartypeDesc;
         private DevExpress.XtraGrid.Columns.GridColumn clmCarTypeCreatedDate;

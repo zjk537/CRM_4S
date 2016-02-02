@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-20 14:49
+ * 创建日期：2016-02-01 17:05
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -21,7 +21,16 @@ namespace CRM_4S.Model.DataModel
         public int Id { get { return id; } set { id = value; IdSpecify = true; } }
 
 
-        private string brand = "";
+        private int brandId = 0;
+        public bool BrandIdSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置  汽车品牌Id
+        /// </summary>
+        [DBFieldAttribute("CarTypeBrandId")]
+        public int BrandId { get { return brandId; } set { brandId = value; BrandIdSpecify = true; } }
+
+
+        private string brand = string.Empty;
         public bool BrandSpecify { get; set; }
         /// <summary>
         /// 获取或设置 汽车品牌 
@@ -68,7 +77,7 @@ namespace CRM_4S.Model.DataModel
 
         public override string ToString()
         {
-            return this.Brand + " "+ this.Name;
+            return this.Brand + " " + this.Name;
         }
 
     }

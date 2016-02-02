@@ -39,12 +39,12 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbQType.Properties.Items.AddRange(GloablConstants.QuestionTypes.Values);
+            cbQType.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.QType).ToArray());
 
             txtQDesc.DataBindings.Add("Text", newQInfo, "QDesc");
             //txtQLevel.DataBindings.Add("EditValue", newQInfo, "QLevel");
 
-            cbQType.Text = IsNew ? GloablConstants.QuestionTypes[QuestionType.All] : GloablConstants.QuestionTypes[(QuestionType)newQInfo.QType];
+            cbQType.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newQInfo.QType);
             txtQLevel.EditValue = newQInfo.QLevel ?? 100;
         }
 
@@ -53,11 +53,10 @@ namespace CRM_4S.BasicsManager
             try
             {
                 if (!Validation()) return;
-
-                if (IsNew || GloablConstants.QuestionTypes[(QuestionType)newQInfo.QType] != cbQType.SelectedItem.ToString())
+                BasicConstantInfo questionInfo = (BasicConstantInfo)cbQType.SelectedItem;
+                if (IsNew || newQInfo.QType != questionInfo.Id)
                 {
-                    QuestionType qType = GloablConstants.QuestionTypes.FirstOrDefault(qt => { return qt.Value == cbQType.SelectedItem.ToString(); }).Key;
-                    newQInfo.QType = (int)qType;
+                    newQInfo.QType = questionInfo.Id;
                 }
                 int qLevel = Convert.ToInt32(txtQLevel.EditValue);
                 if (IsNew || newQInfo.QLevel != qLevel)
@@ -69,6 +68,7 @@ namespace CRM_4S.BasicsManager
                 {
                     if (IsNew)
                     {
+                        newQInfo.ShopId = GloablCaches.Instance.CurUser.ShopId;
                         EvaluateQuestionBusiness.Instance.AddEvaluateQuestion(newQInfo);
                     }
                     else

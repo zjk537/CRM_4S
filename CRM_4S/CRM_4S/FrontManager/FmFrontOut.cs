@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using CRM_4S.Model.EnumType;
 
 namespace CRM_4S.FrontManager
 {
@@ -29,7 +30,6 @@ namespace CRM_4S.FrontManager
             InitializeComponent();
             initForm(info);
 
-            FrontRecordBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshFrontRecordView(newRecordInfo.FrontRecord); });
         }
 
         private void initForm(FrontCustomerRecordInfo info)
@@ -42,28 +42,60 @@ namespace CRM_4S.FrontManager
             newRecordInfo.Customer = customerInfo;
             recordInfo = info;
 
+            this.Btn_OK.Click += Btn_OK_Click;
+
             this.txtCName.DataBindings.Add("Text", customerInfo, "Name");
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", customerInfo, "Industry");
             this.txtCAddress.DataBindings.Add("Text", customerInfo, "Address");
             customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
             this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
-            this.cbCNature.Properties.Items.AddRange(GloablConstants.CustomerNature);
-            this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
-            this.cbCNature.SelectedIndex = customerInfo.Nature ?? 0;
+            this.cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
+            this.cbCNature.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
 
-            this.cbCarLicence.Properties.Items.AddRange(GloablConstants.CarLicence);
+            this.cbCarLicence.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarLicence).ToArray());
             this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
-            this.cbDriveStatus.Properties.Items.AddRange(GloablConstants.BooleanDesc);
-            this.cbCarLicence.SelectedIndex = frontInfo.CarLicence ?? 0;
-            this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
-            this.cbDriveStatus.SelectedIndex = frontInfo.DriveStatus ?? 0;
-            this.txtCustomerNum.EditValue = frontInfo.CustomerNum;
-            this.dtLeaveTime.EditValue = frontInfo.LeaveTime ?? DateTime.Now;
-            this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
+            this.cbFrontSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.FrontSource).ToArray());
 
-            this.Btn_OK.Visible = false;
+            if (string.IsNullOrEmpty(customerInfo.LevelCode))
+                this.cbCLevel.SelectedIndex = 0;
+            else
+                this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
+
+            if (customerInfo.Id == 0)
+                this.cbCNature.SelectedIndex = 0;
+            else
+                this.cbCNature.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == customerInfo.Nature);
+            if (customerInfo.RegionId == null)
+                this.cbRegion.SelectedIndex = 0;
+            else
+                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == customerInfo.RegionId);
+
+            if (frontInfo.CarLicence == null)
+                this.cbCarLicence.SelectedIndex = 0;
+            else
+                this.cbCarLicence.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.CarLicence);
+
+            if (frontInfo.PurposeCar == null)
+                this.cbCarType.SelectedIndex = 0;
+            else
+                this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
+
+           
+            if (frontInfo.Source == null)
+                this.cbFrontSource.SelectedIndex = 0;
+            else
+                this.cbFrontSource.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
+            this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
+            this.txtCNum.EditValue = frontInfo.CustomerNum;
+            this.rdAlloyWheel.SelectedIndex = frontInfo.AlloyWheel.HasValue ? frontInfo.AlloyWheel.Value - 1 : -1;
+            this.rdDermis.SelectedIndex = frontInfo.Dermis.HasValue ? frontInfo.Dermis.Value - 1 : -1;
+            this.rdDriveStatus.SelectedIndex = frontInfo.DriveStatus.HasValue ? frontInfo.DriveStatus.Value - 1 : -1;
+            this.rdInstallment.SelectedIndex = frontInfo.Installment.HasValue ? frontInfo.Installment.Value - 1 : -1;
+            this.rdReplace.SelectedIndex = frontInfo.Replace.HasValue ? frontInfo.Replace.Value - 1 : -1;
+            this.rdSolarFilm.SelectedIndex = frontInfo.SolarFilm.HasValue ? frontInfo.SolarFilm.Value - 1 : -1;
         }
+
 
         private bool Validation()
         {
@@ -91,7 +123,7 @@ namespace CRM_4S.FrontManager
             ((TextEdit)sender).SelectAll();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void Btn_OK_Click(object sender, EventArgs e)
         {
             if (!(Validate())) return;
 
@@ -103,26 +135,56 @@ namespace CRM_4S.FrontManager
 
             try
             {
-                newRecordInfo.Customer.LevelCode = this.cbCLevel.SelectedText;
-                newRecordInfo.Customer.Nature = this.cbCNature.SelectedIndex;
-                newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
-                newRecordInfo.FrontRecord.CarLicence = this.cbCarLicence.SelectedIndex;
-                newRecordInfo.FrontRecord.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
-                newRecordInfo.FrontRecord.DriveStatus = this.cbDriveStatus.SelectedIndex;
-                newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCustomerNum.EditValue);
+                var levelInfo = (CustomerLevelInfo)this.cbCLevel.SelectedItem;
+                if (levelInfo != null)
+                    newRecordInfo.Customer.LevelCode = levelInfo.Code;
+                var cNatureInfo = (BasicConstantInfo)this.cbCNature.SelectedItem;
+                if (cNatureInfo != null)
+                    newRecordInfo.Customer.Nature = cNatureInfo.Id;
+                var regionInfo = (RegionInfo)this.cbRegion.SelectedItem;
+                if (regionInfo != null)
+                    newRecordInfo.Customer.RegionId = regionInfo.Id;
 
+                newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
                 // 在添加customer成功后，会给当前customer 赋Id
                 if (newRecordInfo.Customer.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(newRecordInfo.Customer);
                 else
                     CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
 
+
                 newRecordInfo.FrontRecord.Id = recordInfo.FrontRecord.Id;
+                var carLicenceInfo = (BasicConstantInfo)this.cbCarLicence.SelectedItem;
+                if (carLicenceInfo != null)
+                    newRecordInfo.FrontRecord.CarLicence = carLicenceInfo.Id;
+
+                var selCarType = (CarTypeInfo)this.cbCarType.SelectedItem;
+                if (selCarType != null)
+                    newRecordInfo.FrontRecord.PurposeCar = selCarType.Id;
+                var sourceInfo = (BasicConstantInfo)this.cbFrontSource.SelectedItem;
+                if (sourceInfo != null)
+                    newRecordInfo.FrontRecord.Source = sourceInfo.Id;
+                if (this.rdDriveStatus.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.DriveStatus = this.rdDriveStatus.SelectedIndex + 1;
+                if (this.rdReplace.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.Replace = this.rdReplace.SelectedIndex + 1;
+                if (this.rdAlloyWheel.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.AlloyWheel = this.rdAlloyWheel.SelectedIndex + 1;
+                if (this.rdInstallment.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.Installment = this.rdInstallment.SelectedIndex + 1;
+                if (this.rdDermis.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.Dermis = this.rdDermis.SelectedIndex + 1;
+                if (this.rdSolarFilm.SelectedIndex > -1)
+                    newRecordInfo.FrontRecord.SolarFilm = this.rdSolarFilm.SelectedIndex + 1;
+
+                newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCNum.EditValue);
                 newRecordInfo.FrontRecord.CustomerId = newRecordInfo.Customer.Id;
-                newRecordInfo.FrontRecord.LeaveTime = (DateTime)this.dtLeaveTime.EditValue;
+                newRecordInfo.FrontRecord.LeaveTime = DateTime.Now;
                 TimeSpan durationTime = newRecordInfo.FrontRecord.LeaveTime.Value - newRecordInfo.FrontRecord.ArrivalTime.Value;
                 newRecordInfo.FrontRecord.DurationTime = durationTime.ToString(@"hh\:mm\:ss");
                 FrontRecordBusiness.Instance.UpdateFrontRecord(newRecordInfo.FrontRecord);
+
+                this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -131,49 +193,9 @@ namespace CRM_4S.FrontManager
 
         }
 
-        private void RefreshFrontRecordView(FrontRecordInfo recordInfo)
-        {
-            int recordId = 0;
-            if (recordInfo.CustomerId == 0)
-            {
-                recordId = recordInfo.Id;
-            }
-            var listResult = FrontRecordBusiness.Instance.GetFrontCustomerRecords(recordInfo.ShopId, recordInfo.CustomerId, recordId);
-            gridControlFrontRecord.DataSource = listResult;
-            gridControlFrontRecord.DefaultView.RefreshData();
-        }
-
-        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-
-            if (e.Column.Name == "clmCarLicence")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.CarLicence[(int)e.CellValue];
-                return;
-            }
-
-            if (e.Column.Name == "clmPurposeCar")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
-                return;
-            }
-
-            if (e.Column.Name == "clmDriveStatus")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DriveStatus[(int)e.CellValue];
-                return;
-            }
-
-            if (e.Column.Name == "clmConsultantName")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConsultantInfos.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
-            }
-        }
-
         private void FmFrontOut_Load(object sender, EventArgs e)
         {
             BindQuestions();
-            RefreshFrontRecordView(recordInfo.FrontRecord);
 
         }
 
@@ -221,13 +243,30 @@ namespace CRM_4S.FrontManager
             this.txtCAddress.DataBindings.Add("Text", info, "Address");
             this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(obj => obj.Code == info.LevelCode);
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
-            RefreshFrontRecordView(newRecordInfo.FrontRecord);
+
+            if (string.IsNullOrEmpty(info.LevelCode))
+                this.cbCLevel.SelectedIndex = 0;
+            else
+                this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(m => m.Code == info.LevelCode);
+
+            if (info.Id == 0)
+                this.cbCNature.SelectedIndex = 0;
+            else
+                this.cbCNature.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(m => m.Id == info.Nature);
+            if (info.RegionId == null)
+                this.cbRegion.SelectedIndex = 0;
+            else
+                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(m => m.Id == info.RegionId);
+
         }
 
+        private void txtCPhone_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.ClearErrors();
+        }
 
         private void BindQuestions()
         {
-
             var listQuestions = EvaluateQuestionBusiness.Instance.GetEvaluateQuestions();
             if (listQuestions == null || listQuestions.Count == 0)
             {
@@ -247,6 +286,7 @@ namespace CRM_4S.FrontManager
                 this.txtLevelDesc.Text = "请选择评估问题后再点评估";
                 return;
             }
+            
             List<EvaluateQuestionInfo> eqInfos = new List<EvaluateQuestionInfo>();
             foreach (EvaluateQuestionInfo info in lists)
             {
@@ -255,7 +295,29 @@ namespace CRM_4S.FrontManager
             this.lblCLevel.Text = "B";
             this.txtLevelDesc.Text = "购买意向很高的客户，需要在细微处关怀提升期望值，促进成交（精品、保养等）";
 
+            var cLevelInfo = customerLevels.FirstOrDefault(m => m.Code == "A");
+            this.cbCLevel.SelectedItem = cLevelInfo;
+
         }
+
+        private void rdDriveStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.rdDriveStatus.SelectedIndex == 0)//试驾用户必须留下手机号码
+            {
+                string phone = this.txtCPhone.Text.Trim();
+                if (string.IsNullOrEmpty(phone))
+                {
+                    errorProvider.SetError(this.txtCPhone, "试驾用户必须留下手机号码", ErrorType.Warning);
+                    return;
+                }
+            }
+            else
+            {
+                errorProvider.ClearErrors();
+            }
+        }
+
+        
 
     }
 }

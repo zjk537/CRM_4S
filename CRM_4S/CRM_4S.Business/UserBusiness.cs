@@ -111,9 +111,27 @@ namespace CRM_4S.Business
             return results;
         }
 
-        public UserInfo GetUserByName(string p1, string p2)
+        public UserInfo GetUserByName(string userName, string pwd)
         {
-            throw new NotImplementedException();
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetUserByName";
+                funcParms.Pams = new Dictionary<string, object>();
+                funcParms.Pams.Add("UserUserName", userName);
+                funcParms.Pams.Add("UserPwd", pwd);
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetUserByName.uspGetUserByName", true);
+
+
+            var user = DoFunctionWithLog<UserInfo>(() =>
+            {
+                return ConvertToList<UserInfo>(result).FirstOrDefault();
+
+            }, null, "GetUserByName.ConvertToList", true);
+
+            return user;
         }
     }
 }

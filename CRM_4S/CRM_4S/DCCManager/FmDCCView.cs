@@ -141,13 +141,13 @@ namespace CRM_4S.DCCManager
         {
             if (e.Column.Name == "clmDCCSource")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCSource[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 
             if (e.Column.Name == "cmlDCCStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCStatus[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 

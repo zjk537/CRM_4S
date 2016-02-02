@@ -39,8 +39,6 @@ namespace CRM_4S.Business.BusinessModel
             set { frontRecord = value; }
         }
 
-        public int RecordCnt { get; set; }
-
         UserInfo consultantUser = null;
         public UserInfo ConsultantUser
         {

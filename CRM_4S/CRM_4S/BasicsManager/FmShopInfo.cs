@@ -39,10 +39,12 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-添加" : "-修改";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            TxtAddress.DataBindings.Add("Text", newShopInfo, "Address");//newShopInfo.Address
-            TxtName.DataBindings.Add("Text", newShopInfo, "Name");//newShopInfo.Name
-            TxtPhone.DataBindings.Add("Text", newShopInfo, "Phone");//newShopInfo.Phone
-            TxtDesc.DataBindings.Add("Text", newShopInfo, "Desc"); //newShopInfo.Desc;
+            txtAddress.DataBindings.Add("Text", newShopInfo, "Address");//newShopInfo.Address
+            txtName.DataBindings.Add("Text", newShopInfo, "Name");//newShopInfo.Name
+            txtPhone.DataBindings.Add("Text", newShopInfo, "Phone");//newShopInfo.Phone
+            txtDesc.DataBindings.Add("Text", newShopInfo, "Desc"); //newShopInfo.Desc;
+            cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
+            cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == newShopInfo.RegionId);
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
@@ -50,6 +52,12 @@ namespace CRM_4S.BasicsManager
             try
             {
                 if (!Validation()) return;
+
+                RegionInfo region = (RegionInfo)cbRegion.SelectedItem;
+                if (IsNew || newShopInfo.RegionId != region.Id)
+                {
+                    newShopInfo.RegionId = region.Id;
+                }
 
                 if (!newShopInfo.Equals(shopInfo))
                 {
@@ -83,22 +91,33 @@ namespace CRM_4S.BasicsManager
         {
             errorProvider.ClearErrors();
 
-            if (string.IsNullOrEmpty(this.TxtName.Text.Trim()))
+            if (string.IsNullOrEmpty(this.txtName.Text.Trim()))
             {
-                errorProvider.SetError(this.TxtName, "不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtName, "不能为空", ErrorType.Warning);
             }
 
-            if (string.IsNullOrEmpty(this.TxtPhone.Text.Trim()))
+            if (string.IsNullOrEmpty(this.txtPhone.Text.Trim()))
             {
-                errorProvider.SetError(this.TxtPhone, "不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtPhone, "不能为空", ErrorType.Warning);
             }
 
-            if (string.IsNullOrEmpty(this.TxtAddress.Text.Trim()))
+
+            if (string.IsNullOrEmpty(this.txtAddress.Text.Trim()))
             {
-                errorProvider.SetError(this.TxtAddress, "不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtAddress, "不能为空", ErrorType.Warning);
             }
 
             return !errorProvider.HasErrors;
+        }
+
+        private void TextEdit_Enter(object sender, EventArgs e)
+        {
+            Validation();
+        }
+
+        private void Combox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Validation();
         }
     }
 }

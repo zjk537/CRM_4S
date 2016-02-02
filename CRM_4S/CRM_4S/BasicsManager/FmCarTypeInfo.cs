@@ -2,6 +2,7 @@ using CRM_4S.Business;
 using CRM_4S.Common.FormBase;
 using CRM_4S.Model;
 using CRM_4S.Model.DataModel;
+using CRM_4S.Model.EnumType;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
 using System;
@@ -38,12 +39,10 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-新增" : "-修改";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbCarBrand.Properties.Items.AddRange(GloablConstants.CarBrands);
+            cbCarBrand.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarBrand).ToArray());
             txtCarType.DataBindings.Add("Text", newCarTypeInfo, "Name");
             txtDesc.DataBindings.Add("Text", newCarTypeInfo, "Desc");
-
-            int brandIndex = IsNew ? 0 : GloablConstants.CarBrands.IndexOf(newCarTypeInfo.Brand);
-            cbCarBrand.SelectedIndex = brandIndex;
+            cbCarBrand.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.TypeValue == newCarTypeInfo.BrandId);
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
@@ -52,9 +51,11 @@ namespace CRM_4S.BasicsManager
             {
                 if (!Validation()) return;
 
-                if (newCarTypeInfo.Brand != cbCarBrand.SelectedItem.ToString())
+                BasicConstantInfo carBrandInfo = (BasicConstantInfo)cbCarBrand.SelectedItem;
+                if (IsNew || newCarTypeInfo.BrandId != carBrandInfo.Id)
                 {
-                    newCarTypeInfo.Brand = cbCarBrand.SelectedItem.ToString() ;
+                    newCarTypeInfo.BrandId = carBrandInfo.Id;
+                    newCarTypeInfo.Brand = carBrandInfo.Name;
                 }
 
                 if (!newCarTypeInfo.Equals(carTypeInfo))
@@ -89,14 +90,13 @@ namespace CRM_4S.BasicsManager
         {
             errorProvider.ClearErrors();
 
+            if (string.IsNullOrEmpty(this.cbCarBrand.SelectedText.Trim()))
+            {
+                errorProvider.SetError(this.cbCarBrand, "不能为空", ErrorType.Warning);
+            }
             if (string.IsNullOrEmpty(this.txtCarType.Text.Trim()))
             {
                 errorProvider.SetError(this.txtCarType, "不能为空", ErrorType.Warning);
-            }
-
-            if (string.IsNullOrEmpty(this.txtDesc.Text.Trim()))
-            {
-                errorProvider.SetError(this.txtDesc, "不能为空", ErrorType.Warning);
             }
             return !errorProvider.HasErrors;
         }

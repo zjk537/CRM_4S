@@ -206,17 +206,11 @@ namespace CRM_4S
 
                     AddRibbonPageViews();
                     ribbon.Pages.RemoveAt(0);
-
-
                 }
                 else
                 {
                     Application.Exit();
                 }
-            }
-            catch (Exception ex)
-            {
-                LoggerHelper.Logger.Error(ex.Message);
             }
             finally
             {
@@ -225,9 +219,6 @@ namespace CRM_4S
                     waitloginHandler.Set();
                 }
             }
-            
-
-           
         }
 
         private void ribbon_SelectedPageChanged(object sender, EventArgs e)

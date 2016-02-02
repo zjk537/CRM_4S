@@ -3,6 +3,7 @@ using CRM_4S.Business.BusinessModel;
 using CRM_4S.Common.FormBase;
 using CRM_4S.Model;
 using CRM_4S.Model.DataModel;
+using CRM_4S.Model.EnumType;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
 using System;
@@ -34,37 +35,42 @@ namespace CRM_4S.UserManager
             if (info != null)
             {
                 UserInfo tmpUser = new UserInfo();
-                DBModelBase.Clone<UserInfo>(info.User,ref tmpUser);
+                DBModelBase.Clone<UserInfo>(info.User, ref tmpUser);
                 newUserShopRoleInfo.User = tmpUser;
 
                 userShopRoleInfo = info;
             }
             cbRole.Properties.Items.AddRange(GloablCaches.Instance.RoleInfos);
             cbShop.Properties.Items.AddRange(GloablCaches.Instance.ShopInfos);
-            cbSex.Properties.Items.AddRange(GloablConstants.SexNames);
+            cbSex.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.Sex).ToArray());
 
             this.Text += IsNew ? "-新增" : "-修改";
             this.Btn_OK.Click += Btn_OK_Click;
 
+            if (IsNew)
+                newUserShopRoleInfo.User = new UserInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId };
             cbShop.DataBindings.Add("EditValue", newUserShopRoleInfo, "Shop");
             cbRole.DataBindings.Add("EditValue", newUserShopRoleInfo, "Role");
-            
 
             var userInfo = newUserShopRoleInfo.User;
-            cbSex.SelectedIndex = IsNew ? 0 : userInfo.Sex.Value; ;
+            cbSex.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == userInfo.Sex);
             txtRealName.DataBindings.Add("Text", userInfo, "RealName");
             txtPhone.DataBindings.Add("Text", userInfo, "Phone");
             txtUserName.DataBindings.Add("Text", userInfo, "UserName");
             txtPwd.DataBindings.Add("Text", userInfo, "Pwd");
+
+            // 权限
+            //cbShop.Enabled = cbRole.Enabled = GloablCaches.Instance.CurUser.RoleId == GloablConstants.RoleIdSysAdmin;
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
         {
             if (!ValidatFail())
             {
-                if (newUserShopRoleInfo.User.Sex != cbSex.SelectedIndex)
+                BasicConstantInfo sexInfo = (BasicConstantInfo)cbSex.SelectedItem;
+                if (sexInfo != null && newUserShopRoleInfo.User.Sex != sexInfo.Id)
                 {
-                    newUserShopRoleInfo.User.Sex = cbSex.SelectedIndex;
+                    newUserShopRoleInfo.User.Sex = sexInfo.Id;
                 }
 
                 if (!newUserShopRoleInfo.User.Equals(userShopRoleInfo == null ? null : userShopRoleInfo.User ?? null))
@@ -103,39 +109,33 @@ namespace CRM_4S.UserManager
 
             if (cbShop.SelectedIndex < 0)
             {
-                errorProvider.SetError(this.cbShop, "请选择所属店面", ErrorType.Warning);
+                errorProvider.SetError(this.cbShop, "不能为空", ErrorType.Warning);
             }
             if (string.IsNullOrEmpty(this.txtRealName.Text.Trim()))
             {
-                errorProvider.SetError(this.txtRealName, "真实性名不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtRealName, "不能为空", ErrorType.Warning);
             }
             if (string.IsNullOrEmpty(this.txtPhone.Text.Trim()))
             {
-                errorProvider.SetError(this.txtPhone, "联系方式不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtPhone, "不能为空", ErrorType.Warning);
             }
             if (this.cbRole.SelectedIndex < 0)
             {
-                errorProvider.SetError(this.cbRole, "请选择职位", ErrorType.Warning);
+                errorProvider.SetError(this.cbRole, "不能为空", ErrorType.Warning);
             }
 
             if (string.IsNullOrEmpty(this.txtUserName.Text.Trim()))
             {
-                errorProvider.SetError(this.txtUserName, "登录用户名不能为空", ErrorType.Warning);
+                errorProvider.SetError(this.txtUserName, "不能为空", ErrorType.Warning);
             }
 
-            if (txtPwd.Enabled)
+            if (userShopRoleInfo == null || newUserShopRoleInfo.User.PwdSpecify)
+            {
                 if (string.IsNullOrEmpty(this.txtPwd.Text.Trim()))
-                {
-                    errorProvider.SetError(this.txtPwd, "登录密码不能为空", ErrorType.Warning);
-                }
-
-            if (txtAgainPwd.Enabled)
+                    errorProvider.SetError(this.txtPwd, "不能为空", ErrorType.Warning);
                 if (!this.txtPwd.Text.Equals(this.txtAgainPwd.Text))
-                {
-                    //errorProvider.SetError(this.TxtLogUserPwd, "登录密码不能为空", ErrorType.Warning);
                     errorProvider.SetError(this.txtAgainPwd, "两次输入密码不相同", ErrorType.Warning);
-                }
-
+            }
             return errorProvider.HasErrors;
         }
     }

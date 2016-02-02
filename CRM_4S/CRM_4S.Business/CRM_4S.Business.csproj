@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalyseKPIBusiness.cs" />
+    <Compile Include="BasicsConstantBusiness.cs" />
     <Compile Include="BusinessBase.cs" />
     <Compile Include="BusinessModel\UserCarTypeTaskInfo.cs" />
     <Compile Include="CarTypeBusiness.cs" />

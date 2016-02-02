@@ -52,41 +52,35 @@ namespace CRM_4S
         }
         private void Login()
         {
-            try
-            {
-                EndLogin(DialogResult.OK);
-                //if (UserManagementService.Login(userTextEdit.Text, pwdTextEdit.Text))
-                //{
-                //    EndLogin(DialogResult.OK);
-                //}
-                //else
-                //{
-                //    Reload(true);
-                //}
-            }
-            catch (Exception e)
-            {
-            }
+            EndLogin(DialogResult.OK);
         }
 
         private void EndLogin(DialogResult dialogResult)
         {
-            //通知Main窗体登录结果
-            if (SetDialogResult != null)
+            try
             {
-                SetDialogResult(dialogResult);
+                //通知Main窗体登录结果
+                if (SetDialogResult != null)
+                {
+                    SetDialogResult(dialogResult);
+                }
+
+                //释放Main窗体初始化信号
+                waitMdiInitializeHandler.Set();
+                //等待Main窗体初始化完成
+                waitLoginHandler.WaitOne();
+
+                //返回登录结果，并释放登录窗体
+                this.DialogResult = dialogResult;
+            }
+            catch (Exception e)
+            {
+
             }
 
-            //释放Main窗体初始化信号
-            waitMdiInitializeHandler.Set();
-            //等待Main窗体初始化完成
-            waitLoginHandler.WaitOne();
-
-            //返回登录结果，并释放登录窗体
-            this.DialogResult = dialogResult;
         }
 
-        private bool ValidatingFail()
+        private bool Validation()
         {
             errorProvider.ClearErrors();
 
@@ -97,7 +91,7 @@ namespace CRM_4S
 
             if (string.IsNullOrEmpty(txtPwd.Text.Trim()))
             {
-                errorProvider.SetError(txtPwd, "密码不能为空", ErrorType.Critical);
+                errorProvider.SetError(txtPwd, "密码不能为空", ErrorType.Warning);
             }
 
             return errorProvider.HasErrors;
@@ -105,7 +99,7 @@ namespace CRM_4S
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!ValidatingFail())
+            if (!Validation())
             {
                 UserInfo user = UserBusiness.Instance.GetUserByName(this.txtUserName.Text.Trim(), this.txtPwd.Text.Trim());
                 if (user == null)
@@ -128,6 +122,11 @@ namespace CRM_4S
         private void FmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.btnCanel.PerformClick();
+        }
+
+        private void TextEdit_TextChanged(object sender, EventArgs e)
+        {
+            Validation();
         }
     }
 }

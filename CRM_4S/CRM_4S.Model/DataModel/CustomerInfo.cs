@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-27 11:21
+ * 创建日期：2016-02-02 13:38
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -60,7 +60,7 @@ namespace CRM_4S.Model.DataModel
         private int? nature = null;
         public bool NatureSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 客户性质：新增到店；再次到店；电销邀约；外展留档；二级网点；其它到店 
+        /// 获取或设置 客户性质：对应 basic_constant.TypeKey = CNature 
         /// </summary>
         [DBFieldAttribute("CustomerNature")]
         public int? Nature { get { return nature; } set { nature = value; NatureSpecify = true; } }
@@ -84,6 +84,15 @@ namespace CRM_4S.Model.DataModel
         public string Industry { get { return industry; } set { industry = value; IndustrySpecify = true; } }
 
 
+        private int? regionId = null;
+        public bool RegionIdSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 所在区域Id 
+        /// </summary>
+        [DBFieldAttribute("CustomerRegionId")]
+        public int? RegionId { get { return regionId; } set { regionId = value; RegionIdSpecify = true; } }
+
+
         private string address = string.Empty;
         public bool AddressSpecify { get; set; }
         /// <summary>
@@ -96,7 +105,7 @@ namespace CRM_4S.Model.DataModel
         private DateTime? updateDate = null;
         public bool UpdateDateSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 最后一次更新时间 
         /// </summary>
         [DBFieldAttribute("CustomerUpdateDate")]
         public DateTime? UpdateDate { get { return updateDate; } set { updateDate = value; UpdateDateSpecify = true; } }
