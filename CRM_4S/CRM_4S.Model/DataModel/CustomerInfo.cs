@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-03 12:26
+ * 创建日期：2016-02-03 16:52
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -46,6 +46,15 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("CustomerPhone")]
         public string Phone { get { return phone; } set { phone = value; PhoneSpecify = true; } }
+
+
+        private int? toShopNum = null;
+        public bool ToShopNumSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 到店次数 
+        /// </summary>
+        [DBFieldAttribute("CustomerToShopNum")]
+        public int? ToShopNum { get { return toShopNum; } set { toShopNum = value; ToShopNumSpecify = true; } }
 
 
         private string curCar = string.Empty;

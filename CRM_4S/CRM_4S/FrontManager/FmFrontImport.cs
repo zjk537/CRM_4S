@@ -78,16 +78,16 @@ namespace CRM_4S.FrontManager
                 {
                     try
                     {
-                        DataColumn dataColumn = new DataColumn("UserId", typeof(int));
+                        DataColumn dataColumn = new DataColumn("Recorder", typeof(string));
                         tempTable.Columns.Add(dataColumn);
 
                         dataColumn.SetOrdinal(0);
                         foreach (DataRow datarow in tempTable.Rows)
                         {
-                            datarow[dataColumn] = GloablCaches.Instance.CurUser.Id;
+                            datarow[dataColumn] = GloablCaches.Instance.CurUser.RealName;
                         }
 
-                        DataImportBusiness.Instance.BulkInsertData("Front", DtSource);
+                        DataImportBusiness.Instance.BulkInsertData("Front", tempTable);
                         runMsg = "导入成功";
                     }
                     catch (Exception ex)

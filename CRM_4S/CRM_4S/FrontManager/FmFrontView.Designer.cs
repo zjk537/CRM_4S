@@ -39,6 +39,8 @@ namespace CRM_4S.FrontManager
             this.clmCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCNature = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmToShopNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCurCar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPurposeCar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmInstallment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmReplace = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,7 +53,6 @@ namespace CRM_4S.FrontManager
             this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmCurCar = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
@@ -83,6 +84,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerName,
             this.clmCustomerPhone,
             this.clmCNature,
+            this.clmToShopNum,
             this.clmCurCar,
             this.clmPurposeCar,
             this.clmInstallment,
@@ -159,6 +161,20 @@ namespace CRM_4S.FrontManager
             this.clmCNature.Name = "clmCNature";
             this.clmCNature.Visible = true;
             this.clmCNature.VisibleIndex = 3;
+            // 
+            // clmToShopNum
+            // 
+            this.clmToShopNum.AppearanceCell.Options.UseTextOptions = true;
+            this.clmToShopNum.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmToShopNum.Caption = "到店次数";
+            this.clmToShopNum.FieldName = "Customer.ToShopNum";
+            this.clmToShopNum.Name = "clmToShopNum";
+            // 
+            // clmCurCar
+            // 
+            this.clmCurCar.Caption = "现有车型";
+            this.clmCurCar.FieldName = "Customer.CurCar";
+            this.clmCurCar.Name = "clmCurCar";
             // 
             // clmPurposeCar
             // 
@@ -260,12 +276,6 @@ namespace CRM_4S.FrontManager
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 10;
             // 
-            // clmCurCar
-            // 
-            this.clmCurCar.Caption = "现有车型";
-            this.clmCurCar.FieldName = "Customer.CurCar";
-            this.clmCurCar.Name = "clmCurCar";
-            // 
             // FmFrontView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -308,6 +318,7 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraGrid.Columns.GridColumn clmReplace;
         private DevExpress.XtraGrid.Columns.GridColumn clmSource;
         private DevExpress.XtraGrid.Columns.GridColumn clmCurCar;
+        private DevExpress.XtraGrid.Columns.GridColumn clmToShopNum;
 
     }
 }

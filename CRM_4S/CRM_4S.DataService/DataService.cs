@@ -184,7 +184,7 @@ namespace CRM_4S.DataService
                 FunctionName = string.Format("uspClear{0}Temp", typeName)//uspClearFrontTemp
             });
 
-            string tempFileDir = AppDomain.CurrentDomain.BaseDirectory + "/TempFolder/";
+            string tempFileDir = AppDomain.CurrentDomain.BaseDirectory + "TempFolder\\";
             string strFile = tempFileDir + "Temp" + DateTime.Now.Ticks.ToString() + ".csv";//Create directory if not exist... Make sure directory has required rights..    
             if (!Directory.Exists(tempFileDir))
                 Directory.CreateDirectory(tempFileDir);//If file does not exist then create it and right data into it..     
