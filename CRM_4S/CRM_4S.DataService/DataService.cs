@@ -1,9 +1,11 @@
 ﻿using CRM_4S.DataService.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -177,32 +179,71 @@ namespace CRM_4S.DataService
         /// <param name="resource">结果集</param>
         public void BulkInsert(string typeName, DataTable resource)
         {
-            FuncSaveData(new FunctionParms() { FunctionName = ConfigurationManager.AppSettings[string.Format("{0}_ClearProc", typeName)] });
-
-            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString))
+            FuncSaveData(new FunctionParms()
             {
-                bulkCopy.BatchSize = 5000;
-                bulkCopy.DestinationTableName = ConfigurationManager.AppSettings[string.Format("{0}_DestinationTableName", typeName)];
-                bulkCopy.WriteToServer(resource);
+                FunctionName = string.Format("uspClear{0}Temp", typeName)//uspClearFrontTemp
+            });
+
+            string tempFileDir = AppDomain.CurrentDomain.BaseDirectory + "/TempFolder/";
+            string strFile = tempFileDir + "Temp" + DateTime.Now.Ticks.ToString() + ".csv";//Create directory if not exist... Make sure directory has required rights..    
+            if (!Directory.Exists(tempFileDir))
+                Directory.CreateDirectory(tempFileDir);//If file does not exist then create it and right data into it..     
+            if (!File.Exists(strFile))
+            {
+                FileStream fs = new FileStream(strFile, FileMode.Create, FileAccess.Write);
+                fs.Close();
+                fs.Dispose();
+            }
+            CreateCSVfile(resource, strFile);
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();// mysql.data.dll 5.6以上版本 目前用6.9.8
+                MySqlBulkLoader bulkLoader = new MySqlBulkLoader(conn);
+                bulkLoader.TableName = string.Format("import_{0}_temp", typeName);
+                bulkLoader.FieldTerminator = ",";
+                bulkLoader.LineTerminator = "\r\n";
+                bulkLoader.FileName = strFile;
+                bulkLoader.NumberOfLinesToSkip = 0;
+                bulkLoader.Load();
+                File.Delete(strFile);
             }
 
-            FuncSaveData(new FunctionParms() { FunctionName = ConfigurationManager.AppSettings[string.Format("{0}_RefreshProc", typeName)] });
 
-            //string configFile = string.Format(@".\Config\{0}.xml", typeName);
-            ////通过配置文件创建列对应关系用于转换格式数据
-            //Dictionary<string, string> dicNameVNames = new Dictionary<string, string>();
-
-            ////通过配置文件创建临时表用于BulkCopy
-            //DataTable tableTemp = new DataTable();
-
-            //foreach (DataRow dr in resource.Rows)
+            //using (SqlBulkCopy bulkCopy = new SqlBulkCopy("Server=localhost;Database=crm_4s;Uid=root;Pwd=;"))
             //{
-            //    DataRow drTemp = tableTemp.NewRow();
-            //    foreach (DataColumn dc in resource.Columns)
-            //    {
-            //        drTemp[dicNameVNames[dc.ColumnName]] = dr[dc];
-            //    }
+            //    bulkCopy.BatchSize = 5000;
+            //    bulkCopy.DestinationTableName = "import_front_temp";
+            //    bulkCopy.WriteToServer(resource);
             //}
+
+            //FuncSaveData(new FunctionParms()
+            //{
+            //    FunctionName = ""
+            //});
+
+        }
+
+        public static void CreateCSVfile(DataTable dtable, string strFilePath)
+        {
+            StreamWriter sw = new StreamWriter(strFilePath, false);
+            int icolcount = dtable.Columns.Count;
+            foreach (DataRow drow in dtable.Rows)
+            {
+                for (int i = 0; i < icolcount; i++)
+                {
+                    if (!Convert.IsDBNull(drow[i]))
+                    {
+                        sw.Write(drow[i].ToString());
+                    }
+                    if (i < icolcount - 1)
+                    {
+                        sw.Write(",");
+                    }
+                }
+                sw.Write(sw.NewLine);
+            }
+            sw.Close();
+            sw.Dispose();
         }
     }
 }

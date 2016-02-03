@@ -120,6 +120,7 @@ namespace CRM_4S
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CRM_4S 管理系统";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();

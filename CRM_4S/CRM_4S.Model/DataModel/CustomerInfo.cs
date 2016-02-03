@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-02 13:38
+ * 创建日期：2016-02-03 12:26
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -48,13 +48,13 @@ namespace CRM_4S.Model.DataModel
         public string Phone { get { return phone; } set { phone = value; PhoneSpecify = true; } }
 
 
-        private string levelCode = string.Empty;
-        public bool LevelCodeSpecify { get; set; }
+        private string curCar = string.Empty;
+        public bool CurCarSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 客户级别 
+        /// 获取或设置 现有车型 
         /// </summary>
-        [DBFieldAttribute("CustomerLevelCode")]
-        public string LevelCode { get { return levelCode; } set { levelCode = value; LevelCodeSpecify = true; } }
+        [DBFieldAttribute("CustomerCurCar")]
+        public string CurCar { get { return curCar; } set { curCar = value; CurCarSpecify = true; } }
 
 
         private int? nature = null;
@@ -73,6 +73,15 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("CustomerOriginNature")]
         public int? OriginNature { get { return originNature; } set { originNature = value; OriginNatureSpecify = true; } }
+
+
+        private int? type = null;
+        public bool TypeSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 客户类型：前台客户 DCC客户 
+        /// </summary>
+        [DBFieldAttribute("CustomerType")]
+        public int? Type { get { return type; } set { type = value; TypeSpecify = true; } }
 
 
         private string industry = string.Empty;

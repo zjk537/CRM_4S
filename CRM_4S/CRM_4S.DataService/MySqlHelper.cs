@@ -51,8 +51,10 @@ namespace CRM_4S.DataService
             // Iterate through the SqlParameters, assigning the values from the corresponding position in the 
             foreach (MySqlParameter param in commandParameters)
             {
-                // mysql 取出的参数前面都带一个 ?p 程序里的参数不带?p 这里统一处理
-                string paramKey = param.ParameterName.TrimStart('?','p');
+                // mysql 取出的参数前面都带一个 ?p 程序里的参数不带?p 这里统一处理 mysql.data.dll 5.1版本
+                //string paramKey = param.ParameterName.TrimStart('?','p');
+                // mysql 取出的参数前面都带一个 @p 程序里的参数不带@p 这里统一处理 mysql.data.dll 6.9.8版本
+                string paramKey = param.ParameterName.TrimStart('@', 'p');
                 if (parameterDict.ContainsKey(paramKey))
                 {
                     param.Value = parameterDict[paramKey];

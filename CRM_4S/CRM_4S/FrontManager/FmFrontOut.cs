@@ -24,7 +24,7 @@ namespace CRM_4S.FrontManager
 
         FrontCustomerRecordInfo newRecordInfo = new FrontCustomerRecordInfo();
 
-        IList<CustomerLevelInfo> customerLevels = null;
+        IList<PurposeLevelInfo> customerLevels = null;
         public FmFrontOut(FrontCustomerRecordInfo info)
         {
             InitializeComponent();
@@ -48,19 +48,17 @@ namespace CRM_4S.FrontManager
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", customerInfo, "Industry");
             this.txtCAddress.DataBindings.Add("Text", customerInfo, "Address");
-            customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
+            this.txtCurCar.DataBindings.Add("Text", customerInfo, "CurCar");
+            customerLevels = PurposeLevelBusiness.Instance.GetPurposeLevels();
             this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
             this.cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
             this.cbCNature.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
 
-            this.cbCarLicence.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarLicence).ToArray());
+            //this.cbCarLicence.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarLicence).ToArray());
             this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
             this.cbFrontSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.FrontSource).ToArray());
 
-            if (string.IsNullOrEmpty(customerInfo.LevelCode))
-                this.cbCLevel.SelectedIndex = 0;
-            else
-                this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
+            
 
             if (customerInfo.Id == 0)
                 this.cbCNature.SelectedIndex = 0;
@@ -71,10 +69,15 @@ namespace CRM_4S.FrontManager
             else
                 this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == customerInfo.RegionId);
 
-            if (frontInfo.CarLicence == null)
-                this.cbCarLicence.SelectedIndex = 0;
+            //if (frontInfo.CarLicence == null)
+            //    this.cbCarLicence.SelectedIndex = 0;
+            //else
+            //    this.cbCarLicence.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.CarLicence);
+
+            if (string.IsNullOrEmpty(frontInfo.LevelCode))
+                this.cbCLevel.SelectedIndex = 0;
             else
-                this.cbCarLicence.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.CarLicence);
+                this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == frontInfo.LevelCode);
 
             if (frontInfo.PurposeCar == null)
                 this.cbCarType.SelectedIndex = 0;
@@ -88,12 +91,9 @@ namespace CRM_4S.FrontManager
                 this.cbFrontSource.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
             this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
             this.txtCNum.EditValue = frontInfo.CustomerNum;
-            this.rdAlloyWheel.SelectedIndex = frontInfo.AlloyWheel.HasValue ? frontInfo.AlloyWheel.Value - 1 : -1;
-            this.rdDermis.SelectedIndex = frontInfo.Dermis.HasValue ? frontInfo.Dermis.Value - 1 : -1;
             this.rdDriveStatus.SelectedIndex = frontInfo.DriveStatus.HasValue ? frontInfo.DriveStatus.Value - 1 : -1;
             this.rdInstallment.SelectedIndex = frontInfo.Installment.HasValue ? frontInfo.Installment.Value - 1 : -1;
             this.rdReplace.SelectedIndex = frontInfo.Replace.HasValue ? frontInfo.Replace.Value - 1 : -1;
-            this.rdSolarFilm.SelectedIndex = frontInfo.SolarFilm.HasValue ? frontInfo.SolarFilm.Value - 1 : -1;
         }
 
 
@@ -115,7 +115,7 @@ namespace CRM_4S.FrontManager
 
         private void TextEdit_TextChanged(object sender, EventArgs e)
         {
-            Validate();
+            Validation();
         }
 
         private void TextEdit_Enter(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace CRM_4S.FrontManager
 
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            if (!(Validate())) return;
+            if (!(Validation())) return;
 
             if (!string.IsNullOrEmpty(recordInfo.Customer.Phone) && string.IsNullOrEmpty(newRecordInfo.Customer.Phone))
             {
@@ -135,9 +135,7 @@ namespace CRM_4S.FrontManager
 
             try
             {
-                var levelInfo = (CustomerLevelInfo)this.cbCLevel.SelectedItem;
-                if (levelInfo != null)
-                    newRecordInfo.Customer.LevelCode = levelInfo.Code;
+                
                 var cNatureInfo = (BasicConstantInfo)this.cbCNature.SelectedItem;
                 if (cNatureInfo != null)
                     newRecordInfo.Customer.Nature = cNatureInfo.Id;
@@ -154,9 +152,12 @@ namespace CRM_4S.FrontManager
 
 
                 newRecordInfo.FrontRecord.Id = recordInfo.FrontRecord.Id;
-                var carLicenceInfo = (BasicConstantInfo)this.cbCarLicence.SelectedItem;
-                if (carLicenceInfo != null)
-                    newRecordInfo.FrontRecord.CarLicence = carLicenceInfo.Id;
+                var levelInfo = (PurposeLevelInfo)this.cbCLevel.SelectedItem;
+                if (levelInfo != null)
+                    newRecordInfo.FrontRecord.LevelCode = levelInfo.Code;
+                //var carLicenceInfo = (BasicConstantInfo)this.cbCarLicence.SelectedItem;
+                //if (carLicenceInfo != null)
+                //    newRecordInfo.FrontRecord.CarLicence = carLicenceInfo.Id;
 
                 var selCarType = (CarTypeInfo)this.cbCarType.SelectedItem;
                 if (selCarType != null)
@@ -168,14 +169,9 @@ namespace CRM_4S.FrontManager
                     newRecordInfo.FrontRecord.DriveStatus = this.rdDriveStatus.SelectedIndex + 1;
                 if (this.rdReplace.SelectedIndex > -1)
                     newRecordInfo.FrontRecord.Replace = this.rdReplace.SelectedIndex + 1;
-                if (this.rdAlloyWheel.SelectedIndex > -1)
-                    newRecordInfo.FrontRecord.AlloyWheel = this.rdAlloyWheel.SelectedIndex + 1;
                 if (this.rdInstallment.SelectedIndex > -1)
                     newRecordInfo.FrontRecord.Installment = this.rdInstallment.SelectedIndex + 1;
-                if (this.rdDermis.SelectedIndex > -1)
-                    newRecordInfo.FrontRecord.Dermis = this.rdDermis.SelectedIndex + 1;
-                if (this.rdSolarFilm.SelectedIndex > -1)
-                    newRecordInfo.FrontRecord.SolarFilm = this.rdSolarFilm.SelectedIndex + 1;
+               
 
                 newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCNum.EditValue);
                 newRecordInfo.FrontRecord.CustomerId = newRecordInfo.Customer.Id;
@@ -241,13 +237,7 @@ namespace CRM_4S.FrontManager
             this.txtCPhone.DataBindings.Add("Text", info, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", info, "Industry");
             this.txtCAddress.DataBindings.Add("Text", info, "Address");
-            this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(obj => obj.Code == info.LevelCode);
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
-
-            if (string.IsNullOrEmpty(info.LevelCode))
-                this.cbCLevel.SelectedIndex = 0;
-            else
-                this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(m => m.Code == info.LevelCode);
 
             if (info.Id == 0)
                 this.cbCNature.SelectedIndex = 0;
@@ -295,7 +285,7 @@ namespace CRM_4S.FrontManager
             this.lblCLevel.Text = "B";
             this.txtLevelDesc.Text = "购买意向很高的客户，需要在细微处关怀提升期望值，促进成交（精品、保养等）";
 
-            var cLevelInfo = customerLevels.FirstOrDefault(m => m.Code == "A");
+            var cLevelInfo = customerLevels.FirstOrDefault(m => m.Code == "B");
             this.cbCLevel.SelectedItem = cLevelInfo;
 
         }

@@ -15,23 +15,23 @@ using System.Windows.Forms;
 
 namespace CRM_4S.BasicsManager
 {
-    public partial class FmCustomerLevelInfo : FormSimpleDialogBase
+    public partial class FmPurposeLevelInfo : FormSimpleDialogBase
     {
-        CustomerLevelInfo levelInfo = null;
+        PurposeLevelInfo levelInfo = null;
 
-        CustomerLevelInfo newLevelInfo = new CustomerLevelInfo();
-        public FmCustomerLevelInfo(CustomerLevelInfo info = null)
+        PurposeLevelInfo newLevelInfo = new PurposeLevelInfo();
+        public FmPurposeLevelInfo(PurposeLevelInfo info = null)
         {
             InitializeComponent();
             initForm(info);
         }
 
         private bool IsNew { get { return levelInfo == null; } }
-        private void initForm(CustomerLevelInfo info)
+        private void initForm(PurposeLevelInfo info)
         {
             if (info != null)
             {
-                DBModelBase.Clone<CustomerLevelInfo>(info, ref newLevelInfo);
+                DBModelBase.Clone<PurposeLevelInfo>(info, ref newLevelInfo);
                 levelInfo = info;
             }
 
@@ -52,12 +52,12 @@ namespace CRM_4S.BasicsManager
                 {
                     if (IsNew)
                     {
-                        CustomerLevelBusiness.Instance.AddCustomerLevel(newLevelInfo);
+                        PurposeLevelBusiness.Instance.AddPurposeLevel(newLevelInfo);
                     }
                     else
                     {
                         newLevelInfo.Id = levelInfo.Id;
-                        CustomerLevelBusiness.Instance.UpdateCustomerLevel(newLevelInfo);
+                        PurposeLevelBusiness.Instance.UpdatePurposeLevel(newLevelInfo);
                     }
 
                     this.DialogResult = DialogResult.OK;

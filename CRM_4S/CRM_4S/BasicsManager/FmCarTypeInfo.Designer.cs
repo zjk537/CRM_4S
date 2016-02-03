@@ -68,6 +68,7 @@ namespace CRM_4S.BasicsManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCarBrand.Properties.NullValuePrompt = "<必填>";
             this.cbCarBrand.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbCarBrand.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbCarBrand.Size = new System.Drawing.Size(219, 21);
             this.cbCarBrand.TabIndex = 0;
             // 

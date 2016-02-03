@@ -1,6 +1,6 @@
 ﻿namespace CRM_4S.BasicsManager
 {
-    partial class FmCustomerLevelInfo
+    partial class FmPurposeLevelInfo
     {
         /// <summary>
         /// Required designer variable.

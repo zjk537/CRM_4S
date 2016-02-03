@@ -191,6 +191,7 @@ namespace CRM_4S.UserManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbRole.Properties.NullValuePrompt = "<必填>";
             this.cbRole.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbRole.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbRole.Size = new System.Drawing.Size(166, 21);
             this.cbRole.TabIndex = 1;
             // 
@@ -211,6 +212,7 @@ namespace CRM_4S.UserManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbShop.Properties.NullValuePrompt = "<必填>";
             this.cbShop.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbShop.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbShop.Size = new System.Drawing.Size(166, 21);
             this.cbShop.TabIndex = 0;
             // 
@@ -247,6 +249,7 @@ namespace CRM_4S.UserManager
             this.cbSex.Name = "cbSex";
             this.cbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSex.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbSex.Size = new System.Drawing.Size(166, 21);
             this.cbSex.TabIndex = 3;
             // 

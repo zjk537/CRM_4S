@@ -51,6 +51,7 @@ namespace CRM_4S.FrontManager
             this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCurCar = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
@@ -82,6 +83,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerName,
             this.clmCustomerPhone,
             this.clmCNature,
+            this.clmCurCar,
             this.clmPurposeCar,
             this.clmInstallment,
             this.clmReplace,
@@ -196,8 +198,8 @@ namespace CRM_4S.FrontManager
             // 
             // clmLevel
             // 
-            this.clmLevel.Caption = "客户级别";
-            this.clmLevel.FieldName = "Customer.LevelCode";
+            this.clmLevel.Caption = "意向级别";
+            this.clmLevel.FieldName = "FrontRecord.LevelCode";
             this.clmLevel.Name = "clmLevel";
             this.clmLevel.Visible = true;
             this.clmLevel.VisibleIndex = 6;
@@ -258,6 +260,12 @@ namespace CRM_4S.FrontManager
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 10;
             // 
+            // clmCurCar
+            // 
+            this.clmCurCar.Caption = "现有车型";
+            this.clmCurCar.FieldName = "Customer.CurCar";
+            this.clmCurCar.Name = "clmCurCar";
+            // 
             // FmFrontView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -299,6 +307,7 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraGrid.Columns.GridColumn clmInstallment;
         private DevExpress.XtraGrid.Columns.GridColumn clmReplace;
         private DevExpress.XtraGrid.Columns.GridColumn clmSource;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCurCar;
 
     }
 }

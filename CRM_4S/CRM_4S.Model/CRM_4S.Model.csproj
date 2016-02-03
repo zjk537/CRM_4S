@@ -45,7 +45,7 @@
     <Compile Include="DataModel\BasicConstantInfo.cs" />
     <Compile Include="DataModel\CarTypeInfo.cs" />
     <Compile Include="DataModel\CustomerInfo.cs" />
-    <Compile Include="DataModel\CustomerLevelInfo.cs" />
+    <Compile Include="DataModel\PurposeLevelInfo.cs" />
     <Compile Include="DataModel\RegionInfo.cs" />
     <Compile Include="DataModel\DCCRecordInfo.cs" />
     <Compile Include="DataModel\EvaluateQuestionInfo.cs" />

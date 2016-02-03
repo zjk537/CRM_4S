@@ -182,7 +182,7 @@ namespace CRM_4S.BasicsManager
             // 
             // navBtnLevel
             // 
-            this.navBtnLevel.Caption = "顾客等级";
+            this.navBtnLevel.Caption = "顾客意向级别";
             this.navBtnLevel.LargeImageIndex = 0;
             this.navBtnLevel.Name = "navBtnLevel";
             this.navBtnLevel.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBtnItem_LinkClicked);
@@ -540,7 +540,7 @@ namespace CRM_4S.BasicsManager
             // 
             // customerLevelInfoBindingSource
             // 
-            this.customerLevelInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.CustomerLevelInfo);
+            this.customerLevelInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.PurposeLevelInfo);
             // 
             // gridViewLevel
             // 
@@ -555,7 +555,7 @@ namespace CRM_4S.BasicsManager
             // 
             // clmLevelCode
             // 
-            this.clmLevelCode.Caption = "等级代码";
+            this.clmLevelCode.Caption = "级别代码";
             this.clmLevelCode.FieldName = "Code";
             this.clmLevelCode.Name = "clmLevelCode";
             this.clmLevelCode.Visible = true;
@@ -563,7 +563,7 @@ namespace CRM_4S.BasicsManager
             // 
             // clmLevelDesc
             // 
-            this.clmLevelDesc.Caption = "等级描述";
+            this.clmLevelDesc.Caption = "级别描述";
             this.clmLevelDesc.FieldName = "Desc";
             this.clmLevelDesc.Name = "clmLevelDesc";
             this.clmLevelDesc.Visible = true;

@@ -128,6 +128,7 @@ namespace CRM_4S.BasicsManager
             this.cbRegion.Name = "cbRegion";
             this.cbRegion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbRegion.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbRegion.Size = new System.Drawing.Size(218, 21);
             this.cbRegion.TabIndex = 1016;
             // 

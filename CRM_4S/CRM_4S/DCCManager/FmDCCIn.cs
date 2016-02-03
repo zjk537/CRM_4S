@@ -53,7 +53,7 @@ namespace CRM_4S.DCCManager
                 recordInfo.VisitTime = (DateTime)this.dtVisitTime.EditValue;
                 recordInfo.Source = this.cbDCCSource.SelectedIndex;
                 recordInfo.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
-                recordInfo.OperatorId = GloablCaches.Instance.CurUser.Id;
+                recordInfo.Recorder = GloablCaches.Instance.CurUser.RealName;
                 DCCRecordBusiness.Instance.AddDCCRecord(recordInfo);
 
                 this.DialogResult = DialogResult.OK;

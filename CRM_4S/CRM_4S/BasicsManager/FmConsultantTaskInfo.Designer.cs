@@ -72,6 +72,7 @@ namespace CRM_4S.BasicsManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbConsultant.Properties.NullValuePrompt = "<必填>";
             this.cbConsultant.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbConsultant.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbConsultant.Size = new System.Drawing.Size(258, 21);
             this.cbConsultant.TabIndex = 0;
             // 
@@ -89,6 +90,7 @@ namespace CRM_4S.BasicsManager
             this.dtStartDate.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.dtStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtStartDate.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
+            this.dtStartDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtStartDate.Size = new System.Drawing.Size(258, 21);
@@ -126,6 +128,7 @@ namespace CRM_4S.BasicsManager
             this.dtEndDate.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.dtEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtEndDate.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
+            this.dtEndDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dtEndDate.Size = new System.Drawing.Size(258, 21);
@@ -150,6 +153,7 @@ namespace CRM_4S.BasicsManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCarType.Properties.NullValuePrompt = "<必填>";
             this.cbCarType.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbCarType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbCarType.Size = new System.Drawing.Size(258, 21);
             this.cbCarType.TabIndex = 3;
             // 

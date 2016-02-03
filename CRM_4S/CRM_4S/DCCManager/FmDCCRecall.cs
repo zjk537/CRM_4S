@@ -22,7 +22,7 @@ namespace CRM_4S.DCCManager
         DCCCustomerRecordInfo recordInfo = null;
 
         DCCCustomerRecordInfo newRecordInfo = new DCCCustomerRecordInfo();
-        IList<CustomerLevelInfo> customerLevels = null;
+        IList<PurposeLevelInfo> purposeLevels = null;
         public FmDCCRecall(DCCCustomerRecordInfo info)
         {
             InitializeComponent();
@@ -46,10 +46,10 @@ namespace CRM_4S.DCCManager
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", customerInfo, "Industry");
             this.txtCAddress.DataBindings.Add("Text", customerInfo, "Address");
-            customerLevels = CustomerLevelBusiness.Instance.GetCustomerLevels();
-            this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
+            purposeLevels = PurposeLevelBusiness.Instance.GetPurposeLevels();
+            this.cbCLevel.Properties.Items.AddRange(purposeLevels.ToArray());
             this.cbCNature.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
-            this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == customerInfo.LevelCode);
+            //this.cbCLevel.SelectedItem = purposeLevels.FirstOrDefault(e => e.Code == customerInfo.);
             this.cbCNature.SelectedIndex = customerInfo.Nature ?? 0;
 
             this.cbDCCSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
@@ -62,7 +62,7 @@ namespace CRM_4S.DCCManager
             this.cbDCCStatus.SelectedIndex = dccInfo.Status ?? 0;
             this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == dccInfo.PurposeCar);
             this.cbIsLogin.SelectedIndex = dccInfo.IsLogin ?? 0;
-            this.cbToShop.SelectedIndex = dccInfo.PromiseShop ?? 0;
+            this.cbToShop.SelectedIndex = dccInfo.ToShop ?? 0;
             this.cbRecaller.SelectedItem = GloablCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == dccInfo.DCCRecallerId);
             this.dtToShopTime.EditValue = dccInfo.ToShopTime ?? DateTime.Now.AddDays(7);
             this.dtRecallTime.EditValue = dccInfo.RecallTime ?? DateTime.Now;
@@ -110,7 +110,7 @@ namespace CRM_4S.DCCManager
             try
             {
                 newRecordInfo.Customer.IdSpecify = true;
-                newRecordInfo.Customer.LevelCode = this.cbCLevel.SelectedText;
+                //newRecordInfo.Customer.LevelCode = this.cbCLevel.SelectedText;
                 newRecordInfo.Customer.Nature = this.cbCNature.SelectedIndex;
                 CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
 
@@ -119,7 +119,7 @@ namespace CRM_4S.DCCManager
                 newRecordInfo.DCCRecord.Status = this.cbDCCStatus.SelectedIndex;
                 newRecordInfo.DCCRecord.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
                 newRecordInfo.DCCRecord.IsLogin = this.cbIsLogin.SelectedIndex;
-                newRecordInfo.DCCRecord.PromiseShop = this.cbToShop.SelectedIndex;
+                newRecordInfo.DCCRecord.ToShop = this.cbToShop.SelectedIndex;
                 newRecordInfo.DCCRecord.ToShopTime = (DateTime)this.dtToShopTime.EditValue;
                 newRecordInfo.DCCRecord.RecallTime = (DateTime)this.dtRecallTime.EditValue;
                 newRecordInfo.DCCUser = (UserInfo)this.cbRecaller.SelectedItem;
@@ -225,7 +225,7 @@ namespace CRM_4S.DCCManager
             this.txtCPhone.DataBindings.Add("Text", info, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", info, "Industry");
             this.txtCAddress.DataBindings.Add("Text", info, "Address");
-            this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(obj => obj.Code == info.LevelCode);
+            //this.cbCLevel.SelectedItem = purposeLevels.FirstOrDefault(obj => obj.Code == info.LevelCode);
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
 
             RefreshDCCRecordView(newRecordInfo.DCCRecord);

@@ -91,11 +91,11 @@
     <Compile Include="BasicsManager\FmConsultantTaskInfo.Designer.cs">
       <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="BasicsManager\FmCustomerLevelInfo.cs">
+    <Compile Include="BasicsManager\FmPurposeLevelInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BasicsManager\FmCustomerLevelInfo.Designer.cs">
-      <DependentUpon>FmCustomerLevelInfo.cs</DependentUpon>
+    <Compile Include="BasicsManager\FmPurposeLevelInfo.Designer.cs">
+      <DependentUpon>FmPurposeLevelInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="BasicsManager\FmQuestionInfo.cs">
       <SubType>Form</SubType>
@@ -108,6 +108,12 @@
     </Compile>
     <Compile Include="BasicsManager\FmShopInfo.Designer.cs">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FmProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FmProgressBar.Designer.cs">
+      <DependentUpon>FmProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\UICommon.cs" />
     <Compile Include="DataAnalyse\FmDataAnalyseView.cs">
@@ -232,14 +238,17 @@
     <EmbeddedResource Include="BasicsManager\FmConsultantTaskInfo.resx">
       <DependentUpon>FmConsultantTaskInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BasicsManager\FmCustomerLevelInfo.resx">
-      <DependentUpon>FmCustomerLevelInfo.cs</DependentUpon>
+    <EmbeddedResource Include="BasicsManager\FmPurposeLevelInfo.resx">
+      <DependentUpon>FmPurposeLevelInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicsManager\FmQuestionInfo.resx">
       <DependentUpon>FmQuestionInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicsManager\FmShopInfo.resx">
       <DependentUpon>FmShopInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FmProgressBar.resx">
+      <DependentUpon>FmProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAnalyse\FmDataAnalyseView.resx">
       <DependentUpon>FmDataAnalyseView.cs</DependentUpon>
@@ -352,11 +361,10 @@
       <Name>DExpress.Localization</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="Images\loading.gif" />
     <None Include="Register.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

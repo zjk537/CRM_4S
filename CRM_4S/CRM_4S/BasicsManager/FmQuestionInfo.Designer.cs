@@ -100,6 +100,7 @@ namespace CRM_4S.BasicsManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbQType.Properties.NullValuePrompt = "<必填>";
             this.cbQType.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbQType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbQType.Size = new System.Drawing.Size(250, 21);
             this.cbQType.TabIndex = 0;
             // 

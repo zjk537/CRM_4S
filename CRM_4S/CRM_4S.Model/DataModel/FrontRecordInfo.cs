@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-02 14:18
+ * 创建日期：2016-02-03 12:55
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -75,6 +75,15 @@ namespace CRM_4S.Model.DataModel
         public int? PurposeCar { get { return purposeCar; } set { purposeCar = value; PurposeCarSpecify = true; } }
 
 
+        private string levelCode = string.Empty;
+        public bool LevelCodeSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 意向级别 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordLevelCode")]
+        public string LevelCode { get { return levelCode; } set { levelCode = value; LevelCodeSpecify = true; } }
+
+
         private int? driveStatus = null;
         public bool DriveStatusSpecify { get; set; }
         /// <summary>
@@ -102,15 +111,6 @@ namespace CRM_4S.Model.DataModel
         public int? Replace { get { return replace; } set { replace = value; ReplaceSpecify = true; } }
 
 
-        private int? solarFilm = null;
-        public bool SolarFilmSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 是否推荐太阳膜 
-        /// </summary>
-        [DBFieldAttribute("FrontRecordSolarFilm")]
-        public int? SolarFilm { get { return solarFilm; } set { solarFilm = value; SolarFilmSpecify = true; } }
-
-
         private int? installment = null;
         public bool InstallmentSpecify { get; set; }
         /// <summary>
@@ -118,24 +118,6 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("FrontRecordInstallment")]
         public int? Installment { get { return installment; } set { installment = value; InstallmentSpecify = true; } }
-
-
-        private int? alloyWheel = null;
-        public bool AlloyWheelSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 是否推荐合金轮毂 
-        /// </summary>
-        [DBFieldAttribute("FrontRecordAlloyWheel")]
-        public int? AlloyWheel { get { return alloyWheel; } set { alloyWheel = value; AlloyWheelSpecify = true; } }
-
-
-        private int? dermis = null;
-        public bool DermisSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 是否推荐真皮 
-        /// </summary>
-        [DBFieldAttribute("FrontRecordDermis")]
-        public int? Dermis { get { return dermis; } set { dermis = value; DermisSpecify = true; } }
 
 
         private string remark = string.Empty;

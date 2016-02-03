@@ -199,7 +199,7 @@ namespace CRM_4S.DCCManager
             this.clmPromiseShop.AppearanceCell.Options.UseTextOptions = true;
             this.clmPromiseShop.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmPromiseShop.Caption = "是否到店";
-            this.clmPromiseShop.FieldName = "DCCRecord.PromiseShop";
+            this.clmPromiseShop.FieldName = "DCCRecord.ToShop";
             this.clmPromiseShop.Name = "clmPromiseShop";
             this.clmPromiseShop.Visible = true;
             this.clmPromiseShop.VisibleIndex = 11;

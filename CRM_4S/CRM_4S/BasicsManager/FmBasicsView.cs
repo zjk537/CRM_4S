@@ -31,7 +31,7 @@ namespace CRM_4S.BasicsManager
 
             ShopBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             CarTypeBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
-            CustomerLevelBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
+            PurposeLevelBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             EvaluateQuestionBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             UserTaskBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
             AnalyseKPIBusiness.Instance.OnDataChanged += new EventHandler<CusEventArgs>((object sender, CusEventArgs args) => { RefreshView(); });
@@ -92,7 +92,7 @@ namespace CRM_4S.BasicsManager
         {
             if (gridControlLevel.Visible)
             {
-                var listResult = CustomerLevelBusiness.Instance.GetCustomerLevels();
+                var listResult = PurposeLevelBusiness.Instance.GetPurposeLevels();
                 gridControlLevel.DataSource = listResult;
                 gridControlLevel.DefaultView.RefreshData();
                 defaultGridView = gridControlLevel.DefaultView as ColumnView;
@@ -218,7 +218,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-                CustomerLevelBusiness.Instance.DeleteCustomerLevel(rowData as CustomerLevelInfo);
+                PurposeLevelBusiness.Instance.DeletePurposeLevel(rowData as PurposeLevelInfo);
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
@@ -251,7 +251,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-                new FmCustomerLevelInfo(rowData as CustomerLevelInfo).ShowDialog();
+                new FmPurposeLevelInfo(rowData as PurposeLevelInfo).ShowDialog();
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {
@@ -278,7 +278,7 @@ namespace CRM_4S.BasicsManager
             }
             else if (navBtnLevel.Links[0].State == ObjectState.Selected)
             {
-                new FmCustomerLevelInfo().ShowDialog();
+                new FmPurposeLevelInfo().ShowDialog();
             }
             else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
             {

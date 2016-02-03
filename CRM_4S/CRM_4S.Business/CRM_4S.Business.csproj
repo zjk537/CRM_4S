@@ -31,6 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>..\..\Dependence\NOPI\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\..\Dependence\NOPI\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\..\Dependence\NOPI\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\..\Dependence\NOPI\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -52,7 +64,8 @@
     <Compile Include="BusinessModel\DCCCustomerRecordInfo.cs" />
     <Compile Include="BusinessModel\FrontCustomerRecordInfo.cs" />
     <Compile Include="BusinessModel\UserShopRoleInfo.cs" />
-    <Compile Include="CustomerLevelBusiness.cs" />
+    <Compile Include="PurposeLevelBusiness.cs" />
+    <Compile Include="DataImportBusiness.cs" />
     <Compile Include="DCCRecordBusiness.cs" />
     <Compile Include="EvaluateQuestionBusiness.cs" />
     <Compile Include="FrontRecordBusiness.cs" />

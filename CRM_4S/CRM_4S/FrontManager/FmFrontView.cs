@@ -180,7 +180,7 @@ namespace CRM_4S.FrontManager
         {
             if (e.Info.IsRowIndicator)
             {
-                e.Info.DisplayText = Convert.ToString(e.RowHandle + 1);
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
         }
     }

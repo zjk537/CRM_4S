@@ -8,60 +8,60 @@ using System.Text;
 
 namespace CRM_4S.Business
 {
-    public class CustomerLevelBusiness : BusinessBase<CustomerLevelBusiness>
+    public class PurposeLevelBusiness : BusinessBase<PurposeLevelBusiness>
     {
-        public IList<CustomerLevelInfo> GetCustomerLevels()
+        public IList<PurposeLevelInfo> GetPurposeLevels()
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
-                funcParms.FunctionName = "uspGetCustomerLevels";
+                funcParms.FunctionName = "uspGetPurposeLevels";
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
-            }, new ResultValue(), "GetCustomerLevels.uspGetCustomerLevels", true);
+            }, new ResultValue(), "GetCustomerLevels.uspGetPurposeLevels", true);
 
-            return DoFunctionWithLog<List<CustomerLevelInfo>>(() =>
+            return DoFunctionWithLog<List<PurposeLevelInfo>>(() =>
             {
-                return ConvertToList<CustomerLevelInfo>(result);
+                return ConvertToList<PurposeLevelInfo>(result);
 
-            }, null, "GetCustomerLevels.ConvertToList", true);
+            }, null, "GetPurposeLevels.ConvertToList", true);
         }
 
-        public void AddCustomerLevel(CustomerLevelInfo info)
+        public void AddPurposeLevel(PurposeLevelInfo info)
         {
             DoUpdateFunctionWithLog<ResultValue>(() =>
             {
                 var functionParms = new FunctionParms();
-                functionParms.FunctionName = "uspAddCustomerLevel";
+                functionParms.FunctionName = "uspAddPurposeLevel";
                 functionParms.Pams = info.GetPams();
 
                 return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
-            }, "AddCustomerLevel.uspAddCustomerLevel", true);
+            }, "AddPurposeLevel.uspAddPurposeLevel", true);
         }
 
-        public void UpdateCustomerLevel(CustomerLevelInfo info)
+        public void UpdatePurposeLevel(PurposeLevelInfo info)
         {
             DoUpdateFunctionWithLog<ResultValue>(() =>
             {
                 var functionParms = new FunctionParms();
-                functionParms.FunctionName = "uspUpdateCustomerLevel";
+                functionParms.FunctionName = "uspUpdatePurposeLevel";
                 functionParms.Pams = info.GetPams();
 
                 return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
-            }, "UpdateCustomerLevel.uspUpdateCustomerLevel", true);
+            }, "UpdatePurposeLevel.uspUpdatePurposeLevel", true);
         }
 
-        public void DeleteCustomerLevel(CustomerLevelInfo info)
+        public void DeletePurposeLevel(PurposeLevelInfo info)
         {
             DoUpdateFunctionWithLog<ResultValue>(() =>
             {
                 var functionParms = new FunctionParms();
-                functionParms.FunctionName = "uspDeleteCustomerLevel";
+                functionParms.FunctionName = "uspDeletePurposeLevel";
                 functionParms.Pams = new Dictionary<string, object>();
-                functionParms.Pams.Add("CustomerLevelId", info.Id);
+                functionParms.Pams.Add("PurposeLevelId", info.Id);
 
                 return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
-            }, "DeleteCustomerLevel.uspDeleteCustomerLevel", true);
+            }, "DeletePurposeLevel.uspDeletePurposeLevel", true);
 
         }
     }

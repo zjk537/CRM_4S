@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-27 16:54
+ * 创建日期：2016-02-03 09:41
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -60,7 +60,7 @@ namespace CRM_4S.Model.DataModel
         private string durationTime = string.Empty;
         public bool DurationTimeSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 回访持续时间 
         /// </summary>
         [DBFieldAttribute("DccRecordDurationTime")]
         public string DurationTime { get { return durationTime; } set { durationTime = value; DurationTimeSpecify = true; } }
@@ -69,7 +69,7 @@ namespace CRM_4S.Model.DataModel
         private DateTime? recallTime = null;
         public bool RecallTimeSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 回访时间 
         /// </summary>
         [DBFieldAttribute("DccRecordRecallTime")]
         public DateTime? RecallTime { get { return recallTime; } set { recallTime = value; RecallTimeSpecify = true; } }
@@ -87,7 +87,7 @@ namespace CRM_4S.Model.DataModel
         private int? source = null;
         public bool SourceSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 线索来源 
+        /// 获取或设置 线索来源：对应 basic_constant.TypeKey = DCCSource 
         /// </summary>
         [DBFieldAttribute("DccRecordSource")]
         public int? Source { get { return source; } set { source = value; SourceSpecify = true; } }
@@ -96,25 +96,25 @@ namespace CRM_4S.Model.DataModel
         private int? status = null;
         public bool StatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 DCC状态：有效；无效；重复 
+        /// 获取或设置 DCC状态：对应 basic_constant.TypeKey = DCCStatus 
         /// </summary>
         [DBFieldAttribute("DccRecordStatus")]
         public int? Status { get { return status; } set { status = value; StatusSpecify = true; } }
 
 
-        private int? promiseShop = null;
-        public bool PromiseShopSpecify { get; set; }
+        private int? toShop = null;
+        public bool ToShopSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 承诺到店：是；否；还需要跟进 
+        /// 获取或设置 承诺到店：对应 basic_constant.TypeKey = ToShopStatus 
         /// </summary>
-        [DBFieldAttribute("DccRecordPromiseShop")]
-        public int? PromiseShop { get { return promiseShop; } set { promiseShop = value; PromiseShopSpecify = true; } }
+        [DBFieldAttribute("DccRecordToShop")]
+        public int? ToShop { get { return toShop; } set { toShop = value; ToShopSpecify = true; } }
 
 
         private int? isLogin = null;
         public bool IsLoginSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 是否登录 
+        /// 获取或设置 是否登录:对应 basic_constant.TypeKey = LoginStatus 
         /// </summary>
         [DBFieldAttribute("DccRecordIsLogin")]
         public int? IsLogin { get { return isLogin; } set { isLogin = value; IsLoginSpecify = true; } }
@@ -138,19 +138,19 @@ namespace CRM_4S.Model.DataModel
         public DateTime? ToShopTime { get { return toShopTime; } set { toShopTime = value; ToShopTimeSpecify = true; } }
 
 
-        private int? operatorId = null;
-        public bool OperatorIdSpecify { get; set; }
+        private string recorder = string.Empty;
+        public bool RecorderSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 录入人员 
         /// </summary>
-        [DBFieldAttribute("DccRecordOperatorId")]
-        public int? OperatorId { get { return operatorId; } set { operatorId = value; OperatorIdSpecify = true; } }
+        [DBFieldAttribute("DccRecordRecorder")]
+        public string Recorder { get { return recorder; } set { recorder = value; RecorderSpecify = true; } }
 
 
         private DateTime? updateDate = null;
         public bool UpdateDateSpecify { get; set; }
         /// <summary>
-        /// 获取或设置  
+        /// 获取或设置 最后一次更新时间 
         /// </summary>
         [DBFieldAttribute("DccRecordUpdateDate")]
         public DateTime? UpdateDate { get { return updateDate; } set { updateDate = value; UpdateDateSpecify = true; } }

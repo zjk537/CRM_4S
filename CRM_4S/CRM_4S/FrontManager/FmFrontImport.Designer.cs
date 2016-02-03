@@ -30,16 +30,16 @@ namespace CRM_4S.FrontManager
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmFrontImport));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.btnImportAndRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSelFile = new DevExpress.XtraEditors.SimpleButton();
+            this.txtFilePath = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -48,9 +48,9 @@ namespace CRM_4S.FrontManager
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.simpleButton2);
-            this.panelControl1.Controls.Add(this.simpleButton1);
-            this.panelControl1.Controls.Add(this.textEdit1);
+            this.panelControl1.Controls.Add(this.btnImportAndRefresh);
+            this.panelControl1.Controls.Add(this.btnSelFile);
+            this.panelControl1.Controls.Add(this.txtFilePath);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -58,28 +58,30 @@ namespace CRM_4S.FrontManager
             this.panelControl1.Size = new System.Drawing.Size(830, 60);
             this.panelControl1.TabIndex = 0;
             // 
-            // simpleButton2
+            // btnImportAndRefresh
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(727, 18);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 2;
-            this.simpleButton2.Text = "导入并刷新";
+            this.btnImportAndRefresh.Location = new System.Drawing.Point(743, 19);
+            this.btnImportAndRefresh.Name = "btnImportAndRefresh";
+            this.btnImportAndRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnImportAndRefresh.TabIndex = 2;
+            this.btnImportAndRefresh.Text = "导入并刷新";
+            this.btnImportAndRefresh.Click += new System.EventHandler(this.btnImportAndRefresh_Click);
             // 
-            // simpleButton1
+            // btnSelFile
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(646, 18);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 2;
-            this.simpleButton1.Text = "选择文件";
+            this.btnSelFile.Location = new System.Drawing.Point(646, 19);
+            this.btnSelFile.Name = "btnSelFile";
+            this.btnSelFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSelFile.TabIndex = 2;
+            this.btnSelFile.Text = "选择文件";
+            this.btnSelFile.Click += new System.EventHandler(this.btnSelFile_Click);
             // 
-            // textEdit1
+            // txtFilePath
             // 
-            this.textEdit1.Location = new System.Drawing.Point(75, 20);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(565, 21);
-            this.textEdit1.TabIndex = 1;
+            this.txtFilePath.Location = new System.Drawing.Point(75, 20);
+            this.txtFilePath.Name = "txtFilePath";
+            this.txtFilePath.Size = new System.Drawing.Size(565, 21);
+            this.txtFilePath.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -113,6 +115,7 @@ namespace CRM_4S.FrontManager
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // FmFrontImport
             // 
@@ -127,7 +130,7 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -141,9 +144,9 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.TextEdit txtFilePath;
+        private DevExpress.XtraEditors.SimpleButton btnSelFile;
+        private DevExpress.XtraEditors.SimpleButton btnImportAndRefresh;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
