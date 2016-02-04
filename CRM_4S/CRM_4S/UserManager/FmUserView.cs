@@ -171,7 +171,7 @@ namespace CRM_4S.UserManager
         {
             if (e.Column.Name == "clmSex")
             {
-                e.DisplayText = GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.SexList[(int)e.CellValue - 1];
             }
         }
 

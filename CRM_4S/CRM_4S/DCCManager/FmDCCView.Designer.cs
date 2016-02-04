@@ -35,17 +35,17 @@ namespace CRM_4S.DCCManager
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmVisitTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRecallTime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmCName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCPhone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmCAddress = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmPurposeCar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmDCCSource = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmPurposeCar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmInstallment = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmToShopTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRecallerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRecallDesc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDCCRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dCCCustomerRecordInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCCRecord)).BeginInit();
@@ -75,12 +75,12 @@ namespace CRM_4S.DCCManager
             this.clmRecallTime,
             this.clmCPhone,
             this.clmCName,
-            this.gridColumn1,
+            this.clmCSex,
             this.clmDCCSource,
             this.clmPurposeCar,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
+            this.clmInstallment,
+            this.clmLevel,
+            this.clmToShopTime,
             this.clmRecallerName,
             this.clmCAddress,
             this.clmRecallDesc});
@@ -112,14 +112,6 @@ namespace CRM_4S.DCCManager
             this.clmRecallTime.FieldName = "DCCRecord.RecallTime";
             this.clmRecallTime.Name = "clmRecallTime";
             // 
-            // clmCName
-            // 
-            this.clmCName.Caption = "客户姓名";
-            this.clmCName.FieldName = "Customer.Name";
-            this.clmCName.Name = "clmCName";
-            this.clmCName.Visible = true;
-            this.clmCName.VisibleIndex = 1;
-            // 
             // clmCPhone
             // 
             this.clmCPhone.Caption = "客户电话";
@@ -128,23 +120,23 @@ namespace CRM_4S.DCCManager
             this.clmCPhone.Visible = true;
             this.clmCPhone.VisibleIndex = 0;
             // 
-            // clmCAddress
+            // clmCName
             // 
-            this.clmCAddress.Caption = "居住区域";
-            this.clmCAddress.FieldName = "Customer.Address";
-            this.clmCAddress.Name = "clmCAddress";
-            this.clmCAddress.Visible = true;
-            this.clmCAddress.VisibleIndex = 9;
+            this.clmCName.Caption = "客户姓名";
+            this.clmCName.FieldName = "Customer.Name";
+            this.clmCName.Name = "clmCName";
+            this.clmCName.Visible = true;
+            this.clmCName.VisibleIndex = 1;
             // 
-            // clmPurposeCar
+            // clmCSex
             // 
-            this.clmPurposeCar.AppearanceCell.Options.UseTextOptions = true;
-            this.clmPurposeCar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.clmPurposeCar.Caption = "意向车型";
-            this.clmPurposeCar.FieldName = "DCCRecord.PurposeCar";
-            this.clmPurposeCar.Name = "clmPurposeCar";
-            this.clmPurposeCar.Visible = true;
-            this.clmPurposeCar.VisibleIndex = 4;
+            this.clmCSex.AppearanceCell.Options.UseTextOptions = true;
+            this.clmCSex.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmCSex.Caption = "性别";
+            this.clmCSex.FieldName = "Customer.Sex";
+            this.clmCSex.Name = "clmCSex";
+            this.clmCSex.Visible = true;
+            this.clmCSex.VisibleIndex = 2;
             // 
             // clmDCCSource
             // 
@@ -156,6 +148,46 @@ namespace CRM_4S.DCCManager
             this.clmDCCSource.Visible = true;
             this.clmDCCSource.VisibleIndex = 3;
             // 
+            // clmPurposeCar
+            // 
+            this.clmPurposeCar.AppearanceCell.Options.UseTextOptions = true;
+            this.clmPurposeCar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmPurposeCar.Caption = "意向车型";
+            this.clmPurposeCar.FieldName = "DCCRecord.PurposeCar";
+            this.clmPurposeCar.Name = "clmPurposeCar";
+            this.clmPurposeCar.Visible = true;
+            this.clmPurposeCar.VisibleIndex = 4;
+            // 
+            // clmInstallment
+            // 
+            this.clmInstallment.AppearanceCell.Options.UseTextOptions = true;
+            this.clmInstallment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmInstallment.Caption = "分期全款";
+            this.clmInstallment.FieldName = "DCCRecord.Installment";
+            this.clmInstallment.Name = "clmInstallment";
+            this.clmInstallment.Visible = true;
+            this.clmInstallment.VisibleIndex = 5;
+            // 
+            // clmLevel
+            // 
+            this.clmLevel.Caption = "意向级别";
+            this.clmLevel.FieldName = "DCCRecord.LevelCode";
+            this.clmLevel.Name = "clmLevel";
+            this.clmLevel.Visible = true;
+            this.clmLevel.VisibleIndex = 6;
+            // 
+            // clmToShopTime
+            // 
+            this.clmToShopTime.AppearanceCell.Options.UseTextOptions = true;
+            this.clmToShopTime.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmToShopTime.Caption = "预计到店时间";
+            this.clmToShopTime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmToShopTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmToShopTime.FieldName = "DCCRecord.ToShopTime";
+            this.clmToShopTime.Name = "clmToShopTime";
+            this.clmToShopTime.Visible = true;
+            this.clmToShopTime.VisibleIndex = 7;
+            // 
             // clmRecallerName
             // 
             this.clmRecallerName.Caption = "销售顾问";
@@ -164,6 +196,14 @@ namespace CRM_4S.DCCManager
             this.clmRecallerName.Visible = true;
             this.clmRecallerName.VisibleIndex = 8;
             // 
+            // clmCAddress
+            // 
+            this.clmCAddress.Caption = "居住区域";
+            this.clmCAddress.FieldName = "Customer.Address";
+            this.clmCAddress.Name = "clmCAddress";
+            this.clmCAddress.Visible = true;
+            this.clmCAddress.VisibleIndex = 9;
+            // 
             // clmRecallDesc
             // 
             this.clmRecallDesc.Caption = "备注";
@@ -171,34 +211,6 @@ namespace CRM_4S.DCCManager
             this.clmRecallDesc.Name = "clmRecallDesc";
             this.clmRecallDesc.Visible = true;
             this.clmRecallDesc.VisibleIndex = 10;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "性别";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "分期全款";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "意向级别";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 6;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "预计到店时间";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
             // 
             // FmDCCView
             // 
@@ -232,9 +244,9 @@ namespace CRM_4S.DCCManager
         private DevExpress.XtraGrid.Columns.GridColumn clmCName;
         private DevExpress.XtraGrid.Columns.GridColumn clmCPhone;
         private System.Windows.Forms.BindingSource dCCCustomerRecordInfoBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCSex;
+        private DevExpress.XtraGrid.Columns.GridColumn clmInstallment;
+        private DevExpress.XtraGrid.Columns.GridColumn clmLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn clmToShopTime;
     }
 }

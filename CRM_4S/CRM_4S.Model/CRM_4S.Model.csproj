@@ -58,6 +58,7 @@
     <Compile Include="DataModel\FrontRecordInfo.cs" />
     <Compile Include="DBModelBase.cs" />
     <Compile Include="EnumType\BasicConstantType.cs" />
+    <Compile Include="EnumType\UserStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

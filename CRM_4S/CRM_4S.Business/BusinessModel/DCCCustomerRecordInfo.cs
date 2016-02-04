@@ -12,7 +12,12 @@ namespace CRM_4S.Business.BusinessModel
 
         public CustomerInfo Customer
         {
-            get { return customer; }
+            get
+            {
+                if (customer == null)
+                    customer = new CustomerInfo();
+                return customer;
+            }
             set
             {
                 customer = value;
@@ -35,11 +40,15 @@ namespace CRM_4S.Business.BusinessModel
         DCCRecordInfo dccRecord = null;
         public DCCRecordInfo DCCRecord
         {
-            get { return dccRecord; }
+            get
+            {
+                if (dccRecord == null)
+                    dccRecord = new DCCRecordInfo();
+                return dccRecord;
+            }
             set { dccRecord = value; }
         }
 
-        public int RecordCnt { get; set; }
 
         UserInfo dccUser = null;
         public UserInfo DCCUser
@@ -59,6 +68,6 @@ namespace CRM_4S.Business.BusinessModel
             }
         }
 
-       
+
     }
 }

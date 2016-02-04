@@ -59,7 +59,6 @@ namespace CRM_4S
             this.btnCustomTime = new DevExpress.XtraBars.BarButtonItem();
             this.btnFrontRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnDCCAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnDCCRecall = new DevExpress.XtraBars.BarButtonItem();
             this.rPageDCC = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -119,7 +118,6 @@ namespace CRM_4S
             this.btnUpdateUserInfo,
             this.btnLogout,
             this.btnFrontCustomerIn,
-            this.btnDCCAdd,
             this.btnAddBasics,
             this.btnUpdateBasics,
             this.btnDeleteBasics,
@@ -159,7 +157,7 @@ namespace CRM_4S
             this.repositoryItemTextEdit6,
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2});
-            this.ribbon.SelectedPage = this.rPageAnalyze;
+            this.ribbon.SelectedPage = this.rPageDCC;
             resources.ApplyResources(this.ribbon, "ribbon");
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             this.ribbon.SelectedPageChanged += new System.EventHandler(this.ribbon_SelectedPageChanged);
@@ -385,17 +383,9 @@ namespace CRM_4S
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnDCCAdd);
             this.ribbonPageGroup5.ItemLinks.Add(this.btnDCCRecall);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             resources.ApplyResources(this.ribbonPageGroup5, "ribbonPageGroup5");
-            // 
-            // btnDCCAdd
-            // 
-            resources.ApplyResources(this.btnDCCAdd, "btnDCCAdd");
-            this.btnDCCAdd.Id = 25;
-            this.btnDCCAdd.LargeImageIndex = 29;
-            this.btnDCCAdd.Name = "btnDCCAdd";
             // 
             // btnDCCRecall
             // 
@@ -648,7 +638,6 @@ namespace CRM_4S
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem btnFrontCustomerIn;
-        private DevExpress.XtraBars.BarButtonItem btnDCCAdd;
         private DevExpress.XtraBars.BarButtonItem btnAddBasics;
         private DevExpress.XtraBars.BarButtonItem btnUpdateBasics;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;

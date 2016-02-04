@@ -14,23 +14,15 @@ namespace CRM_4S.Business
         public IList<DCCCustomerRecordInfo> GetDCCRecords(int shopId = 0)
         {
             var customerRecords = GetDCCCustomerRecords(shopId);
-            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = shopId });
+            var customers = CustomerBusiness.Instance.GetCustomerByIds(customerRecords.Select(e => e.CustomerId).Distinct().ToArray());
             List<DCCCustomerRecordInfo> listResults = new List<DCCCustomerRecordInfo>();
-            DCCCustomerRecordInfo customerRecord = null;
             foreach (DCCRecordInfo info in customerRecords)
             {
-                if (customerRecord == null || customerRecord.DCCRecord.CustomerId != info.CustomerId)
+                listResults.Add(new DCCCustomerRecordInfo()
                 {
-                    customerRecord = new DCCCustomerRecordInfo()
-                    {
-                        Customer = customers.FirstOrDefault(e => e.Id == info.CustomerId),
-                        DCCRecord = info,
-                        RecordCnt = 1
-                    };
-                    listResults.Add(customerRecord);
-                    continue;
-                }
-                customerRecord.RecordCnt++;
+                    Customer = customers.FirstOrDefault(e => e.Id == info.CustomerId),
+                    DCCRecord = info,
+                });
             }
             return listResults;
         }

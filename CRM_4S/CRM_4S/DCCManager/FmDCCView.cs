@@ -1,5 +1,6 @@
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Model.DataModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
@@ -27,20 +28,6 @@ namespace CRM_4S.DCCManager
         }
 
         #region Public control
-
-        private BarButtonItem btnDCCAdd = null;
-        public BarButtonItem BtnDCCAdd
-        {
-            get { return btnDCCAdd; }
-            set
-            {
-                btnDCCAdd = value;
-                if (btnDCCAdd != null)
-                {
-                    btnDCCAdd.ItemClick += btnDCCAdd_ItemClick;
-                }
-            }
-        }
 
         private BarButtonItem btnDCCRecall = null;
         public BarButtonItem BtnDCCRecall
@@ -118,14 +105,18 @@ namespace CRM_4S.DCCManager
         }
         private void btnDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var rowData = gridViewDCCRecord.GetRow(gridViewDCCRecord.GetSelectedRows()[0]);
-            new FmDCCRecall(rowData as DCCCustomerRecordInfo).ShowDialog();
+            var selectedRows = gridViewDCCRecord.GetSelectedRows();
+            if (selectedRows == null || selectedRows.Length == 0)
+            {
+                new FmDCCRecall().ShowDialog();
+            }
+            else
+            {
+                var rowData = gridViewDCCRecord.GetRow(selectedRows[0]);
+                new FmDCCRecall(rowData as DCCCustomerRecordInfo).ShowDialog();
+            }
         }
 
-        private void btnDCCAdd_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            new FmDCCIn().ShowDialog();
-        }
 
         #endregion
 
@@ -147,7 +138,7 @@ namespace CRM_4S.DCCManager
 
             if (e.Column.Name == "cmlDCCStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCStatus[(int)e.CellValue - 1];
                 return;
             }
 
@@ -157,15 +148,22 @@ namespace CRM_4S.DCCManager
                 return;
             }
 
-            if (e.Column.Name == "clmIsLogin")
+
+            if (e.Column.Name == "clmCSex  ")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.SexList[(int)e.CellValue - 1];
                 return;
             }
-            if (e.Column.Name == "clmPromiseShop")
+            if (e.Column.Name == "clmInstallment")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue];
+                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue - 1];
                 return;
+            }
+            if (e.Column.Name == "clmCAddress ")
+            {
+                var rowData = (DCCCustomerRecordInfo)this.gridViewDCCRecord.GetRow(e.RowHandle);
+                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
+                e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
             }
         }
 

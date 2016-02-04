@@ -41,9 +41,6 @@ INSERT INTO `region` VALUES ('0', null, '北京', '昌平区', null,  NOW());
 -- ----------------------------
 -- Records of basic_constant
 -- ----------------------------
-INSERT INTO `basic_constant` VALUES ('1', '0', '未知', '1', 'Sex', '1', '性别', null, NOW());
-INSERT INTO `basic_constant` VALUES ('2', '0', '男', '2', 'Sex', '1', '性别', null, NOW());
-INSERT INTO `basic_constant` VALUES ('3', '0', '女', '3', 'Sex', '1', '性别', null, NOW());
 INSERT INTO `basic_constant` VALUES ('4', '0', '全部', '1', 'QType', '2', '问题类型', null, NOW());
 INSERT INTO `basic_constant` VALUES ('5', '0', '店面前台', '2', 'QType', '2', '问题类型', null, NOW());
 INSERT INTO `basic_constant` VALUES ('6', '0', 'DCC专员', '3', 'QType', '2', '问题类型', null, NOW());
@@ -73,22 +70,6 @@ INSERT INTO `basic_constant` VALUES ('29', '0', '第一车市', '3', 'DCCSource'
 INSERT INTO `basic_constant` VALUES ('30', '0', '厂家平台', '4', 'DCCSource', '7', 'DCC 线索来源', null, NOW());
 INSERT INTO `basic_constant` VALUES ('31', '0', '展厅战败', '5', 'DCCSource', '7', 'DCC 线索来源', null, NOW());
 INSERT INTO `basic_constant` VALUES ('32', '0', '其它渠道', '6', 'DCCSource', '7', 'DCC 线索来源', null, NOW());
-INSERT INTO `basic_constant` VALUES ('33', '0', '有效', '1', 'DCCStatus', '8', 'DCC 线索状态', null, NOW());
-INSERT INTO `basic_constant` VALUES ('34', '0', '无效', '2', 'DCCStatus', '8', 'DCC 线索状态', null, NOW());
-INSERT INTO `basic_constant` VALUES ('35', '0', '重复', '3', 'DCCStatus', '8', 'DCC 线索状态', null, NOW());
-
-INSERT INTO `basic_constant` VALUES ('36', '0', '是', '1', 'DCCStatus', '9', '承诺到店', null, NOW());
-INSERT INTO `basic_constant` VALUES ('37', '0', '否', '2', 'DCCStatus', '9', '承诺到店', null, NOW());
-INSERT INTO `basic_constant` VALUES ('38', '0', '需跟进', '3', 'DCCStatus', '9', '承诺到店', null, NOW());
-
-INSERT INTO `basic_constant` VALUES ('39', '0', '是', '1', 'LoginStatus', '10', '是否到店', null, NOW());
-INSERT INTO `basic_constant` VALUES ('40', '0', '否', '2', 'LoginStatus', '10', '是否到店', null, NOW());
-INSERT INTO `basic_constant` VALUES ('41', '0', '未知', '3', 'LoginStatus', '10', '是否到店', null, NOW());
-
-INSERT INTO `basic_constant` VALUES ('42', '0', '在职', '1', 'UserStatus', '11', '系统用户状态', null, NOW());
-INSERT INTO `basic_constant` VALUES ('43', '0', '离职', '2', 'UserStatus', '11', '系统用户状态', null, NOW());
-INSERT INTO `basic_constant` VALUES ('44', '0', '休假', '3', 'UserStatus', '11', '系统用户状态', null, NOW());
-INSERT INTO `basic_constant` VALUES ('45', '0', '删除', '4', 'UserStatus', '11', '系统用户状态', null, NOW());
 
 INSERT INTO `basic_constant` VALUES ('46', '0', '未完成', '1', 'TaskStauts', '11', '销售顾问任务状态', null, NOW());
 INSERT INTO `basic_constant` VALUES ('47', '0', '已完成', '2', 'TaskStauts', '11', '销售顾问任务状态', null, NOW());

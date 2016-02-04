@@ -42,7 +42,6 @@ namespace CRM_4S.UserManager
             }
             cbRole.Properties.Items.AddRange(GloablCaches.Instance.RoleInfos);
             cbShop.Properties.Items.AddRange(GloablCaches.Instance.ShopInfos);
-            cbSex.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.Sex).ToArray());
 
             this.Text += IsNew ? "-新增" : "-修改";
             this.Btn_OK.Click += Btn_OK_Click;
@@ -53,7 +52,7 @@ namespace CRM_4S.UserManager
             cbRole.DataBindings.Add("EditValue", newUserShopRoleInfo, "Role");
 
             var userInfo = newUserShopRoleInfo.User;
-            cbSex.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == userInfo.Sex);
+            rdSex.SelectedIndex = userInfo.Sex.HasValue ? userInfo.Sex.Value - 1 : -1;
             txtRealName.DataBindings.Add("Text", userInfo, "RealName");
             txtPhone.DataBindings.Add("Text", userInfo, "Phone");
             txtUserName.DataBindings.Add("Text", userInfo, "UserName");
@@ -67,10 +66,9 @@ namespace CRM_4S.UserManager
         {
             if (!ValidatFail())
             {
-                BasicConstantInfo sexInfo = (BasicConstantInfo)cbSex.SelectedItem;
-                if (sexInfo != null && newUserShopRoleInfo.User.Sex != sexInfo.Id)
+                if (IsNew || newUserShopRoleInfo.User.Sex != (rdSex.SelectedIndex + 1))
                 {
-                    newUserShopRoleInfo.User.Sex = sexInfo.Id;
+                    newUserShopRoleInfo.User.Sex = rdSex.SelectedIndex + 1;
                 }
 
                 if (!newUserShopRoleInfo.User.Equals(userShopRoleInfo == null ? null : userShopRoleInfo.User ?? null))
@@ -80,15 +78,17 @@ namespace CRM_4S.UserManager
                         errorProvider.SetError(this.txtUserName, "用户名已被占用!", ErrorType.Warning);
                         return;
                     }
-                    if (userShopRoleInfo != null)
+
+                    if (IsNew)
+                    {
+                        newUserShopRoleInfo.User.Status = (int)UserStatus.OnWork;
+                        UserBusiness.Instance.AddUser(newUserShopRoleInfo.User);
+                    }
+                    else
                     {
                         newUserShopRoleInfo.User.IdSpecify = true;
                         newUserShopRoleInfo.User.PwdSpecify = false;
                         UserBusiness.Instance.UpdateUser(newUserShopRoleInfo.User);
-                    }
-                    else
-                    {
-                        UserBusiness.Instance.AddUser(newUserShopRoleInfo.User);
                     }
 
                     this.DialogResult = DialogResult.OK;

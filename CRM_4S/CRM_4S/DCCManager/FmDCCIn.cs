@@ -43,6 +43,7 @@ namespace CRM_4S.DCCManager
             try
             {
                 customerInfo.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                customerInfo.Type = "dcc";
                 if (customerInfo.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(customerInfo);
                 else

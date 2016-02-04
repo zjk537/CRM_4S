@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-03 09:41
+ * 创建日期：2016-02-04 14:13
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -60,7 +60,7 @@ namespace CRM_4S.Model.DataModel
         private string durationTime = string.Empty;
         public bool DurationTimeSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 回访持续时间 
+        /// 获取或设置 回访间隔时间 
         /// </summary>
         [DBFieldAttribute("DccRecordDurationTime")]
         public string DurationTime { get { return durationTime; } set { durationTime = value; DurationTimeSpecify = true; } }
@@ -84,6 +84,15 @@ namespace CRM_4S.Model.DataModel
         public int? PurposeCar { get { return purposeCar; } set { purposeCar = value; PurposeCarSpecify = true; } }
 
 
+        private string levelCode = string.Empty;
+        public bool LevelCodeSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 意向级别 
+        /// </summary>
+        [DBFieldAttribute("DccRecordLevelCode")]
+        public string LevelCode { get { return levelCode; } set { levelCode = value; LevelCodeSpecify = true; } }
+
+
         private int? source = null;
         public bool SourceSpecify { get; set; }
         /// <summary>
@@ -105,28 +114,10 @@ namespace CRM_4S.Model.DataModel
         private int? toShop = null;
         public bool ToShopSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 承诺到店：对应 basic_constant.TypeKey = ToShopStatus 
+        /// 获取或设置 承诺到店：1:是；2:否 
         /// </summary>
         [DBFieldAttribute("DccRecordToShop")]
         public int? ToShop { get { return toShop; } set { toShop = value; ToShopSpecify = true; } }
-
-
-        private int? isLogin = null;
-        public bool IsLoginSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 是否登录:对应 basic_constant.TypeKey = LoginStatus 
-        /// </summary>
-        [DBFieldAttribute("DccRecordIsLogin")]
-        public int? IsLogin { get { return isLogin; } set { isLogin = value; IsLoginSpecify = true; } }
-
-
-        private string recallDesc = string.Empty;
-        public bool RecallDescSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 回访详情记录 
-        /// </summary>
-        [DBFieldAttribute("DccRecordRecallDesc")]
-        public string RecallDesc { get { return recallDesc; } set { recallDesc = value; RecallDescSpecify = true; } }
 
 
         private DateTime? toShopTime = null;
@@ -136,6 +127,24 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("DccRecordToShopTime")]
         public DateTime? ToShopTime { get { return toShopTime; } set { toShopTime = value; ToShopTimeSpecify = true; } }
+
+
+        private int? installment = null;
+        public bool InstallmentSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否分期还款 1 是； 2 否 
+        /// </summary>
+        [DBFieldAttribute("DccRecordInstallment")]
+        public int? Installment { get { return installment; } set { installment = value; InstallmentSpecify = true; } }
+
+
+        private string recallDesc = string.Empty;
+        public bool RecallDescSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 回访详情记录 
+        /// </summary>
+        [DBFieldAttribute("DccRecordRecallDesc")]
+        public string RecallDesc { get { return recallDesc; } set { recallDesc = value; RecallDescSpecify = true; } }
 
 
         private string recorder = string.Empty;

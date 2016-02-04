@@ -125,7 +125,6 @@ namespace CRM_4S
                 if (fmDCCView == null)
                 {
                     fmDCCView = new FmDCCView();
-                    fmDCCView.BtnDCCAdd = btnDCCAdd;
                     fmDCCView.BtnDCCRecall = btnDCCRecall;
                     fmDCCView.BtnDCCImport = btnDCCImport;
                     fmDCCView.BtnDCCExport = btnDCCExport;

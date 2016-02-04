@@ -15,9 +15,8 @@ namespace CRM_4S.Business
         public IList<FrontCustomerRecordInfo> GetFrontRecords(int shopId = 0)
         {
             var customerRecords = GetFrontCustomerRecords(shopId);
-            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = shopId });
+            var customers = CustomerBusiness.Instance.GetCustomerByIds(customerRecords.Select(e=>e.CustomerId).Distinct().ToArray());
             List<FrontCustomerRecordInfo> listResults = new List<FrontCustomerRecordInfo>();
-            FrontCustomerRecordInfo customerRecord = null;
             foreach (FrontRecordInfo info in customerRecords)
             {
                 // 新进店用户 还未完善信息
@@ -31,16 +30,11 @@ namespace CRM_4S.Business
                     continue;
                 }
                 // 多次进店用户
-                if (customerRecord == null || customerRecord.FrontRecord.CustomerId != info.CustomerId)
+                listResults.Add(new FrontCustomerRecordInfo()
                 {
-                    customerRecord = new FrontCustomerRecordInfo()
-                    {
-                        Customer = customers.FirstOrDefault(e => e.Id == info.CustomerId),
-                        FrontRecord = info,
-                    };
-                    listResults.Add(customerRecord);
-                    continue;
-                }
+                    Customer = customers.FirstOrDefault(e => e.Id == info.CustomerId),
+                    FrontRecord = info,
+                });
             }
             return listResults;
         }

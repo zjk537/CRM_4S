@@ -87,7 +87,7 @@ namespace CRM_4S.Model.DataModel
         private int? status = null;
         public bool StatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 用户状态：1：正常；2：离职；3：删除 
+        /// 获取或设置 用户状态：1:在职; 2:离职; 3:休假
         /// </summary>
         [DBFieldAttribute("UserStatus")]
         public int? Status { get { return status; } set { status = value; StatusSpecify = true; } }

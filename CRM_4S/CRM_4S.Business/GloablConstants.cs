@@ -9,6 +9,11 @@ namespace CRM_4S.Business
 {
     public class GloablConstants
     {
+        public static List<string> SexList = new List<string>() { "男", "女" };
+
+        public static List<string> UserStatus = new List<string>() { "在职", "离职", "休假" };
+
+        public static List<string> DCCStatus = new List<string>() { "有效", "无效", "重复" };
 
         public static List<string> UserTaskStatus = new List<string>() { "未知", "未完成", "已完成" };
 

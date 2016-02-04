@@ -25,13 +25,32 @@ namespace CRM_4S.Business
                 funcParms.Pams = shop.GetPams();
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
-            }, new ResultValue(), "GetFrontCustomerRecords.uspGetCustomers", true);
+            }, new ResultValue(), "GetCustomers.uspGetCustomers", true);
 
             return DoFunctionWithLog<List<CustomerInfo>>(() =>
             {
                 return ConvertToList<CustomerInfo>(result);
 
-            }, null, "GetFrontCustomerRecords.ConvertToList", true);
+            }, null, "GetCustomers.ConvertToList", true);
+        }
+
+        public IList<CustomerInfo> GetCustomerByIds(int[] ids)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetCustomerByIds";
+                funcParms.Pams = new Dictionary<string, object>();
+                funcParms.Pams.Add("CustomerIds", string.Join(",", ids));
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetCustomerByIds.uspGetCustomerByIds", true);
+
+            return DoFunctionWithLog<List<CustomerInfo>>(() =>
+            {
+                return ConvertToList<CustomerInfo>(result);
+
+            }, null, "GetCustomerByIds.ConvertToList", true);
         }
 
         public void AddCustomer(CustomerInfo info)

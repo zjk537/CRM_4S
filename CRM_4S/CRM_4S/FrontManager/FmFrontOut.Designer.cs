@@ -129,6 +129,7 @@ namespace CRM_4S.FrontManager
             this.ckListQuestions.Appearance.BackColor2 = System.Drawing.SystemColors.Control;
             this.ckListQuestions.Appearance.Options.UseBackColor = true;
             this.ckListQuestions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.ckListQuestions.CheckOnClick = true;
             this.ckListQuestions.DataSource = this.evaluateQuestionInfoBindingSource;
             this.ckListQuestions.DisplayMember = "QDesc";
             this.ckListQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -251,7 +252,7 @@ namespace CRM_4S.FrontManager
             this.rdInstallment.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "是"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "否")});
-            this.rdInstallment.Size = new System.Drawing.Size(70, 22);
+            this.rdInstallment.Size = new System.Drawing.Size(106, 22);
             this.rdInstallment.TabIndex = 13;
             // 
             // rdDriveStatus
@@ -266,7 +267,7 @@ namespace CRM_4S.FrontManager
             this.rdDriveStatus.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "是"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "否")});
-            this.rdDriveStatus.Size = new System.Drawing.Size(70, 22);
+            this.rdDriveStatus.Size = new System.Drawing.Size(106, 22);
             this.rdDriveStatus.TabIndex = 12;
             this.rdDriveStatus.SelectedIndexChanged += new System.EventHandler(this.rdDriveStatus_SelectedIndexChanged);
             // 
@@ -282,7 +283,7 @@ namespace CRM_4S.FrontManager
             this.rdReplace.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "是"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "否")});
-            this.rdReplace.Size = new System.Drawing.Size(70, 22);
+            this.rdReplace.Size = new System.Drawing.Size(106, 22);
             this.rdReplace.TabIndex = 11;
             // 
             // cbRegion

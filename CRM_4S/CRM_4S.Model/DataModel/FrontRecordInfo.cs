@@ -87,7 +87,7 @@ namespace CRM_4S.Model.DataModel
         private int? driveStatus = null;
         public bool DriveStatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 试驾状态：1是 2否 
+        /// 获取或设置 试驾状态：1是 2否
         /// </summary>
         [DBFieldAttribute("FrontRecordDriveStatus")]
         public int? DriveStatus { get { return driveStatus; } set { driveStatus = value; DriveStatusSpecify = true; } }
@@ -105,7 +105,7 @@ namespace CRM_4S.Model.DataModel
         private int? replace = null;
         public bool ReplaceSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 是否二手置换 
+        /// 获取或设置 是否二手置换 1是2否 
         /// </summary>
         [DBFieldAttribute("FrontRecordReplace")]
         public int? Replace { get { return replace; } set { replace = value; ReplaceSpecify = true; } }
@@ -114,7 +114,7 @@ namespace CRM_4S.Model.DataModel
         private int? installment = null;
         public bool InstallmentSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 是否分期付款 
+        /// 获取或设置 是否分期付款 1是 2 否 
         /// </summary>
         [DBFieldAttribute("FrontRecordInstallment")]
         public int? Installment { get { return installment; } set { installment = value; InstallmentSpecify = true; } }

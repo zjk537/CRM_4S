@@ -46,8 +46,8 @@ namespace CRM_4S.UserManager
             this.cbShop = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.cbSex = new DevExpress.XtraEditors.ComboBoxEdit();
             this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.rdSex = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
@@ -59,8 +59,8 @@ namespace CRM_4S.UserManager
             ((System.ComponentModel.ISupportInitialize)(this.cbShop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdSex.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
@@ -226,7 +226,7 @@ namespace CRM_4S.UserManager
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.cbSex);
+            this.groupControl1.Controls.Add(this.rdSex);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.cbShop);
             this.groupControl1.Controls.Add(this.权限);
@@ -242,20 +242,24 @@ namespace CRM_4S.UserManager
             this.groupControl1.TabIndex = 1016;
             this.groupControl1.Text = "基本信息";
             // 
-            // cbSex
-            // 
-            this.cbSex.EnterMoveNextControl = true;
-            this.cbSex.Location = new System.Drawing.Point(67, 111);
-            this.cbSex.Name = "cbSex";
-            this.cbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbSex.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbSex.Size = new System.Drawing.Size(166, 21);
-            this.cbSex.TabIndex = 3;
-            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // rdSex
+            // 
+            this.rdSex.EnterMoveNextControl = true;
+            this.rdSex.Location = new System.Drawing.Point(67, 110);
+            this.rdSex.Name = "rdSex";
+            this.rdSex.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.rdSex.Properties.Appearance.Options.UseBackColor = true;
+            this.rdSex.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rdSex.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.rdSex.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "男"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "女")});
+            this.rdSex.Size = new System.Drawing.Size(100, 22);
+            this.rdSex.TabIndex = 1012;
             // 
             // FmUserInfo
             // 
@@ -283,8 +287,8 @@ namespace CRM_4S.UserManager
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdSex.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,7 +312,7 @@ namespace CRM_4S.UserManager
         private DevExpress.XtraEditors.ComboBoxEdit cbShop;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit cbSex;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
+        private DevExpress.XtraEditors.RadioGroup rdSex;
     }
 }

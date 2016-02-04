@@ -7,10 +7,7 @@ namespace CRM_4S.Model.EnumType
 {
     public enum BasicConstantType
     {
-        /// <summary>
-        /// 性别
-        /// </summary>
-        Sex = 1,
+       
 
         /// <summary>
         /// 问题类型
@@ -57,10 +54,6 @@ namespace CRM_4S.Model.EnumType
         /// </summary>
         LoginStatus = 10,
 
-        /// <summary>
-        /// 系统用户状态
-        /// </summary>
-        UserStatus = 11,
 
         /// <summary>
         /// 销售顾问任务状态

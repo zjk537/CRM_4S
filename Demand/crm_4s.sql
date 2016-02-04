@@ -10,12 +10,11 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-01-29 10:55:29
+Date: 2016-02-04 16:18:01
 */
-CREATE DATABASE IF NOT EXISTS crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-
+DROP DATABASE IF EXISTS crm_4s;
+CREATE DATABASE crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use crm_4s;
-
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -36,6 +35,23 @@ CREATE TABLE `analyse_kpi` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for basic_constant
+-- ----------------------------
+DROP TABLE IF EXISTS `basic_constant`;
+CREATE TABLE `basic_constant` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ShopId` int(11) NOT NULL DEFAULT '0' COMMENT '店面Id',
+  `Name` varchar(100) DEFAULT NULL COMMENT '基础数据描述',
+  `Order` int(11) NOT NULL DEFAULT '1' COMMENT '展示排序',
+  `TypeKey` varchar(50) DEFAULT NULL COMMENT '分类Key',
+  `TypeValue` int(11) NOT NULL DEFAULT '1',
+  `Remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
+  `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -44,10 +60,11 @@ CREATE TABLE `analyse_kpi` (
 DROP TABLE IF EXISTS `car_type`;
 CREATE TABLE `car_type` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '汽车类型Id ',
+  `BrandId` int(11) NOT NULL COMMENT '汽车品牌Id',
   `Brand` varchar(100) NOT NULL COMMENT '汽车品牌',
   `Name` varchar(100) NOT NULL COMMENT '汽车类型名称',
   `Desc` varchar(100) DEFAULT NULL COMMENT '汽车类型描述',
-  `UpdateDate` datetime DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -60,25 +77,16 @@ CREATE TABLE `customer` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `ShopId` int(11) NOT NULL COMMENT '店面Id',
   `Name` varchar(100) DEFAULT NULL COMMENT '客户名称',
+  `Sex` int(2) DEFAULT NULL COMMENT '性别：1男 2女',
   `Phone` varchar(50) DEFAULT NULL COMMENT '客户联系方式',
-  `LevelCode` varchar(10) DEFAULT NULL COMMENT '客户级别',
-  `Nature` int(2) DEFAULT NULL COMMENT '客户性质：新增到店；再次到店；电销邀约；外展留档；二级网点；其它到店',
-  `OriginNature` int(2) DEFAULT NULL COMMENT '原始客户性质',
+  `ToShopNum` int(11) DEFAULT NULL COMMENT '到店次数',
+  `CurCar` varchar(100) DEFAULT NULL COMMENT '现有车型',
+  `Nature` int(11) DEFAULT NULL COMMENT '客户性质：对应 basic_constant.TypeKey = CNature',
+  `OriginNature` int(11) DEFAULT NULL COMMENT '原始客户性质',
+  `Type` varchar(50) DEFAULT NULL COMMENT '客户类型：Front前台客户 DCC:DCC客户',
   `Industry` varchar(100) DEFAULT NULL COMMENT '行业',
-  `Address` varchar(255) DEFAULT NULL COMMENT '居住地址',
-  `UpdateDate` datetime DEFAULT NULL,
-  `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for customer_level
--- ----------------------------
-DROP TABLE IF EXISTS `customer_level`;
-CREATE TABLE `customer_level` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '顾客级别Id',
-  `Code` varchar(10) NOT NULL COMMENT '顾客级别代码',
-  `Desc` varchar(200) DEFAULT NULL COMMENT '顾客级别描述',
+  `RegionId` int(11) DEFAULT NULL COMMENT '所在区域Id',
+  `Address` varchar(200) DEFAULT NULL COMMENT '居住地址',
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
@@ -94,20 +102,21 @@ CREATE TABLE `dcc_record` (
   `ShopId` int(11) NOT NULL COMMENT '店面Id',
   `DCCRecallerId` int(11) DEFAULT NULL COMMENT 'DCC专员Id',
   `VisitTime` datetime DEFAULT NULL COMMENT 'DCC留言时间',
-  `DurationTime` varchar(50) DEFAULT NULL,
-  `RecallTime` datetime DEFAULT NULL,
+  `DurationTime` varchar(50) DEFAULT NULL COMMENT '回访间隔时间',
+  `RecallTime` datetime DEFAULT NULL COMMENT '回访时间',
   `PurposeCar` int(11) DEFAULT NULL COMMENT '意向车型',
-  `Source` int(11) DEFAULT NULL COMMENT '线索来源："易车", "汽车之家", "第一车市", "厂家平台", "其它渠道", "展厅战败"',
-  `Status` int(2) DEFAULT NULL COMMENT 'DCC状态：有效；无效；重复',
-  `PromiseShop` int(2) DEFAULT NULL COMMENT '承诺到店：是；否；还需要跟进',
-  `IsLogin` int(2) DEFAULT NULL COMMENT '是否登录',
-  `RecallDesc` varchar(200) DEFAULT NULL COMMENT '回访详情记录',
+  `LevelCode` varchar(100) DEFAULT NULL COMMENT '意向级别',
+  `Source` int(11) DEFAULT NULL COMMENT '线索来源：对应 basic_constant.TypeKey = DCCSource',
+  `Status` int(11) DEFAULT NULL COMMENT 'DCC状态：对应 basic_constant.TypeKey = DCCStatus',
+  `ToShop` int(2) DEFAULT NULL COMMENT '承诺到店：1:是；2:否',
   `ToShopTime` datetime DEFAULT NULL COMMENT '预约到店时间',
-  `OperatorId` int(11) DEFAULT NULL,
-  `UpdateDate` datetime DEFAULT NULL,
+  `Installment` int(2) DEFAULT NULL COMMENT '是否分期还款 1 是； 2 否',
+  `RecallDesc` varchar(200) DEFAULT NULL COMMENT '回访详情记录',
+  `Recorder` varchar(100) DEFAULT NULL COMMENT '录入人员',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for deal_record
@@ -133,7 +142,7 @@ CREATE TABLE `evaluate_question` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `ShopId` int(11) NOT NULL COMMENT '店面Id',
   `QDesc` varchar(200) DEFAULT NULL COMMENT '顾客评估问题描述',
-  `QType` int(2) DEFAULT NULL COMMENT '问题类型：1、店面；2、DCC',
+  `QType` int(2) DEFAULT NULL COMMENT '问题类型：对应 basic_constant.TypeKey = QType',
   `QLevel` int(11) DEFAULT NULL COMMENT '问题权重',
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
@@ -150,16 +159,71 @@ CREATE TABLE `front_record` (
   `ShopId` int(11) NOT NULL COMMENT '店面Id',
   `ConsultantId` int(11) NOT NULL COMMENT '销售顾问Id',
   `CustomerNum` int(11) NOT NULL DEFAULT '1' COMMENT '接待人数',
-  `CarLicence` int(2) DEFAULT NULL COMMENT '牌照状况：已有牌照；待拍牌照；旧车退牌；郊区牌照；外省上牌',
+  `CarLicence` int(11) DEFAULT NULL COMMENT '牌照状况：对应 basic_constant.TypeKey = CarLicence',
   `PurposeCar` int(11) DEFAULT NULL COMMENT '意向车型',
-  `DriveStatus` int(2) DEFAULT NULL COMMENT '试驾状态：0""; 1是; 2否;',
+  `LevelCode` varchar(100) DEFAULT NULL COMMENT '意向级别',
+  `DriveStatus` int(2) DEFAULT NULL COMMENT '试驾状态：1是 2否',
+  `Source` int(11) DEFAULT NULL COMMENT '客户来源',
+  `Replace` int(2) DEFAULT NULL COMMENT '是否二手置换 1是2否',
+  `Installment` int(2) DEFAULT NULL COMMENT '是否分期付款 1是 2 否',
   `Remark` varchar(200) DEFAULT NULL COMMENT '备注',
   `ArrivalTime` datetime DEFAULT NULL COMMENT '到店时间',
   `LeaveTime` datetime DEFAULT NULL COMMENT '离开时间',
   `DurationTime` varchar(50) DEFAULT NULL COMMENT '接待时长',
-  `OperatorId` int(11) NOT NULL COMMENT '录入人员Id',
-  `UpdateDate` datetime DEFAULT NULL,
-  `CreatedDate` datetime DEFAULT NULL,
+  `Recorder` varchar(100) DEFAULT NULL COMMENT '录入人员 姓名',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
+  `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for import_front_temp
+-- ----------------------------
+DROP TABLE IF EXISTS `import_front_temp`;
+CREATE TABLE `import_front_temp` (
+  `Recorder` varchar(100) DEFAULT NULL COMMENT '导入人员真名',
+  `RecordDate` datetime DEFAULT NULL COMMENT '记录时间',
+  `CName` varchar(100) DEFAULT NULL COMMENT '客户改名',
+  `CNum` int(11) DEFAULT NULL COMMENT '接待人数：陪同人数+1',
+  `CPhone` varchar(50) DEFAULT NULL COMMENT '客户电话',
+  `CRemark` varchar(200) DEFAULT NULL COMMENT '备注',
+  `PurposeCar` varchar(100) DEFAULT NULL COMMENT '意向车型',
+  `PurposeLevel` varchar(100) DEFAULT NULL COMMENT '意向级别',
+  `ArrivalTime` datetime DEFAULT NULL COMMENT '到店时间',
+  `CSource` varchar(100) DEFAULT NULL COMMENT '客户来源',
+  `DriveStatus` int(11) DEFAULT NULL COMMENT '是否试驾',
+  `LeaveTime` datetime DEFAULT NULL COMMENT '离店时间',
+  `ConsultantName` varchar(100) DEFAULT NULL COMMENT '销售顾问真名',
+  `CCurCar` varchar(100) DEFAULT NULL COMMENT '客户现有车型',
+  `Replace` int(11) DEFAULT NULL COMMENT '是否转换',
+  `Installment` int(11) DEFAULT NULL COMMENT '是否分期'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for purpose_level
+-- ----------------------------
+DROP TABLE IF EXISTS `purpose_level`;
+CREATE TABLE `purpose_level` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '意向级别Id',
+  `Code` varchar(100) NOT NULL COMMENT '意向级别代码',
+  `Desc` varchar(200) DEFAULT NULL COMMENT '意向级别描述',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
+  `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for region
+-- ----------------------------
+DROP TABLE IF EXISTS `region`;
+CREATE TABLE `region` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ShopId` int(11) NOT NULL DEFAULT '0' COMMENT '店面Id',
+  `Province` varchar(100) DEFAULT NULL COMMENT '省',
+  `City` varchar(100) DEFAULT NULL COMMENT '市',
+  `Region` varchar(100) DEFAULT NULL COMMENT '县/区',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
+  `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -183,12 +247,13 @@ CREATE TABLE `shop` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '店铺Id',
   `Name` varchar(200) NOT NULL COMMENT '店铺名称',
   `Phone` varchar(50) DEFAULT NULL COMMENT '店铺联系方式',
+  `RegionId` int(11) DEFAULT '0' COMMENT '所在区域Id',
   `Address` varchar(200) DEFAULT NULL COMMENT '店铺地址',
   `Desc` varchar(200) DEFAULT NULL COMMENT '店铺介绍',
   `UpdateDate` datetime DEFAULT NULL COMMENT '店铺信息最近一次更新',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user
@@ -202,14 +267,14 @@ CREATE TABLE `user` (
   `UserName` varchar(100) NOT NULL COMMENT '登录用户名',
   `Pwd` varchar(100) NOT NULL COMMENT '用户密码',
   `RealName` varchar(100) DEFAULT NULL COMMENT '用户真实姓名',
-  `Sex` int(2) DEFAULT '0' COMMENT '用户性别 0:未知 1:男   2:女',
-  `Status` int(2) DEFAULT NULL COMMENT '用户状态：1：正常；2：离职；3：删除',
+  `Sex` int(2) DEFAULT '0' COMMENT '用户性别 1男 2女',
+  `Status` int(2) DEFAULT NULL COMMENT '用户状态：1:在职; 2:离职; 3:休假',
   `Phone` varchar(50) NOT NULL COMMENT '用户手机号码',
   `Telephone` varchar(50) DEFAULT NULL COMMENT '用户座机号码',
-  `UpdateDate` datetime DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL COMMENT '店铺信息最近一次更新',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_group
@@ -282,15 +347,17 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddCarType`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCarType`(IN `pCarTypeBrand` varchar(100),IN `pCarTypeName` varchar(100),IN `pCarTypeDesc` varchar(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCarType`(IN `pCarTypeBrandId` int,IN `pCarTypeBrand` varchar(100),IN `pCarTypeName` varchar(100),IN `pCarTypeDesc` varchar(100))
 BEGIN
 	INSERT INTO `car_type`(
-        `Brand`
+				`BrandId`
+        ,`Brand`				
         ,`Name`
         ,`Desc`
         ,`CreatedDate`
     ) VALUES (
-        pCarTypeBrand        
+				pCarTypeBrandId
+        ,pCarTypeBrand        
         ,pCarTypeName        
         ,pCarTypeDesc        
         ,NOW()        
@@ -305,26 +372,34 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddCustomer`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCustomer`(IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerPhone` varchar(50),IN `pCustomerLevelCode` varchar(10),IN `pCustomerNature` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerAddress` varchar(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCustomer`(IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerOriginNature` int,IN `pCustomerType` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
 BEGIN
 	 INSERT INTO `customer`(
-				`ShopId`
+        `ShopId`
         ,`Name`
+				,`Sex`
         ,`Phone`
-        ,`LevelCode`
+				,`ToShopNum`
+        ,`CurCar`
         ,`Nature`
         ,`OriginNature`
+        ,`Type`
         ,`Industry`
+        ,`RegionId`
         ,`Address`
         ,`CreatedDate`
     ) VALUES (
-				pCustomerShopId
-        ,pCustomerName        
-        ,pCustomerPhone        
-        ,pCustomerLevelCode        
+        pCustomerShopId        
+        ,pCustomerName
+				,pCustomerSex
+        ,pCustomerPhone
+				,1
+        ,pCustomerCurCar        
         ,pCustomerNature        
-        ,pCustomerNature        
+        ,pCustomerOriginNature        
+        ,pCustomerType        
         ,pCustomerIndustry        
+        ,pCustomerRegionId        
         ,pCustomerAddress        
         ,NOW()        
     );
@@ -335,47 +410,45 @@ END
 DELIMITER ;
 
 -- ----------------------------
--- Procedure structure for uspAddCustomerLevel
--- ----------------------------
-DROP PROCEDURE IF EXISTS `uspAddCustomerLevel`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCustomerLevel`(IN `pCustomerLevelCode` varchar(10),IN `pCustomerLevelDesc` varchar(200),IN `pCustomerLevelCreatedDate` datetime)
-BEGIN
-	INSERT INTO `customer_level`(
-        `Code`
-        ,`Desc`
-        ,`CreatedDate`
-    ) VALUES (
-				pCustomerLevelCode        
-        ,pCustomerLevelDesc           
-        ,NOW()        
-    );
-END
-;;
-DELIMITER ;
-
--- ----------------------------
 -- Procedure structure for uspAddDCCRecord
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddDCCRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddDCCRecord`(IN `pDccRecordCustomerId` int,IN `pDccRecordShopId` int,IN `pDccRecordVisitTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordSource` int,IN `pDccRecordOperatorId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddDCCRecord`(IN `pDccRecordCustomerId` int,IN `pDccRecordShopId` int,IN `pDccRecordDCCRecallerId` int,IN `pDccRecordVisitTime` datetime,IN `pDccRecordDurationTime` varchar(50),IN `pDccRecordRecallTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordLevelCode` varchar(100),IN `pDccRecordSource` int,IN `pDccRecordStatus` int,IN `pDccRecordToShop` int,IN `pDccRecordToShopTime` datetime,IN `pDccRecordInstallment` int,IN `pDccRecordRecallDesc` varchar(200),IN `pDccRecordRecorder` varchar(100))
 BEGIN
 	INSERT INTO `dcc_record`(
         `CustomerId`
         ,`ShopId`
+        ,`DCCRecallerId`
         ,`VisitTime`
+        ,`DurationTime`
+        ,`RecallTime`
         ,`PurposeCar`
+        ,`LevelCode`
         ,`Source`
-        ,`OperatorId`
+        ,`Status`
+        ,`ToShop`
+        ,`ToShopTime`
+        ,`Installment`
+        ,`RecallDesc`
+        ,`Recorder`
         ,`CreatedDate`
     ) VALUES (
         pDccRecordCustomerId        
-        ,pDccRecordShopId             
+        ,pDccRecordShopId        
+        ,pDccRecordDCCRecallerId        
         ,pDccRecordVisitTime        
+        ,pDccRecordDurationTime        
+        ,pDccRecordRecallTime        
         ,pDccRecordPurposeCar        
+        ,pDccRecordLevelCode        
         ,pDccRecordSource        
-        ,pDccRecordOperatorId        
+        ,pDccRecordStatus        
+        ,pDccRecordToShop        
+        ,pDccRecordToShopTime        
+        ,pDccRecordInstallment        
+        ,pDccRecordRecallDesc        
+        ,pDccRecordRecorder        
         ,NOW()        
     );
 END
@@ -411,7 +484,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddFrontRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddFrontRecord`(IN `pFrontRecordShopId` int,IN `pFrontRecordConsultantId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordArrivalTime` datetime,IN `pFrontRecordOperatorId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddFrontRecord`(IN `pFrontRecordShopId` int,IN `pFrontRecordConsultantId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordArrivalTime` datetime,IN `pFrontRecordRecorder` varchar(100))
 BEGIN
 	INSERT INTO `front_record`(
 				`CustomerId`
@@ -420,7 +493,7 @@ BEGIN
         ,`CustomerNum`
         ,`Remark`
         ,`ArrivalTime`
-        ,`OperatorId`
+        ,`Recorder`
         ,`CreatedDate`
     ) VALUES (
 				0 #默认用户为空
@@ -429,10 +502,30 @@ BEGIN
         ,pFrontRecordCustomerNum   
         ,pFrontRecordRemark        
         ,pFrontRecordArrivalTime  
-        ,pFrontRecordOperatorId  
+        ,pFrontRecordRecorder  
         ,NOW()        
     );
 
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspAddPurposeLevel
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspAddPurposeLevel`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddPurposeLevel`(IN `pPurposeLevelCode` varchar(100),IN `pPurposeLevelDesc` varchar(200))
+BEGIN
+INSERT INTO `purpose_level`(
+        `Code`
+        ,`Desc`
+        ,`CreatedDate`
+    ) VALUES (
+        pPurposeLevelCode        
+        ,pPurposeLevelDesc        
+        ,NOW()         
+    );
 END
 ;;
 DELIMITER ;
@@ -442,17 +535,19 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddShop`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddShop`(IN `pShopName` varchar(200),IN `pShopPhone` varchar(50),IN `pShopAddress` varchar(200),IN `pShopDesc` varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddShop`(IN `pShopName` varchar(200),IN `pShopPhone` varchar(50),IN `pShopRegionId` int,IN `pShopAddress` varchar(200),IN `pShopDesc` varchar(200))
 BEGIN
  INSERT INTO `shop`(
         `Name`
         ,`Phone`
+				,`RegionId`
         ,`Address`
         ,`Desc`
         ,`CreatedDate`
     ) VALUES (
         pShopName        
-        ,pShopPhone        
+        ,pShopPhone
+				,pShopRegionId
         ,pShopAddress        
         ,pShopDesc         
         ,NOW()       
@@ -530,6 +625,19 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspClearFrontTemp
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspClearFrontTemp`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspClearFrontTemp`()
+BEGIN
+	#Routine body goes here...
+	TRUNCATE TABLE `import_front_temp`;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspDeleteAnalyseKPI
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspDeleteAnalyseKPI`;
@@ -559,20 +667,6 @@ END
 DELIMITER ;
 
 -- ----------------------------
--- Procedure structure for uspDeleteCustomerLevel
--- ----------------------------
-DROP PROCEDURE IF EXISTS `uspDeleteCustomerLevel`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspDeleteCustomerLevel`(IN `pCustomerLevelId` int)
-BEGIN
-	DELETE FROM `customer_level`
-    WHERE
-        Id=pCustomerLevelId;
-END
-;;
-DELIMITER ;
-
--- ----------------------------
 -- Procedure structure for uspDeleteEvaluateQuestion
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspDeleteEvaluateQuestion`;
@@ -582,6 +676,20 @@ BEGIN
 	  DELETE FROM `evaluate_question`
     WHERE
         Id=pEvaluateQuestionId;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspDeletePurposeLevel
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspDeletePurposeLevel`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspDeletePurposeLevel`(IN `pPurposeLevelId` int)
+BEGIN
+	DELETE FROM `customer_level`
+    WHERE
+        Id=pPurposeLevelId;
 END
 ;;
 DELIMITER ;
@@ -657,6 +765,34 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspGetBasicConstants
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetBasicConstants`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetBasicConstants`(IN `pBasicConstantShopId` int)
+BEGIN
+	   SELECT 
+        `basic_constant`.`Id` as `BasicConstantId`        
+        ,`basic_constant`.`ShopId` as `BasicConstantShopId`        
+        ,`basic_constant`.`Name` as `BasicConstantName`        
+        ,`basic_constant`.`Order` as `BasicConstantOrder`        
+        ,`basic_constant`.`TypeKey` as `BasicConstantTypeKey`        
+        ,`basic_constant`.`TypeValue` as `BasicConstantTypeValue`        
+        ,`basic_constant`.`Remark` as `BasicConstantRemark`        
+        ,`basic_constant`.`UpdateDate` as `BasicConstantUpdateDate`        
+        ,`basic_constant`.`CreatedDate` as `BasicConstantCreatedDate`        
+    FROM
+        `basic_constant`
+		WHERE 
+				`basic_constant`.`ShopId` = 0
+		OR
+				`basic_constant`.`ShopId` = case when pBasicConstantShopId = 0 then `basic_constant`.`ShopId` else pBasicConstantShopId end
+		ORDER BY `basic_constant`.`Order`;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspGetCarTypes
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspGetCarTypes`;
@@ -664,7 +800,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetCarTypes`()
 BEGIN
 	SELECT 
-        `car_type`.`Id` as `CarTypeId`        
+        `car_type`.`Id` as `CarTypeId` 
+				,`car_type`.`BrandId` as `CarTypeBrandId`     
         ,`car_type`.`Brand` as `CarTypeBrand`        
         ,`car_type`.`Name` as `CarTypeName`        
         ,`car_type`.`Desc` as `CarTypeDesc`        
@@ -677,20 +814,44 @@ END
 DELIMITER ;
 
 -- ----------------------------
--- Procedure structure for uspGetCustomerLevels
+-- Procedure structure for uspGetCustomerByIds
 -- ----------------------------
-DROP PROCEDURE IF EXISTS `uspGetCustomerLevels`;
+DROP PROCEDURE IF EXISTS `uspGetCustomerByIds`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetCustomerLevels`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetCustomerByIds`(IN `pCustomerIds`  varchar(255))
 BEGIN
+	declare cnt int default 0; 
+	declare i int default 0; 
+	set cnt = func_split_TotalLength(pCustomerIds,','); 
+	
+	DROP TABLE IF EXISTS `tb_cid`;
+  CREATE TEMPORARY TABLE `tb_cid`(`cid` int not null);
+	
+	while i < cnt 
+		do 
+			set i = i + 1; 
+			insert into tb_cid(`cid`) values (func_split(pCustomerIds,',',i)); 
+	end while;
+
 	SELECT 
-        `customer_level`.`Id` as `CustomerLevelId`        
-        ,`customer_level`.`Code` as `CustomerLevelCode`        
-        ,`customer_level`.`Desc` as `CustomerLevelDesc`        
-        ,`customer_level`.`UpdateDate` as `CustomerLevelUpdateDate`        
-        ,`customer_level`.`CreatedDate` as `CustomerLevelCreatedDate`        
+        `customer`.`Id` as `CustomerId`        
+        ,`customer`.`ShopId` as `CustomerShopId`        
+        ,`customer`.`Name` as `CustomerName`        
+        ,`customer`.`Sex` as `CustomerSex`        
+        ,`customer`.`Phone` as `CustomerPhone`        
+        ,`customer`.`ToShopNum` as `CustomerToShopNum`        
+        ,`customer`.`CurCar` as `CustomerCurCar`        
+        ,`customer`.`Nature` as `CustomerNature`        
+        ,`customer`.`OriginNature` as `CustomerOriginNature`        
+        ,`customer`.`Type` as `CustomerType`        
+        ,`customer`.`Industry` as `CustomerIndustry`        
+        ,`customer`.`RegionId` as `CustomerRegionId`        
+        ,`customer`.`Address` as `CustomerAddress`        
+        ,`customer`.`UpdateDate` as `CustomerUpdateDate`        
+        ,`customer`.`CreatedDate` as `CustomerCreatedDate`        
     FROM
-        `customer_level`;
+        `customer`
+		INNER JOIN `tb_cid` ON `customer`.`Id` = `tb_cid`.`cid`;
 END
 ;;
 DELIMITER ;
@@ -706,16 +867,21 @@ BEGIN
         `customer`.`Id` as `CustomerId`        
         ,`customer`.`ShopId` as `CustomerShopId`        
         ,`customer`.`Name` as `CustomerName`        
+        ,`customer`.`Sex` as `CustomerSex`        
         ,`customer`.`Phone` as `CustomerPhone`        
-        ,`customer`.`LevelCode` as `CustomerLevelCode`        
+        ,`customer`.`ToShopNum` as `CustomerToShopNum`        
+        ,`customer`.`CurCar` as `CustomerCurCar`        
         ,`customer`.`Nature` as `CustomerNature`        
         ,`customer`.`OriginNature` as `CustomerOriginNature`        
+        ,`customer`.`Type` as `CustomerType`        
         ,`customer`.`Industry` as `CustomerIndustry`        
+        ,`customer`.`RegionId` as `CustomerRegionId`        
         ,`customer`.`Address` as `CustomerAddress`        
         ,`customer`.`UpdateDate` as `CustomerUpdateDate`        
         ,`customer`.`CreatedDate` as `CustomerCreatedDate`        
     FROM
         `customer`
+		LEFT JOIN `front_record` on `customer`.`Id` = `front_record`.`CustomerId`
 		WHERE
 				`customer`.`ShopId` = case when pCustomerShopId = 0 then `customer`.`ShopId` else pCustomerShopId end
 		AND
@@ -740,13 +906,14 @@ BEGIN
         ,`dcc_record`.`DurationTime` as `DccRecordDurationTime`        
         ,`dcc_record`.`RecallTime` as `DccRecordRecallTime`        
         ,`dcc_record`.`PurposeCar` as `DccRecordPurposeCar`        
+        ,`dcc_record`.`LevelCode` as `DccRecordLevelCode`        
         ,`dcc_record`.`Source` as `DccRecordSource`        
         ,`dcc_record`.`Status` as `DccRecordStatus`        
-        ,`dcc_record`.`PromiseShop` as `DccRecordPromiseShop`        
-        ,`dcc_record`.`IsLogin` as `DccRecordIsLogin`        
-        ,`dcc_record`.`RecallDesc` as `DccRecordRecallDesc`        
+        ,`dcc_record`.`ToShop` as `DccRecordToShop`        
         ,`dcc_record`.`ToShopTime` as `DccRecordToShopTime`        
-        ,`dcc_record`.`OperatorId` as `DccRecordOperatorId`        
+        ,`dcc_record`.`Installment` as `DccRecordInstallment`        
+        ,`dcc_record`.`RecallDesc` as `DccRecordRecallDesc`        
+        ,`dcc_record`.`Recorder` as `DccRecordRecorder`        
         ,`dcc_record`.`UpdateDate` as `DccRecordUpdateDate`        
         ,`dcc_record`.`CreatedDate` as `DccRecordCreatedDate`        
     FROM
@@ -797,14 +964,18 @@ BEGIN
         ,`front_record`.`CustomerNum` as `FrontRecordCustomerNum`        
         ,`front_record`.`CarLicence` as `FrontRecordCarLicence`        
         ,`front_record`.`PurposeCar` as `FrontRecordPurposeCar`        
+        ,`front_record`.`LevelCode` as `FrontRecordLevelCode`        
         ,`front_record`.`DriveStatus` as `FrontRecordDriveStatus`        
+        ,`front_record`.`Source` as `FrontRecordSource`        
+        ,`front_record`.`Replace` as `FrontRecordReplace`        
+        ,`front_record`.`Installment` as `FrontRecordInstallment`        
         ,`front_record`.`Remark` as `FrontRecordRemark`        
         ,`front_record`.`ArrivalTime` as `FrontRecordArrivalTime`        
         ,`front_record`.`LeaveTime` as `FrontRecordLeaveTime`        
         ,`front_record`.`DurationTime` as `FrontRecordDurationTime`        
-        ,`front_record`.`OperatorId` as `FrontRecordOperatorId`        
+        ,`front_record`.`Recorder` as `FrontRecordRecorder`        
         ,`front_record`.`UpdateDate` as `FrontRecordUpdateDate`        
-        ,`front_record`.`CreatedDate` as `FrontRecordCreatedDate`        
+        ,`front_record`.`CreatedDate` as `FrontRecordCreatedDate`         
     FROM
         `front_record`
 		WHERE
@@ -815,6 +986,50 @@ BEGIN
 				`front_record`.`ShopId` = CASE WHEN pFrontRecordShopId = 0 THEN `front_record`.`CustomerId` ELSE pFrontRecordShopId END
 		
 		ORDER BY `front_record`.`CreatedDate` DESC;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetPurposeLevels
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetPurposeLevels`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetPurposeLevels`()
+BEGIN
+	SELECT 
+        `purpose_level`.`Id` as `PurposeLevelId`        
+        ,`purpose_level`.`Code` as `PurposeLevelCode`        
+        ,`purpose_level`.`Desc` as `PurposeLevelDesc`        
+        ,`purpose_level`.`UpdateDate` as `PurposeLevelUpdateDate`        
+        ,`purpose_level`.`CreatedDate` as `PurposeLevelCreatedDate`        
+    FROM
+        `purpose_level`;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetRegions
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetRegions`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetRegions`(IN `pRegionShopId` int)
+BEGIN
+	 SELECT 
+        `region`.`Id` as `RegionId`        
+        ,`region`.`ShopId` as `RegionShopId`        
+        ,`region`.`Province` as `RegionProvince`        
+        ,`region`.`City` as `RegionCity`        
+        ,`region`.`Region` as `RegionRegion`        
+        ,`region`.`UpdateDate` as `RegionUpdateDate`        
+        ,`region`.`CreatedDate` as `RegionCreatedDate`        
+    FROM
+        `region`
+		WHERE
+			`region`.`ShopId` = 0
+		OR
+			`region`.`ShopId` = case when pRegionShopId = 0 then `region`.`ShopId` else pRegionShopId end;
 END
 ;;
 DELIMITER ;
@@ -847,13 +1062,46 @@ BEGIN
 	SELECT 
         `shop`.`Id` as `ShopId`        
         ,`shop`.`Name` as `ShopName`        
-        ,`shop`.`Phone` as `ShopPhone`        
+        ,`shop`.`Phone` as `ShopPhone` 
+				,`shop`.`RegionId` as `ShopRegionId` 
         ,`shop`.`Address` as `ShopAddress`        
         ,`shop`.`Desc` as `ShopDesc`        
         ,`shop`.`UpdateDate` as `ShopUpdateDate`        
         ,`shop`.`CreatedDate` as `ShopCreatedDate`        
     FROM
         `shop`;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetUserByName
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetUserByName`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetUserByName`(IN `pUserUserName` varchar(100),IN `pUserPwd` varchar(100))
+BEGIN
+		SELECT 
+        `user`.`Id` as `UserId`        
+        ,`user`.`ShopId` as `UserShopId`        
+        ,`user`.`RoleId` as `UserRoleId`        
+        ,`user`.`GroupId` as `UserGroupId`        
+        ,`user`.`UserName` as `UserUserName`        
+        ,`user`.`Pwd` as `UserPwd`        
+        ,`user`.`RealName` as `UserRealName`        
+        ,`user`.`Sex` as `UserSex`        
+        ,`user`.`Status` as `UserStatus`        
+        ,`user`.`Phone` as `UserPhone`        
+        ,`user`.`Telephone` as `UserTelephone`        
+        ,`user`.`UpdateDate` as `UserUpdateDate`        
+        ,`user`.`CreatedDate` as `UserCreatedDate`     
+    FROM
+        `user`
+		WHERE
+			`user`.`UserName` = pUserUserName
+		AND
+			`user`.`Pwd` = pUserPwd;
+		
 END
 ;;
 DELIMITER ;
@@ -945,11 +1193,12 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateCarType`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCarType`(IN `pCarTypeId` int,IN `pCarTypeBrand` varchar(100),IN `pCarTypeName` varchar(100),IN `pCarTypeDesc` varchar(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCarType`(IN `pCarTypeId` int,IN `pCarTypeBrandId` int,IN `pCarTypeBrand` varchar(100),IN `pCarTypeName` varchar(100),IN `pCarTypeDesc` varchar(100))
 BEGIN
 	UPDATE `car_type`
     SET
-        `car_type`.`Brand` = case when pCarTypeBrand is null then `car_type`.`Brand` else pCarTypeBrand end
+				`car_type`.`BrandId` = case when pCarTypeBrandId is null then `car_type`.`BrandId` else pCarTypeBrandId end
+        ,`car_type`.`Brand` = case when pCarTypeBrand is null then `car_type`.`Brand` else pCarTypeBrand end
         ,`car_type`.`Name` = case when pCarTypeName is null then `car_type`.`Name` else pCarTypeName end
         ,`car_type`.`Desc` = case when pCarTypeDesc is null then `car_type`.`Desc` else pCarTypeDesc end
         ,`car_type`.`UpdateDate` = NOW()        
@@ -964,16 +1213,26 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateCustomer`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCustomer`(IN `pCustomerId` int,IN `pCustomerName` varchar(100),IN `pCustomerPhone` varchar(50),IN `pCustomerLevelCode` varchar(10),IN `pCustomerNature` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerAddress` varchar(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCustomer`(IN `pCustomerId` int,IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerOriginNature` int,IN `pCustomerType` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
 BEGIN
+	SELECT @ToShopNum := COUNT(0)
+	FROM `front_record`
+	WHERE
+		`front_record`.`CustomerId` = pCustomerId;
+	
 	UPDATE `customer`
     SET
-        `customer`.`Name` = case when pCustomerName is null then `customer`.`Name` else pCustomerName end
-        ,`customer`.`Phone` = case when pCustomerPhone is null then `customer`.`Phone` else pCustomerPhone end
-        ,`customer`.`LevelCode` = case when pCustomerLevelCode is null then `customer`.`LevelCode` else pCustomerLevelCode end
+        `customer`.`ShopId` = case when pCustomerShopId is null then `customer`.`ShopId` else pCustomerShopId end
+        ,`customer`.`Name` = case when pCustomerName is null then `customer`.`Name` else pCustomerName end
+        ,`customer`.`Sex` = case when pCustomerSex is null then `customer`.`Sex` else pCustomerSex end
+				,`customer`.`Phone` = case when pCustomerPhone is null then `customer`.`Phone` else pCustomerPhone end
+				,`customer`.`ToShopNum` = @ToShopNum
+				,`customer`.`CurCar` = case when pCustomerCurCar is null then `customer`.`CurCar` else pCustomerCurCar end
         ,`customer`.`Nature` = case when pCustomerNature is null then `customer`.`Nature` else pCustomerNature end
-        ,`customer`.`OriginNature` = case when `customer`.`OriginNature` is null then pCustomerNature else NULL end
+        ,`customer`.`OriginNature` = case when pCustomerOriginNature is null then `customer`.`OriginNature` else pCustomerOriginNature end
+        ,`customer`.`Type` = case when pCustomerType is null then `customer`.`Type` else pCustomerType end
         ,`customer`.`Industry` = case when pCustomerIndustry is null then `customer`.`Industry` else pCustomerIndustry end
+        ,`customer`.`RegionId` = case when pCustomerRegionId is null then `customer`.`RegionId` else pCustomerRegionId end
         ,`customer`.`Address` = case when pCustomerAddress is null then `customer`.`Address` else pCustomerAddress end
         ,`customer`.`UpdateDate` = NOW()
     WHERE
@@ -983,43 +1242,27 @@ END
 DELIMITER ;
 
 -- ----------------------------
--- Procedure structure for uspUpdateCustomerLevel
--- ----------------------------
-DROP PROCEDURE IF EXISTS `uspUpdateCustomerLevel`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCustomerLevel`(IN `pCustomerLevelId` int,IN `pCustomerLevelCode` varchar(10),IN `pCustomerLevelDesc` varchar(200))
-BEGIN
-	 UPDATE `customer_level`
-    SET
-        `customer_level`.`Code` = case when pCustomerLevelCode is null then `customer_level`.`Code` else pCustomerLevelCode end
-        ,`customer_level`.`Desc` = case when pCustomerLevelDesc is null then `customer_level`.`Desc` else pCustomerLevelDesc end
-        ,`customer_level`.`UpdateDate` = NOW()
-    WHERE
-        Id=pCustomerLevelId;
-END
-;;
-DELIMITER ;
-
--- ----------------------------
 -- Procedure structure for uspUpdateDCCRecord
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateDCCRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateDCCRecord`(IN `pDccRecordId` int,IN `pDccRecordDCCRecallerId` int,IN `pDccRecordDurationTime` varchar(50),IN `pDccRecordRecallTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordSource` int,IN `pDccRecordStatus` int,IN `pDccRecordPromiseShop` int,IN `pDccRecordIsLogin` int,IN `pDccRecordRecallDesc` varchar(200),IN `pDccRecordToShopTime` datetime,IN `pDccRecordOperatorId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateDCCRecord`(IN `pDccRecordId` int,IN `pDccRecordDCCRecallerId` int,IN `pDccRecordVisitTime` datetime,IN `pDccRecordDurationTime` varchar(50),IN `pDccRecordRecallTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordLevelCode` varchar(100),IN `pDccRecordSource` int,IN `pDccRecordStatus` int,IN `pDccRecordToShop` int,IN `pDccRecordToShopTime` datetime,IN `pDccRecordInstallment` int,IN `pDccRecordRecallDesc` varchar(200),IN `pDccRecordRecorder` varchar(100))
 BEGIN
 	 UPDATE `dcc_record`
     SET
-        `dcc_record`.`DCCRecallerId` = case when pDccRecordDCCRecallerId is null then `dcc_record`.`DCCRecallerId` else pDccRecordDCCRecallerId end
+				`dcc_record`.`DCCRecallerId` = case when pDccRecordDCCRecallerId is null then `dcc_record`.`DCCRecallerId` else pDccRecordDCCRecallerId end
+        ,`dcc_record`.`VisitTime` = case when pDccRecordVisitTime is null then `dcc_record`.`VisitTime` else pDccRecordVisitTime end
         ,`dcc_record`.`DurationTime` = case when pDccRecordDurationTime is null then `dcc_record`.`DurationTime` else pDccRecordDurationTime end
         ,`dcc_record`.`RecallTime` = case when pDccRecordRecallTime is null then `dcc_record`.`RecallTime` else pDccRecordRecallTime end
         ,`dcc_record`.`PurposeCar` = case when pDccRecordPurposeCar is null then `dcc_record`.`PurposeCar` else pDccRecordPurposeCar end
+        ,`dcc_record`.`LevelCode` = case when pDccRecordLevelCode is null then `dcc_record`.`LevelCode` else pDccRecordLevelCode end
         ,`dcc_record`.`Source` = case when pDccRecordSource is null then `dcc_record`.`Source` else pDccRecordSource end
         ,`dcc_record`.`Status` = case when pDccRecordStatus is null then `dcc_record`.`Status` else pDccRecordStatus end
-        ,`dcc_record`.`PromiseShop` = case when pDccRecordPromiseShop is null then `dcc_record`.`PromiseShop` else pDccRecordPromiseShop end
-        ,`dcc_record`.`IsLogin` = case when pDccRecordIsLogin is null then `dcc_record`.`IsLogin` else pDccRecordIsLogin end
-        ,`dcc_record`.`RecallDesc` = case when pDccRecordRecallDesc is null then `dcc_record`.`RecallDesc` else pDccRecordRecallDesc end
+        ,`dcc_record`.`ToShop` = case when pDccRecordToShop is null then `dcc_record`.`ToShop` else pDccRecordToShop end
         ,`dcc_record`.`ToShopTime` = case when pDccRecordToShopTime is null then `dcc_record`.`ToShopTime` else pDccRecordToShopTime end
-        ,`dcc_record`.`OperatorId` = case when pDccRecordOperatorId is null then `dcc_record`.`OperatorId` else pDccRecordOperatorId end
+        ,`dcc_record`.`Installment` = case when pDccRecordInstallment is null then `dcc_record`.`Installment` else pDccRecordInstallment end
+        ,`dcc_record`.`RecallDesc` = case when pDccRecordRecallDesc is null then `dcc_record`.`RecallDesc` else pDccRecordRecallDesc end
+        ,`dcc_record`.`Recorder` = case when pDccRecordRecorder is null then `dcc_record`.`Recorder` else pDccRecordRecorder end
         ,`dcc_record`.`UpdateDate` = NOW()
     WHERE
         Id=pDccRecordId;
@@ -1052,22 +1295,45 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateFrontRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateFrontRecord`(IN `pFrontRecordCustomerId` int,IN `pFrontRecordId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordCarLicence` int,IN `pFrontRecordPurposeCar` int,IN `pFrontRecordDriveStatus` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordLeaveTime` datetime,IN `pFrontRecordDurationTime` varchar(50))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateFrontRecord`(IN `pFrontRecordId` int,IN `pFrontRecordCustomerId` int,IN `pFrontRecordShopId` int,IN `pFrontRecordConsultantId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordCarLicence` int,IN `pFrontRecordPurposeCar` int,IN `pFrontRecordLevelCode` varchar(100),IN `pFrontRecordDriveStatus` int,IN `pFrontRecordSource` int,IN `pFrontRecordReplace` int,IN `pFrontRecordInstallment` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordLeaveTime` datetime,IN `pFrontRecordDurationTime` varchar(50))
 BEGIN
 	UPDATE `front_record`
     SET
 				`front_record`.`CustomerId` = case when pFrontRecordCustomerId is null then `front_record`.`CustomerId` else pFrontRecordCustomerId end
+        ,`front_record`.`ShopId` = case when pFrontRecordShopId is null then `front_record`.`ShopId` else pFrontRecordShopId end
+        ,`front_record`.`ConsultantId` = case when pFrontRecordConsultantId is null then `front_record`.`ConsultantId` else pFrontRecordConsultantId end
         ,`front_record`.`CustomerNum` = case when pFrontRecordCustomerNum is null then `front_record`.`CustomerNum` else pFrontRecordCustomerNum end
         ,`front_record`.`CarLicence` = case when pFrontRecordCarLicence is null then `front_record`.`CarLicence` else pFrontRecordCarLicence end
         ,`front_record`.`PurposeCar` = case when pFrontRecordPurposeCar is null then `front_record`.`PurposeCar` else pFrontRecordPurposeCar end
+        ,`front_record`.`LevelCode` = case when pFrontRecordLevelCode is null then `front_record`.`LevelCode` else pFrontRecordLevelCode end
         ,`front_record`.`DriveStatus` = case when pFrontRecordDriveStatus is null then `front_record`.`DriveStatus` else pFrontRecordDriveStatus end
+        ,`front_record`.`Source` = case when pFrontRecordSource is null then `front_record`.`Source` else pFrontRecordSource end
+        ,`front_record`.`Replace` = case when pFrontRecordReplace is null then `front_record`.`Replace` else pFrontRecordReplace end
+        ,`front_record`.`Installment` = case when pFrontRecordInstallment is null then `front_record`.`Installment` else pFrontRecordInstallment end
         ,`front_record`.`Remark` = case when pFrontRecordRemark is null then `front_record`.`Remark` else pFrontRecordRemark end
         ,`front_record`.`LeaveTime` = case when pFrontRecordLeaveTime is null then `front_record`.`LeaveTime` else pFrontRecordLeaveTime end
         ,`front_record`.`DurationTime` = case when pFrontRecordDurationTime is null then `front_record`.`DurationTime` else pFrontRecordDurationTime end
         ,`front_record`.`UpdateDate` = NOW()
     WHERE
         Id=pFrontRecordId;
+END
+;;
+DELIMITER ;
 
+-- ----------------------------
+-- Procedure structure for uspUpdatePurposeLevel
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspUpdatePurposeLevel`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdatePurposeLevel`(IN `pPurposeLevelId` int,IN `pPurposeLevelCode` varchar(10),IN `pPurposeLevelDesc` varchar(200))
+BEGIN
+	 UPDATE `customer_level`
+    SET
+        `purpose_level`.`Code` = case when pPurposeLevelCode is null then `purpose_level`.`Code` else pPurposeLevelCode end
+        ,`purpose_level`.`Desc` = case when pPurposeLevelDesc is null then `purpose_level`.`Desc` else pPurposeLevelDesc end
+				,`purpose_level`.`UpdateDate` = NOW()
+    WHERE
+        Id=pPurposeLevelId;
 END
 ;;
 DELIMITER ;
@@ -1077,12 +1343,13 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateShop`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateShop`(IN `pShopId` int,IN `pShopName` varchar(200),IN `pShopPhone` varchar(50),IN `pShopAddress` varchar(200),IN `pShopDesc` varchar(200),IN `pShopUpdateDate` datetime)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateShop`(IN `pShopId` int,IN `pShopName` varchar(200),IN `pShopPhone` varchar(50),IN `pShopRegionId` int,IN `pShopAddress` varchar(200),IN `pShopDesc` varchar(200),IN `pShopUpdateDate` datetime)
 BEGIN
 	  UPDATE `shop`
     SET
         `shop`.`Name` = case when pShopName is null then `shop`.`Name` else pShopName end
         ,`shop`.`Phone` = case when pShopPhone is null then `shop`.`Phone` else pShopPhone end
+				,`shop`.`RegionId` = case when pShopRegionId is null then `shop`.`RegionId` else pShopRegionId end
         ,`shop`.`Address` = case when pShopAddress is null then `shop`.`Address` else pShopAddress end
         ,`shop`.`Desc` = case when pShopDesc is null then `shop`.`Desc` else pShopDesc end
         ,`shop`.`UpdateDate` = NOW()
@@ -1157,6 +1424,33 @@ BEGIN
     WHERE
 			`user`.`Id` != case when pUserId is null then `user`.`Id` else pUserId end
 		AND `user`.`UserName` = pUserUserName;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Function structure for func_split
+-- ----------------------------
+DROP FUNCTION IF EXISTS `func_split`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `func_split`(f_string varchar(1000),f_delimiter varchar(5),f_order int) RETURNS int(11)
+BEGIN 
+
+declare result varchar(255) default ''; 
+set result = reverse(substring_index(reverse(substring_index(f_string,f_delimiter,f_order)),f_delimiter,1)); 
+return result; 
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Function structure for func_split_TotalLength
+-- ----------------------------
+DROP FUNCTION IF EXISTS `func_split_TotalLength`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `func_split_TotalLength`(f_string varchar(10000),f_delimiter varchar(50)) RETURNS int(11)
+BEGIN 
+return 1+(length(f_string) - length(replace(f_string,f_delimiter,''))); 
 END
 ;;
 DELIMITER ;

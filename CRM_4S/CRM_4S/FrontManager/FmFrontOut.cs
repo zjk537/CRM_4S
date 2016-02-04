@@ -64,10 +64,10 @@ namespace CRM_4S.FrontManager
                 this.cbCNature.SelectedIndex = 0;
             else
                 this.cbCNature.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == customerInfo.Nature);
-            if (customerInfo.RegionId == null)
-                this.cbRegion.SelectedIndex = 0;
-            else
+            if (customerInfo.RegionId.HasValue)
                 this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == customerInfo.RegionId);
+            else
+                this.cbRegion.SelectedIndex = 0;
 
             //if (frontInfo.CarLicence == null)
             //    this.cbCarLicence.SelectedIndex = 0;
@@ -79,16 +79,16 @@ namespace CRM_4S.FrontManager
             else
                 this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == frontInfo.LevelCode);
 
-            if (frontInfo.PurposeCar == null)
-                this.cbCarType.SelectedIndex = 0;
-            else
+            if (frontInfo.PurposeCar.HasValue)
                 this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
+            else
+                this.cbCarType.SelectedIndex = 0;
 
            
-            if (frontInfo.Source == null)
-                this.cbFrontSource.SelectedIndex = 0;
-            else
+            if (frontInfo.Source.HasValue)
                 this.cbFrontSource.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
+            else
+                this.cbFrontSource.SelectedIndex = 0;
             this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
             this.txtCNum.EditValue = frontInfo.CustomerNum;
             this.rdDriveStatus.SelectedIndex = frontInfo.DriveStatus.HasValue ? frontInfo.DriveStatus.Value - 1 : -1;
@@ -144,6 +144,7 @@ namespace CRM_4S.FrontManager
                     newRecordInfo.Customer.RegionId = regionInfo.Id;
 
                 newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                newRecordInfo.Customer.Type = "front";
                 // 在添加customer成功后，会给当前customer 赋Id
                 if (newRecordInfo.Customer.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(newRecordInfo.Customer);
