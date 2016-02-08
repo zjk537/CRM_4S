@@ -141,10 +141,19 @@ namespace CRM_4S.UserManager
 
         private void RefreshView()
         {
-            var dataSource = UserBusiness.Instance.GetUserShopRoleInfos();
-            userGridControl.DataSource = dataSource;
-            userGridControl.MainView.RefreshData();
-            userGridView.ExpandAllGroups();
+            try
+            {
+                var dataSource = UserBusiness.Instance.GetUserShopRoleInfos(GloablCaches.Instance.CurUser.ShopId);
+                userGridControl.DataSource = dataSource;
+                userGridControl.MainView.RefreshData();
+                userGridView.ExpandAllGroups();
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+            }
+            
 
         }
 

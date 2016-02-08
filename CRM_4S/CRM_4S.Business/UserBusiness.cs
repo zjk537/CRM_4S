@@ -98,9 +98,9 @@ namespace CRM_4S.Business
             return dbUserId == 0;
         }
 
-        public IList<UserShopRoleInfo> GetUserShopRoleInfos()
+        public IList<UserShopRoleInfo> GetUserShopRoleInfos(int shopId)
         {
-            var users = GetUsers();
+            var users = GetUsers(new UserInfo() { ShopId = shopId });
             List<UserShopRoleInfo> results = new List<UserShopRoleInfo>();
 
             foreach (UserInfo user in users)

@@ -53,7 +53,7 @@ namespace CRM_4S.UserManager
             this.userGridControl.Location = new System.Drawing.Point(0, 0);
             this.userGridControl.MainView = this.userGridView;
             this.userGridControl.Name = "userGridControl";
-            this.userGridControl.Size = new System.Drawing.Size(702, 361);
+            this.userGridControl.Size = new System.Drawing.Size(602, 335);
             this.userGridControl.TabIndex = 0;
             this.userGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.userGridView});
@@ -90,8 +90,6 @@ namespace CRM_4S.UserManager
             this.clmShopName.Caption = "所属店铺";
             this.clmShopName.FieldName = "Shop.Name";
             this.clmShopName.Name = "clmShopName";
-            this.clmShopName.Visible = true;
-            this.clmShopName.VisibleIndex = 0;
             // 
             // clmUserName
             // 
@@ -99,7 +97,7 @@ namespace CRM_4S.UserManager
             this.clmUserName.FieldName = "User.UserName";
             this.clmUserName.Name = "clmUserName";
             this.clmUserName.Visible = true;
-            this.clmUserName.VisibleIndex = 1;
+            this.clmUserName.VisibleIndex = 0;
             // 
             // clmRealName
             // 
@@ -107,7 +105,7 @@ namespace CRM_4S.UserManager
             this.clmRealName.FieldName = "User.RealName";
             this.clmRealName.Name = "clmRealName";
             this.clmRealName.Visible = true;
-            this.clmRealName.VisibleIndex = 2;
+            this.clmRealName.VisibleIndex = 1;
             // 
             // clmSex
             // 
@@ -117,7 +115,7 @@ namespace CRM_4S.UserManager
             this.clmSex.FieldName = "User.Sex";
             this.clmSex.Name = "clmSex";
             this.clmSex.Visible = true;
-            this.clmSex.VisibleIndex = 3;
+            this.clmSex.VisibleIndex = 2;
             // 
             // clmRoleName
             // 
@@ -125,7 +123,7 @@ namespace CRM_4S.UserManager
             this.clmRoleName.FieldName = "Role.Name";
             this.clmRoleName.Name = "clmRoleName";
             this.clmRoleName.Visible = true;
-            this.clmRoleName.VisibleIndex = 4;
+            this.clmRoleName.VisibleIndex = 3;
             // 
             // clmPhone
             // 
@@ -133,7 +131,7 @@ namespace CRM_4S.UserManager
             this.clmPhone.FieldName = "User.Phone";
             this.clmPhone.Name = "clmPhone";
             this.clmPhone.Visible = true;
-            this.clmPhone.VisibleIndex = 5;
+            this.clmPhone.VisibleIndex = 4;
             // 
             // clmUserGroup
             // 
@@ -141,7 +139,7 @@ namespace CRM_4S.UserManager
             this.clmUserGroup.FieldName = "UserGroup.Name";
             this.clmUserGroup.Name = "clmUserGroup";
             this.clmUserGroup.Visible = true;
-            this.clmUserGroup.VisibleIndex = 6;
+            this.clmUserGroup.VisibleIndex = 5;
             // 
             // clmUpdateDate
             // 
@@ -150,8 +148,6 @@ namespace CRM_4S.UserManager
             this.clmUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmUpdateDate.FieldName = "User.UpdateDate";
             this.clmUpdateDate.Name = "clmUpdateDate";
-            this.clmUpdateDate.Visible = true;
-            this.clmUpdateDate.VisibleIndex = 7;
             // 
             // clmCreatedDate
             // 
@@ -161,16 +157,16 @@ namespace CRM_4S.UserManager
             this.clmCreatedDate.FieldName = "User.CreatedDate";
             this.clmCreatedDate.Name = "clmCreatedDate";
             this.clmCreatedDate.Visible = true;
-            this.clmCreatedDate.VisibleIndex = 8;
+            this.clmCreatedDate.VisibleIndex = 6;
             // 
             // FmUserView
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(702, 361);
+            this.ClientSize = new System.Drawing.Size(602, 335);
             this.Controls.Add(this.userGridControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmUserView";

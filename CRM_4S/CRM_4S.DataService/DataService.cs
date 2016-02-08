@@ -199,7 +199,7 @@ namespace CRM_4S.DataService
             {
                 conn.Open();// mysql.data.dll 5.6以上版本 目前用6.9.8
                 MySqlBulkLoader bulkLoader = new MySqlBulkLoader(conn);
-                bulkLoader.TableName = string.Format("import_{0}_temp", typeName);
+                bulkLoader.TableName = string.Format("import_{0}_temp", typeName.ToLower());
                 bulkLoader.FieldTerminator = ",";
                 bulkLoader.LineTerminator = "\r\n";
                 bulkLoader.FileName = strFile;
@@ -216,10 +216,10 @@ namespace CRM_4S.DataService
             //    bulkCopy.WriteToServer(resource);
             //}
 
-            //FuncSaveData(new FunctionParms()
-            //{
-            //    FunctionName = ""
-            //});
+            FuncSaveData(new FunctionParms()
+            {
+                FunctionName = string.Format("uspSync{0}Records", typeName)//uspImortFrontRecords
+            });
 
         }
 

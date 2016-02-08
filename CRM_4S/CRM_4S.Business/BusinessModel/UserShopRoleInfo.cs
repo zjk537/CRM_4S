@@ -68,12 +68,13 @@ namespace CRM_4S.Business.BusinessModel
         private UserGroupInfo userGroup = null;
         public UserGroupInfo UserGroup
         {
-            get {
+            get
+            {
                 if (userGroup == null && user != null)
                 {
                     userGroup = new UserGroupInfo();
                 }
-                return userGroup; 
+                return userGroup;
             }
             set
             {

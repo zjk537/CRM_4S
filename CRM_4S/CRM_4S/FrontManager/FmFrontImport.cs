@@ -78,13 +78,21 @@ namespace CRM_4S.FrontManager
                 {
                     try
                     {
-                        DataColumn dataColumn = new DataColumn("Recorder", typeof(string));
-                        tempTable.Columns.Add(dataColumn);
-
-                        dataColumn.SetOrdinal(0);
+                        DataColumn dtRecorderColumn = new DataColumn("Recorder", typeof(string));
+                        DataColumn dtShopIdColumn = new DataColumn("ShopId", typeof(Int32));
+                        tempTable.Columns.Add(dtShopIdColumn);
+                        tempTable.Columns.Add(dtRecorderColumn);
+                        dtShopIdColumn.SetOrdinal(0);
+                        dtRecorderColumn.SetOrdinal(1);
+                        int defaultPhone = 1;
                         foreach (DataRow datarow in tempTable.Rows)
                         {
-                            datarow[dataColumn] = GloablCaches.Instance.CurUser.RealName;
+                            datarow[dtShopIdColumn] = GloablCaches.Instance.CurUser.ShopId;
+                            datarow[dtRecorderColumn] = GloablCaches.Instance.CurUser.RealName;
+                            if (string.IsNullOrEmpty(datarow["客户电话"].ToString().Trim()))
+                            {
+                                datarow["客户电话"] = defaultPhone++;
+                            }
                         }
 
                         DataImportBusiness.Instance.BulkInsertData("Front", tempTable);

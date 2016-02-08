@@ -178,6 +178,7 @@ namespace CRM_4S.FrontManager
 
         private void gridViewFrontRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
+            this.gridViewFrontRecord.IndicatorWidth = 40;
             if (e.Info.IsRowIndicator)
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
