@@ -89,6 +89,7 @@ namespace CRM_4S.FrontManager
                         {
                             datarow[dtShopIdColumn] = GloablCaches.Instance.CurUser.ShopId;
                             datarow[dtRecorderColumn] = GloablCaches.Instance.CurUser.RealName;
+
                             if (string.IsNullOrEmpty(datarow["客户电话"].ToString().Trim()))
                             {
                                 datarow["客户电话"] = defaultPhone++;
@@ -97,6 +98,7 @@ namespace CRM_4S.FrontManager
 
                         DataImportBusiness.Instance.BulkInsertData("Front", tempTable);
                         runMsg = "导入成功";
+                        
                     }
                     catch (Exception ex)
                     {
@@ -108,7 +110,7 @@ namespace CRM_4S.FrontManager
                         this.BeginInvoke(new MethodInvoker(delegate()
                         {
                             progressBar.DialogResult = DialogResult.OK;
-                            XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
+
                         }));
                     }
                 });

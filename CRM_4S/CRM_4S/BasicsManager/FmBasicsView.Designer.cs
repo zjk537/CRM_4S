@@ -133,7 +133,7 @@ namespace CRM_4S.BasicsManager
             this.navBarBasics.Location = new System.Drawing.Point(0, 0);
             this.navBarBasics.Name = "navBarBasics";
             this.navBarBasics.OptionsNavPane.ExpandedWidth = 156;
-            this.navBarBasics.Size = new System.Drawing.Size(156, 444);
+            this.navBarBasics.Size = new System.Drawing.Size(156, 481);
             this.navBarBasics.SmallImages = this.imageList16;
             this.navBarBasics.TabIndex = 0;
             this.navBarBasics.Text = "navBarControlBasics";
@@ -231,16 +231,16 @@ namespace CRM_4S.BasicsManager
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(156, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(795, 444);
+            this.panelControl1.Size = new System.Drawing.Size(795, 481);
             this.panelControl1.TabIndex = 1;
             // 
             // gridControlQuestion
             // 
             this.gridControlQuestion.DataSource = this.evaluateQuestionInfoBindingSource;
-            this.gridControlQuestion.Location = new System.Drawing.Point(272, 224);
+            this.gridControlQuestion.Location = new System.Drawing.Point(272, 243);
             this.gridControlQuestion.MainView = this.gridViewQuestion;
             this.gridControlQuestion.Name = "gridControlQuestion";
-            this.gridControlQuestion.Size = new System.Drawing.Size(249, 208);
+            this.gridControlQuestion.Size = new System.Drawing.Size(249, 225);
             this.gridControlQuestion.TabIndex = 7;
             this.gridControlQuestion.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewQuestion});
@@ -260,6 +260,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewQuestion.GridControl = this.gridControlQuestion;
             this.gridViewQuestion.Name = "gridViewQuestion";
             this.gridViewQuestion.OptionsBehavior.Editable = false;
+            this.gridViewQuestion.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewQuestion.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewQuestion.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
@@ -314,10 +315,10 @@ namespace CRM_4S.BasicsManager
             // gridControlConsultant
             // 
             this.gridControlConsultant.DataSource = this.userCarTypeTaskInfoBindingSource;
-            this.gridControlConsultant.Location = new System.Drawing.Point(6, 224);
+            this.gridControlConsultant.Location = new System.Drawing.Point(6, 243);
             this.gridControlConsultant.MainView = this.gridViewConsultant;
             this.gridControlConsultant.Name = "gridControlConsultant";
-            this.gridControlConsultant.Size = new System.Drawing.Size(260, 208);
+            this.gridControlConsultant.Size = new System.Drawing.Size(260, 225);
             this.gridControlConsultant.TabIndex = 7;
             this.gridControlConsultant.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewConsultant});
@@ -341,6 +342,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewConsultant.GridControl = this.gridControlConsultant;
             this.gridViewConsultant.Name = "gridViewConsultant";
             this.gridViewConsultant.OptionsBehavior.Editable = false;
+            this.gridViewConsultant.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewConsultant.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewConsultant.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
@@ -427,10 +429,10 @@ namespace CRM_4S.BasicsManager
             // gridControlAnalyse
             // 
             this.gridControlAnalyse.DataSource = this.analyseKPIInfoBindingSource;
-            this.gridControlAnalyse.Location = new System.Drawing.Point(527, 224);
+            this.gridControlAnalyse.Location = new System.Drawing.Point(527, 243);
             this.gridControlAnalyse.MainView = this.gridViewAnalyse;
             this.gridControlAnalyse.Name = "gridControlAnalyse";
-            this.gridControlAnalyse.Size = new System.Drawing.Size(263, 208);
+            this.gridControlAnalyse.Size = new System.Drawing.Size(263, 225);
             this.gridControlAnalyse.TabIndex = 6;
             this.gridControlAnalyse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAnalyse});
@@ -454,6 +456,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewAnalyse.GridControl = this.gridControlAnalyse;
             this.gridViewAnalyse.Name = "gridViewAnalyse";
             this.gridViewAnalyse.OptionsBehavior.Editable = false;
+            this.gridViewAnalyse.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewAnalyse.OptionsView.ShowGroupPanel = false;
             this.gridViewAnalyse.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             // 
@@ -530,10 +533,10 @@ namespace CRM_4S.BasicsManager
             // gridControlLevel
             // 
             this.gridControlLevel.DataSource = this.customerLevelInfoBindingSource;
-            this.gridControlLevel.Location = new System.Drawing.Point(527, 18);
+            this.gridControlLevel.Location = new System.Drawing.Point(527, 20);
             this.gridControlLevel.MainView = this.gridViewLevel;
             this.gridControlLevel.Name = "gridControlLevel";
-            this.gridControlLevel.Size = new System.Drawing.Size(263, 200);
+            this.gridControlLevel.Size = new System.Drawing.Size(263, 217);
             this.gridControlLevel.TabIndex = 6;
             this.gridControlLevel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLevel});
@@ -550,6 +553,7 @@ namespace CRM_4S.BasicsManager
             this.clmLevelCreatedDate});
             this.gridViewLevel.GridControl = this.gridControlLevel;
             this.gridViewLevel.Name = "gridViewLevel";
+            this.gridViewLevel.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewLevel.OptionsView.ShowGroupPanel = false;
             this.gridViewLevel.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
@@ -582,10 +586,10 @@ namespace CRM_4S.BasicsManager
             // gridControlCarType
             // 
             this.gridControlCarType.DataSource = this.carTypeInfoBindingSource;
-            this.gridControlCarType.Location = new System.Drawing.Point(272, 18);
+            this.gridControlCarType.Location = new System.Drawing.Point(272, 20);
             this.gridControlCarType.MainView = this.gridViewCarType;
             this.gridControlCarType.Name = "gridControlCarType";
-            this.gridControlCarType.Size = new System.Drawing.Size(249, 200);
+            this.gridControlCarType.Size = new System.Drawing.Size(249, 217);
             this.gridControlCarType.TabIndex = 5;
             this.gridControlCarType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCarType});
@@ -606,6 +610,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewCarType.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCarType.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCarType.OptionsBehavior.Editable = false;
+            this.gridViewCarType.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewCarType.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
             // clmCarBrand
@@ -645,10 +650,10 @@ namespace CRM_4S.BasicsManager
             // gridControlShop
             // 
             this.gridControlShop.DataSource = this.shopInfoBindingSource;
-            this.gridControlShop.Location = new System.Drawing.Point(6, 18);
+            this.gridControlShop.Location = new System.Drawing.Point(6, 20);
             this.gridControlShop.MainView = this.gridViewShop;
             this.gridControlShop.Name = "gridControlShop";
-            this.gridControlShop.Size = new System.Drawing.Size(260, 200);
+            this.gridControlShop.Size = new System.Drawing.Size(260, 217);
             this.gridControlShop.TabIndex = 4;
             this.gridControlShop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewShop});
@@ -670,6 +675,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewShop.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewShop.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewShop.OptionsBehavior.Editable = false;
+            this.gridViewShop.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewShop.OptionsView.ShowGroupPanel = false;
             this.gridViewShop.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
@@ -717,9 +723,9 @@ namespace CRM_4S.BasicsManager
             // 
             // FmBasicsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 444);
+            this.ClientSize = new System.Drawing.Size(951, 481);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.navBarBasics);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

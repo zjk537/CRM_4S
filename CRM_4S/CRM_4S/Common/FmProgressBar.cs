@@ -15,7 +15,16 @@ namespace CRM_4S.Common
         public FmProgressBar(string runCaption = "正在处理中.......")
         {
             InitializeComponent();
+
             this.labLoadCaption.Text = runCaption;
+        }
+
+        public string LoadCaption
+        {
+            set
+            {
+
+            }
         }
     }
 }

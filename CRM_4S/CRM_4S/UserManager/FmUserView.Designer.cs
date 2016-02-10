@@ -36,11 +36,11 @@ namespace CRM_4S.UserManager
             this.clmUserName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRealName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmSex = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmRoleName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUserGroup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmRoleName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userShopRoleInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userGridView)).BeginInit();
@@ -69,7 +69,6 @@ namespace CRM_4S.UserManager
             this.clmUserName,
             this.clmRealName,
             this.clmSex,
-            this.clmRoleName,
             this.clmPhone,
             this.clmUserGroup,
             this.clmUpdateDate,
@@ -80,6 +79,7 @@ namespace CRM_4S.UserManager
             this.userGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.userGridView.OptionsBehavior.Editable = false;
             this.userGridView.OptionsBehavior.ReadOnly = true;
+            this.userGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.userGridView.OptionsView.ShowGroupPanel = false;
             this.userGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.userGridView_CustomDrawCell);
             this.userGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.userGridView_FocusedRowChanged);
@@ -90,6 +90,8 @@ namespace CRM_4S.UserManager
             this.clmShopName.Caption = "所属店铺";
             this.clmShopName.FieldName = "Shop.Name";
             this.clmShopName.Name = "clmShopName";
+            this.clmShopName.Visible = true;
+            this.clmShopName.VisibleIndex = 0;
             // 
             // clmUserName
             // 
@@ -117,14 +119,6 @@ namespace CRM_4S.UserManager
             this.clmSex.Visible = true;
             this.clmSex.VisibleIndex = 2;
             // 
-            // clmRoleName
-            // 
-            this.clmRoleName.Caption = "用户职位";
-            this.clmRoleName.FieldName = "Role.Name";
-            this.clmRoleName.Name = "clmRoleName";
-            this.clmRoleName.Visible = true;
-            this.clmRoleName.VisibleIndex = 3;
-            // 
             // clmPhone
             // 
             this.clmPhone.Caption = "联系方式";
@@ -148,6 +142,8 @@ namespace CRM_4S.UserManager
             this.clmUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmUpdateDate.FieldName = "User.UpdateDate";
             this.clmUpdateDate.Name = "clmUpdateDate";
+            this.clmUpdateDate.Visible = true;
+            this.clmUpdateDate.VisibleIndex = 7;
             // 
             // clmCreatedDate
             // 
@@ -158,6 +154,14 @@ namespace CRM_4S.UserManager
             this.clmCreatedDate.Name = "clmCreatedDate";
             this.clmCreatedDate.Visible = true;
             this.clmCreatedDate.VisibleIndex = 6;
+            // 
+            // clmRoleName
+            // 
+            this.clmRoleName.Caption = "用户职位";
+            this.clmRoleName.FieldName = "Role.Name";
+            this.clmRoleName.Name = "clmRoleName";
+            this.clmRoleName.Visible = true;
+            this.clmRoleName.VisibleIndex = 3;
             // 
             // FmUserView
             // 
@@ -186,7 +190,6 @@ namespace CRM_4S.UserManager
         private DevExpress.XtraGrid.Views.Grid.GridView userGridView;
         private DevExpress.XtraGrid.Columns.GridColumn clmShopName;
         private DevExpress.XtraGrid.Columns.GridColumn clmUserName;
-        private DevExpress.XtraGrid.Columns.GridColumn clmRoleName;
         private DevExpress.XtraGrid.Columns.GridColumn clmPhone;
         private DevExpress.XtraGrid.Columns.GridColumn clmCreatedDate;
         private System.Windows.Forms.BindingSource userShopRoleInfoBindingSource;
@@ -194,5 +197,6 @@ namespace CRM_4S.UserManager
         private DevExpress.XtraGrid.Columns.GridColumn clmUserGroup;
         private DevExpress.XtraGrid.Columns.GridColumn clmUpdateDate;
         private DevExpress.XtraGrid.Columns.GridColumn clmSex;
+        private DevExpress.XtraGrid.Columns.GridColumn clmRoleName;
     }
 }

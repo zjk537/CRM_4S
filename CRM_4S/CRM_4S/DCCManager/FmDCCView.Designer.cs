@@ -58,7 +58,7 @@ namespace CRM_4S.DCCManager
             this.gridControlDCCRecord.Location = new System.Drawing.Point(0, 0);
             this.gridControlDCCRecord.MainView = this.gridViewDCCRecord;
             this.gridControlDCCRecord.Name = "gridControlDCCRecord";
-            this.gridControlDCCRecord.Size = new System.Drawing.Size(817, 377);
+            this.gridControlDCCRecord.Size = new System.Drawing.Size(817, 408);
             this.gridControlDCCRecord.TabIndex = 0;
             this.gridControlDCCRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDCCRecord});
@@ -87,6 +87,7 @@ namespace CRM_4S.DCCManager
             this.gridViewDCCRecord.GridControl = this.gridControlDCCRecord;
             this.gridViewDCCRecord.Name = "gridViewDCCRecord";
             this.gridViewDCCRecord.OptionsBehavior.Editable = false;
+            this.gridViewDCCRecord.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewDCCRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewDCCRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
             // 
@@ -214,9 +215,9 @@ namespace CRM_4S.DCCManager
             // 
             // FmDCCView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 377);
+            this.ClientSize = new System.Drawing.Size(817, 408);
             this.Controls.Add(this.gridControlDCCRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmDCCView";

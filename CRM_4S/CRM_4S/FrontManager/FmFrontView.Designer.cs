@@ -65,7 +65,7 @@ namespace CRM_4S.FrontManager
             this.gridControlFrontRecord.Location = new System.Drawing.Point(0, 0);
             this.gridControlFrontRecord.MainView = this.gridViewFrontRecord;
             this.gridControlFrontRecord.Name = "gridControlFrontRecord";
-            this.gridControlFrontRecord.Size = new System.Drawing.Size(990, 421);
+            this.gridControlFrontRecord.Size = new System.Drawing.Size(990, 456);
             this.gridControlFrontRecord.TabIndex = 0;
             this.gridControlFrontRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFrontRecord});
@@ -101,7 +101,7 @@ namespace CRM_4S.FrontManager
             this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
             this.gridViewFrontRecord.Name = "gridViewFrontRecord";
             this.gridViewFrontRecord.OptionsBehavior.Editable = false;
-            this.gridViewFrontRecord.OptionsView.EnableAppearanceOddRow = true;
+            this.gridViewFrontRecord.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
             this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewFrontRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
@@ -278,9 +278,9 @@ namespace CRM_4S.FrontManager
             // 
             // FmFrontView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 421);
+            this.ClientSize = new System.Drawing.Size(990, 456);
             this.Controls.Add(this.gridControlFrontRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmFrontView";
