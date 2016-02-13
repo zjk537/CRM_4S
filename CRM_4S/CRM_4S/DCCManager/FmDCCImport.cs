@@ -88,15 +88,14 @@ namespace CRM_4S.DCCManager
                         int defaultPhone = 1;
                         foreach (DataRow datarow in tempTable.Rows)
                         {
-                            datarow[dtShopIdColumn] = GloablCaches.Instance.CurUser.ShopId;
-                            datarow[dtRecorderColumn] = GloablCaches.Instance.CurUser.RealName;
+                            datarow[dtShopIdColumn] = GlobalCaches.Instance.CurUser.ShopId;
+                            datarow[dtRecorderColumn] = GlobalCaches.Instance.CurUser.RealName;
                             if (string.IsNullOrEmpty(datarow["客户电话"].ToString().Trim()))
                             {
                                 datarow["客户电话"] = defaultPhone++;
                             }
                         }
-
-                        DataImportBusiness.Instance.BulkInsertData("Dcc", tempTable);
+                        DCCRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
                     }
                     catch (Exception ex)

@@ -79,11 +79,12 @@ namespace CRM_4S.UserManager
             this.userGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.userGridView.OptionsBehavior.Editable = false;
             this.userGridView.OptionsBehavior.ReadOnly = true;
+            this.userGridView.OptionsSelection.MultiSelect = true;
             this.userGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.userGridView.OptionsView.ShowGroupPanel = false;
             this.userGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.userGridView_CustomDrawCell);
             this.userGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.userGridView_FocusedRowChanged);
-            this.userGridView.DoubleClick += new System.EventHandler(this.userGridView_DoubleClick);
+            this.userGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.userGridView_MouseDown);
             // 
             // clmShopName
             // 
@@ -99,7 +100,7 @@ namespace CRM_4S.UserManager
             this.clmUserName.FieldName = "User.UserName";
             this.clmUserName.Name = "clmUserName";
             this.clmUserName.Visible = true;
-            this.clmUserName.VisibleIndex = 0;
+            this.clmUserName.VisibleIndex = 1;
             // 
             // clmRealName
             // 
@@ -107,7 +108,7 @@ namespace CRM_4S.UserManager
             this.clmRealName.FieldName = "User.RealName";
             this.clmRealName.Name = "clmRealName";
             this.clmRealName.Visible = true;
-            this.clmRealName.VisibleIndex = 1;
+            this.clmRealName.VisibleIndex = 2;
             // 
             // clmSex
             // 
@@ -117,7 +118,7 @@ namespace CRM_4S.UserManager
             this.clmSex.FieldName = "User.Sex";
             this.clmSex.Name = "clmSex";
             this.clmSex.Visible = true;
-            this.clmSex.VisibleIndex = 2;
+            this.clmSex.VisibleIndex = 3;
             // 
             // clmPhone
             // 

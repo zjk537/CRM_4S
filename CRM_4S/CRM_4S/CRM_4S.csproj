@@ -152,23 +152,17 @@
     <Compile Include="DCCManager\FmDCCView.Designer.cs">
       <DependentUpon>FmDCCView.cs</DependentUpon>
     </Compile>
-    <Compile Include="DCCManager\FmDCCCustomTime.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DCCManager\FmDCCCustomTime.Designer.cs">
-      <DependentUpon>FmDCCCustomTime.cs</DependentUpon>
-    </Compile>
     <Compile Include="FmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FmMain.Designer.cs">
       <DependentUpon>FmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontManager\FmFrontCustomTime.cs">
+    <Compile Include="Common\FmCustomTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontManager\FmFrontCustomTime.Designer.cs">
-      <DependentUpon>FmFrontCustomTime.cs</DependentUpon>
+    <Compile Include="Common\FmCustomTime.Designer.cs">
+      <DependentUpon>FmCustomTime.cs</DependentUpon>
     </Compile>
     <Compile Include="FrontManager\FmFrontImport.cs">
       <SubType>Form</SubType>
@@ -269,14 +263,11 @@
     <EmbeddedResource Include="DCCManager\FmDCCView.resx">
       <DependentUpon>FmDCCView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DCCManager\FmDCCCustomTime.resx">
-      <DependentUpon>FmDCCCustomTime.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FmMain.resx">
       <DependentUpon>FmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontManager\FmFrontCustomTime.resx">
-      <DependentUpon>FmFrontCustomTime.cs</DependentUpon>
+    <EmbeddedResource Include="Common\FmCustomTime.resx">
+      <DependentUpon>FmCustomTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontManager\FmFrontImport.resx">
       <DependentUpon>FmFrontImport.cs</DependentUpon>
@@ -359,6 +350,10 @@
     <ProjectReference Include="..\DExpress.Localization\DExpress.Localization.csproj">
       <Project>{ff481efe-54d9-4b4e-926e-ef12e95ea363}</Project>
       <Name>DExpress.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegLib\RegLib.csproj">
+      <Project>{003c3c35-5ec2-484e-aa84-f22a2a984e64}</Project>
+      <Name>RegLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

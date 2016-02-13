@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RegLib;
 
 namespace CRM_4S
 {
@@ -14,10 +15,18 @@ namespace CRM_4S
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FmMain());
-            //Application.Run(new Login());
+            if (RegUtil.Instance.RegStart() && RegUtil.Instance.RegEnd())
+            {
+                Application.EnableVisualStyles();
+                //Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FmMain());
+                //Application.Run(new Login());
+            }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
     }
 }

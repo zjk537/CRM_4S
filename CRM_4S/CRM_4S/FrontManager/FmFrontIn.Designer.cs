@@ -46,7 +46,7 @@ namespace CRM_4S.FrontManager
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 48);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.Size = new System.Drawing.Size(48, 13);
             this.labelControl2.TabIndex = 998;
             this.labelControl2.Text = "进店人数";
             // 
@@ -59,14 +59,14 @@ namespace CRM_4S.FrontManager
             this.txtCNum.Name = "txtCNum";
             this.txtCNum.Properties.NullValuePrompt = "<必填>";
             this.txtCNum.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCNum.Size = new System.Drawing.Size(248, 21);
-            this.txtCNum.TabIndex = 1000;
+            this.txtCNum.Size = new System.Drawing.Size(248, 20);
+            this.txtCNum.TabIndex = 1;
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(12, 15);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 14);
+            this.labelControl3.Size = new System.Drawing.Size(48, 13);
             this.labelControl3.TabIndex = 998;
             this.labelControl3.Text = "销售顾问";
             // 
@@ -80,14 +80,14 @@ namespace CRM_4S.FrontManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbConsultant.Properties.NullValuePrompt = "<必填>";
             this.cbConsultant.Properties.NullValuePromptShowForEmptyValue = true;
-            this.cbConsultant.Size = new System.Drawing.Size(248, 21);
-            this.cbConsultant.TabIndex = 1001;
+            this.cbConsultant.Size = new System.Drawing.Size(248, 20);
+            this.cbConsultant.TabIndex = 0;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(12, 82);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(24, 14);
+            this.labelControl4.Size = new System.Drawing.Size(24, 13);
             this.labelControl4.TabIndex = 998;
             this.labelControl4.Text = "备注";
             // 
@@ -101,7 +101,7 @@ namespace CRM_4S.FrontManager
             this.txtDesc.Properties.NullValuePrompt = "默认为空";
             this.txtDesc.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtDesc.Size = new System.Drawing.Size(248, 69);
-            this.txtDesc.TabIndex = 1000;
+            this.txtDesc.TabIndex = 2;
             // 
             // errorProvider
             // 

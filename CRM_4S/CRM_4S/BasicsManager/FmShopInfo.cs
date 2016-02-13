@@ -43,8 +43,8 @@ namespace CRM_4S.BasicsManager
             txtName.DataBindings.Add("Text", newShopInfo, "Name");//newShopInfo.Name
             txtPhone.DataBindings.Add("Text", newShopInfo, "Phone");//newShopInfo.Phone
             txtDesc.DataBindings.Add("Text", newShopInfo, "Desc"); //newShopInfo.Desc;
-            cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
-            cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == newShopInfo.RegionId);
+            cbRegion.Properties.Items.AddRange(GlobalCaches.Instance.RegionInfos);
+            cbRegion.SelectedItem = GlobalCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == newShopInfo.RegionId);
         }
 
         void Btn_OK_Click(object sender, EventArgs e)

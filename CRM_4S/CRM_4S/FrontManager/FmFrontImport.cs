@@ -87,16 +87,15 @@ namespace CRM_4S.FrontManager
                         int defaultPhone = 1;
                         foreach (DataRow datarow in tempTable.Rows)
                         {
-                            datarow[dtShopIdColumn] = GloablCaches.Instance.CurUser.ShopId;
-                            datarow[dtRecorderColumn] = GloablCaches.Instance.CurUser.RealName;
+                            datarow[dtShopIdColumn] = GlobalCaches.Instance.CurUser.ShopId;
+                            datarow[dtRecorderColumn] = GlobalCaches.Instance.CurUser.RealName;
 
                             if (string.IsNullOrEmpty(datarow["客户电话"].ToString().Trim()))
                             {
                                 datarow["客户电话"] = defaultPhone++;
                             }
                         }
-
-                        DataImportBusiness.Instance.BulkInsertData("Front", tempTable);
+                        FrontRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
                         
                     }

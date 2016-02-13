@@ -87,9 +87,11 @@ namespace CRM_4S.DCCManager
             this.gridViewDCCRecord.GridControl = this.gridControlDCCRecord;
             this.gridViewDCCRecord.Name = "gridViewDCCRecord";
             this.gridViewDCCRecord.OptionsBehavior.Editable = false;
+            this.gridViewDCCRecord.OptionsPrint.AutoWidth = false;
             this.gridViewDCCRecord.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewDCCRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDCCRecord_CustomDrawRowIndicator);
             this.gridViewDCCRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
-            this.gridViewDCCRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
+            this.gridViewDCCRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewDCCRecord_MouseDown);
             // 
             // clmShopName
             // 

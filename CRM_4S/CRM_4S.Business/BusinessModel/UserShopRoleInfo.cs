@@ -29,7 +29,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (shop == null && user != null)
                 {
-                    shop = GloablCaches.Instance.ShopInfos.FirstOrDefault(obj => { return obj.Id == user.ShopId; });
+                    shop = GlobalCaches.Instance.ShopInfos.FirstOrDefault(obj => { return obj.Id == user.ShopId; });
                 }
                 return shop;
             }
@@ -51,7 +51,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (role == null && user != null)
                 {
-                    role = GloablCaches.Instance.RoleInfos.FirstOrDefault(obj => { return obj.Id == user.RoleId; });
+                    role = GlobalCaches.Instance.RoleInfos.FirstOrDefault(obj => { return obj.Id == user.RoleId; });
                 }
                 return role;
             }

@@ -63,7 +63,7 @@ namespace CRM_4S.BasicsManager
 
                 if (!newKpiInfo.Equals(kpiInfo))
                 {
-                    newKpiInfo.OperatorId = GloablCaches.Instance.CurUser.Id;
+                    newKpiInfo.OperatorId = GlobalCaches.Instance.CurUser.Id;
                     if (IsNew)
                     {
                         AnalyseKPIBusiness.Instance.AddAnalyseKPI(newKpiInfo);

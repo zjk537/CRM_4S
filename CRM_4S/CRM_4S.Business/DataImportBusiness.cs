@@ -84,26 +84,6 @@ namespace CRM_4S.Business
             return dt;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="typeName"></param>
-        /// <param name="source"></param>
-        public void BulkInsertData(string typeName, DataTable source)
-        {
-            // clear temp table
-            DoUpdateFunctionWithLog<ResultValue>(() =>
-            {
-                var functionParms = new FunctionParms();
-                functionParms.FunctionName = "ufcBulkInsert";
-                functionParms.Pams = new Dictionary<string, object>();
-                functionParms.Pams.Add("typeName", typeName);
-                functionParms.Pams.Add("resource", source);
-
-                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
-            }, "BulkInsertData.ufcBulkInsert", true);
-
-
-        }
+        
     }
 }

@@ -21,14 +21,15 @@ using CRM_4S.Business;
 using System.Threading;
 using System.Runtime.Remoting.Messaging;
 using DevExpress.XtraEditors;
+using CRM_4S.Business.ViewModel;
 
 namespace CRM_4S
 {
     public partial class FmMain : RibbonFormSimpleDialogBase
     {
 
-        #region Login 
-        
+        #region Login
+
         private ManualResetEvent waitInitializeHandler = new ManualResetEvent(false);
         private ManualResetEvent waitloginHandler = null;
         private delegate void FormShowHandler();
@@ -77,6 +78,21 @@ namespace CRM_4S
             waitInitializeHandler.WaitOne();
         }
 
+
+        private ViewQueryInfo curQueryInfo = null;
+        public ViewQueryInfo CurQueryInfo
+        {
+            get
+            {
+                if (curQueryInfo == null)
+                    curQueryInfo = new ViewQueryInfo();
+                return curQueryInfo;
+            }
+            set
+            {
+                curQueryInfo = value;
+            }
+        }
 
 
         Dictionary<RibbonPage, Form> mRibbonPages = new Dictionary<RibbonPage, Form>();
@@ -190,7 +206,22 @@ namespace CRM_4S
             mRibbonPages.Add(rPageBasics, mFmBasicsView);
             mRibbonPages.Add(rPageAnalyze, mFmAnalyseView);
 
-            ribbon.SelectedPage = null;
+            if (GlobalCaches.Instance.CurUser.RoleId == GlobalConstants.RoleIdConsultManager)
+            {
+                ribbon.Pages.Remove(rPageUser);
+                ribbon.SelectedPage = rPageBasics;
+                return;
+            }
+
+            if (GlobalCaches.Instance.CurUser.RoleId == GlobalConstants.RoleIdShopFront)
+            {
+                ribbon.Pages.Remove(rPageUser);
+                ribbon.Pages.Remove(rPageBasics);
+                ribbon.Pages.Remove(rPageAnalyze);
+                ribbon.SelectedPage = rPageFront;
+                return;
+            }
+            
             ribbon.SelectedPage = rPageUser;
         }
 
@@ -204,7 +235,7 @@ namespace CRM_4S
                     this.ShowInTaskbar = true;
 
                     AddRibbonPageViews();
-                    ribbon.Pages.RemoveAt(0);
+                    //ribbon.Pages.RemoveAt(0);
                 }
                 else
                 {
@@ -248,42 +279,87 @@ namespace CRM_4S
 
         private void btnUpdateUserInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmUserInfo(new UserShopRoleInfo() { User = GloablCaches.Instance.CurUser }).ShowDialog();
+            new FmUserInfo(new UserShopRoleInfo() { User = GlobalCaches.Instance.CurUser }).ShowDialog();
+        }
+
+
+        /// <summary>
+        /// 获取（全记录）时间查询条件 
+        /// </summary>
+        /// <param name="dateRange"></param>
+        /// <returns></returns>
+        private ViewQueryInfo GetViewDateQuery(QueryDateRange dateRange)
+        {
+            var dateNow = DateTime.Now;
+            var startDate = DateTime.Now;
+            var endDate = dateNow;
+
+            //if (dateRange == QueryDateRange.ThisWeek)
+            //    startDate = dateNow.AddDays(1 - Convert.ToInt32(dateNow.DayOfWeek.ToString("d")));
+
+            if (dateRange == QueryDateRange.ThisMonth)
+                startDate = dateNow.AddDays(1 - dateNow.Day);
+
+            if (dateRange == QueryDateRange.ThisQuarter)
+                startDate = dateNow.AddMonths(0 - (dateNow.Month - 1) % 3).AddDays(1 - dateNow.Day);
+
+            if (dateRange == QueryDateRange.ThisYear)
+                startDate = new DateTime(dateNow.Year, 1, 1);
+
+            if (dateRange == QueryDateRange.Customer)
+            {
+                FmCustomTime customTime = new FmCustomTime();
+                customTime.StartDate = curQueryInfo.StartDate.HasValue ? curQueryInfo.StartDate.Value : DateTime.Now;
+                customTime.EndDate = curQueryInfo.EndDate.HasValue ? curQueryInfo.EndDate.Value : DateTime.Now;
+
+                if (customTime.ShowDialog() == DialogResult.OK)
+                {
+                    ViewQueryInfo queryInfo = new ViewQueryInfo();
+                    startDate = customTime.StartDate;
+                    endDate = customTime.EndDate;
+                }
+            }
+            return new ViewQueryInfo() { DateRange = dateRange, StartDate = startDate, EndDate = dateNow };
+            //return new ViewQueryGoodsInfo() { DateRange = dateRange, StartPurchaseDate = startDate, StartSaledDate = startDate, EndPurchaseDate = dateNow, EndSaledDate = dateNow };
         }
 
         private void btnThisMonth_ItemClick(object sender, ItemClickEventArgs e)
         {
-            showSumView();
+            curQueryInfo = GetViewDateQuery(QueryDateRange.ThisMonth);
+            RefreshView(this.CurQueryInfo);
         }
 
         private void btnThisQuarter_ItemClick(object sender, ItemClickEventArgs e)
         {
-            showSumView();
+            curQueryInfo = GetViewDateQuery( QueryDateRange.ThisQuarter);
+            RefreshView(this.CurQueryInfo);
         }
 
         private void btnThisYear_ItemClick(object sender, ItemClickEventArgs e)
         {
-            showSumView();
+            curQueryInfo = GetViewDateQuery(QueryDateRange.ThisYear);
+            RefreshView(this.CurQueryInfo);
         }
 
         private void btnCustomTime_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DialogResult result = new FmFrontCustomTime().ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                
-                showSumView();
-            }
+            curQueryInfo = GetViewDateQuery(QueryDateRange.Customer);
+            RefreshView(this.CurQueryInfo);
         }
 
-        private void showSumView()
+        private void RefreshView(ViewQueryInfo queryInfo)
         {
-            //pageViewContainer.Controls.Clear();
-            //Form sumView = new FmFrontSumView();
-            //sumView.TopLevel = false;
-            //sumView.Dock = DockStyle.Fill;
-            //pageViewContainer.Controls.Add(sumView);
-            //sumView.Show();
+            if (ribbon.SelectedPage == rPageFront)
+            {
+                fmFrontView.QInfo = queryInfo;
+                return;
+            }
+
+            if (ribbon.SelectedPage == rPageDCC)
+            {
+                fmDCCView.QInfo = queryInfo;
+                return;
+            }
         }
     }
 }

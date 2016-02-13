@@ -69,14 +69,15 @@
     <Compile Include="DCCRecordBusiness.cs" />
     <Compile Include="EvaluateQuestionBusiness.cs" />
     <Compile Include="FrontRecordBusiness.cs" />
-    <Compile Include="GloablCaches.cs" />
-    <Compile Include="GloablConstants.cs" />
+    <Compile Include="GlobalCaches.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleBusiness.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="ShopBusiness.cs" />
     <Compile Include="UserBusiness.cs" />
     <Compile Include="UserTaskBusiness.cs" />
+    <Compile Include="ViewModel\ViewQueryInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM_4S.DataService\CRM_4S.DataService.csproj">

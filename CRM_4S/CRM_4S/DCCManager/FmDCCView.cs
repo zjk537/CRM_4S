@@ -1,8 +1,10 @@
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.Model.DataModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +41,7 @@ namespace CRM_4S.DCCManager
                 if (btnDCCRecall != null)
                 {
                     btnDCCRecall.ItemClick += btnDCCRecall_ItemClick;
+                    btnDCCRecall.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
                 }
             }
         }
@@ -52,6 +55,7 @@ namespace CRM_4S.DCCManager
                 if (btnDCCImport != null)
                 {
                     btnDCCImport.ItemClick += btnDCCImport_ItemClick;
+                    btnDCCImport.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
                 }
             }
         }
@@ -121,9 +125,33 @@ namespace CRM_4S.DCCManager
         #endregion
 
 
+        private ViewQueryInfo qInfo = null;
+        public ViewQueryInfo QInfo
+        {
+            get
+            {
+                if (qInfo == null)
+                    qInfo = new ViewQueryInfo()
+                    {
+                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                        EndDate = DateTime.Now
+                    };
+                return qInfo;
+            }
+            set
+            {
+                qInfo = value;
+                if (qInfo != null)
+                {
+                    RefreshDCCRecordView();
+                }
+            }
+        }
+
         private void RefreshDCCRecordView()
         {
-            var listResults = DCCRecordBusiness.Instance.GetDCCRecords(GloablCaches.Instance.CurUser.ShopId);
+            var listResults = DCCRecordBusiness.Instance.GetDCCRecords(this.QInfo);
             gridControlDCCRecord.DataSource = listResults;
             gridControlDCCRecord.DefaultView.RefreshData();
         }
@@ -132,49 +160,71 @@ namespace CRM_4S.DCCManager
         {
             if (e.Column.Name == "clmDCCSource")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
+                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 
             if (e.Column.Name == "cmlDCCStatus")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.DCCStatus[(int)e.CellValue - 1];
+                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.DCCStatus[(int)e.CellValue - 1];
                 return;
             }
 
             if (e.Column.Name == "clmPurposeCar")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
+                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
                 return;
             }
 
 
             if (e.Column.Name == "clmCSex  ")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.SexList[(int)e.CellValue - 1];
+                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.SexList[(int)e.CellValue - 1];
                 return;
             }
             if (e.Column.Name == "clmInstallment")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue - 1];
+                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.BooleanDesc[(int)e.CellValue - 1];
                 return;
             }
             if (e.Column.Name == "clmCAddress ")
             {
                 var rowData = (DCCCustomerRecordInfo)this.gridViewDCCRecord.GetRow(e.RowHandle);
-                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
+                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
                 e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
             }
-        }
-
-        private void gridViewFrontRecord_DoubleClick(object sender, EventArgs e)
-        {
-            btnDCCRecall_ItemClick(sender, null);
         }
 
         private void FmDCCView_Load(object sender, EventArgs e)
         {
             RefreshDCCRecordView();
+        }
+
+        private void gridViewDCCRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            this.gridViewDCCRecord.IndicatorWidth = 40;
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
+
+        /// <summary>
+        /// 双击处理事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewDCCRecord_MouseDown(object sender, MouseEventArgs e)
+        {
+            // 判断是否为左键双击
+            if (e.Button != MouseButtons.Left || e.Clicks != 2)
+                return;
+
+            GridHitInfo hInfo = gridViewDCCRecord.CalcHitInfo(new Point(e.X, e.Y));
+            //判断光标是否在行范围内  
+            if (!hInfo.InRow || !hInfo.InRowCell)
+                return;
+            btnDCCRecall_ItemClick(sender, null);
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using CRM_4S.Business.BusinessModel;
 using CRM_4S.Business.Service;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.DataService.Model;
 using CRM_4S.Model.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -12,9 +14,9 @@ namespace CRM_4S.Business
     public class FrontRecordBusiness : BusinessBase<FrontRecordBusiness>
     {
 
-        public IList<FrontCustomerRecordInfo> GetFrontRecords(int shopId = 0)
+        public IList<FrontCustomerRecordInfo> GetFrontRecords(ViewQueryInfo qInfo)
         {
-            var customerRecords = GetFrontCustomerRecords(shopId);
+            var customerRecords = GetFrontCustomerRecords(qInfo);
             var customers = CustomerBusiness.Instance.GetCustomerByIds(customerRecords.Select(e=>e.CustomerId).Distinct().ToArray());
             List<FrontCustomerRecordInfo> listResults = new List<FrontCustomerRecordInfo>();
             foreach (FrontRecordInfo info in customerRecords)
@@ -39,16 +41,13 @@ namespace CRM_4S.Business
             return listResults;
         }
 
-        public IList<FrontRecordInfo> GetFrontCustomerRecords(int shopId = 0, int customerId = 0, int recordId = 0)
+        public IList<FrontRecordInfo> GetFrontCustomerRecords(ViewQueryInfo info)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetFrontCustomerRecords";
-                funcParms.Pams = new Dictionary<string, object>();
-                funcParms.Pams.Add("FrontRecordShopId", shopId);
-                funcParms.Pams.Add("FrontRecordId", recordId);
-                funcParms.Pams.Add("FrontRecordCustomerId", customerId);
+                funcParms.Pams = info.GetPams();
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetFrontCustomerRecords.uspGetFrontCustomerRecords", true);
@@ -84,5 +83,24 @@ namespace CRM_4S.Business
             }, "UpdateFrontRecord.uspUpdateFrontRecord", true);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        public void BulkInsertData(DataTable source)
+        {
+            // clear temp table
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "ufcBulkInsert";
+                functionParms.Pams = new Dictionary<string, object>();
+                functionParms.Pams.Add("typeName", "Front");
+                functionParms.Pams.Add("resource", source);
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "BulkInsertData.ufcBulkInsert", true);
+        }
     }
 }

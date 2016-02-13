@@ -46,8 +46,8 @@ namespace CRM_4S.UserManager
             this.cbShop = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.rdSex = new DevExpress.XtraEditors.RadioGroup();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
@@ -59,8 +59,8 @@ namespace CRM_4S.UserManager
             ((System.ComponentModel.ISupportInitialize)(this.cbShop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdSex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
@@ -85,14 +85,14 @@ namespace CRM_4S.UserManager
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Properties.NullValuePrompt = "默认为空";
             this.txtUserName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtUserName.Size = new System.Drawing.Size(166, 21);
+            this.txtUserName.Size = new System.Drawing.Size(166, 20);
             this.txtUserName.TabIndex = 0;
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(14, 59);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 14);
+            this.labelControl3.Size = new System.Drawing.Size(48, 13);
             this.labelControl3.TabIndex = 1007;
             this.labelControl3.Text = "登录用户";
             // 
@@ -105,14 +105,14 @@ namespace CRM_4S.UserManager
             this.txtAgainPwd.Properties.NullValuePrompt = "默认为空";
             this.txtAgainPwd.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtAgainPwd.Properties.PasswordChar = '*';
-            this.txtAgainPwd.Size = new System.Drawing.Size(166, 21);
+            this.txtAgainPwd.Size = new System.Drawing.Size(166, 20);
             this.txtAgainPwd.TabIndex = 2;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(14, 86);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(24, 14);
+            this.labelControl4.Size = new System.Drawing.Size(24, 13);
             this.labelControl4.TabIndex = 1009;
             this.labelControl4.Text = "密码";
             // 
@@ -120,7 +120,7 @@ namespace CRM_4S.UserManager
             // 
             this.labelControl7.Location = new System.Drawing.Point(14, 113);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(48, 14);
+            this.labelControl7.Size = new System.Drawing.Size(48, 13);
             this.labelControl7.TabIndex = 1013;
             this.labelControl7.Text = "重复密码";
             // 
@@ -133,7 +133,7 @@ namespace CRM_4S.UserManager
             this.txtPwd.Properties.NullValuePrompt = "默认为空";
             this.txtPwd.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtPwd.Properties.PasswordChar = '*';
-            this.txtPwd.Size = new System.Drawing.Size(166, 21);
+            this.txtPwd.Size = new System.Drawing.Size(166, 20);
             this.txtPwd.TabIndex = 1;
             // 
             // txtPhone
@@ -144,14 +144,14 @@ namespace CRM_4S.UserManager
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.NullValuePrompt = "默认为空";
             this.txtPhone.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtPhone.Size = new System.Drawing.Size(166, 21);
+            this.txtPhone.Size = new System.Drawing.Size(166, 20);
             this.txtPhone.TabIndex = 4;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 141);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.Size = new System.Drawing.Size(48, 13);
             this.labelControl2.TabIndex = 1005;
             this.labelControl2.Text = "联系方式";
             // 
@@ -163,14 +163,14 @@ namespace CRM_4S.UserManager
             this.txtRealName.Name = "txtRealName";
             this.txtRealName.Properties.NullValuePrompt = "<必填>";
             this.txtRealName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtRealName.Size = new System.Drawing.Size(166, 21);
+            this.txtRealName.Size = new System.Drawing.Size(166, 20);
             this.txtRealName.TabIndex = 2;
             // 
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(12, 87);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(48, 14);
+            this.labelControl5.Size = new System.Drawing.Size(48, 13);
             this.labelControl5.TabIndex = 1003;
             this.labelControl5.Text = "真实姓名";
             // 
@@ -178,7 +178,7 @@ namespace CRM_4S.UserManager
             // 
             this.labelControl6.Location = new System.Drawing.Point(12, 114);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(24, 14);
+            this.labelControl6.Size = new System.Drawing.Size(24, 13);
             this.labelControl6.TabIndex = 1011;
             this.labelControl6.Text = "性别";
             // 
@@ -192,14 +192,14 @@ namespace CRM_4S.UserManager
             this.cbRole.Properties.NullValuePrompt = "<必填>";
             this.cbRole.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbRole.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbRole.Size = new System.Drawing.Size(166, 21);
+            this.cbRole.Size = new System.Drawing.Size(166, 20);
             this.cbRole.TabIndex = 1;
             // 
             // 权限
             // 
             this.权限.Location = new System.Drawing.Point(12, 59);
             this.权限.Name = "权限";
-            this.权限.Size = new System.Drawing.Size(24, 14);
+            this.权限.Size = new System.Drawing.Size(24, 13);
             this.权限.TabIndex = 1001;
             this.权限.Text = "职位";
             // 
@@ -213,14 +213,14 @@ namespace CRM_4S.UserManager
             this.cbShop.Properties.NullValuePrompt = "<必填>";
             this.cbShop.Properties.NullValuePromptShowForEmptyValue = true;
             this.cbShop.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbShop.Size = new System.Drawing.Size(166, 21);
+            this.cbShop.Size = new System.Drawing.Size(166, 20);
             this.cbShop.TabIndex = 0;
             // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(12, 32);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
+            this.labelControl1.Size = new System.Drawing.Size(48, 13);
             this.labelControl1.TabIndex = 999;
             this.labelControl1.Text = "所属店面";
             // 
@@ -242,10 +242,6 @@ namespace CRM_4S.UserManager
             this.groupControl1.TabIndex = 1016;
             this.groupControl1.Text = "基本信息";
             // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
             // rdSex
             // 
             this.rdSex.EnterMoveNextControl = true;
@@ -259,7 +255,11 @@ namespace CRM_4S.UserManager
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "男"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "女")});
             this.rdSex.Size = new System.Drawing.Size(100, 22);
-            this.rdSex.TabIndex = 1012;
+            this.rdSex.TabIndex = 3;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmUserInfo
             // 
@@ -287,8 +287,8 @@ namespace CRM_4S.UserManager
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdSex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }

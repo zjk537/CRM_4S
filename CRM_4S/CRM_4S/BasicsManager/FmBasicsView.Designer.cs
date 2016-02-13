@@ -262,7 +262,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewQuestion.OptionsBehavior.Editable = false;
             this.gridViewQuestion.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewQuestion.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
-            this.gridViewQuestion.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            this.gridViewQuestion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmQDesc
             // 
@@ -344,7 +344,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewConsultant.OptionsBehavior.Editable = false;
             this.gridViewConsultant.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewConsultant.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
-            this.gridViewConsultant.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            this.gridViewConsultant.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmConsultantName
             // 
@@ -459,6 +459,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewAnalyse.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewAnalyse.OptionsView.ShowGroupPanel = false;
             this.gridViewAnalyse.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
+            this.gridViewAnalyse.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmKName
             // 
@@ -555,7 +556,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewLevel.Name = "gridViewLevel";
             this.gridViewLevel.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewLevel.OptionsView.ShowGroupPanel = false;
-            this.gridViewLevel.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            this.gridViewLevel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmLevelCode
             // 
@@ -611,7 +612,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewCarType.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCarType.OptionsBehavior.Editable = false;
             this.gridViewCarType.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridViewCarType.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            this.gridViewCarType.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmCarBrand
             // 
@@ -677,7 +678,7 @@ namespace CRM_4S.BasicsManager
             this.gridViewShop.OptionsBehavior.Editable = false;
             this.gridViewShop.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewShop.OptionsView.ShowGroupPanel = false;
-            this.gridViewShop.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
+            this.gridViewShop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);
             // 
             // clmShopName
             // 
@@ -731,6 +732,7 @@ namespace CRM_4S.BasicsManager
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmBasicsView";
             this.Text = "BasicsDataManager";
+            this.Load += new System.EventHandler(this.FmBasicsView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.navBarBasics)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

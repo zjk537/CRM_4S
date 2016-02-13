@@ -39,10 +39,10 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbCarBrand.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarBrand).ToArray());
+            cbCarBrand.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarBrand).ToArray());
             txtCarType.DataBindings.Add("Text", newCarTypeInfo, "Name");
             txtDesc.DataBindings.Add("Text", newCarTypeInfo, "Desc");
-            cbCarBrand.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.TypeValue == newCarTypeInfo.BrandId);
+            cbCarBrand.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.TypeValue == newCarTypeInfo.BrandId);
         }
 
         void Btn_OK_Click(object sender, EventArgs e)

@@ -1,9 +1,11 @@
 ﻿using CRM_4S.Business.BusinessModel;
 using CRM_4S.Business.Service;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.DataService.Model;
 using CRM_4S.Model.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -11,9 +13,9 @@ namespace CRM_4S.Business
 {
     public class DCCRecordBusiness : BusinessBase<DCCRecordBusiness>
     {
-        public IList<DCCCustomerRecordInfo> GetDCCRecords(int shopId = 0)
+        public IList<DCCCustomerRecordInfo> GetDCCRecords(ViewQueryInfo qInfo)
         {
-            var customerRecords = GetDCCCustomerRecords(shopId);
+            var customerRecords = GetDCCCustomerRecords(qInfo);
             var customers = CustomerBusiness.Instance.GetCustomerByIds(customerRecords.Select(e => e.CustomerId).Distinct().ToArray());
             List<DCCCustomerRecordInfo> listResults = new List<DCCCustomerRecordInfo>();
             foreach (DCCRecordInfo info in customerRecords)
@@ -28,15 +30,13 @@ namespace CRM_4S.Business
         }
 
 
-        public IList<DCCRecordInfo> GetDCCCustomerRecords(int shopId = 0, int customerId = 0)
+        public IList<DCCRecordInfo> GetDCCCustomerRecords(ViewQueryInfo info)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetDCCCustomerRecords";
-                funcParms.Pams = new Dictionary<string, object>();
-                funcParms.Pams.Add("DccRecordCustomerId", customerId);
-                funcParms.Pams.Add("DccRecordShopId", shopId);
+                funcParms.Pams = info.GetPams();
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetDCCCustomerRecords.uspGetDCCCustomerRecords", true);
@@ -72,5 +72,23 @@ namespace CRM_4S.Business
             }, "UpdateDCCRecord.uspUpdateDCCRecord", true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        public void BulkInsertData(DataTable source)
+        {
+            // clear temp table
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "ufcBulkInsert";
+                functionParms.Pams = new Dictionary<string, object>();
+                functionParms.Pams.Add("typeName", "Dcc");
+                functionParms.Pams.Add("resource", source);
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "BulkInsertData.ufcBulkInsert", true);
+        }
     }
 }

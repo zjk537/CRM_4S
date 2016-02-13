@@ -28,76 +28,82 @@ namespace CRM_4S.UserManager
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtNewPwd2 = new DevExpress.XtraEditors.TextEdit();
+            this.txtNewPwd2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtNewPwd = new DevExpress.XtraEditors.TextEdit();
+            this.txtNewPwd = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtOldPwd = new DevExpress.XtraEditors.TextEdit();
+            this.txtOldPwd = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNewPwd2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNewPwd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOldPwd.Properties)).BeginInit();
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPwd2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPwd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOldPwd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // TxtNewPwd2
+            // txtNewPwd2
             // 
-            this.TxtNewPwd2.EditValue = "";
-            this.TxtNewPwd2.EnterMoveNextControl = true;
-            this.TxtNewPwd2.Location = new System.Drawing.Point(71, 79);
-            this.TxtNewPwd2.Name = "TxtNewPwd2";
-            this.TxtNewPwd2.Properties.NullValuePrompt = "默认为空";
-            this.TxtNewPwd2.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtNewPwd2.Properties.PasswordChar = '*';
-            this.TxtNewPwd2.Size = new System.Drawing.Size(166, 21);
-            this.TxtNewPwd2.TabIndex = 2;
+            this.txtNewPwd2.EditValue = "";
+            this.txtNewPwd2.EnterMoveNextControl = true;
+            this.txtNewPwd2.Location = new System.Drawing.Point(71, 79);
+            this.txtNewPwd2.Name = "txtNewPwd2";
+            this.txtNewPwd2.Properties.NullValuePrompt = "默认为空";
+            this.txtNewPwd2.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtNewPwd2.Properties.PasswordChar = '*';
+            this.txtNewPwd2.Size = new System.Drawing.Size(166, 20);
+            this.txtNewPwd2.TabIndex = 2;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(16, 82);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.Size = new System.Drawing.Size(48, 13);
             this.labelControl2.TabIndex = 1021;
             this.labelControl2.Text = "再次输入";
             // 
-            // TxtNewPwd
+            // txtNewPwd
             // 
-            this.TxtNewPwd.EditValue = "";
-            this.TxtNewPwd.EnterMoveNextControl = true;
-            this.TxtNewPwd.Location = new System.Drawing.Point(71, 52);
-            this.TxtNewPwd.Name = "TxtNewPwd";
-            this.TxtNewPwd.Properties.NullValuePrompt = "默认为空";
-            this.TxtNewPwd.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtNewPwd.Properties.PasswordChar = '*';
-            this.TxtNewPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtNewPwd.TabIndex = 1;
+            this.txtNewPwd.EditValue = "";
+            this.txtNewPwd.EnterMoveNextControl = true;
+            this.txtNewPwd.Location = new System.Drawing.Point(71, 52);
+            this.txtNewPwd.Name = "txtNewPwd";
+            this.txtNewPwd.Properties.NullValuePrompt = "默认为空";
+            this.txtNewPwd.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtNewPwd.Properties.PasswordChar = '*';
+            this.txtNewPwd.Size = new System.Drawing.Size(166, 20);
+            this.txtNewPwd.TabIndex = 1;
             // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(16, 55);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 14);
+            this.labelControl1.Size = new System.Drawing.Size(36, 13);
             this.labelControl1.TabIndex = 1020;
             this.labelControl1.Text = "新密码";
             // 
-            // TxtOldPwd
+            // txtOldPwd
             // 
-            this.TxtOldPwd.EditValue = "";
-            this.TxtOldPwd.EnterMoveNextControl = true;
-            this.TxtOldPwd.Location = new System.Drawing.Point(71, 12);
-            this.TxtOldPwd.Name = "TxtOldPwd";
-            this.TxtOldPwd.Properties.NullValuePrompt = "默认为空";
-            this.TxtOldPwd.Properties.NullValuePromptShowForEmptyValue = true;
-            this.TxtOldPwd.Properties.PasswordChar = '*';
-            this.TxtOldPwd.Size = new System.Drawing.Size(166, 21);
-            this.TxtOldPwd.TabIndex = 0;
+            this.txtOldPwd.EditValue = "";
+            this.txtOldPwd.EnterMoveNextControl = true;
+            this.txtOldPwd.Location = new System.Drawing.Point(71, 12);
+            this.txtOldPwd.Name = "txtOldPwd";
+            this.txtOldPwd.Properties.NullValuePrompt = "默认为空";
+            this.txtOldPwd.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtOldPwd.Properties.PasswordChar = '*';
+            this.txtOldPwd.Size = new System.Drawing.Size(166, 20);
+            this.txtOldPwd.TabIndex = 0;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(16, 15);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(48, 14);
+            this.labelControl4.Size = new System.Drawing.Size(48, 13);
             this.labelControl4.TabIndex = 1019;
             this.labelControl4.Text = "原始密码";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FmUpdatePwd
             // 
@@ -106,23 +112,24 @@ namespace CRM_4S.UserManager
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 164);
-            this.Controls.Add(this.TxtNewPwd2);
+            this.Controls.Add(this.txtNewPwd2);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.TxtNewPwd);
+            this.Controls.Add(this.txtNewPwd);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.TxtOldPwd);
+            this.Controls.Add(this.txtOldPwd);
             this.Controls.Add(this.labelControl4);
             this.Name = "FmUpdatePwd";
             this.Text = "修改密码";
             this.Controls.SetChildIndex(this.labelControl4, 0);
-            this.Controls.SetChildIndex(this.TxtOldPwd, 0);
+            this.Controls.SetChildIndex(this.txtOldPwd, 0);
             this.Controls.SetChildIndex(this.labelControl1, 0);
-            this.Controls.SetChildIndex(this.TxtNewPwd, 0);
+            this.Controls.SetChildIndex(this.txtNewPwd, 0);
             this.Controls.SetChildIndex(this.labelControl2, 0);
-            this.Controls.SetChildIndex(this.TxtNewPwd2, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNewPwd2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNewPwd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOldPwd.Properties)).EndInit();
+            this.Controls.SetChildIndex(this.txtNewPwd2, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPwd2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPwd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOldPwd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,11 +137,12 @@ namespace CRM_4S.UserManager
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit TxtNewPwd2;
+        private DevExpress.XtraEditors.TextEdit txtNewPwd2;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit TxtNewPwd;
+        private DevExpress.XtraEditors.TextEdit txtNewPwd;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit TxtOldPwd;
+        private DevExpress.XtraEditors.TextEdit txtOldPwd;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
     }
 }

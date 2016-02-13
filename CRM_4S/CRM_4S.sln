@@ -1,7 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S", "CRM_4S\CRM_4S.csproj", "{5CC691DF-DBF4-4A71-BC09-82B22E97DEC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S.Common", "CRM_4S.Common\CRM_4S.Common.csproj", "{29E7273B-73C9-483F-9264-1819561AC8CD}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S.DataService", "CRM_4S.DataService\CRM_4S.DataService.csproj", "{668D860C-2029-4B02-BF31-55842EFF1634}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S.Service.Host", "CRM_4S.Service.Host\CRM_4S.Service.Host.csproj", "{6697A6D2-6641-44D3-823F-D4982257120E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegLib", "RegLib\RegLib.csproj", "{003C3C35-5EC2-484E-AA84-F22A2A984E64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,6 +167,21 @@ Global
 		{6697A6D2-6641-44D3-823F-D4982257120E}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{6697A6D2-6641-44D3-823F-D4982257120E}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 		{6697A6D2-6641-44D3-823F-D4982257120E}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.Release|x86.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{003C3C35-5EC2-484E-AA84-F22A2A984E64}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -51,21 +51,21 @@ namespace CRM_4S.FrontManager
             this.txtCurCar.DataBindings.Add("Text", customerInfo, "CurCar");
             customerLevels = PurposeLevelBusiness.Instance.GetPurposeLevels();
             this.cbCLevel.Properties.Items.AddRange(customerLevels.ToArray());
-            this.cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
-            this.cbCNature.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
+            this.cbRegion.Properties.Items.AddRange(GlobalCaches.Instance.RegionInfos);
+            this.cbCNature.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CNature).ToArray());
 
             //this.cbCarLicence.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarLicence).ToArray());
-            this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
-            this.cbFrontSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.FrontSource).ToArray());
+            this.cbCarType.Properties.Items.AddRange(GlobalCaches.Instance.CarTypes);
+            this.cbFrontSource.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.FrontSource).ToArray());
 
             
 
             if (customerInfo.Id == 0)
                 this.cbCNature.SelectedIndex = 0;
             else
-                this.cbCNature.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == customerInfo.Nature);
+                this.cbCNature.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == customerInfo.Nature);
             if (customerInfo.RegionId.HasValue)
-                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == customerInfo.RegionId);
+                this.cbRegion.SelectedItem = GlobalCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == customerInfo.RegionId);
             else
                 this.cbRegion.SelectedIndex = 0;
 
@@ -80,13 +80,13 @@ namespace CRM_4S.FrontManager
                 this.cbCLevel.SelectedItem = customerLevels.FirstOrDefault(e => e.Code == frontInfo.LevelCode);
 
             if (frontInfo.PurposeCar.HasValue)
-                this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
+                this.cbCarType.SelectedItem = GlobalCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == frontInfo.PurposeCar);
             else
                 this.cbCarType.SelectedIndex = 0;
 
            
             if (frontInfo.Source.HasValue)
-                this.cbFrontSource.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
+                this.cbFrontSource.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
             else
                 this.cbFrontSource.SelectedIndex = 0;
             this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
@@ -143,7 +143,7 @@ namespace CRM_4S.FrontManager
                 if (regionInfo != null)
                     newRecordInfo.Customer.RegionId = regionInfo.Id;
 
-                newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                newRecordInfo.Customer.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 newRecordInfo.Customer.Type = "front";
                 // 在添加customer成功后，会给当前customer 赋Id
                 if (newRecordInfo.Customer.Id == 0)
@@ -211,7 +211,7 @@ namespace CRM_4S.FrontManager
                 return;
             }
 
-            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId, Phone = phone });
+            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GlobalCaches.Instance.CurUser.ShopId, Phone = phone });
             CustomerInfo info = null;
             if (customers == null || customers.Count == 0)
                 info = new CustomerInfo()
@@ -243,11 +243,11 @@ namespace CRM_4S.FrontManager
             if (info.Id == 0)
                 this.cbCNature.SelectedIndex = 0;
             else
-                this.cbCNature.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(m => m.Id == info.Nature);
+                this.cbCNature.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(m => m.Id == info.Nature);
             if (info.RegionId == null)
                 this.cbRegion.SelectedIndex = 0;
             else
-                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(m => m.Id == info.RegionId);
+                this.cbRegion.SelectedItem = GlobalCaches.Instance.RegionInfos.FirstOrDefault(m => m.Id == info.RegionId);
 
         }
 

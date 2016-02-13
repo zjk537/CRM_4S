@@ -51,23 +51,23 @@ namespace CRM_4S.DCCManager
             this.txtCName.DataBindings.Add("Text", newRecordInfo.Customer, "Name");
             this.txtCPhone.DataBindings.Add("Text", newRecordInfo.Customer, "Phone");
             this.txtCAddress.DataBindings.Add("Text", newRecordInfo.Customer, "Address");
-            this.cbRegion.Properties.Items.AddRange(GloablCaches.Instance.RegionInfos);
+            this.cbRegion.Properties.Items.AddRange(GlobalCaches.Instance.RegionInfos);
 
             if (newRecordInfo.Customer.RegionId.HasValue)
-                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == newRecordInfo.Customer.RegionId);
+                this.cbRegion.SelectedItem = GlobalCaches.Instance.RegionInfos.FirstOrDefault(e => e.Id == newRecordInfo.Customer.RegionId);
             else
                 this.cbRegion.SelectedIndex = 0;
 
             this.rbSex.SelectedIndex = newRecordInfo.Customer.Sex.HasValue ? newRecordInfo.Customer.Sex.Value - 1 : -1;
 
             purposeLevels = PurposeLevelBusiness.Instance.GetPurposeLevels();
-            this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
+            this.cbCarType.Properties.Items.AddRange(GlobalCaches.Instance.CarTypes);
             this.cbCLevel.Properties.Items.AddRange(purposeLevels.ToArray());
-            this.cbDCCSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
-            this.cbRecaller.Properties.Items.AddRange(GloablCaches.Instance.ConsultantInfos);
+            this.cbDCCSource.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
+            this.cbRecaller.Properties.Items.AddRange(GlobalCaches.Instance.ConsultantInfos);
 
             if (newRecordInfo.DCCRecord.PurposeCar.HasValue)
-                this.cbCarType.SelectedItem = GloablCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.PurposeCar);
+                this.cbCarType.SelectedItem = GlobalCaches.Instance.CarTypes.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.PurposeCar);
             else
                 this.cbCarType.SelectedIndex = 0;
 
@@ -77,7 +77,7 @@ namespace CRM_4S.DCCManager
                 this.cbCLevel.SelectedItem = purposeLevels.FirstOrDefault(e => e.Code == newRecordInfo.DCCRecord.LevelCode);
 
             if (newRecordInfo.DCCRecord.Source.HasValue)
-                this.cbDCCSource.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.Source);
+                this.cbDCCSource.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.Source);
             else
                 this.cbDCCSource.SelectedIndex = 0;
 
@@ -87,7 +87,7 @@ namespace CRM_4S.DCCManager
             this.rbInstallment.SelectedIndex = newRecordInfo.DCCRecord.Installment.HasValue ? newRecordInfo.DCCRecord.Installment.Value - 1 : -1;
             this.dtVisitTime.EditValue = newRecordInfo.DCCRecord.VisitTime.HasValue ? newRecordInfo.DCCRecord.VisitTime.Value : DateTime.Now.AddDays(-3);
             if (newRecordInfo.DCCRecord.DCCRecallerId.HasValue)
-                this.cbRecaller.SelectedItem = GloablCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.DCCRecallerId);
+                this.cbRecaller.SelectedItem = GlobalCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == newRecordInfo.DCCRecord.DCCRecallerId);
             else
                 this.cbRecaller.SelectedIndex = 0;
             this.txtRemark.DataBindings.Add("Text", newRecordInfo.DCCRecord, "RecallDesc");
@@ -125,7 +125,7 @@ namespace CRM_4S.DCCManager
 
             try
             {
-                newRecordInfo.Customer.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                newRecordInfo.Customer.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 newRecordInfo.Customer.Sex = this.rbSex.SelectedIndex + 1;
                 newRecordInfo.Customer.RegionId = ((BasicConstantInfo)this.cbRegion.SelectedItem).Id;
                 // ÐÂÓÃ»§
@@ -134,7 +134,7 @@ namespace CRM_4S.DCCManager
                 else
                     CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
 
-                newRecordInfo.DCCRecord.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                newRecordInfo.DCCRecord.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 newRecordInfo.DCCRecord.CustomerId = newRecordInfo.Customer.Id;
                 newRecordInfo.DCCRecord.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
                 newRecordInfo.DCCRecord.LevelCode = ((PurposeLevelInfo)this.cbCLevel.SelectedItem).Code;
@@ -178,7 +178,7 @@ namespace CRM_4S.DCCManager
             if (newRecordInfo.Customer.Phone == phone)
                 return;
 
-            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId, Phone = phone });
+            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GlobalCaches.Instance.CurUser.ShopId, Phone = phone });
             CustomerInfo info = null;
             if (customers == null || customers.Count == 0)
                 info = new CustomerInfo()
@@ -206,7 +206,7 @@ namespace CRM_4S.DCCManager
             this.txtCAddress.DataBindings.Add("Text", info, "Address");
             this.rbSex.SelectedIndex = info.Sex.HasValue ? info.Sex.Value - 1 : -1;
             if (info.RegionId.HasValue)
-                this.cbRegion.SelectedItem = GloablCaches.Instance.RegionInfos.FirstOrDefault(m => m.Id == info.RegionId.Value);
+                this.cbRegion.SelectedItem = GlobalCaches.Instance.RegionInfos.FirstOrDefault(m => m.Id == info.RegionId.Value);
             else
                 this.cbRegion.SelectedIndex = 0;
 

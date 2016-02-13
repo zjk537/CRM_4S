@@ -7,6 +7,8 @@ using DevExpress.Utils.Drawing;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraNavBar;
 using System;
 using System.Collections.Generic;
@@ -45,7 +47,22 @@ namespace CRM_4S.BasicsManager
             gridControlShop.Visible = gridControlCarType.Visible = gridControlLevel.Visible =
                 gridControlConsultant.Visible = gridControlQuestion.Visible = gridControlAnalyse.Visible = false;
 
-            gridControlShop.Visible = true;
+            //navBtnItem_LinkClicked(this.navBtnShop, null);
+
+            
+        }
+
+        private void FmBasicsView_Load(object sender, EventArgs e)
+        {
+            if (GlobalCaches.Instance.CurUser.RoleId == GlobalConstants.RoleIdConsultManager)
+            {
+                this.navBarGroup1.ItemLinks.Remove(this.navBtnShop);
+                this.navBarGroup1.ItemLinks.Remove(this.navBtnQuestion);
+                this.navBarGroup1.ItemLinks.Remove(this.navBtnLevel);
+                this.navBarGroup1.ItemLinks.Remove(this.navBtnAnalyse);
+            }
+
+            navBtnItem_LinkClicked(this.navBarGroup1.ItemLinks[0].Item, null);
         }
 
         #region Refresh View
@@ -330,18 +347,32 @@ namespace CRM_4S.BasicsManager
         {
             btnUpdate_ItemClick(sender, null);
         }
+        private void defaultGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            // 判断是否为左键双击
+            if (e.Button != MouseButtons.Left || e.Clicks != 2)
+                return;
+            var gridView = (GridView)sender;
+            GridHitInfo hInfo = gridView.CalcHitInfo(new Point(e.X, e.Y));
+            //判断光标是否在行范围内  
+            if (!hInfo.InRow || !hInfo.InRowCell)
+                return;
+
+            btnUpdate_ItemClick(sender, null);
+
+        }
 
         private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if (e.Column.Name == "clmTaskStatus")
             {
-                e.DisplayText = GloablConstants.UserTaskStatus[(int)e.CellValue];
+                e.DisplayText = GlobalConstants.UserTaskStatus[(int)e.CellValue];
                 return;
             }
 
             if (e.Column.Name == "clmQType")
             {
-                e.DisplayText = GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
+                e.DisplayText = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
 
@@ -354,10 +385,12 @@ namespace CRM_4S.BasicsManager
             if (e.Column.Name == "clmShopAddress")
             {
                 var rowData = (ShopInfo)defaultGridView.GetRow(e.RowHandle);
-                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.RegionId);
+                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.RegionId);
                 e.DisplayText = string.Format("{0} {1}", region, rowData.Address);
             }
         }
+
+        
     }
 
     public class NavBarClickedArgs : EventArgs

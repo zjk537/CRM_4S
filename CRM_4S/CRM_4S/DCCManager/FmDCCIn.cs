@@ -30,8 +30,8 @@ namespace CRM_4S.DCCManager
             this.txtCName.DataBindings.Add("Text", customerInfo, "Name");
             this.txtCPhone.DataBindings.Add("Text", customerInfo, "Phone");
             this.dtVisitTime.EditValue = DateTime.Now;
-            this.cbDCCSource.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
-            this.cbCarType.Properties.Items.AddRange(GloablCaches.Instance.CarTypes);
+            this.cbDCCSource.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.DCCSource).ToArray());
+            this.cbCarType.Properties.Items.AddRange(GlobalCaches.Instance.CarTypes);
             this.Btn_OK.Click += Btn_OK_Click;
         }
 
@@ -42,7 +42,7 @@ namespace CRM_4S.DCCManager
 
             try
             {
-                customerInfo.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                customerInfo.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 customerInfo.Type = "dcc";
                 if (customerInfo.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(customerInfo);
@@ -50,11 +50,11 @@ namespace CRM_4S.DCCManager
                     CustomerBusiness.Instance.UpdateCustomer(customerInfo);
 
                 recordInfo.CustomerId = customerInfo.Id;
-                recordInfo.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                recordInfo.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 recordInfo.VisitTime = (DateTime)this.dtVisitTime.EditValue;
                 recordInfo.Source = this.cbDCCSource.SelectedIndex;
                 recordInfo.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
-                recordInfo.Recorder = GloablCaches.Instance.CurUser.RealName;
+                recordInfo.Recorder = GlobalCaches.Instance.CurUser.RealName;
                 DCCRecordBusiness.Instance.AddDCCRecord(recordInfo);
 
                 this.DialogResult = DialogResult.OK;
@@ -99,7 +99,7 @@ namespace CRM_4S.DCCManager
             if (phone == customerInfo.Phone)
                 return;
 
-            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId, Phone = phone });
+            var customers = CustomerBusiness.Instance.GetCustomers(new CustomerInfo() { ShopId = GlobalCaches.Instance.CurUser.ShopId, Phone = phone });
             if (customers == null || customers.Count == 0)
                 customerInfo = new CustomerInfo()
                 {

@@ -26,7 +26,7 @@ namespace CRM_4S.FrontManager
         {
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbConsultant.Properties.Items.AddRange(GloablCaches.Instance.ConsultantInfos);
+            cbConsultant.Properties.Items.AddRange(GlobalCaches.Instance.ConsultantInfos);
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
@@ -37,12 +37,12 @@ namespace CRM_4S.FrontManager
             {
                 FrontRecordInfo recordInfo = new FrontRecordInfo()
                 {
-                    ShopId = GloablCaches.Instance.CurUser.ShopId,
+                    ShopId = GlobalCaches.Instance.CurUser.ShopId,
                     ArrivalTime = DateTime.Now,
                     CustomerNum = Convert.ToInt32(this.txtCNum.Text),
                     ConsultantId = ((UserInfo)this.cbConsultant.SelectedItem).Id,
                     Remark = this.txtDesc.Text,
-                    Recorder = GloablCaches.Instance.CurUser.RealName
+                    Recorder = GlobalCaches.Instance.CurUser.RealName
                 };
                 FrontRecordBusiness.Instance.AddFrontRecord(recordInfo);
 

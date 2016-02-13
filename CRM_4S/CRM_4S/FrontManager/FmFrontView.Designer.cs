@@ -31,7 +31,6 @@ namespace CRM_4S.FrontManager
             this.components = new System.ComponentModel.Container();
             this.gridControlFrontRecord = new DevExpress.XtraGrid.GridControl();
             this.sourceFrontCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmArrivalTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmLeaveTime = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,6 +52,7 @@ namespace CRM_4S.FrontManager
             this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
@@ -74,38 +74,6 @@ namespace CRM_4S.FrontManager
             // 
             this.sourceFrontCustomer.DataSource = typeof(CRM_4S.Business.BusinessModel.FrontCustomerRecordInfo);
             // 
-            // gridViewFrontRecord
-            // 
-            this.gridViewFrontRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.clmShopName,
-            this.clmArrivalTime,
-            this.clmLeaveTime,
-            this.clmConsultantName,
-            this.clmCustomerName,
-            this.clmCustomerPhone,
-            this.clmCNature,
-            this.clmToShopNum,
-            this.clmCurCar,
-            this.clmPurposeCar,
-            this.clmInstallment,
-            this.clmReplace,
-            this.clmDriveStatus,
-            this.clmLevel,
-            this.clmCarLicence,
-            this.clmSource,
-            this.clmIndustry,
-            this.clmDurationTime,
-            this.clmAddress,
-            this.clmCustomerNum,
-            this.clmRemark});
-            this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
-            this.gridViewFrontRecord.Name = "gridViewFrontRecord";
-            this.gridViewFrontRecord.OptionsBehavior.Editable = false;
-            this.gridViewFrontRecord.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
-            this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
-            this.gridViewFrontRecord.DoubleClick += new System.EventHandler(this.gridViewFrontRecord_DoubleClick);
-            // 
             // clmShopName
             // 
             this.clmShopName.Caption = "店面名称";
@@ -115,7 +83,7 @@ namespace CRM_4S.FrontManager
             // clmArrivalTime
             // 
             this.clmArrivalTime.Caption = "到店时间";
-            this.clmArrivalTime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmArrivalTime.DisplayFormat.FormatString = "d";
             this.clmArrivalTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmArrivalTime.FieldName = "FrontRecord.ArrivalTime";
             this.clmArrivalTime.Name = "clmArrivalTime";
@@ -123,7 +91,7 @@ namespace CRM_4S.FrontManager
             // clmLeaveTime
             // 
             this.clmLeaveTime.Caption = "离店时间";
-            this.clmLeaveTime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.clmLeaveTime.DisplayFormat.FormatString = "d";
             this.clmLeaveTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmLeaveTime.FieldName = "FrontRecord.LeaveTime";
             this.clmLeaveTime.Name = "clmLeaveTime";
@@ -276,6 +244,39 @@ namespace CRM_4S.FrontManager
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 10;
             // 
+            // gridViewFrontRecord
+            // 
+            this.gridViewFrontRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.clmShopName,
+            this.clmArrivalTime,
+            this.clmLeaveTime,
+            this.clmConsultantName,
+            this.clmCustomerName,
+            this.clmCustomerPhone,
+            this.clmCNature,
+            this.clmToShopNum,
+            this.clmCurCar,
+            this.clmPurposeCar,
+            this.clmInstallment,
+            this.clmReplace,
+            this.clmDriveStatus,
+            this.clmLevel,
+            this.clmCarLicence,
+            this.clmSource,
+            this.clmIndustry,
+            this.clmDurationTime,
+            this.clmAddress,
+            this.clmCustomerNum,
+            this.clmRemark});
+            this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
+            this.gridViewFrontRecord.Name = "gridViewFrontRecord";
+            this.gridViewFrontRecord.OptionsBehavior.Editable = false;
+            this.gridViewFrontRecord.OptionsPrint.AutoWidth = false;
+            this.gridViewFrontRecord.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
+            this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
+            this.gridViewFrontRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewFrontRecord_MouseDown);
+            // 
             // FmFrontView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,29 +297,29 @@ namespace CRM_4S.FrontManager
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControlFrontRecord;
+        private System.Windows.Forms.BindingSource sourceFrontCustomer;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewFrontRecord;
+        private DevExpress.XtraGrid.Columns.GridColumn clmShopName;
         private DevExpress.XtraGrid.Columns.GridColumn clmArrivalTime;
         private DevExpress.XtraGrid.Columns.GridColumn clmLeaveTime;
+        private DevExpress.XtraGrid.Columns.GridColumn clmConsultantName;
         private DevExpress.XtraGrid.Columns.GridColumn clmCustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn clmCustomerPhone;
         private DevExpress.XtraGrid.Columns.GridColumn clmCNature;
-        private DevExpress.XtraGrid.Columns.GridColumn clmCarLicence;
+        private DevExpress.XtraGrid.Columns.GridColumn clmToShopNum;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCurCar;
         private DevExpress.XtraGrid.Columns.GridColumn clmPurposeCar;
-        private DevExpress.XtraGrid.Columns.GridColumn clmDriveStatus;
-        private DevExpress.XtraGrid.Columns.GridColumn clmIndustry;
-        private DevExpress.XtraGrid.Columns.GridColumn clmAddress;
-        private DevExpress.XtraGrid.Columns.GridColumn clmLevel;
-        private DevExpress.XtraGrid.Columns.GridColumn clmConsultantName;
-        private DevExpress.XtraGrid.Columns.GridColumn clmDurationTime;
-        private DevExpress.XtraGrid.Columns.GridColumn clmCustomerNum;
-        private DevExpress.XtraGrid.Columns.GridColumn clmRemark;
-        private System.Windows.Forms.BindingSource sourceFrontCustomer;
-        private DevExpress.XtraGrid.Columns.GridColumn clmShopName;
         private DevExpress.XtraGrid.Columns.GridColumn clmInstallment;
         private DevExpress.XtraGrid.Columns.GridColumn clmReplace;
+        private DevExpress.XtraGrid.Columns.GridColumn clmDriveStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn clmLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCarLicence;
         private DevExpress.XtraGrid.Columns.GridColumn clmSource;
-        private DevExpress.XtraGrid.Columns.GridColumn clmCurCar;
-        private DevExpress.XtraGrid.Columns.GridColumn clmToShopNum;
+        private DevExpress.XtraGrid.Columns.GridColumn clmIndustry;
+        private DevExpress.XtraGrid.Columns.GridColumn clmDurationTime;
+        private DevExpress.XtraGrid.Columns.GridColumn clmAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCustomerNum;
+        private DevExpress.XtraGrid.Columns.GridColumn clmRemark;
 
     }
 }

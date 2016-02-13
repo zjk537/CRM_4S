@@ -1,5 +1,6 @@
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Common;
 using CRM_4S.Common.FormBase;
 using CRM_4S.Model;
 using CRM_4S.Model.DataModel;
@@ -40,14 +41,14 @@ namespace CRM_4S.UserManager
 
                 userShopRoleInfo = info;
             }
-            cbRole.Properties.Items.AddRange(GloablCaches.Instance.RoleInfos);
-            cbShop.Properties.Items.AddRange(GloablCaches.Instance.ShopInfos);
+            cbRole.Properties.Items.AddRange(GlobalCaches.Instance.RoleInfos);
+            cbShop.Properties.Items.AddRange(GlobalCaches.Instance.ShopInfos);
 
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
             if (IsNew)
-                newUserShopRoleInfo.User = new UserInfo() { ShopId = GloablCaches.Instance.CurUser.ShopId };
+                newUserShopRoleInfo.User = new UserInfo() { ShopId = GlobalCaches.Instance.CurUser.ShopId };
             cbShop.DataBindings.Add("EditValue", newUserShopRoleInfo, "Shop");
             cbRole.DataBindings.Add("EditValue", newUserShopRoleInfo, "Role");
 
@@ -82,6 +83,7 @@ namespace CRM_4S.UserManager
                     if (IsNew)
                     {
                         newUserShopRoleInfo.User.Status = (int)UserStatus.OnWork;
+                        newUserShopRoleInfo.User.Pwd = EncryptHelper.MD5(newUserShopRoleInfo.User.Pwd);
                         UserBusiness.Instance.AddUser(newUserShopRoleInfo.User);
                     }
                     else

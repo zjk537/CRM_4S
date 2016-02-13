@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
 using CRM_4S.Model.DataModel;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace CRM_4S.UserManager
 {
@@ -84,22 +85,19 @@ namespace CRM_4S.UserManager
 
         private void btnResetPwd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (SelectedUser == null)
-            {
-                return;
-            }
+            if (SelectedUser == null) return;
 
             try
             {
                 SelectedUser.User.IdSpecify = true;
-                SelectedUser.User.Pwd = "123456";
+                SelectedUser.User.Pwd = "49ba59abbe56e057";// 123456
                 UserBusiness.Instance.UpdateUser(SelectedUser.User);
 
                 XtraMessageBox.Show("密码重置成功，默认为123456", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (SelectedUser.User.Id == GloablCaches.Instance.CurUser.Id)
+                if (SelectedUser.User.Id == GlobalCaches.Instance.CurUser.Id)
                 {
-                    GloablCaches.Instance.CurUser.Pwd = SelectedUser.User.Pwd;
+                    GlobalCaches.Instance.CurUser.Pwd = SelectedUser.User.Pwd;
                 }
 
             }
@@ -143,7 +141,7 @@ namespace CRM_4S.UserManager
         {
             try
             {
-                var dataSource = UserBusiness.Instance.GetUserShopRoleInfos(GloablCaches.Instance.CurUser.ShopId);
+                var dataSource = UserBusiness.Instance.GetUserShopRoleInfos(GlobalCaches.Instance.CurUser.ShopId);
                 userGridControl.DataSource = dataSource;
                 userGridControl.MainView.RefreshData();
                 userGridView.ExpandAllGroups();
@@ -173,14 +171,13 @@ namespace CRM_4S.UserManager
 
         private void userGridView_DoubleClick(object sender, EventArgs e)
         {
-            btnUpdate_ItemClick(sender, null);
         }
 
         private void userGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if (e.Column.Name == "clmSex")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.SexList[(int)e.CellValue - 1];
+                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.SexList[(int)e.CellValue - 1];
             }
         }
 
@@ -195,6 +192,18 @@ namespace CRM_4S.UserManager
 
         }
 
+        private void userGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            // 判断是否为左键双击
+            if (e.Button != MouseButtons.Left || e.Clicks != 2)
+                return;
+            GridHitInfo hInfo = userGridView.CalcHitInfo(new Point(e.X, e.Y));
+            //判断光标是否在行范围内  
+            if (!hInfo.InRow || !hInfo.InRowCell)
+                return;
 
+            btnUpdate_ItemClick(sender, null);
+
+        }
     }
 }

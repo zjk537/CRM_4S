@@ -31,7 +31,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (shop == null && dccRecord != null)
                 {
-                    shop = GloablCaches.Instance.ShopInfos.FirstOrDefault(e => e.Id == dccRecord.ShopId);
+                    shop = GlobalCaches.Instance.ShopInfos.FirstOrDefault(e => e.Id == dccRecord.ShopId);
                 }
                 return shop;
             }
@@ -57,7 +57,7 @@ namespace CRM_4S.Business.BusinessModel
             {
                 if (dccUser == null && dccRecord != null)
                 {
-                    dccUser = GloablCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == dccRecord.DCCRecallerId);
+                    dccUser = GlobalCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == dccRecord.DCCRecallerId);
                 }
                 return dccUser;
             }

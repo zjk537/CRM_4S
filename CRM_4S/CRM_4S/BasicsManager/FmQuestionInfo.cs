@@ -39,12 +39,12 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-ÐÂÔö" : "-ÐÞ¸Ä";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            cbQType.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.QType).ToArray());
+            cbQType.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.QType).ToArray());
 
             txtQDesc.DataBindings.Add("Text", newQInfo, "QDesc");
             //txtQLevel.DataBindings.Add("EditValue", newQInfo, "QLevel");
 
-            cbQType.SelectedItem = GloablCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newQInfo.QType);
+            cbQType.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newQInfo.QType);
             txtQLevel.EditValue = newQInfo.QLevel ?? 100;
         }
 
@@ -68,7 +68,7 @@ namespace CRM_4S.BasicsManager
                 {
                     if (IsNew)
                     {
-                        newQInfo.ShopId = GloablCaches.Instance.CurUser.ShopId;
+                        newQInfo.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                         EvaluateQuestionBusiness.Instance.AddEvaluateQuestion(newQInfo);
                     }
                     else

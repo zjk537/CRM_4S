@@ -13,6 +13,7 @@ using DevExpress.XtraEditors.DXErrorProvider;
 using System.Threading;
 using System.Runtime.Remoting.Messaging;
 using DevExpress.XtraEditors;
+using CRM_4S.Common;
 
 namespace CRM_4S
 {
@@ -101,14 +102,15 @@ namespace CRM_4S
         {
             if (!Validation())
             {
-                UserInfo user = UserBusiness.Instance.GetUserByName(this.txtUserName.Text.Trim(), this.txtPwd.Text.Trim());
+                string md5Pwd = EncryptHelper.MD5(this.txtPwd.Text.Trim());
+                UserInfo user = UserBusiness.Instance.GetUserByName(this.txtUserName.Text.Trim(), md5Pwd);
                 if (user == null)
                 {
                     XtraMessageBox.Show("用户名或密码不正确，请重新输入！");
                     return;
                 }
 
-                GloablCaches.Instance.CurUser = user;
+                GlobalCaches.Instance.CurUser = user;
 
                 new LoginHandler(Login).BeginInvoke(new AsyncCallback(LoginCallBack), null);
             }

@@ -28,7 +28,6 @@ namespace CRM_4S
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmLogin));
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,7 +35,7 @@ namespace CRM_4S
             this.label2 = new System.Windows.Forms.Label();
             this.txtPwd = new DevExpress.XtraEditors.TextEdit();
             this.btnCanel = new System.Windows.Forms.Button();
-            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -44,9 +43,9 @@ namespace CRM_4S
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(92, 152);
+            this.btnLogin.Location = new System.Drawing.Point(92, 165);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(75, 25);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -55,48 +54,49 @@ namespace CRM_4S
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 63);
+            this.label1.Location = new System.Drawing.Point(26, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "用户名";
             // 
             // txtUserName
             // 
             this.txtUserName.EnterMoveNextControl = true;
-            this.txtUserName.Location = new System.Drawing.Point(73, 58);
+            this.txtUserName.Location = new System.Drawing.Point(73, 63);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Properties.NullValuePrompt = "用户名";
             this.txtUserName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtUserName.Size = new System.Drawing.Size(204, 21);
+            this.txtUserName.Size = new System.Drawing.Size(204, 20);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextChanged += new System.EventHandler(this.TextEdit_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 107);
+            this.label2.Location = new System.Drawing.Point(26, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "用户名";
+            this.label2.Text = "密码";
             // 
             // txtPwd
             // 
             this.txtPwd.EnterMoveNextControl = true;
-            this.txtPwd.Location = new System.Drawing.Point(73, 102);
+            this.txtPwd.Location = new System.Drawing.Point(73, 111);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Properties.NullValuePrompt = "用户密码";
             this.txtPwd.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtPwd.Size = new System.Drawing.Size(204, 21);
+            this.txtPwd.Properties.PasswordChar = '●';
+            this.txtPwd.Size = new System.Drawing.Size(204, 20);
             this.txtPwd.TabIndex = 1;
             this.txtPwd.TextChanged += new System.EventHandler(this.TextEdit_TextChanged);
             // 
             // btnCanel
             // 
-            this.btnCanel.Location = new System.Drawing.Point(188, 152);
+            this.btnCanel.Location = new System.Drawing.Point(188, 165);
             this.btnCanel.Name = "btnCanel";
-            this.btnCanel.Size = new System.Drawing.Size(75, 23);
+            this.btnCanel.Size = new System.Drawing.Size(75, 25);
             this.btnCanel.TabIndex = 3;
             this.btnCanel.Text = "取消";
             this.btnCanel.UseVisualStyleBackColor = true;
@@ -108,9 +108,9 @@ namespace CRM_4S
             // 
             // FmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 193);
+            this.ClientSize = new System.Drawing.Size(291, 209);
             this.Controls.Add(this.txtPwd);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label2);

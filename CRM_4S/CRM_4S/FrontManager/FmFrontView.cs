@@ -1,8 +1,11 @@
 using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.Model.DataModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +42,8 @@ namespace CRM_4S.FrontManager
                 if (btnFrontIn != null)
                 {
                     btnFrontIn.ItemClick += btnFrontIn_ItemClick;
+                    // 系统管理员 不属于某个店面，没有shopId 所有涉及到店面的都不能操作
+                    btnFrontIn.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
                 }
             }
         }
@@ -54,6 +59,7 @@ namespace CRM_4S.FrontManager
                 if (btnCustomerOut != null)
                 {
                     btnCustomerOut.ItemClick += btnCustomerOut_ItemClick;
+                    btnCustomerOut.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
                 }
             }
         }
@@ -82,6 +88,7 @@ namespace CRM_4S.FrontManager
                 if (btnCustomerImport != null)
                 {
                     btnCustomerImport.ItemClick += btnCustomerImport_ItemClick;
+                    btnCustomerImport.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
                 }
             }
         }
@@ -103,9 +110,13 @@ namespace CRM_4S.FrontManager
         private void btnCustomerExport_ItemClick(object sender, ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel|.xls";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = saveFileDialog.FileName;
+                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value);
+
+                gridViewFrontRecord.ExportToXls(fileName, options);
                 XtraMessageBox.Show("保存成功");
             }
         }
@@ -132,7 +143,29 @@ namespace CRM_4S.FrontManager
 
         #endregion
 
-
+        private ViewQueryInfo qInfo = null;
+        public ViewQueryInfo QInfo
+        {
+            get
+            {
+                if (qInfo == null)
+                    qInfo = new ViewQueryInfo()
+                    {
+                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                        EndDate = DateTime.Now
+                    };
+                return qInfo;
+            }
+            set
+            {
+                qInfo = value;
+                if (qInfo != null)
+                {
+                    RefreshFrontRecordView();
+                }
+            }
+        }
 
         private void FmFrontView_Load(object sender, EventArgs e)
         {
@@ -141,7 +174,7 @@ namespace CRM_4S.FrontManager
 
         private void RefreshFrontRecordView()
         {
-            var listResults = FrontRecordBusiness.Instance.GetFrontRecords(GloablCaches.Instance.CurUser.ShopId);
+            var listResults = FrontRecordBusiness.Instance.GetFrontRecords(this.QInfo);
             gridControlFrontRecord.DataSource = listResults;
             gridControlFrontRecord.DefaultView.RefreshData();
         }
@@ -150,30 +183,25 @@ namespace CRM_4S.FrontManager
         {
             if (e.Column.Name == "clmCNature" || e.Column.Name == "clmCarLicence" || e.Column.Name == "clmSource")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name; 
+                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
                 return;
             }
             if (e.Column.Name == "clmPurposeCar")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablCaches.Instance.CarTypes.FirstOrDefault(info => info.Id == (int)e.CellValue).ToString();
+                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.CarTypes.FirstOrDefault(info => info.Id == (int)e.CellValue).ToString();
             }
             if (e.Column.Name == "clmDriveStatus" || e.Column.Name == "clmInstallment" || e.Column.Name == "clmReplace")
             {
-                e.DisplayText = e.CellValue == null ? "" : GloablConstants.BooleanDesc[(int)e.CellValue - 1];
+                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.BooleanDesc[(int)e.CellValue - 1];
                 return;
             }
 
             if (e.Column.Name == "clmAddress")
             {
                 var rowData = (FrontCustomerRecordInfo)this.gridViewFrontRecord.GetRow(e.RowHandle);
-                RegionInfo region = GloablCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
+                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
                 e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
             }
-        }
-
-        private void gridViewFrontRecord_DoubleClick(object sender, EventArgs e)
-        {
-            btnCustomerOut_ItemClick(sender, null);
         }
 
         private void gridViewFrontRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -183,6 +211,21 @@ namespace CRM_4S.FrontManager
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
+        }
+
+        private void gridViewFrontRecord_MouseDown(object sender, MouseEventArgs e)
+        {
+            // 判断是否为左键双击
+            if (e.Button != MouseButtons.Left || e.Clicks != 2)
+                return;
+
+            GridHitInfo hInfo = gridViewFrontRecord.CalcHitInfo(new Point(e.X, e.Y));
+            //判断光标是否在行范围内  
+            if (!hInfo.InRow || !hInfo.InRowCell)
+                return;
+
+            btnCustomerOut_ItemClick(sender, null);
+
         }
     }
 }

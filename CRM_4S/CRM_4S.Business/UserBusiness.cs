@@ -25,8 +25,8 @@ namespace CRM_4S.Business
                 else
                 {
                     funcParms.Pams = new Dictionary<string, object>();
-                    funcParms.Pams.Add("UserShopId", null);
-                    funcParms.Pams.Add("UserRoleId", null);
+                    funcParms.Pams.Add("UserShopId", 0);
+                    funcParms.Pams.Add("UserRoleId", 0);
                 }
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
@@ -100,7 +100,7 @@ namespace CRM_4S.Business
 
         public IList<UserShopRoleInfo> GetUserShopRoleInfos(int shopId)
         {
-            var users = GetUsers(new UserInfo() { ShopId = shopId });
+            var users = GetUsers(new UserInfo() { ShopId = shopId, RoleId = 0 });
             List<UserShopRoleInfo> results = new List<UserShopRoleInfo>();
 
             foreach (UserInfo user in users)
