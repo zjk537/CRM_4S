@@ -55,15 +55,15 @@ namespace CRM_4S.DCCManager
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(818, 65);
+            this.panelControl1.Size = new System.Drawing.Size(818, 60);
             this.panelControl1.TabIndex = 0;
             // 
             // btnImportAndRefresh
             // 
             this.btnImportAndRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportAndRefresh.Location = new System.Drawing.Point(727, 20);
+            this.btnImportAndRefresh.Location = new System.Drawing.Point(727, 18);
             this.btnImportAndRefresh.Name = "btnImportAndRefresh";
-            this.btnImportAndRefresh.Size = new System.Drawing.Size(75, 25);
+            this.btnImportAndRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnImportAndRefresh.TabIndex = 2;
             this.btnImportAndRefresh.Text = "导入并刷新";
             this.btnImportAndRefresh.Click += new System.EventHandler(this.btnImportAndRefresh_Click);
@@ -71,9 +71,9 @@ namespace CRM_4S.DCCManager
             // btnSelFile
             // 
             this.btnSelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelFile.Location = new System.Drawing.Point(646, 20);
+            this.btnSelFile.Location = new System.Drawing.Point(646, 18);
             this.btnSelFile.Name = "btnSelFile";
-            this.btnSelFile.Size = new System.Drawing.Size(75, 25);
+            this.btnSelFile.Size = new System.Drawing.Size(75, 23);
             this.btnSelFile.TabIndex = 2;
             this.btnSelFile.Text = "选择文件";
             this.btnSelFile.Click += new System.EventHandler(this.btnSelFile_Click);
@@ -82,16 +82,16 @@ namespace CRM_4S.DCCManager
             // 
             this.txtFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFilePath.Location = new System.Drawing.Point(75, 22);
+            this.txtFilePath.Location = new System.Drawing.Point(75, 20);
             this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(565, 20);
+            this.txtFilePath.Size = new System.Drawing.Size(565, 21);
             this.txtFilePath.TabIndex = 1;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(21, 25);
+            this.labelControl1.Location = new System.Drawing.Point(21, 23);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 13);
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "文件路径";
             // 
@@ -99,9 +99,9 @@ namespace CRM_4S.DCCManager
             // 
             this.panelControl2.Controls.Add(this.gridControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 65);
+            this.panelControl2.Location = new System.Drawing.Point(0, 60);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(818, 347);
+            this.panelControl2.Size = new System.Drawing.Size(818, 320);
             this.panelControl2.TabIndex = 1;
             // 
             // gridControl1
@@ -110,7 +110,7 @@ namespace CRM_4S.DCCManager
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(814, 343);
+            this.gridControl1.Size = new System.Drawing.Size(814, 316);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -121,12 +121,13 @@ namespace CRM_4S.DCCManager
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // FmDCCImport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 412);
+            this.ClientSize = new System.Drawing.Size(818, 380);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

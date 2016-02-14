@@ -1,4 +1,5 @@
-﻿using CRM_4S.DataService.Model;
+﻿using CRM_4S.Common;
+using CRM_4S.DataService.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -184,6 +185,7 @@ namespace CRM_4S.DataService
                 FunctionName = string.Format("uspClear{0}Temp", typeName)//uspClearFrontTemp
             });
 
+            LoggerHelper.Logger.Info("create TempFolder");
             string tempFileDir = AppDomain.CurrentDomain.BaseDirectory + "TempFolder\\";
             string strFile = tempFileDir + "Temp" + DateTime.Now.Ticks.ToString() + ".csv";//Create directory if not exist... Make sure directory has required rights..    
             if (!Directory.Exists(tempFileDir))
@@ -194,9 +196,11 @@ namespace CRM_4S.DataService
                 fs.Close();
                 fs.Dispose();
             }
+            LoggerHelper.Logger.Info("create csv");
             CreateCSVfile(resource, strFile);
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
+                LoggerHelper.Logger.Info("start bulk loader");
                 conn.Open();// mysql.data.dll 5.6以上版本 目前用6.9.8
                 MySqlBulkLoader bulkLoader = new MySqlBulkLoader(conn);
                 bulkLoader.TableName = string.Format("import_{0}_temp", typeName.ToLower());
@@ -205,6 +209,8 @@ namespace CRM_4S.DataService
                 bulkLoader.FileName = strFile;
                 bulkLoader.NumberOfLinesToSkip = 0;
                 bulkLoader.Load();
+
+                LoggerHelper.Logger.Info("remove csv");
                 File.Delete(strFile);
             }
 

@@ -14,6 +14,11 @@ Date: 2016-01-29 10:56:46
 */
 
 -- ----------------------------
+-- Records of shop
+-- ----------------------------
+INSERT INTO `shop` VALUES ('1', '北京朝阳店', '11', '4', '国贸', null, null, '2016-02-14 09:47:04');
+
+-- ----------------------------
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('1', '系统管理员', '跨系统所有权限', NOW());
@@ -26,8 +31,8 @@ INSERT INTO `role` VALUES ('6', '销售顾问', '客户信息维护', NOW());
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '0', '1', '0', 'Admin', 'admin', 'Admin', '2', null, '12345678', null, null, NOW());
-
+INSERT INTO `user` VALUES ('1', '0', '1', '0', 'Admin', '7a57a5a743894a0e', 'Admin', '2', null, '12345678', null, null, NOW());
+INSERT INTO `user` VALUES ('2', '1', '2', '0', 'xj', 'cb6720b002105b44', '张生', '1', '1', '111', null, null, '2016-02-14 09:48:13');
 
 -- ----------------------------
 -- Records of region

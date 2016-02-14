@@ -28,10 +28,5 @@
 		</TaggedOutputs> -->
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
-	<ItemGroup>
-		<ProjectReference Include="..\CRM_4S\CRM_4S.csproj">
-			<Name>CRM_4S</Name>
-			<Project>{5CC691DF-DBF4-4A71-BC09-82B22E97DEC2}</Project>
-		</ProjectReference>
-	</ItemGroup>
+	<ItemGroup/>
 </Project>

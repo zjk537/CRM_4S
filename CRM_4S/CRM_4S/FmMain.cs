@@ -85,7 +85,12 @@ namespace CRM_4S
             get
             {
                 if (curQueryInfo == null)
-                    curQueryInfo = new ViewQueryInfo();
+                    curQueryInfo = new ViewQueryInfo()
+                    {
+                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                        EndDate = DateTime.Now
+                    };
                 return curQueryInfo;
             }
             set
@@ -221,7 +226,7 @@ namespace CRM_4S
                 ribbon.SelectedPage = rPageFront;
                 return;
             }
-            
+
             ribbon.SelectedPage = rPageUser;
         }
 
@@ -309,8 +314,8 @@ namespace CRM_4S
             if (dateRange == QueryDateRange.Customer)
             {
                 FmCustomTime customTime = new FmCustomTime();
-                customTime.StartDate = curQueryInfo.StartDate.HasValue ? curQueryInfo.StartDate.Value : DateTime.Now;
-                customTime.EndDate = curQueryInfo.EndDate.HasValue ? curQueryInfo.EndDate.Value : DateTime.Now;
+                customTime.StartDate = CurQueryInfo.StartDate.HasValue ? CurQueryInfo.StartDate.Value : DateTime.Now;
+                customTime.EndDate = CurQueryInfo.EndDate.HasValue ? CurQueryInfo.EndDate.Value : DateTime.Now;
 
                 if (customTime.ShowDialog() == DialogResult.OK)
                 {
@@ -325,25 +330,25 @@ namespace CRM_4S
 
         private void btnThisMonth_ItemClick(object sender, ItemClickEventArgs e)
         {
-            curQueryInfo = GetViewDateQuery(QueryDateRange.ThisMonth);
+            CurQueryInfo = GetViewDateQuery(QueryDateRange.ThisMonth);
             RefreshView(this.CurQueryInfo);
         }
 
         private void btnThisQuarter_ItemClick(object sender, ItemClickEventArgs e)
         {
-            curQueryInfo = GetViewDateQuery( QueryDateRange.ThisQuarter);
+            CurQueryInfo = GetViewDateQuery(QueryDateRange.ThisQuarter);
             RefreshView(this.CurQueryInfo);
         }
 
         private void btnThisYear_ItemClick(object sender, ItemClickEventArgs e)
         {
-            curQueryInfo = GetViewDateQuery(QueryDateRange.ThisYear);
+            CurQueryInfo = GetViewDateQuery(QueryDateRange.ThisYear);
             RefreshView(this.CurQueryInfo);
         }
 
         private void btnCustomTime_ItemClick(object sender, ItemClickEventArgs e)
         {
-            curQueryInfo = GetViewDateQuery(QueryDateRange.Customer);
+            CurQueryInfo = GetViewDateQuery(QueryDateRange.Customer);
             RefreshView(this.CurQueryInfo);
         }
 

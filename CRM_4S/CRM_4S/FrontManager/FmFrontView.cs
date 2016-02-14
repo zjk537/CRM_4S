@@ -114,10 +114,15 @@ namespace CRM_4S.FrontManager
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = saveFileDialog.FileName;
-                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value);
-
-                gridViewFrontRecord.ExportToXls(fileName, options);
-                XtraMessageBox.Show("保存成功");
+                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value,true,true);
+                try
+                {
+                    gridViewFrontRecord.ExportToXls(fileName, options);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(string.Format("保存失败：{0}", ex.ToString()), "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         private void btnCustomerImport_ItemClick(object sender, ItemClickEventArgs e)
@@ -162,6 +167,7 @@ namespace CRM_4S.FrontManager
                 qInfo = value;
                 if (qInfo != null)
                 {
+                    qInfo.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                     RefreshFrontRecordView();
                 }
             }
@@ -179,38 +185,14 @@ namespace CRM_4S.FrontManager
             gridControlFrontRecord.DefaultView.RefreshData();
         }
 
-        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            if (e.Column.Name == "clmCNature" || e.Column.Name == "clmCarLicence" || e.Column.Name == "clmSource")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
-                return;
-            }
-            if (e.Column.Name == "clmPurposeCar")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.CarTypes.FirstOrDefault(info => info.Id == (int)e.CellValue).ToString();
-            }
-            if (e.Column.Name == "clmDriveStatus" || e.Column.Name == "clmInstallment" || e.Column.Name == "clmReplace")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.BooleanDesc[(int)e.CellValue - 1];
-                return;
-            }
-
-            if (e.Column.Name == "clmAddress")
-            {
-                var rowData = (FrontCustomerRecordInfo)this.gridViewFrontRecord.GetRow(e.RowHandle);
-                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
-                e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
-            }
-        }
-
         private void gridViewFrontRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            this.gridViewFrontRecord.IndicatorWidth = 40;
             if (e.Info.IsRowIndicator)
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
+
+            this.gridViewFrontRecord.IndicatorWidth = e.Info.DisplayText.Length + 25;
         }
 
         private void gridViewFrontRecord_MouseDown(object sender, MouseEventArgs e)

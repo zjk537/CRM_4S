@@ -79,6 +79,7 @@ namespace CRM_4S.DCCManager
                 {
                     try
                     {
+                        XtraMessageBox.Show("Task start", "提示", MessageBoxButtons.OK);
                         DataColumn dtRecorderColumn = new DataColumn("Recorder", typeof(string));
                         DataColumn dtShopIdColumn = new DataColumn("ShopId", typeof(Int32));
                         tempTable.Columns.Add(dtShopIdColumn);
@@ -86,6 +87,7 @@ namespace CRM_4S.DCCManager
                         dtShopIdColumn.SetOrdinal(0);
                         dtRecorderColumn.SetOrdinal(1);
                         int defaultPhone = 1;
+                        XtraMessageBox.Show("总记录数" + tempTable.Rows.Count, "提示", MessageBoxButtons.OK);
                         foreach (DataRow datarow in tempTable.Rows)
                         {
                             datarow[dtShopIdColumn] = GlobalCaches.Instance.CurUser.ShopId;
@@ -95,12 +97,15 @@ namespace CRM_4S.DCCManager
                                 datarow["客户电话"] = defaultPhone++;
                             }
                         }
+                        XtraMessageBox.Show("start bulkInsert", "提示", MessageBoxButtons.OK);
                         DCCRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
+                        XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
                     }
                     catch (Exception ex)
                     {
                         runMsg = string.Format("导入失败：{0}", ex.ToString());
+                        XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
                     }
                     finally
                     {
@@ -117,6 +122,15 @@ namespace CRM_4S.DCCManager
 
                 progressBar.ShowDialog();
             }
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
+            this.gridView1.IndicatorWidth = e.Info.DisplayText.Length + 25;
         }
     }
 }

@@ -15,17 +15,21 @@ namespace CRM_4S
         [STAThread]
         static void Main()
         {
-            if (RegUtil.Instance.RegStart() && RegUtil.Instance.RegEnd())
-            {
-                Application.EnableVisualStyles();
-                //Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FmMain());
-                //Application.Run(new Login());
-            }
-            else
-            {
-                Application.Exit();
-            }
+            //if (RegUtil.Instance.RegStart() && RegUtil.Instance.RegEnd())
+            //{
+            //    Application.EnableVisualStyles();
+            //    //Application.SetCompatibleTextRenderingDefault(false);
+            //    Application.Run(new FmMain());
+            //    //Application.Run(new Login());
+            //}
+            //else
+            //{
+            //    Application.Exit();
+            //}
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FmMain());
             
         }
     }

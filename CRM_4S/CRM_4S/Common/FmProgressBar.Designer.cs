@@ -36,7 +36,7 @@
             // labLoadCaption
             // 
             this.labLoadCaption.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labLoadCaption.Location = new System.Drawing.Point(179, 12);
+            this.labLoadCaption.Location = new System.Drawing.Point(209, 13);
             this.labLoadCaption.Name = "labLoadCaption";
             this.labLoadCaption.Size = new System.Drawing.Size(102, 17);
             this.labLoadCaption.TabIndex = 6;
@@ -45,28 +45,28 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = global::CRM_4S.Properties.Resources.loading;
-            this.pictureEdit1.Location = new System.Drawing.Point(5, 38);
+            this.pictureEdit1.Location = new System.Drawing.Point(6, 41);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Size = new System.Drawing.Size(409, 27);
+            this.pictureEdit1.Size = new System.Drawing.Size(477, 29);
             this.pictureEdit1.TabIndex = 5;
             // 
             // FmProgressBar
             // 
-            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.Appearance.BackColor = System.Drawing.Color.Black;
+            this.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseForeColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 72);
+            this.ClientSize = new System.Drawing.Size(490, 78);
             this.Controls.Add(this.labLoadCaption);
             this.Controls.Add(this.pictureEdit1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmProgressBar";
-            this.Opacity = 0.5D;
+            this.Opacity = 0.6D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FmProgessBar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();

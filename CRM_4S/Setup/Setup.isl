@@ -340,26 +340,28 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>CRM_4S.Business.dll</td><td>{2755988B-5843-4577-BB6E-1A2ED14E6E5C}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.business.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.Common.dll</td><td>{414B8E27-98AD-46DF-AF1C-12DC998B7CC5}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.common.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.DataService.dll</td><td>{F59386BC-6FEF-4401-AB06-FE5D0525E5EB}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.dataservice.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.Model.dll</td><td>{A4DA4A2A-EB1D-426F-9AEC-CACAF6CCC74B}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.Primary_output</td><td>{CBEF59A6-2C90-4D6C-A160-2BEE46BCB73A}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.Primary_output1</td><td>{C26E49EF-A049-4B16-B4DE-AFD045459016}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.primary_output1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.exe</td><td>{678AD58D-53A1-40FB-9385-2EDD39C42A7C}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CRM_4S.vshost.exe</td><td>{68F2334B-EF8F-4A6C-9392-9ED5F41121E7}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.CodeRush.Common.dll</td><td>{F850BA3D-6947-4AE3-8D71-8EC63D0177B6}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.coderush.common.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Data.v11.1.dll</td><td>{2D08D0EF-2EAC-4BC6-ABF6-F7D207233487}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.data.v11.1.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Localization.v11.1.dll</td><td>{2BC0EB06-FD9B-47CA-848B-C865A98E4A21}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.localization.v11.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Localization.v11.1.dll1</td><td>{0A9731CA-FA08-4136-98B9-FAFC81851153}</td><td>REFRENCE</td><td>2</td><td/><td>devexpress.localization.v11.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Utils.v11.1.dll</td><td>{CFE24606-ADF6-4E8C-9F66-6C54D2211B5C}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.utils.v11.1.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CRM_4S.Business.dll</td><td>{1F5FD9CB-6C85-44CE-96F0-252EF333DD13}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.business.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CRM_4S.Common.dll</td><td>{484937DC-1F8B-47AB-B240-D5172FFA77C3}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.common.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CRM_4S.DataService.dll</td><td>{0353F13B-1DA5-498F-A87A-0D6350DF0CE4}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.dataservice.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CRM_4S.Model.dll</td><td>{254DFC7E-144C-42DF-9D45-3474CF146713}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CRM_4S.exe</td><td>{CAF08A62-B007-45BF-9CB8-B3BAFB28B3A2}</td><td>INSTALLDIR</td><td>2</td><td/><td>crm_4s.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.CodeRush.Common.dll</td><td>{681186A3-4CA5-4B2E-BAB7-43243561D220}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.coderush.common.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Data.v11.1.dll</td><td>{F366CD23-1D7D-4B32-B4C0-94A3494F33D3}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.data.v11.1.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Localization.v11.1.dll</td><td>{31C9EC1B-C1F1-4646-AF04-12F1D06ECBE0}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.localization.v11.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Localization.v11.1.dll1</td><td>{3C22B02E-0389-488A-BF2A-BE8BFEF7FCBC}</td><td>REFRENCE</td><td>2</td><td/><td>devexpress.localization.v11.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Utils.v11.1.dll</td><td>{62FFA0EF-224E-4576-9F46-E09499054276}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.utils.v11.1.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{9094F0AD-5F94-4BC7-957E-017F4CA8130F}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{1B733397-ED86-4E9C-9FBB-1675EECB75E4}</td><td>LOCALIZATIONINFO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{9BCE3292-3398-4720-8578-D944F9A9ACA6}</td><td>REFRENCE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td>{322B747A-B434-4F22-B6EE-838959716E4F}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MySql.Data.dll</td><td>{62F37033-DD40-4636-BD12-31F0313F2E87}</td><td>INSTALLDIR</td><td>2</td><td/><td>mysql.data.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Pst.DExpress.Localization.dll</td><td>{AF5AF41A-3129-49C1-8161-8B1F01BE4120}</td><td>INSTALLDIR</td><td>2</td><td/><td>pst.dexpress.localization.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>log4net.dll</td><td>{73F8B542-F484-426A-B70C-2E89C874E4FE}</td><td>INSTALLDIR</td><td>2</td><td/><td>log4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MySql.Data.dll</td><td>{F64BBD03-95F0-40EB-A398-419EFADA0902}</td><td>INSTALLDIR</td><td>2</td><td/><td>mysql.data.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OOXML.dll</td><td>{08AF4F06-6048-4724-9C3B-6B4C4B63E066}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.ooxml.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OpenXml4Net.dll</td><td>{0E922E7E-0C80-4205-BBD9-55633341486F}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxml4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OpenXmlFormats.dll</td><td>{091CF23A-BB39-4494-907B-785EB4910108}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxmlformats.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.dll</td><td>{3A1F6899-E588-4E5C-8632-B5A60ED25926}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Pst.DExpress.Localization.dll</td><td>{38DD2BD1-3836-47EB-89B1-18692BA3260B}</td><td>INSTALLDIR</td><td>2</td><td/><td>pst.dexpress.localization.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>RegLib.dll</td><td>{8AED16A5-AEF4-49E0-8D60-14EB2B3E972F}</td><td>INSTALLDIR</td><td>2</td><td/><td>reglib.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>log4net.dll</td><td>{7B842A84-BC7A-43B1-83DF-7CD59B2F1585}</td><td>INSTALLDIR</td><td>2</td><td/><td>log4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1072,10 +1074,7 @@
 		<row><td>INSTALLDIR</td><td>CRM_4S.Common.dll</td></row>
 		<row><td>INSTALLDIR</td><td>CRM_4S.DataService.dll</td></row>
 		<row><td>INSTALLDIR</td><td>CRM_4S.Model.dll</td></row>
-		<row><td>INSTALLDIR</td><td>CRM_4S.Primary_output</td></row>
-		<row><td>INSTALLDIR</td><td>CRM_4S.Primary_output1</td></row>
 		<row><td>INSTALLDIR</td><td>CRM_4S.exe</td></row>
-		<row><td>INSTALLDIR</td><td>CRM_4S.vshost.exe</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.CodeRush.Common.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v11.1.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Localization.v11.1.dll</td></row>
@@ -1086,7 +1085,12 @@
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>INSTALLDIR</td><td>IS_ININSTALL_SHORTCUT</td></row>
 		<row><td>INSTALLDIR</td><td>MySql.Data.dll</td></row>
+		<row><td>INSTALLDIR</td><td>NPOI.OOXML.dll</td></row>
+		<row><td>INSTALLDIR</td><td>NPOI.OpenXml4Net.dll</td></row>
+		<row><td>INSTALLDIR</td><td>NPOI.OpenXmlFormats.dll</td></row>
+		<row><td>INSTALLDIR</td><td>NPOI.dll</td></row>
 		<row><td>INSTALLDIR</td><td>Pst.DExpress.Localization.dll</td></row>
+		<row><td>INSTALLDIR</td><td>RegLib.dll</td></row>
 		<row><td>INSTALLDIR</td><td>log4net.dll</td></row>
 		<row><td>LOCALIZATIONINFO</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>REFRENCE</td><td>DevExpress.Localization.v11.1.dll1</td></row>
@@ -1214,8 +1218,6 @@
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>ZJK</td><td>ProgramFilesFolder</td><td>zjk</td><td/><td>0</td><td/></row>
 		<row><td>crm_4s</td><td>ProgramMenuFolder</td><td>CRM_4S</td><td/><td>1</td><td/></row>
-		<row><td>crm_4s1</td><td>zjk</td><td>CRM_4S</td><td/><td>1</td><td/></row>
-		<row><td>zjk</td><td>ProgramMenuFolder</td><td>zjk</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -1911,10 +1913,7 @@
 		<row><td>AlwaysInstall</td><td>CRM_4S.Common.dll</td></row>
 		<row><td>AlwaysInstall</td><td>CRM_4S.DataService.dll</td></row>
 		<row><td>AlwaysInstall</td><td>CRM_4S.Model.dll</td></row>
-		<row><td>AlwaysInstall</td><td>CRM_4S.Primary_output</td></row>
-		<row><td>AlwaysInstall</td><td>CRM_4S.Primary_output1</td></row>
 		<row><td>AlwaysInstall</td><td>CRM_4S.exe</td></row>
-		<row><td>AlwaysInstall</td><td>CRM_4S.vshost.exe</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.CodeRush.Common.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v11.1.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Localization.v11.1.dll</td></row>
@@ -1925,7 +1924,12 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>AlwaysInstall</td><td>IS_ININSTALL_SHORTCUT</td></row>
 		<row><td>AlwaysInstall</td><td>MySql.Data.dll</td></row>
+		<row><td>AlwaysInstall</td><td>NPOI.OOXML.dll</td></row>
+		<row><td>AlwaysInstall</td><td>NPOI.OpenXml4Net.dll</td></row>
+		<row><td>AlwaysInstall</td><td>NPOI.OpenXmlFormats.dll</td></row>
+		<row><td>AlwaysInstall</td><td>NPOI.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Pst.DExpress.Localization.dll</td></row>
+		<row><td>AlwaysInstall</td><td>RegLib.dll</td></row>
 		<row><td>AlwaysInstall</td><td>log4net.dll</td></row>
 	</table>
 
@@ -1953,25 +1957,31 @@
 		<row><td>crm_4s.dataservice.dll</td><td>CRM_4S.DataService.dll</td><td>CRM_4S~1.DLL|CRM_4S.DataService.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.DataService.dll</td><td>1</td><td/></row>
 		<row><td>crm_4s.dataservice.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.PDB|CRM_4S.DataService.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.DataService.pdb</td><td>1</td><td/></row>
 		<row><td>crm_4s.exe</td><td>CRM_4S.exe</td><td>CRM_4S.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>1</td><td/></row>
-		<row><td>crm_4s.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.CON|CRM_4S.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe.config</td><td>1</td><td/></row>
+		<row><td>crm_4s.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.CON|CRM_4S.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe.Config</td><td>1</td><td/></row>
 		<row><td>crm_4s.model.dll</td><td>CRM_4S.Model.dll</td><td>CRM_4S~1.DLL|CRM_4S.Model.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.Model.dll</td><td>1</td><td/></row>
 		<row><td>crm_4s.model.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.PDB|CRM_4S.Model.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.Model.pdb</td><td>1</td><td/></row>
 		<row><td>crm_4s.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.pdb</td><td>1</td><td/></row>
-		<row><td>crm_4s.primary_output</td><td>CRM_4S.Primary_output</td><td>CRM_4S.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;CRM_4S&gt;|Built</td><td>3</td><td/></row>
-		<row><td>crm_4s.primary_output1</td><td>CRM_4S.Primary_output1</td><td>CRM_4S.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;CRM_4S&gt;|Built</td><td>3</td><td/></row>
-		<row><td>crm_4s.vshost.exe</td><td>CRM_4S.vshost.exe</td><td>CRM_4S~1.EXE|CRM_4S.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.vshost.exe</td><td>1</td><td/></row>
-		<row><td>crm_4s.vshost.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.CON|CRM_4S.vshost.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.vshost.exe.Config</td><td>1</td><td/></row>
-		<row><td>crm_4s.vshost.exe.manifest</td><td>ISX_DEFAULTCOMPONENT</td><td>CRM_4S~1.MAN|CRM_4S.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.vshost.exe.manifest</td><td>1</td><td/></row>
 		<row><td>devexpress.coderush.common.d</td><td>DevExpress.CodeRush.Common.dll</td><td>DEVEXP~1.DLL|DevExpress.CodeRush.Common.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\DevExpress.CodeRush.Common.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.data.v11.1.dll</td><td>DevExpress.Data.v11.1.dll</td><td>DEVEXP~1.DLL|DevExpress.Data.v11.1.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\DevExpress.Data.v11.1.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.localization.v11.</td><td>DevExpress.Localization.v11.1.dll</td><td>DEVEXP~1.DLL|DevExpress.Localization.v11.1.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\DevExpress.Localization.v11.1.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.localization.v11.1</td><td>DevExpress.Localization.v11.1.dll1</td><td>DEVEXP~1.DLL|DevExpress.Localization.v11.1.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\Refrence\DevExpress.Localization.v11.1.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.utils.v11.1.dll</td><td>DevExpress.Utils.v11.1.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v11.1.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\DevExpress.Utils.v11.1.dll</td><td>1</td><td/></row>
+		<row><td>enc.k</td><td>ISX_DEFAULTCOMPONENT</td><td>Enc.k</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\Enc.k</td><td>1</td><td/></row>
+		<row><td>engi.p</td><td>ISX_DEFAULTCOMPONENT</td><td>Engi.p</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\Engi.p</td><td>1</td><td/></row>
 		<row><td>log4net.config</td><td>ISX_DEFAULTCOMPONENT</td><td>LOG4NE~1.CON|log4net.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\log4net.config</td><td>1</td><td/></row>
 		<row><td>log4net.dll</td><td>log4net.dll</td><td>log4net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\log4net.dll</td><td>1</td><td/></row>
 		<row><td>mysql.data.dll</td><td>MySql.Data.dll</td><td>MYSQLD~1.DLL|MySql.Data.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\MySql.Data.dll</td><td>1</td><td/></row>
+		<row><td>npoi.dll</td><td>NPOI.dll</td><td>NPOI.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.dll</td><td>1</td><td/></row>
+		<row><td>npoi.ooxml.dll</td><td>NPOI.OOXML.dll</td><td>NPOIOO~1.DLL|NPOI.OOXML.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.OOXML.dll</td><td>1</td><td/></row>
+		<row><td>npoi.ooxml.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NPOIOO~1.XML|NPOI.OOXML.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.OOXML.xml</td><td>1</td><td/></row>
+		<row><td>npoi.openxml4net.dll</td><td>NPOI.OpenXml4Net.dll</td><td>NPOIOP~1.DLL|NPOI.OpenXml4Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.OpenXml4Net.dll</td><td>1</td><td/></row>
+		<row><td>npoi.openxml4net.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NPOIOP~1.XML|NPOI.OpenXml4Net.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.OpenXml4Net.xml</td><td>1</td><td/></row>
+		<row><td>npoi.openxmlformats.dll</td><td>NPOI.OpenXmlFormats.dll</td><td>NPOIOP~1.DLL|NPOI.OpenXmlFormats.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.OpenXmlFormats.dll</td><td>1</td><td/></row>
+		<row><td>npoi.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NPOI.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\NPOI.xml</td><td>1</td><td/></row>
 		<row><td>pst.dexpress.localization.dl</td><td>Pst.DExpress.Localization.dll</td><td>PSTDEX~1.DLL|Pst.DExpress.Localization.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\Pst.DExpress.Localization.dll</td><td>1</td><td/></row>
 		<row><td>pst.dexpress.localization.pd</td><td>ISX_DEFAULTCOMPONENT</td><td>PSTDEX~1.PDB|Pst.DExpress.Localization.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\Pst.DExpress.Localization.pdb</td><td>1</td><td/></row>
+		<row><td>reglib.dll</td><td>RegLib.dll</td><td>RegLib.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\RegLib.dll</td><td>1</td><td/></row>
+		<row><td>reglib.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>RegLib.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\RegLib.pdb</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -1987,7 +1997,6 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
-		<row><td>CRM_4S.exe</td><td/></row>
 		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
 	</table>
 
@@ -2115,26 +2124,28 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>CRM_4S.Business.dll</td><td/><td/><td>_34229A47_5126_4552_BC1E_CC0F3F650306_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.Common.dll</td><td/><td/><td>_E248CF6C_A6B3_4202_B8F4_3B59286A5E93_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.DataService.dll</td><td/><td/><td>_79A38CCE_756A_4063_B173_02F2F6407FAA_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.Model.dll</td><td/><td/><td>_175A3576_1745_4651_9BB6_D3264117A26E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.Primary_output</td><td/><td/><td>_4022DD32_7AFB_42DB_A959_7F51A7DB2471_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.Primary_output1</td><td/><td/><td>_1A29760A_87D8_4570_91C9_64774A1BE020_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.exe</td><td/><td/><td>_22ACC71F_28B7_46C4_B3FC_B75631C344AE_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.vshost.exe</td><td/><td/><td>_29945BBA_5DD4_4EF8_8574_D7CB6F90B6AC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.CodeRush.Common.dll</td><td/><td/><td>_A98FAF50_751A_4244_B099_61BF2CD4AEEC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Data.v11.1.dll</td><td/><td/><td>_768BC2F5_A602_4497_B2BE_1B91477C76F9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Localization.v11.1.dll</td><td/><td/><td>_98CF2908_4256_42C2_92C1_3211DBFA33F7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Localization.v11.1.dll1</td><td/><td/><td>_57C6F777_BDA5_4AC7_883B_050AEB2E9CF5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Utils.v11.1.dll</td><td/><td/><td>_5B8C802E_CD74_4955_9592_52B3C36733E4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.Business.dll</td><td/><td/><td>_69225489_CBF2_4845_AD24_7F2ABBD212EB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.Common.dll</td><td/><td/><td>_7A4331F7_A514_4C56_AB9F_A70A6E4F3BA7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.DataService.dll</td><td/><td/><td>_44C9FF46_6CC0_4B00_AD7E_D563A169BCFD_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.Model.dll</td><td/><td/><td>_A4FAD136_0BAF_471E_851C_A8B4D42B2175_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.exe</td><td/><td/><td>_874264F1_8A70_4788_A929_9E52C11BF44A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.CodeRush.Common.dll</td><td/><td/><td>_A36F2C59_FE55_475C_9BF7_98F723D0F1F4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Data.v11.1.dll</td><td/><td/><td>_9F6E8057_BA56_4F7C_B658_AB310F45B290_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Localization.v11.1.dll</td><td/><td/><td>_BC867CC2_3CB2_42EA_994A_65C3337A2361_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Localization.v11.1.dll1</td><td/><td/><td>_F0741BBB_112F_4457_A934_A8889B5B6DB4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Utils.v11.1.dll</td><td/><td/><td>_79AE3D59_572D_4339_9B64_269835DA46C1_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_E435787F_0C42_4613_80D5_F43724C2DBF3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_AA5EC8E4_2C5A_4C81_B4CC_8DA10DE63C30_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_C60D775E_5E5F_4EC5_BD87_745A0031EEC5_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td/><td/><td>_4872DB25_2DBA_4977_A122_3A7216109D40_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MySql.Data.dll</td><td/><td/><td>_4D9A2584_7655_443A_A2D7_4CF6A7E1901D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Pst.DExpress.Localization.dll</td><td/><td/><td>_2EEE8CE7_ADDF_4702_B3B9_82AD14328F70_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>log4net.dll</td><td/><td/><td>_DDF1CCF0_DD54_4AFC_8F39_DD1671F12F93_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MySql.Data.dll</td><td/><td/><td>_7FE32F6C_E16D_46B8_83F3_0BCA06C0DAC5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OOXML.dll</td><td/><td/><td>_D646F7DE_C8D1_4562_BD0D_4349E0C8EE32_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OpenXml4Net.dll</td><td/><td/><td>_FF6924D2_2902_400C_87A2_6DE6E12B14BA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OpenXmlFormats.dll</td><td/><td/><td>_18A81449_F1F6_4CD9_800A_CA011CC054B1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.dll</td><td/><td/><td>_D7521547_3C65_4471_A2D5_DE1CBE429F28_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Pst.DExpress.Localization.dll</td><td/><td/><td>_CEB4BB2E_10F6_43D4_8B3E_48A8660DE256_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>RegLib.dll</td><td/><td/><td>_6ACF535A_036A_4279_83E0_343AAF35C034_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>log4net.dll</td><td/><td/><td>_01B6E994_3D0F_494E_BA73_46F7EC20F2E3_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2724,7 +2735,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>zjk</td><td>0</td><td/><td>-391853556</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>zjk</td><td>0</td><td/><td>1898207760</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>2052</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>2024033360</td></row>
@@ -3548,6 +3559,12 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>-391896596</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td/><td>0</td><td/><td>-391896596</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.vshost.exe</td><td>0</td><td/><td>-391896596</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td/><td>0</td><td/><td>1898200590</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>1898200590</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td/><td>0</td><td/><td>1898200590</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.vshost.exe</td><td>0</td><td/><td>1898200590</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td/><td>0</td><td/><td>1898235566</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>1898235566</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>2052</td><td>从以下服务器列表中选择要连接的数据库服务器。</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>2052</td><td>从以下的编录名称列表中，选择您希望将其作为目标的数据库编录。</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>2052</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>2024049584</td></row>
@@ -3836,8 +3853,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>2052</td><td>对于运行 [ProductName] 处理器不足。</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>2052</td><td>对于运行 [ProductName] 内存量不足。</td><td>0</td><td/><td>2024049584</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>2024049584</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.zjk.com</td><td>0</td><td/><td>-391853556</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>zjk</td><td>0</td><td/><td>-391853556</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.zjk.com</td><td>0</td><td/><td>1898207760</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>zjk</td><td>0</td><td/><td>1898207760</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>2024066256</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>2024066256</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>2024068304</td></row>
@@ -3846,6 +3863,8 @@
 		<row><td>ID_STRING5</td><td>2052</td><td>CRM_4S</td><td>0</td><td/><td>2024017200</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>-391876084</td></row>
 		<row><td>ID_STRING6</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>-391876084</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>1898201488</td></row>
+		<row><td>ID_STRING7</td><td>2052</td><td>LAUNCH~1.EXE|Launch CRM_4S.exe</td><td>0</td><td/><td>1898201488</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>2052</td><td>系统将不安装此功能。</td><td>0</td><td/><td>2024049584</td></row>
 	</table>
 
@@ -3963,8 +3982,12 @@
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\CRM_4S\ico.ico</td><td>0</td></row>
 		<row><td>CRM_4S.exe1_2EBE0D5A4853412A95BACFF22F1AD8FA.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
 		<row><td>CRM_4S.exe1_37FE8A5229694B668DEB697B613F1CF0.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
+		<row><td>CRM_4S.exe1_B8FEB09376B84B63A80EF4904ABCA8B7.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
+		<row><td>CRM_4S.exe_22A6F56B1A0447158B4923282FC4332C.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
 		<row><td>CRM_4S.exe_41263D88E73443C3914C265910617562.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
+		<row><td>CRM_4S.exe_B667BEF7A32A4E4A93F8E0045185B98F.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
 		<row><td>CRM_4S.exe_F96AA9A1513048DBA99ADABB14EE6562.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
+		<row><td>CRM_4S.vshost.exe_D848D99C8DD842A3AFB2C11C94A8E481.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>NewShortcut1_00E25DCD02944DAFA66BBA18FF0E25B3.exe</td><td/><td>D:\Application\Github\CRM_4S\CRM_4S\CRM_4S\bin\Release\CRM_4S.exe</td><td>0</td></row>
 		<row><td>UNINST_Uninstall_C_622C0B03E2D2492CBD8E39DCBF71CFB0.exe</td><td/><td>C:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
 	</table>
@@ -4550,9 +4573,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>CRM_4S.exe</td><td>CRM_4S.exe</td><td/><td>crm_4s1</td><td>2</td></row>
-		<row><td>FileKey1</td><td>CRM_4S.exe</td><td/><td>zjk</td><td>2</td></row>
-		<row><td>FileKey2</td><td>CRM_4S.exe</td><td/><td>crm_4s1</td><td>2</td></row>
+		<row><td>CRM_4S.exe</td><td>CRM_4S.exe</td><td/><td>crm_4s</td><td>2</td></row>
 		<row><td>UNINST_Uninstall_CRM_4S</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>crm_4s</td><td>2</td></row>
 	</table>
 
@@ -4639,8 +4660,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>CRM_4S.exe</td><td>crm_4s1</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>CRM_4S.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>CRM_4S.exe_F96AA9A1513048DBA99ADABB14EE6562.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>CRM_4S.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>CRM_4S.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>CRM_4S.exe1_2EBE0D5A4853412A95BACFF22F1AD8FA.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.exe</td><td>crm_4s</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>CRM_4S.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>CRM_4S.exe_B667BEF7A32A4E4A93F8E0045185B98F.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>CRM_4S.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>CRM_4S.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>CRM_4S.exe1_B8FEB09376B84B63A80EF4904ABCA8B7.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>UNINST_Uninstall_CRM_4S</td><td>crm_4s</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {B1A2ACF4-23F8-4A45-BA76-E5EFDB525A4B}</td><td/><td/><td>UNINST_Uninstall_C_622C0B03E2D2492CBD8E39DCBF71CFB0.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 

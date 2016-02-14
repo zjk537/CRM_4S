@@ -59,6 +59,7 @@ namespace CRM_4S.Common
             this.DateEnd.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DateEnd.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.DateEnd.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.DateEnd.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
             this.DateEnd.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.DateEnd.Size = new System.Drawing.Size(246, 21);
@@ -85,12 +86,13 @@ namespace CRM_4S.Common
             this.DateStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DateStart.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.DateStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.DateStart.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm";
             this.DateStart.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.DateStart.Size = new System.Drawing.Size(246, 21);
             this.DateStart.TabIndex = 1002;
             // 
-            // FmFrontCustomTime
+            // FmCustomTime
             // 
             this.Appearance.Font = new System.Drawing.Font("Tahoma", 13F);
             this.Appearance.Options.UseFont = true;
@@ -101,7 +103,7 @@ namespace CRM_4S.Common
             this.Controls.Add(this.DateEnd);
             this.Controls.Add(this.labStartDate);
             this.Controls.Add(this.DateStart);
-            this.Name = "FmFrontCustomTime";
+            this.Name = "FmCustomTime";
             this.Text = "自定义时间段";
             this.Controls.SetChildIndex(this.DateStart, 0);
             this.Controls.SetChildIndex(this.labStartDate, 0);

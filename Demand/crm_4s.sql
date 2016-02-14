@@ -15,8 +15,7 @@ Date: 2016-02-13 16:47:38
 
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP DATABASE IF EXISTS crm_4s;
-CREATE DATABASE crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use crm_4s;
 
 -- ----------------------------
@@ -956,16 +955,16 @@ BEGIN
         ,`dcc_record`.`CreatedDate` as `DccRecordCreatedDate`        
     FROM
         `dcc_record`
-		WHERE
-				`dcc_record`.`CustomerId` = case when pCustomerId = 0 then `dcc_record`.`CustomerId` else pCustomerId end
-		AND
-				`dcc_record`.`ShopId` = case when pShopId = 0 then `dcc_record`.`CustomerId` else pShopId end
-		AND 
-			CASE WHEN pStartDate = NULL THEN TRUE ELSE `dcc_record`.`VisitTime`>= pStartDate END
-		AND 
-			CASE WHEN pEndDate = NULL THEN TRUE ELSE `dcc_record`.`VisitTime` <= pEndDate END
-		ORDER BY 
-				`dcc_record`.`CreatedDate` DESC;
+    WHERE
+        `dcc_record`.`CustomerId` = case when pCustomerId = 0 OR pCustomerId IS NULL then `dcc_record`.`CustomerId` else pCustomerId end
+    AND
+        `dcc_record`.`ShopId` = case when pShopId = 0 OR pShopId IS NULL then `dcc_record`.`CustomerId` else pShopId end
+    AND 
+      CASE WHEN pStartDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime`>= pStartDate END
+    AND 
+      CASE WHEN pEndDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime` <= pEndDate END
+    ORDER BY 
+        `dcc_record`.`CreatedDate` DESC;
 END
 ;;
 DELIMITER ;
@@ -1020,17 +1019,17 @@ BEGIN
         ,`front_record`.`CreatedDate` as `FrontRecordCreatedDate`         
     FROM
         `front_record`
-		WHERE
-				`front_record`.`Id` = case when pRecordId = 0 then `front_record`.`Id` else pRecordId end
-		AND
-				`front_record`.`CustomerId` = CASE WHEN pCustomerId = 0 THEN `front_record`.`CustomerId` ELSE pCustomerId END
-		AND
-				`front_record`.`ShopId` = CASE WHEN pShopId = 0 THEN `front_record`.`CustomerId` ELSE pShopId END
-		AND 
-			CASE WHEN pStartDate = NULL THEN TRUE ELSE `front_record`.`ArrivalTime`>= pStartDate END
-		AND 
-			CASE WHEN pEndDate = NULL THEN TRUE ELSE `front_record`.`ArrivalTime` <= pEndDate END
-		ORDER BY `front_record`.`CreatedDate` DESC;
+    WHERE
+        `front_record`.`Id` = case when pRecordId = 0 OR pRecordId IS NULL then `front_record`.`Id` else pRecordId end
+    AND
+        `front_record`.`CustomerId` = CASE WHEN pCustomerId = 0 OR pCustomerId IS NULL THEN `front_record`.`CustomerId` ELSE pCustomerId END
+    AND
+        `front_record`.`ShopId` = CASE WHEN pShopId = 0 OR pShopId IS NULL  THEN `front_record`.`CustomerId` ELSE pShopId END
+    AND 
+      CASE WHEN pStartDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` >= pStartDate END
+    AND 
+      CASE WHEN pEndDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` <= pEndDate END
+    ORDER BY `front_record`.`CreatedDate` DESC;
 END
 ;;
 DELIMITER ;

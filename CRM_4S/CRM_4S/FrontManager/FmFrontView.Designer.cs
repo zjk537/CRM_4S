@@ -31,6 +31,7 @@ namespace CRM_4S.FrontManager
             this.components = new System.ComponentModel.Container();
             this.gridControlFrontRecord = new DevExpress.XtraGrid.GridControl();
             this.sourceFrontCustomer = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmArrivalTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmLeaveTime = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,7 +53,6 @@ namespace CRM_4S.FrontManager
             this.clmAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCustomerNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridViewFrontRecord = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFrontRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceFrontCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFrontRecord)).BeginInit();
@@ -65,7 +65,7 @@ namespace CRM_4S.FrontManager
             this.gridControlFrontRecord.Location = new System.Drawing.Point(0, 0);
             this.gridControlFrontRecord.MainView = this.gridViewFrontRecord;
             this.gridControlFrontRecord.Name = "gridControlFrontRecord";
-            this.gridControlFrontRecord.Size = new System.Drawing.Size(990, 456);
+            this.gridControlFrontRecord.Size = new System.Drawing.Size(990, 421);
             this.gridControlFrontRecord.TabIndex = 0;
             this.gridControlFrontRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFrontRecord});
@@ -73,6 +73,38 @@ namespace CRM_4S.FrontManager
             // sourceFrontCustomer
             // 
             this.sourceFrontCustomer.DataSource = typeof(CRM_4S.Business.BusinessModel.FrontCustomerRecordInfo);
+            // 
+            // gridViewFrontRecord
+            // 
+            this.gridViewFrontRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.clmShopName,
+            this.clmArrivalTime,
+            this.clmLeaveTime,
+            this.clmConsultantName,
+            this.clmCustomerName,
+            this.clmCustomerPhone,
+            this.clmCNature,
+            this.clmToShopNum,
+            this.clmCurCar,
+            this.clmPurposeCar,
+            this.clmInstallment,
+            this.clmReplace,
+            this.clmDriveStatus,
+            this.clmLevel,
+            this.clmCarLicence,
+            this.clmSource,
+            this.clmIndustry,
+            this.clmDurationTime,
+            this.clmAddress,
+            this.clmCustomerNum,
+            this.clmRemark});
+            this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
+            this.gridViewFrontRecord.Name = "gridViewFrontRecord";
+            this.gridViewFrontRecord.OptionsBehavior.Editable = false;
+            this.gridViewFrontRecord.OptionsPrint.AutoWidth = false;
+            this.gridViewFrontRecord.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
+            this.gridViewFrontRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewFrontRecord_MouseDown);
             // 
             // clmShopName
             // 
@@ -125,7 +157,7 @@ namespace CRM_4S.FrontManager
             this.clmCNature.AppearanceCell.Options.UseTextOptions = true;
             this.clmCNature.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmCNature.Caption = "客户性质";
-            this.clmCNature.FieldName = "Customer.Nature";
+            this.clmCNature.FieldName = "CNatureName";
             this.clmCNature.Name = "clmCNature";
             this.clmCNature.Visible = true;
             this.clmCNature.VisibleIndex = 3;
@@ -149,7 +181,7 @@ namespace CRM_4S.FrontManager
             this.clmPurposeCar.AppearanceCell.Options.UseTextOptions = true;
             this.clmPurposeCar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmPurposeCar.Caption = "意向车型";
-            this.clmPurposeCar.FieldName = "FrontRecord.PurposeCar";
+            this.clmPurposeCar.FieldName = "PurposeCarName";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
             this.clmPurposeCar.VisibleIndex = 4;
@@ -159,7 +191,7 @@ namespace CRM_4S.FrontManager
             this.clmInstallment.AppearanceCell.Options.UseTextOptions = true;
             this.clmInstallment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmInstallment.Caption = "是否分期";
-            this.clmInstallment.FieldName = "FrontRecord.Installment";
+            this.clmInstallment.FieldName = "Installment";
             this.clmInstallment.Name = "clmInstallment";
             // 
             // clmReplace
@@ -167,7 +199,7 @@ namespace CRM_4S.FrontManager
             this.clmReplace.AppearanceCell.Options.UseTextOptions = true;
             this.clmReplace.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmReplace.Caption = "是否置换";
-            this.clmReplace.FieldName = "FrontRecord.Replace";
+            this.clmReplace.FieldName = "Replace";
             this.clmReplace.Name = "clmReplace";
             // 
             // clmDriveStatus
@@ -175,7 +207,7 @@ namespace CRM_4S.FrontManager
             this.clmDriveStatus.AppearanceCell.Options.UseTextOptions = true;
             this.clmDriveStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmDriveStatus.Caption = "是否试驾";
-            this.clmDriveStatus.FieldName = "FrontRecord.DriveStatus";
+            this.clmDriveStatus.FieldName = "DriveStatus";
             this.clmDriveStatus.Name = "clmDriveStatus";
             this.clmDriveStatus.Visible = true;
             this.clmDriveStatus.VisibleIndex = 5;
@@ -193,7 +225,7 @@ namespace CRM_4S.FrontManager
             this.clmCarLicence.AppearanceCell.Options.UseTextOptions = true;
             this.clmCarLicence.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmCarLicence.Caption = "牌照状况";
-            this.clmCarLicence.FieldName = "FrontRecord.CarLicence";
+            this.clmCarLicence.FieldName = "CarLicence";
             this.clmCarLicence.Name = "clmCarLicence";
             // 
             // clmSource
@@ -201,7 +233,7 @@ namespace CRM_4S.FrontManager
             this.clmSource.AppearanceCell.Options.UseTextOptions = true;
             this.clmSource.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmSource.Caption = "客户来源";
-            this.clmSource.FieldName = "FrontRecord.Source";
+            this.clmSource.FieldName = "CSource";
             this.clmSource.Name = "clmSource";
             this.clmSource.Visible = true;
             this.clmSource.VisibleIndex = 7;
@@ -244,44 +276,11 @@ namespace CRM_4S.FrontManager
             this.clmRemark.Visible = true;
             this.clmRemark.VisibleIndex = 10;
             // 
-            // gridViewFrontRecord
-            // 
-            this.gridViewFrontRecord.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.clmShopName,
-            this.clmArrivalTime,
-            this.clmLeaveTime,
-            this.clmConsultantName,
-            this.clmCustomerName,
-            this.clmCustomerPhone,
-            this.clmCNature,
-            this.clmToShopNum,
-            this.clmCurCar,
-            this.clmPurposeCar,
-            this.clmInstallment,
-            this.clmReplace,
-            this.clmDriveStatus,
-            this.clmLevel,
-            this.clmCarLicence,
-            this.clmSource,
-            this.clmIndustry,
-            this.clmDurationTime,
-            this.clmAddress,
-            this.clmCustomerNum,
-            this.clmRemark});
-            this.gridViewFrontRecord.GridControl = this.gridControlFrontRecord;
-            this.gridViewFrontRecord.Name = "gridViewFrontRecord";
-            this.gridViewFrontRecord.OptionsBehavior.Editable = false;
-            this.gridViewFrontRecord.OptionsPrint.AutoWidth = false;
-            this.gridViewFrontRecord.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridViewFrontRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewFrontRecord_CustomDrawRowIndicator);
-            this.gridViewFrontRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
-            this.gridViewFrontRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewFrontRecord_MouseDown);
-            // 
             // FmFrontView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 456);
+            this.ClientSize = new System.Drawing.Size(990, 421);
             this.Controls.Add(this.gridControlFrontRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmFrontView";

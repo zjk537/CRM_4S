@@ -67,7 +67,65 @@ namespace CRM_4S.Business.BusinessModel
                 dccRecord.DCCRecallerId = dccUser.Id;
             }
         }
+    
+        public String Sex
+        {
+            get
+            {
+                if(this.Customer.Sex.HasValue)
+                    return GlobalConstants.SexList[this.Customer.Sex.Value - 1];
+                return "";
+            }
+        }
 
+        public String DCCSource
+        {
+            get
+            {
+                if(this.DCCRecord.Source.HasValue)
+                    return GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == this.DCCRecord.Source.Value).Name;
+                return "";
+            }
+        }
+
+        public String PurposeCar
+        {
+            get
+            {
+                if(this.DCCRecord.PurposeCar.HasValue)
+                    return GlobalCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == this.DCCRecord.PurposeCar).ToString();
+                return "";
+            }
+        }
+
+        public String DCCStatus
+        {
+            get
+            {
+                if(this.DCCRecord.Status.HasValue)
+                    return GlobalConstants.DCCStatus[this.DCCRecord.Status.Value - 1];
+                return "";
+            }
+        }
+
+        public String RegionAddress
+        {
+            get
+            {
+                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == this.Customer.RegionId);
+                return string.Format("{0} {1}", region, this.Customer.Address);
+            }
+        }
+
+        public String Installment
+        {
+            get
+            {
+                if (this.DCCRecord.Installment.HasValue)
+                    return GlobalConstants.BooleanDesc[this.DCCRecord.Installment.Value - 1];
+                return "";
+            }
+        }
 
     }
 }

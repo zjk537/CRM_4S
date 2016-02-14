@@ -5,6 +5,7 @@ using CRM_4S.Model.DataModel;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,7 +100,15 @@ namespace CRM_4S.DCCManager
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = saveFileDialog.FileName;
-                XtraMessageBox.Show("保存成功");
+                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value, true, true);
+                try
+                {
+                    this.gridViewDCCRecord.ExportToXls(fileName, options);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(string.Format("保存失败：{0}", ex.ToString()), "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -144,6 +153,7 @@ namespace CRM_4S.DCCManager
                 qInfo = value;
                 if (qInfo != null)
                 {
+                    qInfo.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                     RefreshDCCRecordView();
                 }
             }
@@ -156,45 +166,6 @@ namespace CRM_4S.DCCManager
             gridControlDCCRecord.DefaultView.RefreshData();
         }
 
-        private void defaultGridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            if (e.Column.Name == "clmDCCSource")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.ConstantInfos.FirstOrDefault(info => info.Id == (int)e.CellValue).Name;
-                return;
-            }
-
-            if (e.Column.Name == "cmlDCCStatus")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.DCCStatus[(int)e.CellValue - 1];
-                return;
-            }
-
-            if (e.Column.Name == "clmPurposeCar")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalCaches.Instance.CarTypes.FirstOrDefault(t => t.Id == (int)e.CellValue).ToString();
-                return;
-            }
-
-
-            if (e.Column.Name == "clmCSex  ")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.SexList[(int)e.CellValue - 1];
-                return;
-            }
-            if (e.Column.Name == "clmInstallment")
-            {
-                e.DisplayText = e.CellValue == null ? "" : GlobalConstants.BooleanDesc[(int)e.CellValue - 1];
-                return;
-            }
-            if (e.Column.Name == "clmCAddress ")
-            {
-                var rowData = (DCCCustomerRecordInfo)this.gridViewDCCRecord.GetRow(e.RowHandle);
-                RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.Customer.RegionId);
-                e.DisplayText = string.Format("{0} {1}", region, rowData.Customer.Address);
-            }
-        }
-
         private void FmDCCView_Load(object sender, EventArgs e)
         {
             RefreshDCCRecordView();
@@ -202,11 +173,11 @@ namespace CRM_4S.DCCManager
 
         private void gridViewDCCRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            this.gridViewDCCRecord.IndicatorWidth = 40;
             if (e.Info.IsRowIndicator)
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
+            this.gridViewDCCRecord.IndicatorWidth = e.Info.DisplayText.Length + 25;
         }
 
         /// <summary>

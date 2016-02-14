@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S", "CRM_4S\CRM_4S.csproj", "{5CC691DF-DBF4-4A71-BC09-82B22E97DEC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S.Common", "CRM_4S.Common\CRM_4S.Common.csproj", "{29E7273B-73C9-483F-9264-1819561AC8CD}"
@@ -11,9 +13,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_4S.Business", "CRM_4S.Business\CRM_4S.Business.csproj", "{4AE1E38C-8511-47F3-BD55-471C5C93DB65}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup", "Setup\Setup.isproj", "{47E7A865-E749-4B02-9D8C-B162F2127854}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5CC691DF-DBF4-4A71-BC09-82B22E97DEC2} = {5CC691DF-DBF4-4A71-BC09-82B22E97DEC2}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM_4S.Service", "CRM_4S.Service", "{980108D9-FD72-40B7-8587-225F4F12500A}"
 EndProject

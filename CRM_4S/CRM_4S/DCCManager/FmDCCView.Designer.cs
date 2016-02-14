@@ -58,7 +58,7 @@ namespace CRM_4S.DCCManager
             this.gridControlDCCRecord.Location = new System.Drawing.Point(0, 0);
             this.gridControlDCCRecord.MainView = this.gridViewDCCRecord;
             this.gridControlDCCRecord.Name = "gridControlDCCRecord";
-            this.gridControlDCCRecord.Size = new System.Drawing.Size(817, 408);
+            this.gridControlDCCRecord.Size = new System.Drawing.Size(817, 377);
             this.gridControlDCCRecord.TabIndex = 0;
             this.gridControlDCCRecord.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDCCRecord});
@@ -90,7 +90,6 @@ namespace CRM_4S.DCCManager
             this.gridViewDCCRecord.OptionsPrint.AutoWidth = false;
             this.gridViewDCCRecord.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewDCCRecord.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDCCRecord_CustomDrawRowIndicator);
-            this.gridViewDCCRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.defaultGridView_CustomDrawCell);
             this.gridViewDCCRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewDCCRecord_MouseDown);
             // 
             // clmShopName
@@ -136,7 +135,7 @@ namespace CRM_4S.DCCManager
             this.clmCSex.AppearanceCell.Options.UseTextOptions = true;
             this.clmCSex.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmCSex.Caption = "性别";
-            this.clmCSex.FieldName = "Customer.Sex";
+            this.clmCSex.FieldName = "Sex";
             this.clmCSex.Name = "clmCSex";
             this.clmCSex.Visible = true;
             this.clmCSex.VisibleIndex = 2;
@@ -146,7 +145,7 @@ namespace CRM_4S.DCCManager
             this.clmDCCSource.AppearanceCell.Options.UseTextOptions = true;
             this.clmDCCSource.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmDCCSource.Caption = "客户来源";
-            this.clmDCCSource.FieldName = "DCCRecord.Source";
+            this.clmDCCSource.FieldName = "DCCSource";
             this.clmDCCSource.Name = "clmDCCSource";
             this.clmDCCSource.Visible = true;
             this.clmDCCSource.VisibleIndex = 3;
@@ -156,7 +155,7 @@ namespace CRM_4S.DCCManager
             this.clmPurposeCar.AppearanceCell.Options.UseTextOptions = true;
             this.clmPurposeCar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmPurposeCar.Caption = "意向车型";
-            this.clmPurposeCar.FieldName = "DCCRecord.PurposeCar";
+            this.clmPurposeCar.FieldName = "PurposeCar";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
             this.clmPurposeCar.VisibleIndex = 4;
@@ -166,7 +165,7 @@ namespace CRM_4S.DCCManager
             this.clmInstallment.AppearanceCell.Options.UseTextOptions = true;
             this.clmInstallment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.clmInstallment.Caption = "分期全款";
-            this.clmInstallment.FieldName = "DCCRecord.Installment";
+            this.clmInstallment.FieldName = "Installment";
             this.clmInstallment.Name = "clmInstallment";
             this.clmInstallment.Visible = true;
             this.clmInstallment.VisibleIndex = 5;
@@ -217,9 +216,9 @@ namespace CRM_4S.DCCManager
             // 
             // FmDCCView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 408);
+            this.ClientSize = new System.Drawing.Size(817, 377);
             this.Controls.Add(this.gridControlDCCRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmDCCView";
