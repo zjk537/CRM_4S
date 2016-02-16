@@ -14,15 +14,15 @@ namespace CRM_4S.Business
         /// <summary>
         /// 获取顾客信息
         /// </summary>
-        /// <param name="shop">shopId为0 时 获取所有系统店面的所有用户 </param>
+        /// <param name="info">shopId为0 时 获取所有系统店面的所有用户 </param>
         /// <returns></returns>
-        public IList<CustomerInfo> GetCustomers(CustomerInfo shop)
+        public IList<CustomerInfo> GetCustomers(CustomerInfo info)
         {
             var result = DoFunctionWithLog<ResultValue>(() =>
             {
                 var funcParms = new FunctionParms();
                 funcParms.FunctionName = "uspGetCustomers";
-                funcParms.Pams = shop.GetPams();
+                funcParms.Pams = info.GetPams();
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
             }, new ResultValue(), "GetCustomers.uspGetCustomers", true);

@@ -100,11 +100,13 @@ namespace CRM_4S.DCCManager
             // 
             // clmVisitTime
             // 
-            this.clmVisitTime.Caption = "创建时间";
+            this.clmVisitTime.Caption = "访问时间";
             this.clmVisitTime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.clmVisitTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmVisitTime.FieldName = "DCCRecord.VisitTime";
             this.clmVisitTime.Name = "clmVisitTime";
+            this.clmVisitTime.Visible = true;
+            this.clmVisitTime.VisibleIndex = 0;
             // 
             // clmRecallTime
             // 
@@ -120,7 +122,7 @@ namespace CRM_4S.DCCManager
             this.clmCPhone.FieldName = "Customer.Phone";
             this.clmCPhone.Name = "clmCPhone";
             this.clmCPhone.Visible = true;
-            this.clmCPhone.VisibleIndex = 0;
+            this.clmCPhone.VisibleIndex = 1;
             // 
             // clmCName
             // 
@@ -128,7 +130,7 @@ namespace CRM_4S.DCCManager
             this.clmCName.FieldName = "Customer.Name";
             this.clmCName.Name = "clmCName";
             this.clmCName.Visible = true;
-            this.clmCName.VisibleIndex = 1;
+            this.clmCName.VisibleIndex = 2;
             // 
             // clmCSex
             // 
@@ -138,7 +140,7 @@ namespace CRM_4S.DCCManager
             this.clmCSex.FieldName = "Sex";
             this.clmCSex.Name = "clmCSex";
             this.clmCSex.Visible = true;
-            this.clmCSex.VisibleIndex = 2;
+            this.clmCSex.VisibleIndex = 3;
             // 
             // clmDCCSource
             // 
@@ -148,7 +150,7 @@ namespace CRM_4S.DCCManager
             this.clmDCCSource.FieldName = "DCCSource";
             this.clmDCCSource.Name = "clmDCCSource";
             this.clmDCCSource.Visible = true;
-            this.clmDCCSource.VisibleIndex = 3;
+            this.clmDCCSource.VisibleIndex = 4;
             // 
             // clmPurposeCar
             // 
@@ -158,7 +160,7 @@ namespace CRM_4S.DCCManager
             this.clmPurposeCar.FieldName = "PurposeCar";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
-            this.clmPurposeCar.VisibleIndex = 4;
+            this.clmPurposeCar.VisibleIndex = 5;
             // 
             // clmInstallment
             // 
@@ -168,7 +170,7 @@ namespace CRM_4S.DCCManager
             this.clmInstallment.FieldName = "Installment";
             this.clmInstallment.Name = "clmInstallment";
             this.clmInstallment.Visible = true;
-            this.clmInstallment.VisibleIndex = 5;
+            this.clmInstallment.VisibleIndex = 6;
             // 
             // clmLevel
             // 
@@ -176,7 +178,7 @@ namespace CRM_4S.DCCManager
             this.clmLevel.FieldName = "DCCRecord.LevelCode";
             this.clmLevel.Name = "clmLevel";
             this.clmLevel.Visible = true;
-            this.clmLevel.VisibleIndex = 6;
+            this.clmLevel.VisibleIndex = 7;
             // 
             // clmToShopTime
             // 
@@ -188,7 +190,7 @@ namespace CRM_4S.DCCManager
             this.clmToShopTime.FieldName = "DCCRecord.ToShopTime";
             this.clmToShopTime.Name = "clmToShopTime";
             this.clmToShopTime.Visible = true;
-            this.clmToShopTime.VisibleIndex = 7;
+            this.clmToShopTime.VisibleIndex = 8;
             // 
             // clmRecallerName
             // 
@@ -196,7 +198,7 @@ namespace CRM_4S.DCCManager
             this.clmRecallerName.FieldName = "DCCUser.RealName";
             this.clmRecallerName.Name = "clmRecallerName";
             this.clmRecallerName.Visible = true;
-            this.clmRecallerName.VisibleIndex = 8;
+            this.clmRecallerName.VisibleIndex = 9;
             // 
             // clmCAddress
             // 
@@ -204,7 +206,7 @@ namespace CRM_4S.DCCManager
             this.clmCAddress.FieldName = "Customer.Address";
             this.clmCAddress.Name = "clmCAddress";
             this.clmCAddress.Visible = true;
-            this.clmCAddress.VisibleIndex = 9;
+            this.clmCAddress.VisibleIndex = 10;
             // 
             // clmRecallDesc
             // 
@@ -212,7 +214,7 @@ namespace CRM_4S.DCCManager
             this.clmRecallDesc.FieldName = "DCCRecord.RecallDesc";
             this.clmRecallDesc.Name = "clmRecallDesc";
             this.clmRecallDesc.Visible = true;
-            this.clmRecallDesc.VisibleIndex = 10;
+            this.clmRecallDesc.VisibleIndex = 11;
             // 
             // FmDCCView
             // 

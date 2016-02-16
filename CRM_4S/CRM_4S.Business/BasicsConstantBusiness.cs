@@ -47,5 +47,23 @@ namespace CRM_4S.Business
 
             }, null, "GetBasicConstants.ConvertToList", true);
         }
+
+        public void AddBasicConstant(BasicConstantInfo info)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspAddBasicContant";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncGetResults(functionParms);
+            }, new ResultValue(), "AddBasicConstant.uspAddBasicContant", true);
+
+            if (!result.Faild)
+            {
+                info.Id = Convert.ToInt32(result.ResultTable.Rows[0][0]);
+            }
+        }
+
     }
 }

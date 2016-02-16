@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace CRM_4S.Common
 {
@@ -22,10 +23,10 @@ namespace CRM_4S.Common
         {
             ResetToNormalColumnView(baseView as ColumnView, showViewCaption, isMultiSelect, isColumnAutoWidth, allowAddRows, alloweleteRows);
 
-            ResetToNormalGridView(baseView as GridView,isColumnAutoWidth);
+            ResetToNormalGridView(baseView as GridView, isColumnAutoWidth);
         }
 
-        private static void ResetToNormalColumnView(ColumnView columnView,bool showViewCaption, bool isMultiSelect = false,bool isColumnAutoWidth=false
+        private static void ResetToNormalColumnView(ColumnView columnView, bool showViewCaption, bool isMultiSelect = false, bool isColumnAutoWidth = false
             , DefaultBoolean allowAddRows = DefaultBoolean.False, DefaultBoolean alloweleteRows = DefaultBoolean.False)
         {
             if (columnView == null) return;
@@ -42,7 +43,7 @@ namespace CRM_4S.Common
             //columnView.CustomUnboundColumnData+=Colu
         }
 
-        private static void ResetToNormalGridView(GridView gridView,bool isColumnAutoWidth=false)
+        private static void ResetToNormalGridView(GridView gridView, bool isColumnAutoWidth = false)
         {
             if (gridView == null) return;
 
@@ -65,7 +66,7 @@ namespace CRM_4S.Common
 
             //gridView.IndicatorWidth = 40;
             //gridView.CustomDrawRowIndicator += GridView_CustomDrawRowIndicator;
-        } 
+        }
 
         /// <summary>
         /// Grid数据为空时的显示信息
@@ -105,7 +106,7 @@ namespace CRM_4S.Common
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
         }
-        
+
         /// <summary>
         /// 拖动选中行（仅在允许多选时有效）
         /// </summary>
@@ -124,5 +125,7 @@ namespace CRM_4S.Common
                 }
             }
         }
+
+
     }
 }

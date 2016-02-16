@@ -115,10 +115,12 @@ namespace CRM_4S.FrontManager
             // clmArrivalTime
             // 
             this.clmArrivalTime.Caption = "到店时间";
-            this.clmArrivalTime.DisplayFormat.FormatString = "d";
+            this.clmArrivalTime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm";
             this.clmArrivalTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clmArrivalTime.FieldName = "FrontRecord.ArrivalTime";
             this.clmArrivalTime.Name = "clmArrivalTime";
+            this.clmArrivalTime.Visible = true;
+            this.clmArrivalTime.VisibleIndex = 0;
             // 
             // clmLeaveTime
             // 
@@ -134,7 +136,7 @@ namespace CRM_4S.FrontManager
             this.clmConsultantName.FieldName = "ConsultantUser.RealName";
             this.clmConsultantName.Name = "clmConsultantName";
             this.clmConsultantName.Visible = true;
-            this.clmConsultantName.VisibleIndex = 0;
+            this.clmConsultantName.VisibleIndex = 1;
             // 
             // clmCustomerName
             // 
@@ -142,7 +144,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerName.FieldName = "Customer.Name";
             this.clmCustomerName.Name = "clmCustomerName";
             this.clmCustomerName.Visible = true;
-            this.clmCustomerName.VisibleIndex = 1;
+            this.clmCustomerName.VisibleIndex = 2;
             // 
             // clmCustomerPhone
             // 
@@ -150,7 +152,7 @@ namespace CRM_4S.FrontManager
             this.clmCustomerPhone.FieldName = "Customer.Phone";
             this.clmCustomerPhone.Name = "clmCustomerPhone";
             this.clmCustomerPhone.Visible = true;
-            this.clmCustomerPhone.VisibleIndex = 2;
+            this.clmCustomerPhone.VisibleIndex = 3;
             // 
             // clmCNature
             // 
@@ -160,7 +162,7 @@ namespace CRM_4S.FrontManager
             this.clmCNature.FieldName = "CNatureName";
             this.clmCNature.Name = "clmCNature";
             this.clmCNature.Visible = true;
-            this.clmCNature.VisibleIndex = 3;
+            this.clmCNature.VisibleIndex = 4;
             // 
             // clmToShopNum
             // 
@@ -184,7 +186,7 @@ namespace CRM_4S.FrontManager
             this.clmPurposeCar.FieldName = "PurposeCarName";
             this.clmPurposeCar.Name = "clmPurposeCar";
             this.clmPurposeCar.Visible = true;
-            this.clmPurposeCar.VisibleIndex = 4;
+            this.clmPurposeCar.VisibleIndex = 5;
             // 
             // clmInstallment
             // 
@@ -210,7 +212,7 @@ namespace CRM_4S.FrontManager
             this.clmDriveStatus.FieldName = "DriveStatus";
             this.clmDriveStatus.Name = "clmDriveStatus";
             this.clmDriveStatus.Visible = true;
-            this.clmDriveStatus.VisibleIndex = 5;
+            this.clmDriveStatus.VisibleIndex = 6;
             // 
             // clmLevel
             // 
@@ -218,7 +220,7 @@ namespace CRM_4S.FrontManager
             this.clmLevel.FieldName = "FrontRecord.LevelCode";
             this.clmLevel.Name = "clmLevel";
             this.clmLevel.Visible = true;
-            this.clmLevel.VisibleIndex = 6;
+            this.clmLevel.VisibleIndex = 7;
             // 
             // clmCarLicence
             // 
@@ -236,7 +238,7 @@ namespace CRM_4S.FrontManager
             this.clmSource.FieldName = "CSource";
             this.clmSource.Name = "clmSource";
             this.clmSource.Visible = true;
-            this.clmSource.VisibleIndex = 7;
+            this.clmSource.VisibleIndex = 8;
             // 
             // clmIndustry
             // 
@@ -250,7 +252,7 @@ namespace CRM_4S.FrontManager
             this.clmDurationTime.FieldName = "FrontRecord.DurationTime";
             this.clmDurationTime.Name = "clmDurationTime";
             this.clmDurationTime.Visible = true;
-            this.clmDurationTime.VisibleIndex = 8;
+            this.clmDurationTime.VisibleIndex = 9;
             // 
             // clmAddress
             // 
@@ -258,7 +260,7 @@ namespace CRM_4S.FrontManager
             this.clmAddress.FieldName = "Customer.Address";
             this.clmAddress.Name = "clmAddress";
             this.clmAddress.Visible = true;
-            this.clmAddress.VisibleIndex = 9;
+            this.clmAddress.VisibleIndex = 10;
             // 
             // clmCustomerNum
             // 
@@ -274,7 +276,7 @@ namespace CRM_4S.FrontManager
             this.clmRemark.FieldName = "FrontRecord.Remark";
             this.clmRemark.Name = "clmRemark";
             this.clmRemark.Visible = true;
-            this.clmRemark.VisibleIndex = 10;
+            this.clmRemark.VisibleIndex = 11;
             // 
             // FmFrontView
             // 

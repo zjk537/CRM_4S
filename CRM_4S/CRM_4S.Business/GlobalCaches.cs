@@ -11,7 +11,7 @@ namespace CRM_4S.Business
     public class GlobalCaches
     {
         /// <summary>
-        /// 数据仓储超时时间
+        /// 数据仓储超时时间 分钟
         /// </summary>
         const int mSourceCacheTimeOutMin = 5;
         /// <summary>
@@ -104,16 +104,15 @@ namespace CRM_4S.Business
                             this.CacheLastUpdatedTimes.Remove(cacheKeyShop);
                         }
                     }
-
-                    return shopInfos;
                 }
+                return shopInfos;
             }
         }
 
 
 
         List<RoleInfo> roleInfos = null;
-        const String cacheKeyRole = "RoleInfos";
+        //const String cacheKeyRole = "RoleInfos";
         /// <summary>
         /// 角色列表
         /// </summary>
@@ -121,21 +120,24 @@ namespace CRM_4S.Business
         {
             get
             {
-                lock (lockObj)
+                //lock (lockObj)
+                //{
+                //    if (NeedRefrenceCache(cacheKeyRole))
+                //    {
+                //        if (roleInfos != null) roleInfos.Clear();
+                //        else roleInfos = new List<RoleInfo>();
+
+                //        roleInfos.AddRange(RoleBusiness.Instance.GetRoles());
+                //        if (roleInfos.Count == 0)
+                //        {
+                //            this.CacheLastUpdatedTimes.Remove(cacheKeyRole);
+                //        }
+                //    }
+                //}
+                if (roleInfos == null || roleInfos.Count == 0)
                 {
-                    if (NeedRefrenceCache(cacheKeyRole))
-                    {
-                        if (roleInfos != null) roleInfos.Clear();
-                        else roleInfos = new List<RoleInfo>();
-
-                        roleInfos.AddRange(RoleBusiness.Instance.GetRoles());
-                        if (roleInfos.Count == 0)
-                        {
-                            this.CacheLastUpdatedTimes.Remove(cacheKeyRole);
-                        }
-                    }
+                    roleInfos = RoleBusiness.Instance.GetRoles().ToList();
                 }
-
 
                 return roleInfos;
             }
@@ -184,14 +186,11 @@ namespace CRM_4S.Business
         {
             get
             {
-                lock (lockObj)
+                if (constantInfos == null || constantInfos.Count == 0)
                 {
-                    if (constantInfos == null)
-                    {
-                        constantInfos = BasicsConstantBusiness.Instance.GetBasicConstants(this.CurUser.ShopId).ToList();
-                    }
-                    return constantInfos;
+                    constantInfos = BasicsConstantBusiness.Instance.GetBasicConstants(this.CurUser.ShopId).ToList();
                 }
+                return constantInfos;
             }
         }
 
@@ -203,14 +202,11 @@ namespace CRM_4S.Business
         {
             get
             {
-                lock (lockObj)
+                if (regionInfos == null)
                 {
-                    if (regionInfos == null)
-                    {
-                        regionInfos = BasicsConstantBusiness.Instance.GetRegions(this.CurUser.ShopId).ToList();
-                    }
-                    return regionInfos;
+                    regionInfos = BasicsConstantBusiness.Instance.GetRegions(this.CurUser.ShopId).ToList();
                 }
+                return regionInfos;
             }
         }
 

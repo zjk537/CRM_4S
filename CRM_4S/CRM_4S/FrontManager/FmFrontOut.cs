@@ -149,7 +149,10 @@ namespace CRM_4S.FrontManager
                 if (newRecordInfo.Customer.Id == 0)
                     CustomerBusiness.Instance.AddCustomer(newRecordInfo.Customer);
                 else
+                {
+                    newRecordInfo.Customer.IdSpecify = true;
                     CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
+                }
 
 
                 newRecordInfo.FrontRecord.Id = recordInfo.FrontRecord.Id;
@@ -233,11 +236,13 @@ namespace CRM_4S.FrontManager
             this.txtCPhone.DataBindings.Clear();
             this.txtCIndustry.DataBindings.Clear();
             this.txtCAddress.DataBindings.Clear();
+            this.txtCurCar.DataBindings.Clear();
 
             this.txtCName.DataBindings.Add("Text", info, "Name");
             this.txtCPhone.DataBindings.Add("Text", info, "Phone");
             this.txtCIndustry.DataBindings.Add("Text", info, "Industry");
             this.txtCAddress.DataBindings.Add("Text", info, "Address");
+            this.txtCurCar.DataBindings.Add("Text", info, "CurCar");
             this.cbCNature.SelectedIndex = info.Nature ?? 0;
 
             if (info.Id == 0)

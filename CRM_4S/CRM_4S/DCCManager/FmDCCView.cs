@@ -31,6 +31,22 @@ namespace CRM_4S.DCCManager
         }
 
         #region Public control
+        private BarButtonItem btnNewDCCRecall = null;
+        public BarButtonItem BtnNewDCCRecall
+        {
+            get { return btnNewDCCRecall; }
+            set
+            {
+                btnNewDCCRecall = value;
+                if (btnNewDCCRecall != null)
+                {
+                    btnNewDCCRecall.ItemClick += btnNewDCCRecall_ItemClick;
+                    btnNewDCCRecall.Enabled = GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin;
+                }
+            }
+        }
+
+       
 
         private BarButtonItem btnDCCRecall = null;
         public BarButtonItem BtnDCCRecall
@@ -130,6 +146,10 @@ namespace CRM_4S.DCCManager
             }
         }
 
+        private void btnNewDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new FmDCCRecall().ShowDialog();
+        }
 
         #endregion
 

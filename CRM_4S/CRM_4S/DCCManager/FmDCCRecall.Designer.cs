@@ -128,8 +128,8 @@ namespace CRM_4S.DCCManager
             this.rbSex.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.rbSex.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.rbSex.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "是"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "否")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "男"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "女")});
             this.rbSex.Size = new System.Drawing.Size(106, 22);
             this.rbSex.TabIndex = 2;
             // 
@@ -141,14 +141,14 @@ namespace CRM_4S.DCCManager
             this.cbRegion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbRegion.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbRegion.Size = new System.Drawing.Size(182, 20);
+            this.cbRegion.Size = new System.Drawing.Size(182, 21);
             this.cbRegion.TabIndex = 3;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(10, 127);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 13);
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
             this.labelControl2.TabIndex = 1052;
             this.labelControl2.Text = "居住地址";
             // 
@@ -156,7 +156,7 @@ namespace CRM_4S.DCCManager
             // 
             this.lblSex.Location = new System.Drawing.Point(11, 96);
             this.lblSex.Name = "lblSex";
-            this.lblSex.Size = new System.Drawing.Size(24, 13);
+            this.lblSex.Size = new System.Drawing.Size(24, 14);
             this.lblSex.TabIndex = 1051;
             this.lblSex.Text = "性别";
             // 
@@ -164,7 +164,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl1.Location = new System.Drawing.Point(11, 34);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 13);
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 1049;
             this.labelControl1.Text = "联系方式";
             // 
@@ -172,7 +172,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl5.Location = new System.Drawing.Point(11, 65);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(48, 13);
+            this.labelControl5.Size = new System.Drawing.Size(48, 14);
             this.labelControl5.TabIndex = 1050;
             this.labelControl5.Text = "顾客姓名";
             // 
@@ -184,9 +184,10 @@ namespace CRM_4S.DCCManager
             this.txtCPhone.Name = "txtCPhone";
             this.txtCPhone.Properties.NullValuePrompt = "默认为空";
             this.txtCPhone.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCPhone.Size = new System.Drawing.Size(182, 20);
+            this.txtCPhone.Size = new System.Drawing.Size(182, 21);
             this.txtCPhone.TabIndex = 0;
             this.txtCPhone.TextChanged += new System.EventHandler(this.txtCPhone_TextChanged);
+            this.txtCPhone.Leave += new System.EventHandler(this.txtCPhone_Leave);
             // 
             // txtCName
             // 
@@ -196,7 +197,7 @@ namespace CRM_4S.DCCManager
             this.txtCName.Name = "txtCName";
             this.txtCName.Properties.NullValuePrompt = "默认为空";
             this.txtCName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCName.Size = new System.Drawing.Size(182, 20);
+            this.txtCName.Size = new System.Drawing.Size(182, 21);
             this.txtCName.TabIndex = 1;
             // 
             // txtCAddress
@@ -252,14 +253,14 @@ namespace CRM_4S.DCCManager
             this.dtVisitTime.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtVisitTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtVisitTime.Size = new System.Drawing.Size(182, 20);
+            this.dtVisitTime.Size = new System.Drawing.Size(182, 21);
             this.dtVisitTime.TabIndex = 7;
             // 
             // labelControl12
             // 
             this.labelControl12.Location = new System.Drawing.Point(262, 63);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(48, 13);
+            this.labelControl12.Size = new System.Drawing.Size(48, 14);
             this.labelControl12.TabIndex = 1044;
             this.labelControl12.Text = "访问时间";
             // 
@@ -323,14 +324,14 @@ namespace CRM_4S.DCCManager
             this.dtToShopTime.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtToShopTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtToShopTime.Size = new System.Drawing.Size(182, 20);
+            this.dtToShopTime.Size = new System.Drawing.Size(182, 21);
             this.dtToShopTime.TabIndex = 5;
             // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(7, 63);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(48, 13);
+            this.labelControl4.Size = new System.Drawing.Size(48, 14);
             this.labelControl4.TabIndex = 1042;
             this.labelControl4.Text = "意向级别";
             // 
@@ -342,14 +343,14 @@ namespace CRM_4S.DCCManager
             this.cbCLevel.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCLevel.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbCLevel.Size = new System.Drawing.Size(182, 20);
+            this.cbCLevel.Size = new System.Drawing.Size(182, 21);
             this.cbCLevel.TabIndex = 1;
             // 
             // labelControl11
             // 
             this.labelControl11.Location = new System.Drawing.Point(262, 96);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(36, 13);
+            this.labelControl11.Size = new System.Drawing.Size(36, 14);
             this.labelControl11.TabIndex = 1040;
             this.labelControl11.Text = "回访人";
             // 
@@ -361,14 +362,14 @@ namespace CRM_4S.DCCManager
             this.cbRecaller.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbRecaller.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbRecaller.Size = new System.Drawing.Size(182, 20);
+            this.cbRecaller.Size = new System.Drawing.Size(182, 21);
             this.cbRecaller.TabIndex = 8;
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(262, 33);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(24, 13);
+            this.labelControl3.Size = new System.Drawing.Size(24, 14);
             this.labelControl3.TabIndex = 1036;
             this.labelControl3.Text = "分期";
             // 
@@ -376,7 +377,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl10.Location = new System.Drawing.Point(262, 127);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(48, 13);
+            this.labelControl10.Size = new System.Drawing.Size(48, 14);
             this.labelControl10.TabIndex = 1038;
             this.labelControl10.Text = "回访详情";
             // 
@@ -384,7 +385,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl14.Location = new System.Drawing.Point(7, 160);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(48, 13);
+            this.labelControl14.Size = new System.Drawing.Size(48, 14);
             this.labelControl14.TabIndex = 1036;
             this.labelControl14.Text = "是否到店";
             // 
@@ -392,7 +393,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl6.Location = new System.Drawing.Point(7, 127);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(48, 13);
+            this.labelControl6.Size = new System.Drawing.Size(48, 14);
             this.labelControl6.TabIndex = 1036;
             this.labelControl6.Text = "线索状态";
             // 
@@ -400,7 +401,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl9.Location = new System.Drawing.Point(7, 192);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(48, 13);
+            this.labelControl9.Size = new System.Drawing.Size(48, 14);
             this.labelControl9.TabIndex = 1036;
             this.labelControl9.Text = "到店时间";
             // 
@@ -408,7 +409,7 @@ namespace CRM_4S.DCCManager
             // 
             this.labelControl8.Location = new System.Drawing.Point(7, 34);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(48, 13);
+            this.labelControl8.Size = new System.Drawing.Size(48, 14);
             this.labelControl8.TabIndex = 1033;
             this.labelControl8.Text = "意向车型";
             // 
@@ -420,14 +421,14 @@ namespace CRM_4S.DCCManager
             this.cbCarType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbCarType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbCarType.Size = new System.Drawing.Size(182, 20);
+            this.cbCarType.Size = new System.Drawing.Size(182, 21);
             this.cbCarType.TabIndex = 0;
             // 
             // labelControl7
             // 
             this.labelControl7.Location = new System.Drawing.Point(7, 96);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(48, 13);
+            this.labelControl7.Size = new System.Drawing.Size(48, 14);
             this.labelControl7.TabIndex = 1031;
             this.labelControl7.Text = "线索来源";
             // 
@@ -439,7 +440,7 @@ namespace CRM_4S.DCCManager
             this.cbDCCSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbDCCSource.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbDCCSource.Size = new System.Drawing.Size(182, 20);
+            this.cbDCCSource.Size = new System.Drawing.Size(182, 21);
             this.cbDCCSource.TabIndex = 2;
             // 
             // txtRemark

@@ -66,10 +66,10 @@ namespace CRM_4S.FrontManager
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtCPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtCurCar = new DevExpress.XtraEditors.TextEdit();
-            this.txtCName = new DevExpress.XtraEditors.TextEdit();
             this.txtCAddress = new DevExpress.XtraEditors.MemoEdit();
             this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.frontRecordInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtCName = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -95,10 +95,10 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.cbCNature.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurCar.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -218,9 +218,9 @@ namespace CRM_4S.FrontManager
             this.groupControl2.Controls.Add(this.cbCNature);
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.labelControl5);
+            this.groupControl2.Controls.Add(this.txtCName);
             this.groupControl2.Controls.Add(this.txtCPhone);
             this.groupControl2.Controls.Add(this.txtCurCar);
-            this.groupControl2.Controls.Add(this.txtCName);
             this.groupControl2.Controls.Add(this.txtCAddress);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl2.Location = new System.Drawing.Point(272, 2);
@@ -516,17 +516,6 @@ namespace CRM_4S.FrontManager
             this.txtCurCar.Size = new System.Drawing.Size(182, 21);
             this.txtCurCar.TabIndex = 3;
             // 
-            // txtCName
-            // 
-            this.txtCName.EditValue = "";
-            this.txtCName.EnterMoveNextControl = true;
-            this.txtCName.Location = new System.Drawing.Point(71, 63);
-            this.txtCName.Name = "txtCName";
-            this.txtCName.Properties.NullValuePrompt = "<必填>";
-            this.txtCName.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCName.Size = new System.Drawing.Size(182, 21);
-            this.txtCName.TabIndex = 1;
-            // 
             // txtCAddress
             // 
             this.txtCAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -547,6 +536,19 @@ namespace CRM_4S.FrontManager
             // frontRecordInfoBindingSource
             // 
             this.frontRecordInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.FrontRecordInfo);
+            // 
+            // txtCName
+            // 
+            this.txtCName.EditValue = "";
+            this.txtCName.EnterMoveNextControl = true;
+            this.txtCName.Location = new System.Drawing.Point(71, 63);
+            this.txtCName.Name = "txtCName";
+            this.txtCName.Properties.NullValuePrompt = "<必填>";
+            this.txtCName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCName.Size = new System.Drawing.Size(182, 21);
+            this.txtCName.TabIndex = 0;
+            this.txtCName.TextChanged += new System.EventHandler(this.txtCPhone_TextChanged);
+            this.txtCName.Leave += new System.EventHandler(this.txtCPhone_Leave);
             // 
             // FmFrontOut
             // 
@@ -587,10 +589,10 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.cbCNature.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurCar.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -626,7 +628,6 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtCPhone;
-        private DevExpress.XtraEditors.TextEdit txtCName;
         private DevExpress.XtraEditors.MemoEdit txtCAddress;
         private DevExpress.XtraEditors.ComboBoxEdit cbRegion;
         private DevExpress.XtraEditors.LabelControl labelControl11;
@@ -638,6 +639,7 @@ namespace CRM_4S.FrontManager
         private DevExpress.XtraEditors.RadioGroup rdInstallment;
         private DevExpress.XtraEditors.TextEdit txtCurCar;
         private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.TextEdit txtCName;
 
 
     }
