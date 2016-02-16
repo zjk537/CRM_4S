@@ -1,7 +1,7 @@
-﻿/*
+/*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : MySql(172.0.0.1)
 Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : crm_4s
@@ -10,14 +10,13 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-13 16:47:38
+Date: 2016-02-16 17:06:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 CREATE DATABASE IF NOT EXISTS crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use crm_4s;
-
 -- ----------------------------
 -- Table structure for analyse_kpi
 -- ----------------------------
@@ -38,6 +37,10 @@ CREATE TABLE `analyse_kpi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of analyse_kpi
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for basic_constant
 -- ----------------------------
 DROP TABLE IF EXISTS `basic_constant`;
@@ -52,7 +55,47 @@ CREATE TABLE `basic_constant` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of basic_constant
+-- ----------------------------
+INSERT INTO `basic_constant` VALUES ('1', '0', '全部', '1', 'QType', '2', '问题类型', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('2', '0', '店面前台', '2', 'QType', '2', '问题类型', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('3', '0', 'DCC专员', '3', 'QType', '2', '问题类型', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('4', '0', '新增到店', '1', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('5', '0', '再次到店', '2', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('6', '0', '电销邀约', '3', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('7', '0', '外展留档', '4', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('8', '0', '二级网点', '5', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:04');
+INSERT INTO `basic_constant` VALUES ('9', '0', '其它到店', '6', 'CNature', '3', '顾客性质', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('10', '0', '已有牌照', '1', 'CarLicence', '4', '牌照状况', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('11', '0', '待拍牌照', '2', 'CarLicence', '4', '牌照状况', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('12', '0', '旧车退牌', '2', 'CarLicence', '4', '牌照状况', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('13', '0', '郊区牌照', '3', 'CarLicence', '4', '牌照状况', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('14', '0', '外省上牌', '4', 'CarLicence', '4', '牌照状况', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('15', '0', '自然到店', '1', 'FrontSource', '5', '前台用户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('16', '0', '网站预约', '2', 'FrontSource', '5', '前台用户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('17', '0', '朋友介绍', '3', 'FrontSource', '5', '前台用户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('18', '0', '丰田', '1', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('19', '0', 'BYD', '2', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('20', '0', '广汽', '3', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('21', '0', '哈弗', '4', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('22', '0', '宝马', '5', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('23', '0', '其他', '6', 'CarBrand', '6', '汽车品牌', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('24', '0', '易车', '1', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('25', '0', '汽车之家', '2', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('26', '0', '第一车市', '3', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('27', '0', '厂家平台', '4', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('28', '0', '展厅战败', '5', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('29', '0', '其它渠道', '6', 'DCCSource', '7', 'DCC 线索来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('30', '0', '未完成', '1', 'TaskStauts', '11', '销售顾问任务状态', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('31', '0', '已完成', '2', 'TaskStauts', '11', '销售顾问任务状态', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('32', '0', '未知', '3', 'TaskStauts', '11', '销售顾问任务状态', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('33', '0', '邀约', '0', 'FrontSource', '5', '导入前台客户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('34', '0', '自然进店', '0', 'FrontSource', '5', '导入前台客户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('35', '0', '网络', '0', 'FrontSource', '5', '导入前台客户来源', null, '2016-02-14 09:37:05');
+INSERT INTO `basic_constant` VALUES ('36', '0', ' 汽车垂直网站 ', '0', 'DCCSource', '5', '导入DCC客户来源', null, '2016-02-14 09:37:05');
 
 -- ----------------------------
 -- Table structure for car_type
@@ -67,7 +110,18 @@ CREATE TABLE `car_type` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of car_type
+-- ----------------------------
+INSERT INTO `car_type` VALUES ('1', '0', '其他', '301', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('2', '0', '其他', '308', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('3', '0', '其他', '2008', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('4', '0', '其他', '3008', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('5', '0', '其他', '其他', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('6', '0', '其他', '新408', '前台_导入车型', null, '2016-02-14 09:50:36');
+INSERT INTO `car_type` VALUES ('7', '0', '其他', '508', '前台_导入车型', null, '2016-02-14 09:50:36');
 
 -- ----------------------------
 -- Table structure for customer
@@ -90,7 +144,117 @@ CREATE TABLE `customer` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of customer
+-- ----------------------------
+INSERT INTO `customer` VALUES ('1', '1', '李先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('2', '1', '赵先生', null, '13963659086', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('3', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('4', '1', '方先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('5', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('6', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('7', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('8', '1', '郭女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('9', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('10', '1', '孙女士', null, '15006568928', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('11', '1', '崔先生', null, '18953608716', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('12', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('13', '1', '王先生', null, '15966112728', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('14', '1', '冯先生', null, '15154491777', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('15', '1', '程先生', null, '18263608598', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('16', '1', '陈先生', null, '15265689621', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('17', '1', '王先生', null, '13465718831', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('18', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('19', '1', '郭先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('20', '1', '刘先生', null, '15689862558', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('21', '1', '孟先生', null, '18253620410', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('22', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('23', '1', '苏先生', null, '15662570886', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('24', '1', '马先生', null, '15553631597', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('25', '1', '周先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('26', '1', '曲女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('27', '1', '李先生', null, '13098187876', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('28', '1', '王女士', null, '18653663800', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('29', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('30', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('31', '1', '郭先生', null, '13792681865', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('32', '1', '马先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('33', '1', '吴先生', null, '15054572167', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('34', '1', '黄女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('35', '1', '尹先生', null, '13854430622', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('36', '1', '苏先生', null, '15095205588', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 09:50:36');
+INSERT INTO `customer` VALUES ('64', '1', ' 范宁波 ', '1', ' 15916981358 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('65', '1', ' 舒清林 ', '1', ' 18823306888 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('66', '1', ' 邓根兴 ', '1', ' 13544610432 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('67', '1', ' 王涛 ', '1', ' 13712761002 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('68', '1', ' 覃生 ', '1', ' 18520811538 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('69', '1', ' 马卫周 ', '1', ' 15711162697 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('70', '1', ' 张 ', '1', ' 13686630309 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('71', '1', ' 李 ', '1', ' 18771078679 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('72', '1', ' 尹才庭 ', '1', ' 18928237205 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('73', '1', ' 汤汤 ', '1', ' 13826960611 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('74', '1', ' 潘国美 ', '1', ' 18650095676 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('75', '1', ' 凌振 ', '1', ' 13826957027 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('76', '1', ' 18988727509 ', '1', ' 18802691558 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('77', '1', ' 叶文波 ', '1', ' 18988727509 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('78', '1', ' 谢佩伶 ', '1', ' 13532387109 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('79', '1', ' 吴耿文 ', '1', ' 15918352331 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('80', '1', ' 易车网2015070137 ', '1', ' 13902601734 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('81', '1', ' 叶 ', '2', ' 051082447009 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('82', '1', ' 麦伟峰 ', '2', ' 18666462392 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('83', '1', ' 王锐标 ', '2', ' 13431429517 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('84', '1', ' 易车网2014120740 ', '2', ' 18922947888 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('85', '1', ' 徐 旭 ', '2', ' 15915440979 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('86', '1', ' 程 ', '2', ' 13450086448 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('87', '1', ' 胡望平 ', '2', ' 13790342750 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('88', '1', ' 张 ', '2', ' 18664061146 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('89', '1', ' 官瑞城 ', '2', ' 13724438302 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('90', '1', ' 易车网2015070167 ', '2', ' 13827220903 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('91', '1', ' 李若彤唐 ', '2', ' 18128661998 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('92', '1', ' 汤应兵 ', '2', ' 15322426993 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('93', '1', ' 李先生 ', '2', ' 15992863708 ', null, null, null, null, 'dcc', null, null, null, null, '2016-02-14 10:40:00');
+INSERT INTO `customer` VALUES ('95', '1', '李先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('96', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('97', '1', '方先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('98', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('99', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('100', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('101', '1', '郭女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('102', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('103', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('104', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('105', '1', '郭先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('106', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('107', '1', '周先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('108', '1', '曲女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('109', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('110', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('111', '1', '马先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('112', '1', '黄女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-14 17:09:30');
+INSERT INTO `customer` VALUES ('113', '1', '刘', null, '18500519101', '1', null, '4', null, '0', '不知道', '1', '胡同', null, '2016-02-15 12:18:58');
+INSERT INTO `customer` VALUES ('114', '1', '李先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('115', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('116', '1', '方先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('117', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('118', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('119', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('120', '1', '郭女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('121', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('122', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('123', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('124', '1', '郭先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('125', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('126', '1', '周先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('127', '1', '曲女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('128', '1', 'X先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('129', '1', '王先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('130', '1', '马先生', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('131', '1', '黄女士', null, '', '1', '无', null, null, 'front', null, null, null, null, '2016-02-15 12:30:09');
+INSERT INTO `customer` VALUES ('132', '1', '11', '1', '11', '1', '11', '4', '4', 'front', '11', '1', '111', '2016-02-16 13:16:02', '2016-02-15 13:50:57');
+INSERT INTO `customer` VALUES ('133', '1', '123', '2', '123', '1', null, null, null, null, null, '1', '123', null, '2016-02-16 12:49:18');
+INSERT INTO `customer` VALUES ('134', '1', null, '2', null, '1', null, null, null, null, null, '1', null, null, '2016-02-16 12:54:13');
 
 -- ----------------------------
 -- Table structure for dcc_record
@@ -116,7 +280,43 @@ CREATE TABLE `dcc_record` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dcc_record
+-- ----------------------------
+INSERT INTO `dcc_record` VALUES ('1', '64', '1', '10', '2015-07-01 00:00:00', '05:51:16.000000', '2015-07-01 05:51:16', '1', ' H ', '36', null, null, '2015-07-01 05:51:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('2', '65', '1', '10', '2015-07-01 00:00:00', '05:51:16.000000', '2015-07-01 05:51:16', '2', ' H ', '36', null, null, '2015-07-01 05:51:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('3', '66', '1', '10', '2015-07-01 00:00:00', '05:51:16.000000', '2015-07-01 05:51:16', '3', ' H ', '36', null, null, '2015-07-01 05:51:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('4', '67', '1', '11', '2015-07-01 00:00:00', '05:51:55.000000', '2015-07-01 05:51:55', '4', ' H ', '36', null, null, '2015-07-01 05:51:55', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('5', '68', '1', '11', '2015-07-01 00:00:00', '05:51:55.000000', '2015-07-01 05:51:55', '5', ' H ', '36', null, null, '2015-07-01 05:51:55', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('6', '69', '1', '11', '2015-07-01 00:00:00', '05:51:55.000000', '2015-07-01 05:51:55', '2', ' H ', '36', null, null, '2015-07-01 05:51:55', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('7', '70', '1', '11', '2015-07-01 00:00:00', '05:51:55.000000', '2015-07-01 05:51:55', '5', ' H ', '36', null, null, '2015-07-01 05:51:55', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('8', '71', '1', '11', '2015-07-01 00:00:00', '05:51:55.000000', '2015-07-01 05:51:55', '1', ' H ', '36', null, null, '2015-07-01 05:51:55', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('9', '72', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '2', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('10', '73', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '3', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('11', '74', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '4', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('12', '75', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '5', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('13', '76', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '2', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('14', '77', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '5', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('15', '78', '1', '12', '2015-07-01 00:00:00', '05:53:16.000000', '2015-07-01 05:53:16', '1', ' H ', '36', null, null, '2015-07-01 05:53:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('16', '79', '1', '13', '2015-07-01 00:00:00', '34:38:29.000000', '2015-07-02 10:38:29', '2', ' H ', '36', null, null, '2015-07-02 10:38:29', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('17', '80', '1', '13', '2015-07-01 00:00:00', '34:38:29.000000', '2015-07-02 10:38:29', '3', ' H ', '36', null, null, '2015-07-02 10:38:29', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('18', '81', '1', '13', '2015-07-01 00:00:00', '34:38:29.000000', '2015-07-02 10:38:29', '4', ' H ', '36', null, null, '2015-07-02 10:38:29', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('19', '82', '1', '13', '2015-07-01 00:00:00', '34:36:16.000000', '2015-07-02 10:36:16', '5', ' H ', '36', null, null, '2015-07-02 10:36:16', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('20', '83', '1', '14', '2015-07-01 00:00:00', '34:32:04.000000', '2015-07-02 10:32:04', '2', ' H ', '36', null, null, '2015-07-02 10:32:04', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('21', '84', '1', '14', '2015-07-01 00:00:00', '34:32:04.000000', '2015-07-02 10:32:04', '5', ' H ', '36', null, null, '2015-07-02 10:32:04', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('22', '85', '1', '14', '2015-07-01 00:00:00', '34:29:04.000000', '2015-07-02 10:29:04', '1', ' H ', '36', null, null, '2015-07-02 10:29:04', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('23', '86', '1', '14', '2015-07-01 00:00:00', '34:29:04.000000', '2015-07-02 10:29:04', '2', ' H ', '36', null, null, '2015-07-02 10:29:04', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('24', '87', '1', '14', '2015-07-01 00:00:00', '34:29:04.000000', '2015-07-02 10:29:04', '3', ' H ', '36', null, null, '2015-07-02 10:29:04', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('25', '88', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '4', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('26', '89', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '5', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('27', '90', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '2', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('28', '91', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '5', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('29', '92', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '4', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('30', '93', '1', '15', '2015-07-01 00:00:00', '27:41:01.000000', '2015-07-02 03:41:01', '5', ' H ', '36', null, null, '2015-07-02 03:41:01', '2', '导入dcc登记记录:', '张生', null, '2016-02-14 10:40:00');
+INSERT INTO `dcc_record` VALUES ('31', '133', '1', '3', '2016-02-13 12:49:05', '00:00:13', '2016-02-16 12:49:19', '1', 'H', '24', null, null, '2016-02-19 12:49:05', null, null, null, null, '2016-02-16 12:49:19');
+INSERT INTO `dcc_record` VALUES ('32', '132', '1', '4', '2016-02-11 12:53:29', '00:22:35', '2016-02-16 13:16:05', '1', 'B', '24', '1', null, '2016-02-24 12:53:29', null, '123', null, '2016-02-16 13:16:04', '2016-02-16 12:54:21');
 
 -- ----------------------------
 -- Table structure for deal_record
@@ -135,6 +335,10 @@ CREATE TABLE `deal_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of deal_record
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for evaluate_question
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluate_question`;
@@ -148,6 +352,10 @@ CREATE TABLE `evaluate_question` (
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of evaluate_question
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for front_record
@@ -174,7 +382,123 @@ CREATE TABLE `front_record` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of front_record
+-- ----------------------------
+INSERT INTO `front_record` VALUES ('1', '1', '1', '3', '0', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('2', '2', '1', '4', '1', null, '2', 'A', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('3', '3', '1', '5', '0', null, '3', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('4', '4', '1', '5', '1', null, '4', 'O', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('5', '5', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('6', '6', '1', '5', '1', null, '2', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('7', '7', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('8', '8', '1', '5', '0', null, '3', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('9', '9', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('10', '10', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('11', '11', '1', '5', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('12', '12', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('13', '13', '1', '5', '0', null, '6', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('14', '14', '1', '4', '4', null, '2', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('15', '15', '1', '5', '3', null, '7', 'B', '1', '35', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('16', '16', '1', '7', '2', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('17', '17', '1', '4', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('18', '18', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('19', '19', '1', '3', '1', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('20', '20', '1', '4', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('21', '21', '1', '5', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('22', '22', '1', '7', '1', null, '2', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('23', '23', '1', '7', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('24', '2', '1', '4', '1', null, '4', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('25', '24', '1', '7', '1', null, '1', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('26', '25', '1', '3', '1', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('27', '26', '1', '3', '2', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('28', '27', '1', '5', '3', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('29', '28', '1', '3', '1', null, '3', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('30', '29', '1', '7', '1', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('31', '30', '1', '8', '3', null, '5', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('32', '31', '1', '7', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('33', '32', '1', '8', '1', null, '4', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('34', '33', '1', '4', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('35', '34', '1', '9', '4', null, '4', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('36', '35', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('37', '36', '1', '7', '1', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 09:50:36');
+INSERT INTO `front_record` VALUES ('64', '2', '1', '4', '1', null, '2', 'A', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('65', '2', '1', '4', '1', null, '4', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('66', '10', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('67', '11', '1', '5', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('68', '13', '1', '5', '0', null, '6', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('69', '14', '1', '4', '4', null, '2', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('70', '15', '1', '5', '3', null, '7', 'B', '1', '35', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('71', '16', '1', '7', '2', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('72', '17', '1', '4', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('73', '20', '1', '4', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('74', '21', '1', '5', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('75', '23', '1', '7', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('76', '24', '1', '7', '1', null, '1', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('77', '27', '1', '5', '3', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('78', '28', '1', '3', '1', null, '3', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('79', '31', '1', '7', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('80', '33', '1', '4', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('81', '35', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('82', '36', '1', '7', '1', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('83', '95', '1', '3', '0', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('84', '96', '1', '5', '0', null, '3', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('85', '97', '1', '5', '1', null, '4', 'O', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('86', '98', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('87', '99', '1', '5', '1', null, '2', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('88', '100', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('89', '101', '1', '5', '0', null, '3', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('90', '102', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('91', '103', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('92', '104', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('93', '105', '1', '3', '1', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('94', '106', '1', '7', '1', null, '2', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('95', '107', '1', '3', '1', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('96', '108', '1', '3', '2', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('97', '109', '1', '7', '1', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('98', '110', '1', '8', '3', null, '5', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('99', '111', '1', '8', '1', null, '4', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('100', '112', '1', '9', '4', null, '4', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-14 17:09:30');
+INSERT INTO `front_record` VALUES ('101', '132', '1', '3', '1', null, '1', 'H', '1', '33', '1', '1', 'test1', '2016-02-15 11:28:06', '2016-02-15 14:04:47', '02:36:40', '张生', '2016-02-15 14:04:46', '2016-02-15 11:28:06');
+INSERT INTO `front_record` VALUES ('102', '2', '1', '4', '1', null, '2', 'A', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('103', '2', '1', '4', '1', null, '4', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('104', '10', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('105', '11', '1', '5', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('106', '13', '1', '5', '0', null, '6', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('107', '14', '1', '4', '4', null, '2', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('108', '15', '1', '5', '3', null, '7', 'B', '1', '35', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('109', '16', '1', '7', '2', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('110', '17', '1', '4', '0', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('111', '20', '1', '4', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('112', '21', '1', '5', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('113', '23', '1', '7', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('114', '24', '1', '7', '1', null, '1', 'H', '1', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('115', '27', '1', '5', '3', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('116', '28', '1', '3', '1', null, '3', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('117', '31', '1', '7', '1', null, '1', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('118', '33', '1', '4', '0', null, '1', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('119', '35', '1', '3', '1', null, '2', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('120', '36', '1', '7', '1', null, '6', 'A', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('121', '114', '1', '3', '0', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('122', '115', '1', '5', '0', null, '3', 'B', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('123', '116', '1', '5', '1', null, '4', 'O', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('124', '117', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('125', '118', '1', '5', '1', null, '2', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('126', '119', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('127', '120', '1', '5', '0', null, '3', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('128', '121', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('129', '122', '1', '6', '0', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('130', '123', '1', '6', '1', null, '5', '其他', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('131', '124', '1', '3', '1', null, '1', 'H', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('132', '125', '1', '7', '1', null, '2', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('133', '126', '1', '3', '1', null, '6', 'H', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('134', '127', '1', '3', '2', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('135', '128', '1', '7', '1', null, '1', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('136', '129', '1', '8', '3', null, '5', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('137', '130', '1', '8', '1', null, '4', 'C', '2', '34', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
+INSERT INTO `front_record` VALUES ('138', '131', '1', '9', '4', null, '4', 'O', '2', '33', '2', '2', '导入前台登记记录', '2015-12-02 09:10:00', '2015-12-02 09:20:00', '00:10:00', '张生', null, '2016-02-15 12:30:09');
 
 -- ----------------------------
 -- Table structure for import_dcc_temp
@@ -197,6 +521,40 @@ CREATE TABLE `import_dcc_temp` (
   `Region` varchar(200) DEFAULT NULL,
   `Installment` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of import_dcc_temp
+-- ----------------------------
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:16', ' 15916981358 ', ' 范宁波 ', '男', '', '301', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:16', ' 谢文杰 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:16', ' 18823306888 ', ' 舒清林 ', '男', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:16', ' 谢文杰 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:16', ' 13544610432 ', ' 邓根兴 ', '男', '', '2008', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:16', ' 谢文杰 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:55', ' 13712761002 ', ' 王涛 ', '男', '', '3008', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:55', ' 甘子劲 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:55', ' 18520811538 ', ' 覃生 ', '男', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:55', ' 甘子劲 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:55', ' 15711162697 ', ' 马卫周 ', '男', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:55', ' 甘子劲 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:55', ' 13686630309 ', ' 张 ', '男', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:55', ' 甘子劲 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:51:55', ' 18771078679 ', ' 李 ', '男', '', '301', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:51:55', ' 甘子劲 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 18928237205 ', ' 尹才庭 ', '男', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 13826960611 ', ' 汤汤 ', '男', '', '2008', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 18650095676 ', ' 潘国美 ', '男', '', '3008', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 13826957027 ', ' 凌振 ', '男', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 18802691558 ', ' 18988727509 ', '男', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 18988727509 ', ' 叶文波 ', '男', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-01 05:53:16', ' 13532387109 ', ' 谢佩伶 ', '男', '', '301', ' H ', ' 汽车垂直网站 ', '2015-07-01 05:53:16', ' 李明娟 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:38:29', ' 15918352331 ', ' 吴耿文 ', '男', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:38:29', ' 赵金星 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:38:29', ' 13902601734 ', ' 易车网2015070137 ', '男', '', '2008', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:38:29', ' 赵金星 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:38:29', ' 051082447009 ', ' 叶 ', '女', '', '3008', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:38:29', ' 赵金星 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:36:16', ' 18666462392 ', ' 麦伟峰 ', '女', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:36:16', ' 赵金星 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:32:04', ' 13431429517 ', ' 王锐标 ', '女', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:32:04', ' 梁艺 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:32:04', ' 18922947888 ', ' 易车网2014120740 ', '女', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:32:04', ' 梁艺 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:29:04', ' 15915440979 ', ' 徐 旭 ', '女', '', '301', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:29:04', ' 梁艺 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:29:04', ' 13450086448 ', ' 程 ', '女', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:29:04', ' 梁艺 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 10:29:04', ' 13790342750 ', ' 胡望平 ', '女', '', '2008', ' H ', ' 汽车垂直网站 ', '2015-07-02 10:29:04', ' 梁艺 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 18664061146 ', ' 张 ', '女', '', '3008', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 13724438302 ', ' 官瑞城 ', '女', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 13827220903 ', ' 易车网2015070167 ', '女', '', '308', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 18128661998 ', ' 李若彤唐 ', '女', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 15322426993 ', ' 汤应兵 ', '女', '', '3008', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
+INSERT INTO `import_dcc_temp` VALUES ('1', '张生', '2015-07-01', '2015-07-02 03:41:01', ' 15992863708 ', ' 李先生 ', '女', '', '其他', ' H ', ' 汽车垂直网站 ', '2015-07-02 03:41:01', ' 黄国春 ', '', '');
 
 -- ----------------------------
 -- Table structure for import_front_temp
@@ -224,6 +582,47 @@ CREATE TABLE `import_front_temp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of import_front_temp
+-- ----------------------------
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '李先生', '0', '1', '配钥匙', '301', 'H', '09:10:00', '邀约', '多次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '赵先生', '1', '13963659086', '', '308', 'A', '09:10:00', '自然进店', '首次', '是', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '王先生', '0', '2', '保养客户', '2008', 'B', '09:10:00', '自然进店', '多次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '方先生', '1', '3', '贴膜、王莲客户', '3008', 'O', '09:10:00', '自然进店', '多次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '1', '4', '找张保成', '其他', '其他', '09:10:00', '自然进店', '首次', '否', '09:20:00', '郭勇', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '1', '5', '保养客户', '308', 'O', '09:10:00', '邀约', '多次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '0', '6', '事故车找曹健', '其他', '其他', '09:10:00', '自然进店', '首次', '否', '09:20:00', '郭勇', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '郭女士', '0', '7', '贴膜', '2008', 'O', '09:10:00', '邀约', '多次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '0', '8', '送快递', '其他', '其他', '09:10:00', '自然进店', '多次', '否', '09:20:00', '郭勇', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '孙女士', '1', '15006568928', '', '308', 'H', '09:10:00', '邀约', '多次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '崔先生', '0', '18953608716', '', '301', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '0', '9', '送快递', '其他', '其他', '09:10:00', '自然进店', '多次', '否', '09:20:00', '郭勇', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '王先生', '0', '15966112728', '', '新408', 'B', '09:10:00', '自然进店', '首次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '冯先生', '4', '15154491777', '', '308', 'H', '09:10:00', '自然进店', '首次', '是', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '程先生', '3', '18263608598', '', '508', 'B', '09:10:00', '网络', '首次', '是', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '陈先生', '2', '15265689621', '', '新408', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '王先生', '0', '13465718831', '', '301', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '1', '10', '找满经理', '其他', '其他', '09:10:00', '自然进店', '首次', '否', '09:20:00', '郭勇', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '郭先生', '1', '11', '装导航', '301', 'H', '09:10:00', '邀约', '多次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '刘先生', '1', '15689862558', '', '308', 'H', '09:10:00', '邀约', '首次', '否', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '孟先生', '1', '18253620410', '', '301', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '1', '12', '未留', '308', 'C', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '苏先生', '0', '15662570886', '', '301', 'H', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '赵先生', '1', '13963659086', '', '3008', 'H', '09:10:00', '邀约', '首次', '否', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '马先生', '1', '15553631597', '', '301', 'H', '09:10:00', '自然进店', '首次', '是', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '周先生', '1', '13', '拿合格证', '新408', 'H', '09:10:00', '自然进店', '多次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '曲女士', '2', '14', '未留', '301', 'C', '09:10:00', '自然进店', '首次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '李先生', '3', '13098187876', '', '新408', 'H', '09:10:00', '自然进店', '首次', '否', '09:20:00', '余康', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '王女士', '1', '18653663800', '', '2008', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', 'X先生', '1', '15', '未留', '301', 'C', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '王先生', '3', '16', '未留', '其他', 'C', '09:10:00', '自然进店', '首次', '否', '09:20:00', '付慧娟', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '郭先生', '1', '13792681865', '', '301', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '马先生', '1', '17', '未留', '3008', 'C', '09:10:00', '自然进店', '首次', '否', '09:20:00', '付慧娟', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '吴先生', '0', '15054572167', '', '301', 'H', '09:10:00', '自然进店', '首次', '否', '09:20:00', '董清平', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '黄女士', '4', '18', '提车', '3008', 'O', '09:10:00', '邀约', '多次', '否', '09:20:00', '孟祥开', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '尹先生', '1', '13854430622', '', '308', 'H', '09:10:00', '邀约', '多次', '否', '09:20:00', '高潍东', '无', '否', '');
+INSERT INTO `import_front_temp` VALUES ('1', '张生', '2015-12-02', '苏先生', '1', '15095205588', '', '新408', 'A', '09:10:00', '自然进店', '首次', '否', '09:20:00', '王建', '无', '否', '');
+
+-- ----------------------------
 -- Table structure for purpose_level
 -- ----------------------------
 DROP TABLE IF EXISTS `purpose_level`;
@@ -234,7 +633,18 @@ CREATE TABLE `purpose_level` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of purpose_level
+-- ----------------------------
+INSERT INTO `purpose_level` VALUES ('1', 'H', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('2', 'A', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('3', 'B', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('4', 'O', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('5', '其他', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('6', 'C', '前台_导入意向级别', null, '2016-02-14 09:50:36');
+INSERT INTO `purpose_level` VALUES ('8', ' H ', 'DCC_导入意向级别', null, '2016-02-14 10:40:00');
 
 -- ----------------------------
 -- Table structure for region
@@ -249,7 +659,16 @@ CREATE TABLE `region` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of region
+-- ----------------------------
+INSERT INTO `region` VALUES ('1', '0', null, '北京', '东城区', null, '2016-02-14 09:37:04');
+INSERT INTO `region` VALUES ('2', '0', null, '北京', '西域区', null, '2016-02-14 09:37:04');
+INSERT INTO `region` VALUES ('3', '0', null, '北京', '海淀区', null, '2016-02-14 09:37:04');
+INSERT INTO `region` VALUES ('4', '0', null, '北京', '朝阳区', null, '2016-02-14 09:37:04');
+INSERT INTO `region` VALUES ('5', '0', null, '北京', '昌平区', null, '2016-02-14 09:37:04');
 
 -- ----------------------------
 -- Table structure for role
@@ -261,7 +680,19 @@ CREATE TABLE `role` (
   `Desc` varchar(100) NOT NULL COMMENT '角色描述',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('1', '系统管理员', '跨系统所有权限', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('2', '总经理', '某个系统的所有权限', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('3', '销售经理', '销售系统管理', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('4', '市场经理', '市场系统管理', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('5', '销售前台', '前台信息录入', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('6', '销售顾问-展厅', '客户信息维护', '2016-02-14 09:37:04');
+INSERT INTO `role` VALUES ('7', '销售顾问-DCC', '客户信息维护', null);
+INSERT INTO `role` VALUES ('8', '销售顾问-实习', '客户信息维护', null);
 
 -- ----------------------------
 -- Table structure for shop
@@ -277,7 +708,12 @@ CREATE TABLE `shop` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '店铺信息最近一次更新',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shop
+-- ----------------------------
+INSERT INTO `shop` VALUES ('1', '北京朝阳店', '11', '4', '国贸', null, null, '2016-02-14 09:47:04');
 
 -- ----------------------------
 -- Table structure for user
@@ -298,7 +734,26 @@ CREATE TABLE `user` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '店铺信息最近一次更新',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', '0', '1', '0', 'Admin', '7a57a5a743894a0e', 'Admin', '2', null, '12345678', null, null, '2016-02-14 09:37:04');
+INSERT INTO `user` VALUES ('2', '1', '2', '0', 'xj', 'cb6720b002105b44', '张生', '1', '1', '111', null, null, '2016-02-14 09:48:13');
+INSERT INTO `user` VALUES ('3', '1', '6', '0', '高潍东', '49ba59abbe56e057', '高潍东', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('4', '1', '6', '1', '董清平', '49ba59abbe56e057', '董清平', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('5', '1', '6', '1', '余康', '49ba59abbe56e057', '余康', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('6', '1', '6', '0', '郭勇', '49ba59abbe56e057', '郭勇', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('7', '1', '6', '3', '王建', '49ba59abbe56e057', '王建', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('8', '1', '6', '3', '付慧娟', '49ba59abbe56e057', '付慧娟', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('9', '1', '6', '3', '孟祥开', '49ba59abbe56e057', '孟祥开', null, null, '', null, null, '2016-02-14 09:50:36');
+INSERT INTO `user` VALUES ('10', '1', '6', '3', ' 谢文杰 ', '49ba59abbe56e057', ' 谢文杰 ', null, null, '', null, null, '2016-02-14 10:40:00');
+INSERT INTO `user` VALUES ('11', '1', '6', '0', ' 甘子劲 ', '49ba59abbe56e057', ' 甘子劲 ', null, null, '', null, null, '2016-02-14 10:40:00');
+INSERT INTO `user` VALUES ('12', '1', '6', '0', ' 李明娟 ', '49ba59abbe56e057', ' 李明娟 ', null, null, '', null, null, '2016-02-14 10:40:00');
+INSERT INTO `user` VALUES ('13', '1', '6', '4', ' 赵金星 ', '49ba59abbe56e057', ' 赵金星 ', null, null, '', null, null, '2016-02-14 10:40:00');
+INSERT INTO `user` VALUES ('14', '1', '6', '4', ' 梁艺 ', '49ba59abbe56e057', ' 梁艺 ', null, null, '', null, null, '2016-02-14 10:40:00');
+INSERT INTO `user` VALUES ('15', '1', '6', '0', ' 黄国春 ', '49ba59abbe56e057', ' 黄国春 ', null, null, '', null, null, '2016-02-14 10:40:00');
 
 -- ----------------------------
 -- Table structure for user_group
@@ -312,7 +767,17 @@ CREATE TABLE `user_group` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_group
+-- ----------------------------
+INSERT INTO `user_group` VALUES ('1', '1', '分组1', '添加分组-分组1', null, '2016-02-15 17:17:18');
+INSERT INTO `user_group` VALUES ('2', '1', 'test', '添加分组-test', null, '2016-02-16 10:02:07');
+INSERT INTO `user_group` VALUES ('3', '1', 'aa', '添加分组-aa', null, '2016-02-16 10:18:01');
+INSERT INTO `user_group` VALUES ('4', '1', 'bb', '添加分组-bb', null, '2016-02-16 10:37:42');
+INSERT INTO `user_group` VALUES ('5', '1', 'cc', '添加分组-cc', null, '2016-02-16 10:38:29');
+INSERT INTO `user_group` VALUES ('6', '1', '23', '添加分组-23', null, '2016-02-16 10:50:40');
 
 -- ----------------------------
 -- Table structure for user_task
@@ -333,6 +798,10 @@ CREATE TABLE `user_task` (
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_task
+-- ----------------------------
 
 -- ----------------------------
 -- Procedure structure for uspAddAnalyseKPI
@@ -367,6 +836,40 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspAddBasicContant
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspAddBasicContant`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddBasicContant`(IN `pBasicConstantShopId` int,IN `pBasicConstantName` varchar(100),IN `pBasicConstantTypeKey` varchar(50),IN `pBasicConstantTypeValue` int,IN `pBasicConstantRemark` varchar(200))
+BEGIN
+
+	INSERT INTO `basic_constant`(
+        `ShopId`
+        ,`Name`
+        ,`Order`
+        ,`TypeKey`
+        ,`TypeValue`
+        ,`Remark`
+        ,`CreatedDate`
+    ) VALUES (
+        pBasicConstantShopId        
+        ,pBasicConstantName        
+        ,(SELECT MAX(`Order`) + 1
+					FROM `basic_constant`
+					WHERE
+						`basic_constant`.`TypeValue` = pBasicConstantTypeValue)        
+        ,pBasicConstantTypeKey        
+        ,pBasicConstantTypeValue        
+        ,pBasicConstantRemark        
+        ,NOW()        
+    );
+	
+	select @@identity as Id;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspAddCarType
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddCarType`;
@@ -396,17 +899,17 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddCustomer`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCustomer`(IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerOriginNature` int,IN `pCustomerType` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddCustomer`(IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerType` varchar(50),IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
 BEGIN
-	 INSERT INTO `customer`(
+INSERT INTO `customer`(
         `ShopId`
         ,`Name`
-				,`Sex`
+        ,`Sex`
         ,`Phone`
-				,`ToShopNum`
+        ,`ToShopNum`
         ,`CurCar`
         ,`Nature`
-        ,`OriginNature`
+        #,`OriginNature`
         ,`Type`
         ,`Industry`
         ,`RegionId`
@@ -414,20 +917,19 @@ BEGIN
         ,`CreatedDate`
     ) VALUES (
         pCustomerShopId        
-        ,pCustomerName
-				,pCustomerSex
-        ,pCustomerPhone
-				,1
+        ,pCustomerName        
+        ,pCustomerSex        
+        ,pCustomerPhone        
+        ,1        
         ,pCustomerCurCar        
         ,pCustomerNature        
-        ,pCustomerOriginNature        
+        #,NULL
         ,pCustomerType        
         ,pCustomerIndustry        
         ,pCustomerRegionId        
         ,pCustomerAddress        
-        ,NOW()        
+        ,NOW()
     );
-
 	select @@identity as Id;
 END
 ;;
@@ -530,6 +1032,29 @@ BEGIN
         ,NOW()        
     );
 
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspAddGroup
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspAddGroup`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddGroup`(IN `pUserGroupShopId` int,IN `pUserGroupName` varchar(200),IN `pUserGroupDesc` varchar(200))
+BEGIN
+	 INSERT INTO `user_group`(
+        `ShopId`
+        ,`Name`
+        ,`Desc`
+        ,`CreatedDate`
+    ) VALUES (
+        pUserGroupShopId        
+        ,pUserGroupName        
+        ,pUserGroupDesc        
+        ,NOW()        
+    );
+	select @@identity as Id;
 END
 ;;
 DELIMITER ;
@@ -955,16 +1480,16 @@ BEGIN
         ,`dcc_record`.`CreatedDate` as `DccRecordCreatedDate`        
     FROM
         `dcc_record`
-    WHERE
-        `dcc_record`.`CustomerId` = case when pCustomerId = 0 OR pCustomerId IS NULL then `dcc_record`.`CustomerId` else pCustomerId end
-    AND
-        `dcc_record`.`ShopId` = case when pShopId = 0 OR pShopId IS NULL then `dcc_record`.`CustomerId` else pShopId end
-    AND 
-      CASE WHEN pStartDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime`>= pStartDate END
-    AND 
-      CASE WHEN pEndDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime` <= pEndDate END
-    ORDER BY 
-        `dcc_record`.`CreatedDate` DESC;
+		WHERE
+				`dcc_record`.`CustomerId` = case when pCustomerId = 0 OR pCustomerId IS NULL then `dcc_record`.`CustomerId` else pCustomerId end
+		AND
+				`dcc_record`.`ShopId` = case when pShopId = 0 OR pShopId IS NULL then `dcc_record`.`CustomerId` else pShopId end
+		AND 
+			CASE WHEN pStartDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime`>= pStartDate END
+		AND 
+			CASE WHEN pEndDate IS NULL THEN TRUE ELSE `dcc_record`.`VisitTime` <= pEndDate END
+		ORDER BY 
+				`dcc_record`.`CreatedDate` DESC;
 END
 ;;
 DELIMITER ;
@@ -997,6 +1522,7 @@ DROP PROCEDURE IF EXISTS `uspGetFrontCustomerRecords`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetFrontCustomerRecords`(IN `pRecordId` int,IN `pCustomerId` int,IN `pShopId` int,IN `pStartDate` datetime,IN `pEndDate` datetime)
 BEGIN
+
 	SELECT 
         `front_record`.`Id` as `FrontRecordId`        
         ,`front_record`.`CustomerId` as `FrontRecordCustomerId`        
@@ -1019,17 +1545,39 @@ BEGIN
         ,`front_record`.`CreatedDate` as `FrontRecordCreatedDate`         
     FROM
         `front_record`
-    WHERE
-        `front_record`.`Id` = case when pRecordId = 0 OR pRecordId IS NULL then `front_record`.`Id` else pRecordId end
-    AND
-        `front_record`.`CustomerId` = CASE WHEN pCustomerId = 0 OR pCustomerId IS NULL THEN `front_record`.`CustomerId` ELSE pCustomerId END
-    AND
-        `front_record`.`ShopId` = CASE WHEN pShopId = 0 OR pShopId IS NULL  THEN `front_record`.`CustomerId` ELSE pShopId END
-    AND 
-      CASE WHEN pStartDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` >= pStartDate END
-    AND 
-      CASE WHEN pEndDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` <= pEndDate END
-    ORDER BY `front_record`.`CreatedDate` DESC;
+		WHERE
+				`front_record`.`Id` = case when pRecordId = 0 OR pRecordId IS NULL then `front_record`.`Id` else pRecordId end
+		AND
+				`front_record`.`CustomerId` = CASE WHEN pCustomerId = 0 OR pCustomerId IS NULL THEN `front_record`.`CustomerId` ELSE pCustomerId END
+		AND
+				`front_record`.`ShopId` = CASE WHEN pShopId = 0 OR pShopId IS NULL  THEN `front_record`.`CustomerId` ELSE pShopId END
+		AND 
+			CASE WHEN pStartDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` >= pStartDate END
+		AND 
+			CASE WHEN pEndDate IS NULL THEN TRUE ELSE `front_record`.`ArrivalTime` <= pEndDate END
+		ORDER BY `front_record`.`CreatedDate` DESC;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetGroups
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetGroups`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetGroups`(IN `pUserGroupShopId` int)
+BEGIN
+	 SELECT 
+        `user_group`.`Id` as `UserGroupId`        
+        ,`user_group`.`ShopId` as `UserGroupShopId`        
+        ,`user_group`.`Name` as `UserGroupName`        
+        ,`user_group`.`Desc` as `UserGroupDesc`        
+        ,`user_group`.`UpdateDate` as `UserGroupUpdateDate`        
+        ,`user_group`.`CreatedDate` as `UserGroupCreatedDate`        
+    FROM
+        `user_group`
+		WHERE
+			`user_group`.`ShopId` = pUserGroupShopId;
 END
 ;;
 DELIMITER ;
@@ -1284,7 +1832,7 @@ BEGIN
 		
 		#6、 同步销售顾问信息
 		INSERT INTO `user`(`RealName`,`ShopId`,`RoleId`,`UserName`,`Pwd`,`CreatedDate`)
-		SELECT DISTINCT `ConsultantName`,`ShopId`,6,`ConsultantName`,'49ba59abbe56e057',NOW() #RoleId = 6 销售顾问  DCC专员Id 待定 密码 123456
+		SELECT DISTINCT `ConsultantName`,`ShopId`,7,`ConsultantName`,'49ba59abbe56e057',NOW() #RoleId = 7 销售顾问-dcc  DCC专员Id 待定 密码 123456
 		FROM `import_dcc_temp`
 		WHERE
 			`import_dcc_temp`.`ConsultantName` NOT IN(
@@ -1411,7 +1959,7 @@ BEGIN
 		FROM import_front_temp LIMIT 1;
 			
 		INSERT INTO `user`(`RealName`,`ShopId`,`RoleId`,`UserName`,`Pwd`,`CreatedDate`)
-		SELECT DISTINCT `ConsultantName`,`ShopId`,6,`ConsultantName`,'49ba59abbe56e057',NOW()#Pwd = 123456
+		SELECT DISTINCT `ConsultantName`,`ShopId`,6,`ConsultantName`,'49ba59abbe56e057',NOW()#Pwd = 123456 6:销售顾问-展厅
 		FROM `import_front_temp`
 		WHERE
 			`import_front_temp`.`ConsultantName` NOT IN(
@@ -1528,7 +2076,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateCustomer`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCustomer`(IN `pCustomerId` int,IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerOriginNature` int,IN `pCustomerType` int,IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateCustomer`(IN `pCustomerId` int,IN `pCustomerShopId` int,IN `pCustomerName` varchar(100),IN `pCustomerSex` int,IN `pCustomerPhone` varchar(50),IN `pCustomerCurCar` varchar(100),IN `pCustomerNature` int,IN `pCustomerType` varchar(50),IN `pCustomerIndustry` varchar(100),IN `pCustomerRegionId` int,IN `pCustomerAddress` varchar(200))
 BEGIN
 	SELECT @ToShopNum := COUNT(0)
 	FROM `front_record`
@@ -1544,7 +2092,7 @@ BEGIN
 				,`customer`.`ToShopNum` = @ToShopNum
 				,`customer`.`CurCar` = case when pCustomerCurCar is null then `customer`.`CurCar` else pCustomerCurCar end
         ,`customer`.`Nature` = case when pCustomerNature is null then `customer`.`Nature` else pCustomerNature end
-        ,`customer`.`OriginNature` = case when pCustomerOriginNature is null then `customer`.`OriginNature` else pCustomerOriginNature end
+        ,`customer`.`OriginNature` = case when `customer`.`OriginNature` is null then pCustomerNature else `customer`.`OriginNature` end
         ,`customer`.`Type` = case when pCustomerType is null then `customer`.`Type` else pCustomerType end
         ,`customer`.`Industry` = case when pCustomerIndustry is null then `customer`.`Industry` else pCustomerIndustry end
         ,`customer`.`RegionId` = case when pCustomerRegionId is null then `customer`.`RegionId` else pCustomerRegionId end
@@ -1561,11 +2109,12 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateDCCRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateDCCRecord`(IN `pDccRecordId` int,IN `pDccRecordDCCRecallerId` int,IN `pDccRecordVisitTime` datetime,IN `pDccRecordDurationTime` varchar(50),IN `pDccRecordRecallTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordLevelCode` varchar(100),IN `pDccRecordSource` int,IN `pDccRecordStatus` int,IN `pDccRecordToShop` int,IN `pDccRecordToShopTime` datetime,IN `pDccRecordInstallment` int,IN `pDccRecordRecallDesc` varchar(200),IN `pDccRecordRecorder` varchar(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateDCCRecord`(IN `pDccRecordCustomerId` int,IN `pDccRecordId` int,IN `pDccRecordDCCRecallerId` int,IN `pDccRecordVisitTime` datetime,IN `pDccRecordDurationTime` varchar(50),IN `pDccRecordRecallTime` datetime,IN `pDccRecordPurposeCar` int,IN `pDccRecordLevelCode` varchar(100),IN `pDccRecordSource` int,IN `pDccRecordStatus` int,IN `pDccRecordToShop` int,IN `pDccRecordToShopTime` datetime,IN `pDccRecordInstallment` int,IN `pDccRecordRecallDesc` varchar(200),IN `pDccRecordRecorder` varchar(100))
 BEGIN
 	 UPDATE `dcc_record`
     SET
-				`dcc_record`.`DCCRecallerId` = case when pDccRecordDCCRecallerId is null then `dcc_record`.`DCCRecallerId` else pDccRecordDCCRecallerId end
+				`dcc_record`.`CustomerId` = case when pDccRecordCustomerId is null then `dcc_record`.`CustomerId` else pDccRecordCustomerId end
+				,`dcc_record`.`DCCRecallerId` = case when pDccRecordDCCRecallerId is null then `dcc_record`.`DCCRecallerId` else pDccRecordDCCRecallerId end
         ,`dcc_record`.`VisitTime` = case when pDccRecordVisitTime is null then `dcc_record`.`VisitTime` else pDccRecordVisitTime end
         ,`dcc_record`.`DurationTime` = case when pDccRecordDurationTime is null then `dcc_record`.`DurationTime` else pDccRecordDurationTime end
         ,`dcc_record`.`RecallTime` = case when pDccRecordRecallTime is null then `dcc_record`.`RecallTime` else pDccRecordRecallTime end
@@ -1696,6 +2245,38 @@ BEGIN
         ,`user`.`UpdateDate` = NOW()
     WHERE
         Id=pUserId;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspUpdateUserGroup
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspUpdateUserGroup`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateUserGroup`(IN `pUserIds`  varchar(255),IN `pGroupId` int)
+BEGIN
+SET @groupId = pGroupId;
+
+SET @updateSql = 'UPDATE `user`
+									SET
+										`user`.`GroupId` = ?
+										,`user`.`UpdateDate` = NOW()
+									WHERE
+										`user`.`Id` IN (';
+IF pGroupId IS  NULL OR pGroupId = 0 THEN
+	SET @groupId = 0;
+END IF;
+
+IF pUserIds IS  NULL OR pUserIds = '' THEN
+	SET @updateSql = CONCAT(@updateSql,'0)');
+ELSE
+	SET @updateSql = CONCAT(@updateSql,pUserIds,')');
+END IF;
+
+PREPARE stmt FROM @updateSql;
+
+EXECUTE stmt USING @groupId;
 END
 ;;
 DELIMITER ;

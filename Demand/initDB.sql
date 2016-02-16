@@ -26,7 +26,9 @@ INSERT INTO `role` VALUES ('2', '总经理', '某个系统的所有权限', NOW(
 INSERT INTO `role` VALUES ('3', '销售经理', '销售系统管理', NOW());
 INSERT INTO `role` VALUES ('4', '市场经理', '市场系统管理', NOW());
 INSERT INTO `role` VALUES ('5', '销售前台', '前台信息录入', NOW());
-INSERT INTO `role` VALUES ('6', '销售顾问', '客户信息维护', NOW());
+INSERT INTO `role` VALUES ('6', '销售顾问-展厅', '客户信息维护', NOW());
+INSERT INTO `role` VALUES ('7', '销售顾问-DCC', '客户信息维护', NOW());
+INSERT INTO `role` VALUES ('8', '销售顾问-实习', '客户信息维护', NOW());
 
 -- ----------------------------
 -- Records of user

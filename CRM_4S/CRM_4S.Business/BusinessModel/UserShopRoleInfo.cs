@@ -18,7 +18,6 @@ namespace CRM_4S.Business.BusinessModel
                 user = value;
                 Shop = null;
                 Role = null;
-                UserGroup = null;
             }
         }
 
@@ -64,27 +63,5 @@ namespace CRM_4S.Business.BusinessModel
                 }
             }
         }
-
-        private UserGroupInfo userGroup = null;
-        public UserGroupInfo UserGroup
-        {
-            get
-            {
-                if (userGroup == null && user != null)
-                {
-                    userGroup = new UserGroupInfo();
-                }
-                return userGroup;
-            }
-            set
-            {
-                userGroup = value;
-                if (user != null && userGroup != null)
-                {
-                    user.GroupId = userGroup.Id;
-                }
-            }
-        }
-
     }
 }

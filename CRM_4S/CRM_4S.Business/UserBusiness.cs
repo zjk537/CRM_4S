@@ -133,5 +133,57 @@ namespace CRM_4S.Business
 
             return user;
         }
+
+
+        public IList<UserGroupInfo> GetGroups(int shopId)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetGroups";
+
+                funcParms.Pams = new Dictionary<string, object>();
+                funcParms.Pams.Add("UserGroupShopId", shopId);
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetGroups.uspGetGroups", true);
+
+            return DoFunctionWithLog<List<UserGroupInfo>>(() =>
+            {
+                return ConvertToList<UserGroupInfo>(result);
+
+            }, null, "GetUsers.ConvertToList", true);
+        }
+
+        public void AddGroup(UserGroupInfo info)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspAddGroup";
+                functionParms.Pams = info.GetPams();
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncGetResults(functionParms);
+            }, new ResultValue(), "AddGroup.uspAddGroup", true);
+
+            if (!result.Faild)
+            {
+                info.Id = Convert.ToInt32(result.ResultTable.Rows[0][0]);
+            }
+        }
+
+        public void UpdateUserGroup(int[] userIds, int groupId)
+        {
+            DoUpdateFunctionWithLog<ResultValue>(() =>
+            {
+                var functionParms = new FunctionParms();
+                functionParms.FunctionName = "uspUpdateUserGroup";
+                functionParms.Pams = new Dictionary<string, object>();
+                functionParms.Pams.Add("UserIds", string.Join(",", userIds));
+                functionParms.Pams.Add("GroupId", groupId);
+
+                return Service.ServiceManager.Instance.ServiceClient.FuncSaveData(functionParms);
+            }, "UpdateUserGroup.uspUpdateUserGroup", true);
+        }
     }
 }

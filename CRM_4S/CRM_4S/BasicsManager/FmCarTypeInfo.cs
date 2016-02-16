@@ -50,8 +50,25 @@ namespace CRM_4S.BasicsManager
             try
             {
                 if (!Validation()) return;
-
                 BasicConstantInfo carBrandInfo = (BasicConstantInfo)cbCarBrand.SelectedItem;
+                //if (this.cbCarBrand.SelectedIndex == -1)
+                //{
+                //    carBrandInfo = new BasicConstantInfo()
+                //    {
+                //        Name = this.cbCarBrand.Text,
+                //        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                //        TypeKey = BasicConstantType.CarBrand.ToString(),
+                //        TypeValue = (int)BasicConstantType.CarBrand,
+                //        Remark = string.Format("Ìí¼ÓÆû³µÆ·ÅÆ-{0}", this.cbCarBrand.Text)
+                //    };
+                //    BasicsConstantBusiness.Instance.AddBasicConstant(carBrandInfo);
+                //    GlobalCaches.Instance.ConstantInfos.Clear();
+                //}
+                //else
+                //{
+                //    carBrandInfo = (BasicConstantInfo)cbCarBrand.SelectedItem;
+                //}
+
                 if (IsNew || newCarTypeInfo.BrandId != carBrandInfo.Id)
                 {
                     newCarTypeInfo.BrandId = carBrandInfo.Id;

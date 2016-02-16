@@ -33,7 +33,7 @@ namespace CRM_4S.DCCManager
 
         private void initForm(DCCCustomerRecordInfo info)
         {
-            
+
             if (info != null)
             {
                 DCCRecordInfo dccInfo = new DCCRecordInfo();
@@ -44,7 +44,7 @@ namespace CRM_4S.DCCManager
                 newRecordInfo.Customer = customerInfo;
                 newRecordInfo.DCCRecord = dccInfo;
             }
-            
+
 
             this.Btn_OK.Click += Btn_OK_Click;
 
@@ -125,24 +125,33 @@ namespace CRM_4S.DCCManager
 
             try
             {
-                newRecordInfo.Customer.ShopId = GlobalCaches.Instance.CurUser.ShopId;
-                newRecordInfo.Customer.Sex = this.rbSex.SelectedIndex + 1;
-                newRecordInfo.Customer.RegionId = ((BasicConstantInfo)this.cbRegion.SelectedItem).Id;
+                if (this.rbSex.SelectedIndex > -1)
+                    newRecordInfo.Customer.Sex = this.rbSex.SelectedIndex + 1;
+                newRecordInfo.Customer.RegionId = ((RegionInfo)this.cbRegion.SelectedItem).Id;
                 // 新用户
-                if (IsNew || recordInfo.Customer.Id == 0)
+                if (newRecordInfo.Customer.Id == 0)
+                {
+                    newRecordInfo.Customer.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                     CustomerBusiness.Instance.AddCustomer(newRecordInfo.Customer);
+                }
                 else
+                {
+                    newRecordInfo.Customer.IdSpecify = true;
                     CustomerBusiness.Instance.UpdateCustomer(newRecordInfo.Customer);
+                }
 
                 newRecordInfo.DCCRecord.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 newRecordInfo.DCCRecord.CustomerId = newRecordInfo.Customer.Id;
                 newRecordInfo.DCCRecord.PurposeCar = ((CarTypeInfo)this.cbCarType.SelectedItem).Id;
                 newRecordInfo.DCCRecord.LevelCode = ((PurposeLevelInfo)this.cbCLevel.SelectedItem).Code;
                 newRecordInfo.DCCRecord.Source = ((BasicConstantInfo)this.cbDCCSource.SelectedItem).Id;
-                newRecordInfo.DCCRecord.Status = this.rbDCCStatus.SelectedIndex + 1;
-                newRecordInfo.DCCRecord.ToShop = this.rbToShop.SelectedIndex + 1;
+                if (this.rbDCCStatus.SelectedIndex > -1)
+                    newRecordInfo.DCCRecord.Status = this.rbDCCStatus.SelectedIndex + 1;
+                if (this.rbToShop.SelectedIndex > -1)
+                    newRecordInfo.DCCRecord.ToShop = this.rbToShop.SelectedIndex + 1;
                 newRecordInfo.DCCRecord.ToShopTime = (DateTime)this.dtToShopTime.EditValue;
-                newRecordInfo.DCCRecord.Installment = this.rbInstallment.SelectedIndex + 1;
+                if (this.rbInstallment.SelectedIndex > -1)
+                    newRecordInfo.DCCRecord.Installment = this.rbInstallment.SelectedIndex + 1;
                 newRecordInfo.DCCRecord.DCCRecallerId = ((UserInfo)this.cbRecaller.SelectedItem).Id;
                 newRecordInfo.DCCRecord.RecallTime = DateTime.Now;
                 newRecordInfo.DCCRecord.VisitTime = (DateTime)this.dtVisitTime.EditValue;
@@ -158,6 +167,7 @@ namespace CRM_4S.DCCManager
                     newRecordInfo.DCCRecord.IdSpecify = true;
                     DCCRecordBusiness.Instance.UpdateDCCRecord(newRecordInfo.DCCRecord);
                 }
+                this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -195,7 +205,7 @@ namespace CRM_4S.DCCManager
             newRecordInfo.Customer = info;
             newRecordInfo.DCCRecord.CustomerId = info.Id;
             // 如果根据 手机号查询出的顾客存在 就取顾客的记录，如果不存在 就取当前记录
-            newRecordInfo.DCCRecord.Id = info.Id == 0 ? recordInfo.DCCRecord.Id : 0;
+            newRecordInfo.DCCRecord.Id = IsNew ? 0 : recordInfo.DCCRecord.Id;
 
             this.txtCName.DataBindings.Clear();
             this.txtCPhone.DataBindings.Clear();

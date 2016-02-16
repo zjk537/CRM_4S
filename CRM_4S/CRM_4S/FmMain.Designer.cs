@@ -87,6 +87,7 @@ namespace CRM_4S
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.btnSingleAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.btnGroupAnalyse = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNewDCCRecal = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -140,8 +141,9 @@ namespace CRM_4S
             this.btnSingleAnalyse,
             this.btnGroupAnalyse,
             this.barEditItem3,
-            this.barEditItem4});
-            this.ribbon.MaxItemId = 66;
+            this.barEditItem4,
+            this.btnNewDCCRecal});
+            this.ribbon.MaxItemId = 67;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
             this.rPageBasics,
@@ -383,6 +385,7 @@ namespace CRM_4S
             // 
             // ribbonPageGroup5
             // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnNewDCCRecal);
             this.ribbonPageGroup5.ItemLinks.Add(this.btnDCCRecall);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             resources.ApplyResources(this.ribbonPageGroup5, "ribbonPageGroup5");
@@ -588,6 +591,13 @@ namespace CRM_4S
             this.btnGroupAnalyse.LargeImageIndex = 15;
             this.btnGroupAnalyse.Name = "btnGroupAnalyse";
             // 
+            // btnNewDCCRecal
+            // 
+            resources.ApplyResources(this.btnNewDCCRecal, "btnNewDCCRecal");
+            this.btnNewDCCRecal.Id = 66;
+            this.btnNewDCCRecal.LargeImageIndex = 29;
+            this.btnNewDCCRecal.Name = "btnNewDCCRecal";
+            // 
             // FmMain
             // 
             this.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("FmMain.Appearance.BackColor")));
@@ -677,6 +687,7 @@ namespace CRM_4S
         private DevExpress.XtraBars.BarEditItem barEditItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.BarButtonItem btnNewDCCRecal;
 
     }
 }
