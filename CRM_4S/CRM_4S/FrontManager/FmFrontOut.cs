@@ -57,8 +57,9 @@ namespace CRM_4S.FrontManager
             //this.cbCarLicence.Properties.Items.AddRange(GloablCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.CarLicence).ToArray());
             this.cbCarType.Properties.Items.AddRange(GlobalCaches.Instance.CarTypes);
             this.cbFrontSource.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos.Where(e => e.TypeValue == (int)BasicConstantType.FrontSource).ToArray());
+            this.cbConsultant.Properties.Items.AddRange(GlobalCaches.Instance.ConsultantInfos);
 
-            
+
 
             if (customerInfo.Id == 0)
                 this.cbCNature.SelectedIndex = 0;
@@ -84,16 +85,23 @@ namespace CRM_4S.FrontManager
             else
                 this.cbCarType.SelectedIndex = 0;
 
-           
+
             if (frontInfo.Source.HasValue)
                 this.cbFrontSource.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == frontInfo.Source);
             else
                 this.cbFrontSource.SelectedIndex = 0;
+            if (frontInfo.ConsultantId > 0)
+                this.cbConsultant.SelectedItem = GlobalCaches.Instance.ConsultantInfos.FirstOrDefault(e => e.Id == frontInfo.ConsultantId);
+
+
             this.txtRemark.DataBindings.Add("Text", frontInfo, "Remark");
             this.txtCNum.EditValue = frontInfo.CustomerNum;
             this.rdDriveStatus.SelectedIndex = frontInfo.DriveStatus.HasValue ? frontInfo.DriveStatus.Value - 1 : -1;
             this.rdInstallment.SelectedIndex = frontInfo.Installment.HasValue ? frontInfo.Installment.Value - 1 : -1;
             this.rdReplace.SelectedIndex = frontInfo.Replace.HasValue ? frontInfo.Replace.Value - 1 : -1;
+
+            // 只有店内经理可以修改客户的销售顾问
+            this.cbConsultant.Enabled = GlobalCaches.Instance.CurUser.RoleId <= GlobalConstants.RoleIdSysManager;
         }
 
 
@@ -135,14 +143,19 @@ namespace CRM_4S.FrontManager
 
             try
             {
-                
+
                 var cNatureInfo = (BasicConstantInfo)this.cbCNature.SelectedItem;
                 if (cNatureInfo != null)
                     newRecordInfo.Customer.Nature = cNatureInfo.Id;
                 var regionInfo = (RegionInfo)this.cbRegion.SelectedItem;
                 if (regionInfo != null)
                     newRecordInfo.Customer.RegionId = regionInfo.Id;
-
+                var consultantInfo = (UserInfo)this.cbConsultant.SelectedItem;
+                if (consultantInfo != null && newRecordInfo.FrontRecord.ConsultantId != consultantInfo.Id)
+                {
+                    newRecordInfo.Customer.ConsultantId = consultantInfo.Id;
+                    newRecordInfo.FrontRecord.ConsultantId = consultantInfo.Id;
+                }
                 newRecordInfo.Customer.ShopId = GlobalCaches.Instance.CurUser.ShopId;
                 newRecordInfo.Customer.Type = "front";
                 // 在添加customer成功后，会给当前customer 赋Id
@@ -175,7 +188,7 @@ namespace CRM_4S.FrontManager
                     newRecordInfo.FrontRecord.Replace = this.rdReplace.SelectedIndex + 1;
                 if (this.rdInstallment.SelectedIndex > -1)
                     newRecordInfo.FrontRecord.Installment = this.rdInstallment.SelectedIndex + 1;
-               
+
 
                 newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCNum.EditValue);
                 newRecordInfo.FrontRecord.CustomerId = newRecordInfo.Customer.Id;
@@ -282,7 +295,7 @@ namespace CRM_4S.FrontManager
                 this.txtLevelDesc.Text = "请选择评估问题后再点评估";
                 return;
             }
-            
+
             List<EvaluateQuestionInfo> eqInfos = new List<EvaluateQuestionInfo>();
             foreach (EvaluateQuestionInfo info in lists)
             {
@@ -313,7 +326,7 @@ namespace CRM_4S.FrontManager
             }
         }
 
-        
+
 
     }
 }

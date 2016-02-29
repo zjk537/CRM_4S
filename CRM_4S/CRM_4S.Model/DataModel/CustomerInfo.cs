@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-15 13:49
+ * 创建日期：2016-02-26 16:55
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -30,6 +30,15 @@ namespace CRM_4S.Model.DataModel
         public int ShopId { get { return shopId; } set { shopId = value; ShopIdSpecify = true; } }
 
 
+        private int? consultantId = null;
+        public bool ConsultantIdSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 销售顾问Id：在店里销售顾问是不允许抢单的 
+        /// </summary>
+        [DBFieldAttribute("CustomerConsultantId")]
+        public int? ConsultantId { get { return consultantId; } set { consultantId = value; ConsultantIdSpecify = true; } }
+
+
         private string name = string.Empty;
         public bool NameSpecify { get; set; }
         /// <summary>
@@ -55,15 +64,6 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("CustomerPhone")]
         public string Phone { get { return phone; } set { phone = value; PhoneSpecify = true; } }
-
-
-        private int? toShopNum = null;
-        public bool ToShopNumSpecify { get; set; }
-        /// <summary>
-        /// 获取或设置 到店次数 
-        /// </summary>
-        [DBFieldAttribute("CustomerToShopNum")]
-        public int? ToShopNum { get { return toShopNum; } set { toShopNum = value; ToShopNumSpecify = true; } }
 
 
         private string curCar = string.Empty;

@@ -35,6 +35,7 @@ namespace CRM_4S.FrontManager
         {
             InitializeComponent();
             CRM_4S.Common.DevViewDefine.ResetToNormalView(this.gridControl1.MainView, false);
+            gridView1.IndicatorWidth = 50;
         }
 
         private void btnSelFile_Click(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace CRM_4S.FrontManager
                         }
                         FrontRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -109,7 +110,8 @@ namespace CRM_4S.FrontManager
                         this.BeginInvoke(new MethodInvoker(delegate()
                         {
                             progressBar.DialogResult = DialogResult.OK;
-
+                            this.DialogResult = DialogResult.Cancel;
+                            XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
                         }));
                     }
                 });
@@ -122,11 +124,13 @@ namespace CRM_4S.FrontManager
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            if(e.Info.IsRowIndicator)
-            {
+            e.Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            if (e.RowHandle < 0)
+                e.Info.DisplayText = "序号";
+
+            if (e.Info.IsRowIndicator)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-            this.gridView1.IndicatorWidth = e.Info.DisplayText.Length + 25;
+
         }
     }
 }

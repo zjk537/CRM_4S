@@ -28,6 +28,7 @@ namespace CRM_4S.FrontManager
 
         private void initView()
         {
+            this.gridViewFrontRecord.IndicatorWidth = 50;
 
         }
 
@@ -114,7 +115,7 @@ namespace CRM_4S.FrontManager
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = saveFileDialog.FileName;
-                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value,true,true);
+                XlsExportOptions options = new XlsExportOptions(TextExportMode.Value, true, true);
                 try
                 {
                     gridViewFrontRecord.ExportToXls(fileName, options);
@@ -181,18 +182,31 @@ namespace CRM_4S.FrontManager
         private void RefreshFrontRecordView()
         {
             var listResults = FrontRecordBusiness.Instance.GetFrontRecords(this.QInfo);
-            gridControlFrontRecord.DataSource = listResults;
-            gridControlFrontRecord.DefaultView.RefreshData();
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new MethodInvoker(delegate()
+                {
+                    gridControlFrontRecord.DataSource = listResults;
+                    gridControlFrontRecord.DefaultView.RefreshData();
+                }));
+            }
+            else
+            {
+                gridControlFrontRecord.DataSource = listResults;
+                gridControlFrontRecord.DefaultView.RefreshData();
+            }
+
+
         }
 
         private void gridViewFrontRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
+            e.Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            if (e.RowHandle < 0)
+                e.Info.DisplayText = "序号";
 
-            this.gridViewFrontRecord.IndicatorWidth = e.Info.DisplayText.Length + 25;
+            if (e.Info.IsRowIndicator)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
         private void gridViewFrontRecord_MouseDown(object sender, MouseEventArgs e)

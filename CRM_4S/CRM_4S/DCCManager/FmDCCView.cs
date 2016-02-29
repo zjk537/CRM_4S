@@ -28,6 +28,7 @@ namespace CRM_4S.DCCManager
 
         private void initView()
         {
+            this.gridViewDCCRecord.IndicatorWidth = 50;
         }
 
         #region Public control
@@ -46,7 +47,7 @@ namespace CRM_4S.DCCManager
             }
         }
 
-       
+
 
         private BarButtonItem btnDCCRecall = null;
         public BarButtonItem BtnDCCRecall
@@ -182,8 +183,19 @@ namespace CRM_4S.DCCManager
         private void RefreshDCCRecordView()
         {
             var listResults = DCCRecordBusiness.Instance.GetDCCRecords(this.QInfo);
-            gridControlDCCRecord.DataSource = listResults;
-            gridControlDCCRecord.DefaultView.RefreshData();
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new MethodInvoker(delegate()
+                {
+                    gridControlDCCRecord.DataSource = listResults;
+                    gridControlDCCRecord.DefaultView.RefreshData();
+                }));
+            }
+            else
+            {
+                gridControlDCCRecord.DataSource = listResults;
+                gridControlDCCRecord.DefaultView.RefreshData();
+            }
         }
 
         private void FmDCCView_Load(object sender, EventArgs e)
@@ -193,11 +205,12 @@ namespace CRM_4S.DCCManager
 
         private void gridViewDCCRecord_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
+            e.Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            if (e.RowHandle < 0)
+                e.Info.DisplayText = "序号";
+
             if (e.Info.IsRowIndicator)
-            {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-            this.gridViewDCCRecord.IndicatorWidth = e.Info.DisplayText.Length + 25;
         }
 
         /// <summary>
