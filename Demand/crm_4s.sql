@@ -10,13 +10,15 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-29 14:12:54
+Date: 2016-03-11 17:20:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
+
 CREATE DATABASE IF NOT EXISTS crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use crm_4s;
+
 -- ----------------------------
 -- Table structure for analyse_kpi
 -- ----------------------------
@@ -118,22 +120,6 @@ CREATE TABLE `dcc_record` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for deal_record
--- ----------------------------
-DROP TABLE IF EXISTS `deal_record`;
-CREATE TABLE `deal_record` (
-  `Id` int(11) NOT NULL,
-  `CustomerId` int(11) NOT NULL COMMENT '客户Id',
-  `ShopId` int(11) NOT NULL COMMENT '店面Id',
-  `RecorderId` int(11) NOT NULL COMMENT '录入人员Id',
-  `ConsultantId` int(11) DEFAULT NULL COMMENT '销售顾问Id',
-  `CarType` varchar(100) DEFAULT NULL COMMENT '成交车型',
-  `Remark` varchar(200) DEFAULT NULL COMMENT '成交备注',
-  `CreatedDate` datetime DEFAULT NULL COMMENT '成交时间',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Table structure for evaluate_question
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluate_question`;
@@ -162,6 +148,7 @@ CREATE TABLE `front_record` (
   `PurposeCar` int(11) DEFAULT NULL COMMENT '意向车型',
   `LevelCode` varchar(100) DEFAULT NULL COMMENT '意向级别',
   `ToShopNum` int(11) DEFAULT '0' COMMENT '到店次数',
+  `PhoneStatus` int(2) DEFAULT NULL COMMENT '是否留下有手机号 1是 2 否',
   `DriveStatus` int(2) DEFAULT NULL COMMENT '试驾状态：1是 2否',
   `Source` int(11) DEFAULT NULL COMMENT '客户来源',
   `Replace` int(2) DEFAULT NULL COMMENT '是否二手置换 1是2否',
@@ -214,13 +201,35 @@ CREATE TABLE `import_front_temp` (
   `PurposeLevel` varchar(100) DEFAULT NULL COMMENT '意向级别',
   `ArrivalTime` time DEFAULT NULL COMMENT '到店时间',
   `CSource` varchar(100) DEFAULT NULL COMMENT '客户来源',
-  `ToShopNum` varchar(100) DEFAULT NULL COMMENT '来店次数',
+  `ToShopNum` int(11) DEFAULT NULL COMMENT '来店次数',
   `DriveStatus` varchar(50) DEFAULT NULL COMMENT '是否试驾',
   `LeaveTime` time DEFAULT NULL COMMENT '离店时间',
   `ConsultantName` varchar(100) DEFAULT NULL COMMENT '销售顾问真名',
   `CCurCar` varchar(100) DEFAULT NULL COMMENT '客户现有车型',
   `Replace` varchar(50) DEFAULT NULL COMMENT '是否转换',
   `Installment` varchar(50) DEFAULT NULL COMMENT '是否分期'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for order_record
+-- ----------------------------
+DROP TABLE IF EXISTS `order_record`;
+CREATE TABLE `order_record` (
+  `Id` int(11) NOT NULL,
+  `CustomerId` int(11) NOT NULL COMMENT '客户Id',
+  `ShopId` int(11) NOT NULL COMMENT '店面Id',
+  `RecorderId` int(11) NOT NULL COMMENT '录入人员Id',
+  `ConsultantId` int(11) DEFAULT NULL COMMENT '销售顾问Id',
+  `CarType` int(11) DEFAULT NULL COMMENT '成交车型',
+  `Price` decimal(10,2) DEFAULT NULL COMMENT '成交价格',
+  `DisPrice` decimal(10,2) DEFAULT NULL COMMENT '优惠金额',
+  `PrevPay` decimal(10,2) DEFAULT NULL COMMENT '预付订金',
+  `ToShopNum` int(11) DEFAULT NULL COMMENT '第几次进店订交的',
+  `Status` int(2) DEFAULT NULL COMMENT '订单状态：1 预付订金; 2 订单完成 3 订单取消',
+  `Remark` varchar(200) DEFAULT NULL COMMENT '成交备注',
+  `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
+  `CreatedDate` datetime DEFAULT NULL COMMENT '成交时间',
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -591,6 +600,51 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspAddOrderRecord
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspAddOrderRecord`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddOrderRecord`(IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordRemark` varchar(200))
+BEGIN
+	
+	SELECT @toShopNum := COUNT(DISTINCT `front_record`.`CustomerId`) 
+	FROM `front_record`
+	WHERE 
+	`front_record`.`CustomerId` = case when pOrderRecordCustomerId is null then -1 else pOrderRecordCustomerId end;
+
+	INSERT INTO `order_record`(
+        `CustomerId`
+        ,`ShopId`
+        ,`RecorderId`
+        ,`ConsultantId`
+        ,`CarType`
+        ,`Price`
+        ,`DisPrice`
+        ,`PrevPay`
+        ,`ToShopNum`
+        ,`Status`
+        ,`Remark`
+        ,`CreatedDate`
+    ) VALUES (
+        pOrderRecordCustomerId        
+        ,pOrderRecordShopId        
+        ,pOrderRecordRecorderId        
+        ,pOrderRecordConsultantId        
+        ,pOrderRecordCarType        
+        ,pOrderRecordPrice        
+        ,pOrderRecordDisPrice        
+        ,pOrderRecordPrevPay        
+        ,@toShopNum        
+        ,pOrderRecordStatus        
+        ,pOrderRecordRemark        
+        ,NOW()        
+    );
+
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspAddPurposeLevel
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddPurposeLevel`;
@@ -833,6 +887,51 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspFrontAnalyse
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspFrontAnalyse`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontAnalyse`()
+BEGIN
+	#1、首次接待量 = 所有首次进店接待客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1;
+	# AND 时间段
+
+	#2、首次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`PhoneStatus` = 1; #留下手机号码有效 状态为1
+
+	#3、二次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 2
+	AND `front_record`.`PhoneStatus` = 1; #留下手机号码有效 状态为1
+
+	#4、试乘试驾客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	FROM `front_record`
+	WHERE `front_record`.`DriveStatus` = 1; #试驾 状态为1
+
+	#5、邀约进店量
+
+	#6、首次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 1;
+
+	#7、二次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 2;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspGetAnalyseKPIs
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspGetAnalyseKPIs`;
@@ -933,7 +1032,6 @@ BEGIN
         ,`customer`.`Name` as `CustomerName`        
         ,`customer`.`Sex` as `CustomerSex`        
         ,`customer`.`Phone` as `CustomerPhone`        
-        ,`customer`.`ToShopNum` as `CustomerToShopNum`        
         ,`customer`.`CurCar` as `CustomerCurCar`        
         ,`customer`.`Nature` as `CustomerNature`        
         ,`customer`.`OriginNature` as `CustomerOriginNature`        
@@ -963,8 +1061,7 @@ BEGIN
 				,`customer`.`ConsultantId` as `CustomerConsultantId`
         ,`customer`.`Name` as `CustomerName`        
         ,`customer`.`Sex` as `CustomerSex`        
-        ,`customer`.`Phone` as `CustomerPhone`        
-        ,`customer`.`ToShopNum` as `CustomerToShopNum`        
+        ,`customer`.`Phone` as `CustomerPhone`         
         ,`customer`.`CurCar` as `CustomerCurCar`        
         ,`customer`.`Nature` as `CustomerNature`        
         ,`customer`.`OriginNature` as `CustomerOriginNature`        
@@ -976,7 +1073,7 @@ BEGIN
         ,`customer`.`CreatedDate` as `CustomerCreatedDate`        
     FROM
         `customer`
-		LEFT JOIN `front_record` on `customer`.`Id` = `front_record`.`CustomerId`
+		#LEFT JOIN `front_record` on `customer`.`Id` = `front_record`.`CustomerId`
 		WHERE
 				`customer`.`ShopId` = case when pCustomerShopId = 0 then `customer`.`ShopId` else pCustomerShopId end
 		AND
@@ -1111,6 +1208,38 @@ BEGIN
         `user_group`
 		WHERE
 			`user_group`.`ShopId` = pUserGroupShopId;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetOrderRecords
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetOrderRecords`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetOrderRecords`(IN `pStartDate` datetime,IN `pEndDate` datetime)
+BEGIN
+	SELECT 
+        `order_record`.`Id` as `OrderRecordId`        
+        ,`order_record`.`CustomerId` as `OrderRecordCustomerId`        
+        ,`order_record`.`ShopId` as `OrderRecordShopId`        
+        ,`order_record`.`RecorderId` as `OrderRecordRecorderId`        
+        ,`order_record`.`ConsultantId` as `OrderRecordConsultantId`        
+        ,`order_record`.`CarType` as `OrderRecordCarType`        
+        ,`order_record`.`Price` as `OrderRecordPrice`        
+        ,`order_record`.`DisPrice` as `OrderRecordDisPrice`        
+        ,`order_record`.`PrevPay` as `OrderRecordPrevPay`        
+        ,`order_record`.`ToShopNum` as `OrderRecordToShopNum`        
+        ,`order_record`.`Status` as `OrderRecordStatus`        
+        ,`order_record`.`Remark` as `OrderRecordRemark` 
+				,`order_record`.`UpdateDate` as `OrderRecordUpdateDate`  
+        ,`order_record`.`CreatedDate` as `OrderRecordCreatedDate`        
+    FROM
+        `order_record`
+		WHERE
+			CASE WHEN pStartDate IS NULL THEN TRUE ELSE `order_record`.`CreatedDate` >= pStartDate END
+		AND 
+			CASE WHEN pEndDate IS NULL THEN TRUE ELSE `order_record`.`CreatedDate` <= pEndDate END;
 END
 ;;
 DELIMITER ;
@@ -1359,7 +1488,7 @@ BEGIN
 
 		#6、 同步客户信息
 		INSERT INTO `customer`(`Phone`,`Name`,`ShopId`,`ConsultantId`,`Sex`,`Type`,`RegionId`,`CreatedDate`)
-		SELECT DISTINCT `CPhone`,`CName`,@ShopId
+		SELECT DISTINCT `CPhone`,`CName`,@ShopId,`user`.`Id`
 		,CASE WHEN `import_dcc_temp`.`CSex` = '男' THEN 1 ELSE 2 END
 		,'dcc',`region`.`Id`,NOW()
 		FROM `import_dcc_temp`
@@ -1483,7 +1612,7 @@ BEGIN
 		FROM import_front_temp LIMIT 1;
 			
 		INSERT INTO `user`(`RealName`,`ShopId`,`RoleId`,`UserName`,`Pwd`,`CreatedDate`)
-		SELECT DISTINCT `ConsultantName`,`ShopId`,6,`ConsultantName`,'49ba59abbe56e057',NOW()#Pwd = 123456 6:销售顾问-展厅
+		SELECT DISTINCT `ConsultantName`,@ShopId,6,`ConsultantName`,'49ba59abbe56e057',NOW()#Pwd = 123456 6:销售顾问-展厅
 		FROM `import_front_temp`
 		WHERE
 			`import_front_temp`.`ConsultantName` NOT IN(
@@ -1493,7 +1622,7 @@ BEGIN
 		
 		#5、 同步客户信息
 		INSERT INTO `customer`(`Phone`,`Name`,`ShopId`,`ConsultantId`,`CurCar`,`Type`,`CreatedDate`)
-		SELECT DISTINCT `CPhone`,`CName`,`ShopId`,`user`.`Id`,`CCurCar`,'front',NOW()
+		SELECT DISTINCT `CPhone`,`CName`,@ShopId,`user`.`Id`,`CCurCar`,'front',NOW()
 		FROM `import_front_temp`
 		INNER JOIN `user` ON `user`.`RealName` = `import_front_temp`.`ConsultantName`
 		WHERE 
@@ -1517,6 +1646,8 @@ BEGIN
         ,`LevelCode`
         ,`DriveStatus`
         ,`Source`
+				,`ToShopNum`
+				,`PhoneStatus`
         ,`Replace`
         ,`Installment`
         ,`Remark`
@@ -1535,6 +1666,8 @@ BEGIN
         ,`import_front_temp`.`PurposeLevel`
 				,CASE WHEN `import_front_temp`.`DriveStatus` = '是' THEN 1 ELSE 2 END
 				,`tb_source`.`Id`
+				,`import_front_temp`.`ToShopNum`
+				,CASE WHEN `customer`.`Phone` = '' THEN 2 ELSE 1 END
 				,CASE WHEN `import_front_temp`.`Replace` = '是' THEN 1 ELSE 2 END
 				,CASE WHEN `import_front_temp`.`Installment` = '是' THEN 1 ELSE 2 END
 				,'导入前台登记记录'
@@ -1700,8 +1833,14 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateFrontRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateFrontRecord`(IN `pFrontRecordId` int,IN `pFrontRecordCustomerId` int,IN `pFrontRecordShopId` int,IN `pFrontRecordConsultantId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordCarLicence` int,IN `pFrontRecordPurposeCar` int,IN `pFrontRecordLevelCode` varchar(100),IN `pFrontRecordDriveStatus` int,IN `pFrontRecordSource` int,IN `pFrontRecordReplace` int,IN `pFrontRecordInstallment` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordLeaveTime` datetime,IN `pFrontRecordDurationTime` varchar(50))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateFrontRecord`(IN `pFrontRecordId` int,IN `pFrontRecordCustomerId` int,IN `pFrontRecordShopId` int,IN `pFrontRecordConsultantId` int,IN `pFrontRecordCustomerNum` int,IN `pFrontRecordCarLicence` int,IN `pFrontRecordPurposeCar` int,IN `pFrontRecordLevelCode` varchar(100),IN `pFrontRecordPhoneStatus` int,IN `pFrontRecordDriveStatus` int,IN `pFrontRecordSource` int,IN `pFrontRecordReplace` int,IN `pFrontRecordInstallment` int,IN `pFrontRecordRemark` varchar(200),IN `pFrontRecordLeaveTime` datetime,IN `pFrontRecordDurationTime` varchar(50))
 BEGIN
+	
+	SELECT @toShopNum := COUNT(0)+1
+	FROM `front_record` 
+	WHERE 
+		`front_record`.`CustomerId` =  case when pFrontRecordCustomerId is null OR pFrontRecordCustomerId = 0 then `front_record`.`CustomerId` else pFrontRecordCustomerId end;
+
 	UPDATE `front_record`
     SET
 				`front_record`.`CustomerId` = case when pFrontRecordCustomerId is null then `front_record`.`CustomerId` else pFrontRecordCustomerId end
@@ -1711,6 +1850,8 @@ BEGIN
         ,`front_record`.`CarLicence` = case when pFrontRecordCarLicence is null then `front_record`.`CarLicence` else pFrontRecordCarLicence end
         ,`front_record`.`PurposeCar` = case when pFrontRecordPurposeCar is null then `front_record`.`PurposeCar` else pFrontRecordPurposeCar end
         ,`front_record`.`LevelCode` = case when pFrontRecordLevelCode is null then `front_record`.`LevelCode` else pFrontRecordLevelCode end
+				 ,`front_record`.`ToShopNum` = @ToShopNum
+        ,`front_record`.`PhoneStatus` = case when pFrontRecordPhoneStatus is null then `front_record`.`PhoneStatus` else pFrontRecordPhoneStatus end
         ,`front_record`.`DriveStatus` = case when pFrontRecordDriveStatus is null then `front_record`.`DriveStatus` else pFrontRecordDriveStatus end
         ,`front_record`.`Source` = case when pFrontRecordSource is null then `front_record`.`Source` else pFrontRecordSource end
         ,`front_record`.`Replace` = case when pFrontRecordReplace is null then `front_record`.`Replace` else pFrontRecordReplace end
@@ -1721,6 +1862,32 @@ BEGIN
         ,`front_record`.`UpdateDate` = NOW()
     WHERE
         Id=pFrontRecordId;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspUpdateOrderRecord
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspUpdateOrderRecord`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateOrderRecord`(IN `pOrderRecordId` int,IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordRemark` varchar(200))
+BEGIN
+	UPDATE `order_record`
+    SET
+        `order_record`.`CustomerId` = case when pOrderRecordCustomerId is null then `order_record`.`CustomerId` else pOrderRecordCustomerId end
+        ,`order_record`.`ShopId` = case when pOrderRecordShopId is null then `order_record`.`ShopId` else pOrderRecordShopId end
+        ,`order_record`.`RecorderId` = case when pOrderRecordRecorderId is null then `order_record`.`RecorderId` else pOrderRecordRecorderId end
+        ,`order_record`.`ConsultantId` = case when pOrderRecordConsultantId is null then `order_record`.`ConsultantId` else pOrderRecordConsultantId end
+        ,`order_record`.`CarType` = case when pOrderRecordCarType is null then `order_record`.`CarType` else pOrderRecordCarType end
+        ,`order_record`.`Price` = case when pOrderRecordPrice is null then `order_record`.`Price` else pOrderRecordPrice end
+        ,`order_record`.`DisPrice` = case when pOrderRecordDisPrice is null then `order_record`.`DisPrice` else pOrderRecordDisPrice end
+        ,`order_record`.`PrevPay` = case when pOrderRecordPrevPay is null then `order_record`.`PrevPay` else pOrderRecordPrevPay end
+        ,`order_record`.`Status` = case when pOrderRecordStatus is null then `order_record`.`Status` else pOrderRecordStatus end
+        ,`order_record`.`Remark` = case when pOrderRecordRemark is null then `order_record`.`Remark` else pOrderRecordRemark end
+        ,`order_record`.`UpdateDate` = NOW()
+    WHERE
+        Id = pOrderRecordId;
 END
 ;;
 DELIMITER ;
