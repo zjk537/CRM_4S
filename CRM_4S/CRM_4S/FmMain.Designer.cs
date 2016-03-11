@@ -59,6 +59,7 @@ namespace CRM_4S
             this.btnCustomTime = new DevExpress.XtraBars.BarButtonItem();
             this.btnFrontRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnNewDCCRecal = new DevExpress.XtraBars.BarButtonItem();
             this.btnDCCRecall = new DevExpress.XtraBars.BarButtonItem();
             this.rPageDCC = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -71,7 +72,7 @@ namespace CRM_4S
             this.btnAddBasics = new DevExpress.XtraBars.BarButtonItem();
             this.btnUpdateBasics = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteBasics = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBasicsRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRefreshBasics = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.rPageAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -87,7 +88,13 @@ namespace CRM_4S
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.btnSingleAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.btnGroupAnalyse = new DevExpress.XtraBars.BarButtonItem();
-            this.btnNewDCCRecal = new DevExpress.XtraBars.BarButtonItem();
+            this.rPageOrder = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnAddOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdateOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCanelOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnRefreshOrder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageViewContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -131,7 +138,7 @@ namespace CRM_4S
             this.btnThisQuarter,
             this.btnThisYear,
             this.btnCustomTime,
-            this.btnBasicsRefresh,
+            this.btnRefreshBasics,
             this.btnFrontRefresh,
             this.btnDCCRefresh,
             this.btnDCCImport,
@@ -142,13 +149,18 @@ namespace CRM_4S
             this.btnGroupAnalyse,
             this.barEditItem3,
             this.barEditItem4,
-            this.btnNewDCCRecal});
-            this.ribbon.MaxItemId = 67;
+            this.btnNewDCCRecal,
+            this.btnAddOrder,
+            this.btnUpdateOrder,
+            this.btnCanelOrder,
+            this.btnRefreshOrder});
+            this.ribbon.MaxItemId = 71;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rPageUser,
             this.rPageBasics,
             this.rPageFront,
             this.rPageDCC,
+            this.rPageOrder,
             this.rPageAnalyze});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
@@ -159,7 +171,7 @@ namespace CRM_4S
             this.repositoryItemTextEdit6,
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2});
-            this.ribbon.SelectedPage = this.rPageDCC;
+            this.ribbon.SelectedPage = this.rPageAnalyze;
             resources.ApplyResources(this.ribbon, "ribbon");
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             this.ribbon.SelectedPageChanged += new System.EventHandler(this.ribbon_SelectedPageChanged);
@@ -390,6 +402,13 @@ namespace CRM_4S
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             resources.ApplyResources(this.ribbonPageGroup5, "ribbonPageGroup5");
             // 
+            // btnNewDCCRecal
+            // 
+            resources.ApplyResources(this.btnNewDCCRecal, "btnNewDCCRecal");
+            this.btnNewDCCRecal.Id = 66;
+            this.btnNewDCCRecal.LargeImageIndex = 29;
+            this.btnNewDCCRecal.Name = "btnNewDCCRecal";
+            // 
             // btnDCCRecall
             // 
             resources.ApplyResources(this.btnDCCRecall, "btnDCCRecall");
@@ -453,7 +472,7 @@ namespace CRM_4S
             this.rPageGroupBasics.ItemLinks.Add(this.btnAddBasics);
             this.rPageGroupBasics.ItemLinks.Add(this.btnUpdateBasics);
             this.rPageGroupBasics.ItemLinks.Add(this.btnDeleteBasics);
-            this.rPageGroupBasics.ItemLinks.Add(this.btnBasicsRefresh, true);
+            this.rPageGroupBasics.ItemLinks.Add(this.btnRefreshBasics, true);
             this.rPageGroupBasics.Name = "rPageGroupBasics";
             resources.ApplyResources(this.rPageGroupBasics, "rPageGroupBasics");
             // 
@@ -478,12 +497,12 @@ namespace CRM_4S
             this.btnDeleteBasics.LargeImageIndex = 32;
             this.btnDeleteBasics.Name = "btnDeleteBasics";
             // 
-            // btnBasicsRefresh
+            // btnRefreshBasics
             // 
-            resources.ApplyResources(this.btnBasicsRefresh, "btnBasicsRefresh");
-            this.btnBasicsRefresh.Id = 53;
-            this.btnBasicsRefresh.LargeImageIndex = 21;
-            this.btnBasicsRefresh.Name = "btnBasicsRefresh";
+            resources.ApplyResources(this.btnRefreshBasics, "btnRefreshBasics");
+            this.btnRefreshBasics.Id = 53;
+            this.btnRefreshBasics.LargeImageIndex = 21;
+            this.btnRefreshBasics.Name = "btnRefreshBasics";
             // 
             // repositoryItemTextEdit3
             // 
@@ -591,12 +610,56 @@ namespace CRM_4S
             this.btnGroupAnalyse.LargeImageIndex = 15;
             this.btnGroupAnalyse.Name = "btnGroupAnalyse";
             // 
-            // btnNewDCCRecal
+            // rPageOrder
             // 
-            resources.ApplyResources(this.btnNewDCCRecal, "btnNewDCCRecal");
-            this.btnNewDCCRecal.Id = 66;
-            this.btnNewDCCRecal.LargeImageIndex = 29;
-            this.btnNewDCCRecal.Name = "btnNewDCCRecal";
+            this.rPageOrder.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup11,
+            this.ribbonPageGroup12});
+            this.rPageOrder.Name = "rPageOrder";
+            resources.ApplyResources(this.rPageOrder, "rPageOrder");
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnAddOrder);
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnUpdateOrder);
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnCanelOrder);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            resources.ApplyResources(this.ribbonPageGroup11, "ribbonPageGroup11");
+            // 
+            // btnAddOrder
+            // 
+            resources.ApplyResources(this.btnAddOrder, "btnAddOrder");
+            this.btnAddOrder.Id = 67;
+            this.btnAddOrder.LargeImageIndex = 29;
+            this.btnAddOrder.Name = "btnAddOrder";
+            // 
+            // btnUpdateOrder
+            // 
+            resources.ApplyResources(this.btnUpdateOrder, "btnUpdateOrder");
+            this.btnUpdateOrder.Id = 68;
+            this.btnUpdateOrder.LargeImageIndex = 31;
+            this.btnUpdateOrder.Name = "btnUpdateOrder";
+            // 
+            // btnCanelOrder
+            // 
+            resources.ApplyResources(this.btnCanelOrder, "btnCanelOrder");
+            this.btnCanelOrder.Id = 69;
+            this.btnCanelOrder.LargeImageIndex = 32;
+            this.btnCanelOrder.Name = "btnCanelOrder";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem1);
+            this.ribbonPageGroup12.ItemLinks.Add(this.btnRefreshOrder);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            resources.ApplyResources(this.ribbonPageGroup12, "ribbonPageGroup12");
+            // 
+            // btnRefreshOrder
+            // 
+            resources.ApplyResources(this.btnRefreshOrder, "btnRefreshOrder");
+            this.btnRefreshOrder.Id = 70;
+            this.btnRefreshOrder.LargeImageIndex = 21;
+            this.btnRefreshOrder.Name = "btnRefreshOrder";
             // 
             // FmMain
             // 
@@ -671,7 +734,7 @@ namespace CRM_4S
         private DevExpress.XtraBars.BarButtonItem btnThisQuarter;
         private DevExpress.XtraBars.BarButtonItem btnThisYear;
         private DevExpress.XtraBars.BarButtonItem btnCustomTime;
-        private DevExpress.XtraBars.BarButtonItem btnBasicsRefresh;
+        private DevExpress.XtraBars.BarButtonItem btnRefreshBasics;
         private DevExpress.XtraBars.BarButtonItem btnFrontRefresh;
         private DevExpress.XtraBars.BarButtonItem btnDCCRefresh;
         private DevExpress.XtraBars.BarButtonItem btnDCCImport;
@@ -688,6 +751,13 @@ namespace CRM_4S
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnNewDCCRecal;
+        private DevExpress.XtraBars.BarButtonItem btnAddOrder;
+        private DevExpress.XtraBars.BarButtonItem btnUpdateOrder;
+        private DevExpress.XtraBars.BarButtonItem btnCanelOrder;
+        private DevExpress.XtraBars.BarButtonItem btnRefreshOrder;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rPageOrder;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
 
     }
 }

@@ -22,6 +22,7 @@ using System.Threading;
 using System.Runtime.Remoting.Messaging;
 using DevExpress.XtraEditors;
 using CRM_4S.Business.ViewModel;
+using CRM_4S.OrderManager;
 
 namespace CRM_4S
 {
@@ -167,7 +168,7 @@ namespace CRM_4S
                     fmBasicsView.BtnAdd = btnAddBasics;
                     fmBasicsView.BtnUpdate = btnUpdateBasics;
                     fmBasicsView.BtnDelete = btnDeleteBasics;
-                    fmBasicsView.BtnRefresh = btnBasicsRefresh;
+                    fmBasicsView.BtnRefresh = btnRefreshBasics;
 
 
                     fmBasicsView.NavBtnItemClicked += new EventHandler<NavBarClickedArgs>((object sender, NavBarClickedArgs args) =>
@@ -176,7 +177,7 @@ namespace CRM_4S
                         btnAddBasics.Caption = string.Format("新增[{0}]", args.NavMenuName);
                         btnUpdateBasics.Caption = string.Format("更新[{0}]", args.NavMenuName);
                         btnDeleteBasics.Caption = string.Format("删除[{0}]", args.NavMenuName);
-                        btnBasicsRefresh.Caption = string.Format("刷新[{0}]", args.NavMenuName);
+                        btnRefreshBasics.Caption = string.Format("刷新[{0}]", args.NavMenuName);
                     });
                 }
                 return fmBasicsView;
@@ -199,6 +200,22 @@ namespace CRM_4S
             }
         }
 
+        FmOrderView fmOrderView = null;
+        FmOrderView mFmOrderView
+        {
+            get
+            {
+                if (fmOrderView == null)
+                {
+                    fmOrderView = new FmOrderView();
+                    fmOrderView.BtnAdd = btnAddOrder;
+                    fmOrderView.BtnUpdate = btnUpdateOrder;
+                    fmOrderView.BtnDelete = btnCanelOrder;
+                    fmOrderView.BtnRefresh = btnRefreshOrder;
+                }
+                return fmOrderView;
+            }
+        }
         #endregion
 
         /// <summary>
@@ -210,6 +227,7 @@ namespace CRM_4S
             mRibbonPages.Add(rPageFront, mFmFrontView);
             mRibbonPages.Add(rPageDCC, mFmDCCView);
             mRibbonPages.Add(rPageBasics, mFmBasicsView);
+            mRibbonPages.Add(rPageOrder, mFmOrderView);
             mRibbonPages.Add(rPageAnalyze, mFmAnalyseView);
 
             if (GlobalCaches.Instance.CurUser.RoleId == GlobalConstants.RoleIdConsultManager)
@@ -364,6 +382,11 @@ namespace CRM_4S
             if (ribbon.SelectedPage == rPageDCC)
             {
                 fmDCCView.QInfo = queryInfo;
+                return;
+            }
+            if (ribbon.SelectedPage == rPageOrder)
+            {
+                fmOrderView.QInfo = queryInfo;
                 return;
             }
         }

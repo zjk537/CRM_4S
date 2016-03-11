@@ -95,6 +95,10 @@ namespace CRM_4S.FrontManager
                             {
                                 datarow["客户电话"] = defaultPhone++;
                             }
+
+                            string toShopNumDesc = datarow["几次来店"].ToString().Trim();
+                            datarow["几次来店"] = toShopNumDesc == "首次" ? 1 : (toShopNumDesc == "二次" ? 2 : 3);
+
                         }
                         FrontRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";

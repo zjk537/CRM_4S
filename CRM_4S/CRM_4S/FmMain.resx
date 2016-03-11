@@ -180,7 +180,7 @@
   <data name="btnCustomTime.Caption" xml:space="preserve">
     <value>自定义周期</value>
   </data>
-  <data name="btnBasicsRefresh.Caption" xml:space="preserve">
+  <data name="btnRefreshBasics.Caption" xml:space="preserve">
     <value>刷新</value>
   </data>
   <data name="btnFrontRefresh.Caption" xml:space="preserve">
@@ -248,11 +248,44 @@
   <data name="btnNewDCCRecal.Caption" xml:space="preserve">
     <value>新增DCC回访</value>
   </data>
+  <data name="btnAddOrder.Caption" xml:space="preserve">
+    <value>新增订单</value>
+  </data>
+  <data name="btnUpdateOrder.Caption" xml:space="preserve">
+    <value>修改订单</value>
+  </data>
+  <data name="btnCanelOrder.Caption" xml:space="preserve">
+    <value>取消订单</value>
+  </data>
+  <data name="btnRefreshOrder.Caption" xml:space="preserve">
+    <value>刷新订单</value>
+  </data>
+  <data name="rPageGroupCurUser.Text" xml:space="preserve">
+    <value>当前用户</value>
+  </data>
+  <data name="ribbonPageGroup1.Text" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="ribbonPageGroup3.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
   <data name="rPageUser.Text" xml:space="preserve">
     <value>用户管理</value>
   </data>
+  <data name="rPageGroupBasics.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
   <data name="rPageBasics.Text" xml:space="preserve">
-    <value>基础数据维护</value>
+    <value>数据维护</value>
+  </data>
+  <data name="ribbonPageGroup4.Text" xml:space="preserve">
+    <value>数据管理</value>
+  </data>
+  <data name="ribbonPageGroup8.Text" xml:space="preserve">
+    <value>批量操作</value>
+  </data>
+  <data name="ribbonPageGroup6.Text" xml:space="preserve">
+    <value>视图</value>
   </data>
   <data name="rPageFront.Text" xml:space="preserve">
     <value>前台管理</value>
@@ -268,6 +301,21 @@
   </data>
   <data name="rPageDCC.Text" xml:space="preserve">
     <value>DCC管理</value>
+  </data>
+  <data name="ribbonPageGroup11.Text" xml:space="preserve">
+    <value>数据管理</value>
+  </data>
+  <data name="ribbonPageGroup12.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="rPageOrder.Text" xml:space="preserve">
+    <value>订单管理</value>
+  </data>
+  <data name="ribbonPageGroup2.Text" xml:space="preserve">
+    <value>销售顾问筛选</value>
+  </data>
+  <data name="ribbonPageGroup10.Text" xml:space="preserve">
+    <value>数据分析</value>
   </data>
   <data name="rPageAnalyze.Text" xml:space="preserve">
     <value>能力与分析</value>
@@ -300,15 +348,6 @@
   <data name="&gt;&gt;ribbon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="rPageGroupCurUser.Text" xml:space="preserve">
-    <value>当前用户</value>
-  </data>
-  <data name="ribbonPageGroup1.Text" xml:space="preserve">
-    <value>用户管理</value>
-  </data>
-  <data name="ribbonPageGroup3.Text" xml:space="preserve">
-    <value>视图</value>
-  </data>
   <data name="pageViewContainer.Appearance.BackColor" type="System.Drawing.Color, System.Drawing">
     <value>235, 236, 239</value>
   </data>
@@ -336,24 +375,6 @@
   </data>
   <data name="&gt;&gt;pageViewContainer.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="ribbonPageGroup4.Text" xml:space="preserve">
-    <value>数据管理</value>
-  </data>
-  <data name="ribbonPageGroup8.Text" xml:space="preserve">
-    <value>批量操作</value>
-  </data>
-  <data name="ribbonPageGroup6.Text" xml:space="preserve">
-    <value>视图</value>
-  </data>
-  <data name="rPageGroupBasics.Text" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="ribbonPageGroup2.Text" xml:space="preserve">
-    <value>销售顾问筛选</value>
-  </data>
-  <data name="ribbonPageGroup10.Text" xml:space="preserve">
-    <value>数据分析</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -834,6 +855,12 @@
   <data name="&gt;&gt;ribbonPageGroup5.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;btnNewDCCRecal.Name" xml:space="preserve">
+    <value>btnNewDCCRecal</value>
+  </data>
+  <data name="&gt;&gt;btnNewDCCRecal.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;btnDCCRecall.Name" xml:space="preserve">
     <value>btnDCCRecall</value>
   </data>
@@ -906,10 +933,10 @@
   <data name="&gt;&gt;btnDeleteBasics.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnBasicsRefresh.Name" xml:space="preserve">
-    <value>btnBasicsRefresh</value>
+  <data name="&gt;&gt;btnRefreshBasics.Name" xml:space="preserve">
+    <value>btnRefreshBasics</value>
   </data>
-  <data name="&gt;&gt;btnBasicsRefresh.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnRefreshBasics.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemTextEdit3.Name" xml:space="preserve">
@@ -1002,10 +1029,46 @@
   <data name="&gt;&gt;btnGroupAnalyse.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnNewDCCRecal.Name" xml:space="preserve">
-    <value>btnNewDCCRecal</value>
+  <data name="&gt;&gt;rPageOrder.Name" xml:space="preserve">
+    <value>rPageOrder</value>
   </data>
-  <data name="&gt;&gt;btnNewDCCRecal.Type" xml:space="preserve">
+  <data name="&gt;&gt;rPageOrder.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup11.Name" xml:space="preserve">
+    <value>ribbonPageGroup11</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup11.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnAddOrder.Name" xml:space="preserve">
+    <value>btnAddOrder</value>
+  </data>
+  <data name="&gt;&gt;btnAddOrder.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateOrder.Name" xml:space="preserve">
+    <value>btnUpdateOrder</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateOrder.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCanelOrder.Name" xml:space="preserve">
+    <value>btnCanelOrder</value>
+  </data>
+  <data name="&gt;&gt;btnCanelOrder.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup12.Name" xml:space="preserve">
+    <value>ribbonPageGroup12</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup12.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshOrder.Name" xml:space="preserve">
+    <value>btnRefreshOrder</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshOrder.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -1,7 +1,7 @@
 /* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-02-03 12:55
+ * 创建日期：2016-03-10 16:23
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -84,10 +84,28 @@ namespace CRM_4S.Model.DataModel
         public string LevelCode { get { return levelCode; } set { levelCode = value; LevelCodeSpecify = true; } }
 
 
+        private int? toShopNum = null;
+        public bool ToShopNumSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 到店次数 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordToShopNum")]
+        public int? ToShopNum { get { return toShopNum; } set { toShopNum = value; ToShopNumSpecify = true; } }
+
+
+        private int? phoneStatus = null;
+        public bool PhoneStatusSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 是否留下有手机号 1是 2 否 
+        /// </summary>
+        [DBFieldAttribute("FrontRecordPhoneStatus")]
+        public int? PhoneStatus { get { return phoneStatus; } set { phoneStatus = value; PhoneStatusSpecify = true; } }
+
+
         private int? driveStatus = null;
         public bool DriveStatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 试驾状态：1是 2否
+        /// 获取或设置 试驾状态：1是 2否 
         /// </summary>
         [DBFieldAttribute("FrontRecordDriveStatus")]
         public int? DriveStatus { get { return driveStatus; } set { driveStatus = value; DriveStatusSpecify = true; } }

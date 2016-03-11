@@ -189,7 +189,7 @@ namespace CRM_4S.FrontManager
                 if (this.rdInstallment.SelectedIndex > -1)
                     newRecordInfo.FrontRecord.Installment = this.rdInstallment.SelectedIndex + 1;
 
-
+                newRecordInfo.FrontRecord.PhoneStatus = string.IsNullOrEmpty(newRecordInfo.Customer.Phone) ? 2 : 1;//1ÊÇ 2·ñ
                 newRecordInfo.FrontRecord.CustomerNum = Convert.ToInt32(this.txtCNum.EditValue);
                 newRecordInfo.FrontRecord.CustomerId = newRecordInfo.Customer.Id;
                 newRecordInfo.FrontRecord.LeaveTime = DateTime.Now;
