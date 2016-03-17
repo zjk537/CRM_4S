@@ -38,11 +38,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v11.1.UI, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -265,7 +268,6 @@
     <EmbeddedResource Include="DataAnalyse\FmAnalyseResult.resx">
       <DependentUpon>FmAnalyseResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataAnalyse\Report1.rdlc" />
     <EmbeddedResource Include="DCCManager\FmDCCImport.resx">
       <DependentUpon>FmDCCImport.cs</DependentUpon>
     </EmbeddedResource>
@@ -342,6 +344,8 @@
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.EvaluateQuestionInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.FrontRecordInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.ShopInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.UserGroupInfo.datasource" />
+    <None Include="Properties\DataSources\CRM_4S.Model.DataModel.UserInfo.datasource" />
     <None Include="Properties\DataSources\CRM_4S.Model.DataModel.UserTaskInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

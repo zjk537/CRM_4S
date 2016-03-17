@@ -160,10 +160,9 @@ namespace CRM_4S.Business
                         if (consultantInfos != null) consultantInfos.Clear();
                         else consultantInfos = new List<UserInfo>();
 
-                        consultantInfos.AddRange(UserBusiness.Instance.GetUsers(new UserInfo()
+                        consultantInfos.AddRange(UserBusiness.Instance.GetConsultants(new UserInfo()
                         {
-                            ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                            RoleId = GlobalConstants.RoleIdConsultant
+                            ShopId = GlobalCaches.Instance.CurUser.ShopId
                         }));
                         if (consultantInfos.Count == 0)
                         {

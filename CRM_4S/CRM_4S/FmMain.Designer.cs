@@ -77,15 +77,15 @@ namespace CRM_4S
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.rPageAnalyze = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.txtConsName = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.txtConsPhone = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+            this.dtStartDate = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
+            this.dtEndDate = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnSingleAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.btnGroupAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.rPageOrder = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -143,12 +143,12 @@ namespace CRM_4S
             this.btnDCCRefresh,
             this.btnDCCImport,
             this.btnDCCExport,
-            this.barEditItem1,
-            this.barEditItem2,
+            this.txtConsName,
+            this.txtConsPhone,
             this.btnSingleAnalyse,
             this.btnGroupAnalyse,
-            this.barEditItem3,
-            this.barEditItem4,
+            this.dtStartDate,
+            this.dtEndDate,
             this.btnNewDCCRecal,
             this.btnAddOrder,
             this.btnUpdateOrder,
@@ -524,77 +524,79 @@ namespace CRM_4S
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barEditItem1);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barEditItem2);
+            this.ribbonPageGroup2.ItemLinks.Add(this.txtConsName);
+            this.ribbonPageGroup2.ItemLinks.Add(this.txtConsPhone);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             resources.ApplyResources(this.ribbonPageGroup2, "ribbonPageGroup2");
             // 
-            // barEditItem1
+            // txtConsName
             // 
-            resources.ApplyResources(this.barEditItem1, "barEditItem1");
-            this.barEditItem1.Edit = this.repositoryItemTextEdit5;
-            this.barEditItem1.EditValue = "";
-            this.barEditItem1.Id = 58;
-            this.barEditItem1.Name = "barEditItem1";
+            resources.ApplyResources(this.txtConsName, "txtConsName");
+            this.txtConsName.Edit = this.repositoryItemTextEdit5;
+            this.txtConsName.EditValue = "";
+            this.txtConsName.Id = 58;
+            this.txtConsName.Name = "txtConsName";
             // 
             // repositoryItemTextEdit5
             // 
             resources.ApplyResources(this.repositoryItemTextEdit5, "repositoryItemTextEdit5");
             this.repositoryItemTextEdit5.Name = "repositoryItemTextEdit5";
             // 
-            // barEditItem2
+            // txtConsPhone
             // 
-            resources.ApplyResources(this.barEditItem2, "barEditItem2");
-            this.barEditItem2.Edit = this.repositoryItemTextEdit6;
-            this.barEditItem2.EditValue = "";
-            this.barEditItem2.Id = 59;
-            this.barEditItem2.Name = "barEditItem2";
+            resources.ApplyResources(this.txtConsPhone, "txtConsPhone");
+            this.txtConsPhone.Edit = this.repositoryItemTextEdit6;
+            this.txtConsPhone.EditValue = "";
+            this.txtConsPhone.Id = 59;
+            this.txtConsPhone.Name = "txtConsPhone";
             // 
             // repositoryItemTextEdit6
             // 
             resources.ApplyResources(this.repositoryItemTextEdit6, "repositoryItemTextEdit6");
             this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
             // 
-            // ribbonPageGroup10
+            // dtStartDate
             // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem3);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barEditItem4);
-            this.ribbonPageGroup10.ItemLinks.Add(this.btnSingleAnalyse, true);
-            this.ribbonPageGroup10.ItemLinks.Add(this.btnGroupAnalyse);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            resources.ApplyResources(this.ribbonPageGroup10, "ribbonPageGroup10");
-            // 
-            // barEditItem3
-            // 
-            resources.ApplyResources(this.barEditItem3, "barEditItem3");
-            this.barEditItem3.Edit = this.repositoryItemDateEdit1;
-            this.barEditItem3.Id = 62;
-            this.barEditItem3.Name = "barEditItem3";
+            resources.ApplyResources(this.dtStartDate, "dtStartDate");
+            this.dtStartDate.Edit = this.repositoryItemDateEdit1;
+            this.dtStartDate.Id = 62;
+            this.dtStartDate.Name = "dtStartDate";
             // 
             // repositoryItemDateEdit1
             // 
             resources.ApplyResources(this.repositoryItemDateEdit1, "repositoryItemDateEdit1");
             this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemDateEdit1.Buttons"))))});
+            this.repositoryItemDateEdit1.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.repositoryItemDateEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
-            // barEditItem4
+            // dtEndDate
             // 
-            resources.ApplyResources(this.barEditItem4, "barEditItem4");
-            this.barEditItem4.Edit = this.repositoryItemDateEdit2;
-            this.barEditItem4.Id = 63;
-            this.barEditItem4.Name = "barEditItem4";
+            resources.ApplyResources(this.dtEndDate, "dtEndDate");
+            this.dtEndDate.Edit = this.repositoryItemDateEdit2;
+            this.dtEndDate.Id = 63;
+            this.dtEndDate.Name = "dtEndDate";
             // 
             // repositoryItemDateEdit2
             // 
             resources.ApplyResources(this.repositoryItemDateEdit2, "repositoryItemDateEdit2");
             this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("repositoryItemDateEdit2.Buttons"))))});
+            this.repositoryItemDateEdit2.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.repositoryItemDateEdit2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             this.repositoryItemDateEdit2.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnSingleAnalyse);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnGroupAnalyse);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            resources.ApplyResources(this.ribbonPageGroup10, "ribbonPageGroup10");
             // 
             // btnSingleAnalyse
             // 
@@ -739,15 +741,15 @@ namespace CRM_4S
         private DevExpress.XtraBars.BarButtonItem btnDCCRefresh;
         private DevExpress.XtraBars.BarButtonItem btnDCCImport;
         private DevExpress.XtraBars.BarButtonItem btnDCCExport;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraBars.BarEditItem txtConsName;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit5;
-        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraBars.BarEditItem txtConsPhone;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit6;
         private DevExpress.XtraBars.BarButtonItem btnSingleAnalyse;
         private DevExpress.XtraBars.BarButtonItem btnGroupAnalyse;
-        private DevExpress.XtraBars.BarEditItem barEditItem3;
+        private DevExpress.XtraBars.BarEditItem dtStartDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem4;
+        private DevExpress.XtraBars.BarEditItem dtEndDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnNewDCCRecal;

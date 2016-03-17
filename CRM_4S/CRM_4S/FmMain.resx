@@ -195,23 +195,23 @@
   <data name="btnDCCExport.Caption" xml:space="preserve">
     <value>数据导出</value>
   </data>
-  <data name="barEditItem1.Caption" xml:space="preserve">
+  <data name="txtConsName.Caption" xml:space="preserve">
     <value> 姓名 </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="repositoryItemTextEdit5.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="barEditItem1.Width" type="System.Int32, mscorlib">
+  <data name="txtConsName.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="barEditItem2.Caption" xml:space="preserve">
+  <data name="txtConsPhone.Caption" xml:space="preserve">
     <value> 电话 </value>
   </data>
   <data name="repositoryItemTextEdit6.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="barEditItem2.Width" type="System.Int32, mscorlib">
+  <data name="txtConsPhone.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
   <data name="btnSingleAnalyse.Caption" xml:space="preserve">
@@ -220,7 +220,7 @@
   <data name="btnGroupAnalyse.Caption" xml:space="preserve">
     <value>团队能力</value>
   </data>
-  <data name="barEditItem3.Caption" xml:space="preserve">
+  <data name="dtStartDate.Caption" xml:space="preserve">
     <value> 开始时间 </value>
   </data>
   <data name="repositoryItemDateEdit1.AutoHeight" type="System.Boolean, mscorlib">
@@ -230,10 +230,10 @@
   <data name="repositoryItemDateEdit1.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v11.1">
     <value>Combo</value>
   </data>
-  <data name="barEditItem3.Width" type="System.Int32, mscorlib">
+  <data name="dtStartDate.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="barEditItem4.Caption" xml:space="preserve">
+  <data name="dtEndDate.Caption" xml:space="preserve">
     <value> 结束时间 </value>
   </data>
   <data name="repositoryItemDateEdit2.AutoHeight" type="System.Boolean, mscorlib">
@@ -242,7 +242,7 @@
   <data name="repositoryItemDateEdit2.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v11.1">
     <value>Combo</value>
   </data>
-  <data name="barEditItem4.Width" type="System.Int32, mscorlib">
+  <data name="dtEndDate.Width" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
   <data name="btnNewDCCRecal.Caption" xml:space="preserve">
@@ -312,7 +312,7 @@
     <value>订单管理</value>
   </data>
   <data name="ribbonPageGroup2.Text" xml:space="preserve">
-    <value>销售顾问筛选</value>
+    <value>筛选</value>
   </data>
   <data name="ribbonPageGroup10.Text" xml:space="preserve">
     <value>数据分析</value>
@@ -963,10 +963,10 @@
   <data name="&gt;&gt;ribbonPageGroup2.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barEditItem1.Name" xml:space="preserve">
-    <value>barEditItem1</value>
+  <data name="&gt;&gt;txtConsName.Name" xml:space="preserve">
+    <value>txtConsName</value>
   </data>
-  <data name="&gt;&gt;barEditItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtConsName.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemTextEdit5.Name" xml:space="preserve">
@@ -975,10 +975,10 @@
   <data name="&gt;&gt;repositoryItemTextEdit5.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barEditItem2.Name" xml:space="preserve">
-    <value>barEditItem2</value>
+  <data name="&gt;&gt;txtConsPhone.Name" xml:space="preserve">
+    <value>txtConsPhone</value>
   </data>
-  <data name="&gt;&gt;barEditItem2.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtConsPhone.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemTextEdit6.Name" xml:space="preserve">
@@ -987,16 +987,10 @@
   <data name="&gt;&gt;repositoryItemTextEdit6.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ribbonPageGroup10.Name" xml:space="preserve">
-    <value>ribbonPageGroup10</value>
+  <data name="&gt;&gt;dtStartDate.Name" xml:space="preserve">
+    <value>dtStartDate</value>
   </data>
-  <data name="&gt;&gt;ribbonPageGroup10.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;barEditItem3.Name" xml:space="preserve">
-    <value>barEditItem3</value>
-  </data>
-  <data name="&gt;&gt;barEditItem3.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtStartDate.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemDateEdit1.Name" xml:space="preserve">
@@ -1005,10 +999,10 @@
   <data name="&gt;&gt;repositoryItemDateEdit1.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemDateEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;barEditItem4.Name" xml:space="preserve">
-    <value>barEditItem4</value>
+  <data name="&gt;&gt;dtEndDate.Name" xml:space="preserve">
+    <value>dtEndDate</value>
   </data>
-  <data name="&gt;&gt;barEditItem4.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtEndDate.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;repositoryItemDateEdit2.Name" xml:space="preserve">
@@ -1016,6 +1010,12 @@
   </data>
   <data name="&gt;&gt;repositoryItemDateEdit2.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemDateEdit, DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup10.Name" xml:space="preserve">
+    <value>ribbonPageGroup10</value>
+  </data>
+  <data name="&gt;&gt;ribbonPageGroup10.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnSingleAnalyse.Name" xml:space="preserve">
     <value>btnSingleAnalyse</value>

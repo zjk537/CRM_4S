@@ -1,7 +1,7 @@
 ﻿/* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-03-11 13:24
+ * 创建日期：2016-03-14 13:45
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -109,6 +109,15 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("OrderRecordStatus")]
         public int? Status { get { return status; } set { status = value; StatusSpecify = true; } }
+
+
+        private string type = string.Empty;
+        public bool TypeSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 订单类型：FRONT:展厅  DCC 
+        /// </summary>
+        [DBFieldAttribute("OrderRecordType")]
+        public string Type { get { return type; } set { type = value; TypeSpecify = true; } }
 
 
         private string remark = string.Empty;

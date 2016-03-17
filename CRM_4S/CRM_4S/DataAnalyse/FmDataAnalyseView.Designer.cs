@@ -28,88 +28,122 @@ namespace CRM_4S.DataAnalyse
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmGroupName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.gridControlConsultant = new DevExpress.XtraGrid.GridControl();
+            this.userShopRoleInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewConsultant = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmRole = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmUserGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userShopRoleInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // gridControlConsultant
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(746, 439);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridControlConsultant.DataSource = this.userShopRoleInfoBindingSource;
+            this.gridControlConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlConsultant.Location = new System.Drawing.Point(0, 0);
+            this.gridControlConsultant.MainView = this.gridViewConsultant;
+            this.gridControlConsultant.Name = "gridControlConsultant";
+            this.gridControlConsultant.Size = new System.Drawing.Size(746, 439);
+            this.gridControlConsultant.TabIndex = 0;
+            this.gridControlConsultant.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewConsultant});
             // 
-            // gridView1
+            // userShopRoleInfoBindingSource
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn3,
-            this.gridColumn2,
-            this.clmGroupName});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.userShopRoleInfoBindingSource.DataSource = typeof(CRM_4S.Business.BusinessModel.UserShopRoleInfo);
             // 
-            // gridColumn1
+            // gridViewConsultant
             // 
-            this.gridColumn1.Caption = "销顾姓名";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridViewConsultant.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.clmConsultantName,
+            this.clmRole,
+            this.clmPhone,
+            this.clmUserGroup,
+            this.clmCreatedDate});
+            this.gridViewConsultant.GridControl = this.gridControlConsultant;
+            this.gridViewConsultant.Name = "gridViewConsultant";
+            this.gridViewConsultant.OptionsBehavior.Editable = false;
+            this.gridViewConsultant.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewConsultant.OptionsView.ShowGroupPanel = false;
+            this.gridViewConsultant.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridViewConsultant_CustomDrawCell);
+            this.gridViewConsultant.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewConsultant_MouseDown);
             // 
-            // gridColumn2
+            // clmConsultantName
             // 
-            this.gridColumn2.Caption = "进店时间";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.clmConsultantName.Caption = "销顾姓名";
+            this.clmConsultantName.FieldName = "User.RealName";
+            this.clmConsultantName.Name = "clmConsultantName";
+            this.clmConsultantName.Visible = true;
+            this.clmConsultantName.VisibleIndex = 0;
             // 
-            // clmGroupName
+            // clmPhone
             // 
-            this.clmGroupName.Caption = "团队名称";
-            this.clmGroupName.Name = "clmGroupName";
-            this.clmGroupName.Visible = true;
-            this.clmGroupName.VisibleIndex = 2;
+            this.clmPhone.Caption = "联系方式";
+            this.clmPhone.FieldName = "User.Phone";
+            this.clmPhone.Name = "clmPhone";
+            this.clmPhone.Visible = true;
+            this.clmPhone.VisibleIndex = 1;
             // 
-            // gridColumn3
+            // clmRole
             // 
-            this.gridColumn3.Caption = "联系方式";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
+            this.clmRole.Caption = "销顾角色";
+            this.clmRole.FieldName = "Role.Name";
+            this.clmRole.Name = "clmRole";
+            this.clmRole.Visible = true;
+            this.clmRole.VisibleIndex = 1;
+            // 
+            // clmUserGroup
+            // 
+            this.clmUserGroup.AppearanceCell.Options.UseTextOptions = true;
+            this.clmUserGroup.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmUserGroup.Caption = "团队名称";
+            this.clmUserGroup.FieldName = "User.GroupId";
+            this.clmUserGroup.Name = "clmUserGroup";
+            this.clmUserGroup.Visible = true;
+            this.clmUserGroup.VisibleIndex = 3;
+            // 
+            // clmCreatedDate
+            // 
+            this.clmCreatedDate.Caption = "进店时间";
+            this.clmCreatedDate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.clmCreatedDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.clmCreatedDate.FieldName = "User.CreatedDate";
+            this.clmCreatedDate.Name = "clmCreatedDate";
+            this.clmCreatedDate.Visible = true;
+            this.clmCreatedDate.VisibleIndex = 4;
             // 
             // FmDataAnalyseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 439);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gridControlConsultant);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FmDataAnalyseView";
             this.Text = "FmConsultantView";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FmDataAnalyseView_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlConsultant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userShopRoleInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsultant)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn clmGroupName;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.GridControl gridControlConsultant;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewConsultant;
+        private DevExpress.XtraGrid.Columns.GridColumn clmConsultantName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmCreatedDate;
+        private DevExpress.XtraGrid.Columns.GridColumn clmUserGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn clmPhone;
+        private DevExpress.XtraGrid.Columns.GridColumn clmRole;
+        private System.Windows.Forms.BindingSource userShopRoleInfoBindingSource;
     }
 }

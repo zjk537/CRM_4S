@@ -49,7 +49,7 @@ namespace CRM_4S.BasicsManager
 
             //navBtnItem_LinkClicked(this.navBtnShop, null);
 
-            
+
         }
 
         private void FmBasicsView_Load(object sender, EventArgs e)
@@ -92,6 +92,7 @@ namespace CRM_4S.BasicsManager
                 gridControlShop.DataSource = listResult;
                 gridControlShop.DefaultView.RefreshData();
                 defaultGridView = gridControlShop.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
 
@@ -103,6 +104,7 @@ namespace CRM_4S.BasicsManager
                 gridControlCarType.DataSource = listResult;
                 gridControlCarType.DefaultView.RefreshData();
                 defaultGridView = gridControlCarType.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
         private void RefreshLevelView()
@@ -113,6 +115,7 @@ namespace CRM_4S.BasicsManager
                 gridControlLevel.DataSource = listResult;
                 gridControlLevel.DefaultView.RefreshData();
                 defaultGridView = gridControlLevel.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
         private void RefreshConsultantView()
@@ -123,6 +126,7 @@ namespace CRM_4S.BasicsManager
                 gridControlConsultant.DataSource = listResult;
                 gridControlConsultant.DefaultView.RefreshData();
                 defaultGridView = gridControlConsultant.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
         private void RefreshQuestionView()
@@ -133,6 +137,7 @@ namespace CRM_4S.BasicsManager
                 gridControlQuestion.DataSource = listResult;
                 gridControlQuestion.DefaultView.RefreshData();
                 defaultGridView = gridControlQuestion.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
         private void RefreshAnalyseView()
@@ -143,6 +148,7 @@ namespace CRM_4S.BasicsManager
                 gridControlAnalyse.DataSource = listResult;
                 gridControlAnalyse.DefaultView.RefreshData();
                 defaultGridView = gridControlAnalyse.DefaultView as ColumnView;
+                this.btnUpdate.Enabled = this.btnDelete.Enabled = listResult.Count > 0;
             }
         }
 
@@ -343,10 +349,6 @@ namespace CRM_4S.BasicsManager
             }
         }
 
-        private void defaultGridView_DoubleClick(object sender, EventArgs e)
-        {
-            btnUpdate_ItemClick(sender, null);
-        }
         private void defaultGridView_MouseDown(object sender, MouseEventArgs e)
         {
             // 判断是否为左键双击
@@ -378,19 +380,19 @@ namespace CRM_4S.BasicsManager
 
             if (e.Column.Name == "clmKValue")
             {
-                var rowData = (AnalyseKPIInfo) defaultGridView.GetRow(e.RowHandle);
+                var rowData = (AnalyseKPIInfo)gridControlAnalyse.DefaultView.GetRow(e.RowHandle);
                 e.DisplayText = rowData.KValue + rowData.KUnit;
             }
 
             if (e.Column.Name == "clmShopAddress")
             {
-                var rowData = (ShopInfo)defaultGridView.GetRow(e.RowHandle);
+                var rowData = (ShopInfo)gridControlShop.DefaultView.GetRow(e.RowHandle);
                 RegionInfo region = GlobalCaches.Instance.RegionInfos.FirstOrDefault(info => info.Id == rowData.RegionId);
                 e.DisplayText = string.Format("{0} {1}", region, rowData.Address);
             }
         }
 
-        
+
     }
 
     public class NavBarClickedArgs : EventArgs

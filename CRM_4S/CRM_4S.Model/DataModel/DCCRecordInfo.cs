@@ -105,7 +105,7 @@ namespace CRM_4S.Model.DataModel
         private int? status = null;
         public bool StatusSpecify { get; set; }
         /// <summary>
-        /// 获取或设置 DCC状态：对应 basic_constant.TypeKey = DCCStatus 
+        /// 获取或设置 DCC状态：1有效 2无效 3重复 
         /// </summary>
         [DBFieldAttribute("DccRecordStatus")]
         public int? Status { get { return status; } set { status = value; StatusSpecify = true; } }

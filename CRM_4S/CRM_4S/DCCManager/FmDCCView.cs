@@ -160,13 +160,12 @@ namespace CRM_4S.DCCManager
         {
             get
             {
-                if (qInfo == null)
-                    qInfo = new ViewQueryInfo()
-                    {
-                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
-                        EndDate = DateTime.Now
-                    };
+                qInfo = new ViewQueryInfo()
+                {
+                    ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                    StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                    EndDate = DateTime.Now
+                };
                 return qInfo;
             }
             set
@@ -189,12 +188,14 @@ namespace CRM_4S.DCCManager
                 {
                     gridControlDCCRecord.DataSource = listResults;
                     gridControlDCCRecord.DefaultView.RefreshData();
+                    this.btnDCCRecall.Enabled = listResults.Count > 0;
                 }));
             }
             else
             {
                 gridControlDCCRecord.DataSource = listResults;
                 gridControlDCCRecord.DefaultView.RefreshData();
+                this.btnDCCRecall.Enabled = listResults.Count > 0;
             }
         }
 

@@ -154,13 +154,13 @@ namespace CRM_4S.FrontManager
         {
             get
             {
-                if (qInfo == null)
-                    qInfo = new ViewQueryInfo()
-                    {
-                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
-                        EndDate = DateTime.Now
-                    };
+
+                qInfo = new ViewQueryInfo()
+                {
+                    ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                    StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                    EndDate = DateTime.Now
+                };
                 return qInfo;
             }
             set
@@ -188,12 +188,14 @@ namespace CRM_4S.FrontManager
                 {
                     gridControlFrontRecord.DataSource = listResults;
                     gridControlFrontRecord.DefaultView.RefreshData();
+                    btnCustomerOut.Enabled = listResults.Count > 0;
                 }));
             }
             else
             {
                 gridControlFrontRecord.DataSource = listResults;
                 gridControlFrontRecord.DefaultView.RefreshData();
+                btnCustomerOut.Enabled = listResults.Count > 0;
             }
 
 

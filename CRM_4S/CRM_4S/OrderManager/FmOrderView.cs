@@ -122,6 +122,7 @@ namespace CRM_4S.OrderManager
             var listResults = OrderRecordBusiness.Instance.GetCustomerOrderRecords(this.QInfo);
             gridControlOrderRecord.DataSource = listResults;
             gridControlOrderRecord.DefaultView.RefreshData();
+            this.btnDelete.Enabled = this.btnUpdate.Enabled = listResults.Count > 0;
         }
 
         private ViewQueryInfo qInfo = null;

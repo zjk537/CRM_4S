@@ -65,6 +65,7 @@
     <Compile Include="BusinessModel\DCCCustomerRecordInfo.cs" />
     <Compile Include="BusinessModel\FrontCustomerRecordInfo.cs" />
     <Compile Include="BusinessModel\UserShopRoleInfo.cs" />
+    <Compile Include="FrontAnalyseBusiness.cs" />
     <Compile Include="OrderRecordBusiness.cs" />
     <Compile Include="PurposeLevelBusiness.cs" />
     <Compile Include="DataImportBusiness.cs" />

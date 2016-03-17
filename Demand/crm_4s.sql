@@ -10,15 +10,12 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-11 17:20:04
+Date: 2016-03-17 12:15:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
-
 CREATE DATABASE IF NOT EXISTS crm_4s DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use crm_4s;
-
 -- ----------------------------
 -- Table structure for analyse_kpi
 -- ----------------------------
@@ -26,6 +23,7 @@ DROP TABLE IF EXISTS `analyse_kpi`;
 CREATE TABLE `analyse_kpi` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) DEFAULT '' COMMENT '指标名称',
+  `BasicId` int(11) NOT NULL DEFAULT '0' COMMENT '对应basic_constant.TypeKey = FrontKPI | DCCKPI',
   `KValue` int(11) DEFAULT NULL COMMENT '指标临界值',
   `KUnit` varchar(100) DEFAULT NULL COMMENT '指标临界值单位',
   `Perform` varchar(200) DEFAULT NULL COMMENT '主要表现',
@@ -36,7 +34,7 @@ CREATE TABLE `analyse_kpi` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for basic_constant
@@ -108,7 +106,7 @@ CREATE TABLE `dcc_record` (
   `PurposeCar` int(11) DEFAULT NULL COMMENT '意向车型',
   `LevelCode` varchar(100) DEFAULT NULL COMMENT '意向级别',
   `Source` int(11) DEFAULT NULL COMMENT '线索来源：对应 basic_constant.TypeKey = DCCSource',
-  `Status` int(11) DEFAULT NULL COMMENT 'DCC状态：对应 basic_constant.TypeKey = DCCStatus',
+  `Status` int(11) DEFAULT NULL COMMENT 'DCC状态：1有效 2无效 3重复',
   `ToShop` int(2) DEFAULT NULL COMMENT '承诺到店：1:是；2:否',
   `ToShopTime` datetime DEFAULT NULL COMMENT '预约到店时间',
   `Installment` int(2) DEFAULT NULL COMMENT '是否分期还款 1 是； 2 否',
@@ -132,6 +130,20 @@ CREATE TABLE `evaluate_question` (
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for front_analyse
+-- ----------------------------
+DROP TABLE IF EXISTS `front_analyse`;
+CREATE TABLE `front_analyse` (
+  `scjd` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '首次接待量 = 所有首次进店接待客户数',
+  `scyx` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '首次进店有效客户数',
+  `ecyx` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '二次进店有效客户数',
+  `sjkh` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '试乘试驾客户数',
+  `yyjd` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '邀约进店量 (二次进店的客户数)',
+  `scdj` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '首次进店订交数',
+  `ecdj` float(9,2) NOT NULL DEFAULT '0.00' COMMENT '二次进店订交数'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -226,6 +238,7 @@ CREATE TABLE `order_record` (
   `PrevPay` decimal(10,2) DEFAULT NULL COMMENT '预付订金',
   `ToShopNum` int(11) DEFAULT NULL COMMENT '第几次进店订交的',
   `Status` int(2) DEFAULT NULL COMMENT '订单状态：1 预付订金; 2 订单完成 3 订单取消',
+  `Type` varchar(50) DEFAULT NULL COMMENT '订单类型：FRONT:展厅  DCC',
   `Remark` varchar(200) DEFAULT NULL COMMENT '成交备注',
   `UpdateDate` datetime DEFAULT NULL COMMENT '最后一次更新时间',
   `CreatedDate` datetime DEFAULT NULL COMMENT '成交时间',
@@ -348,10 +361,11 @@ CREATE TABLE `user_task` (
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddAnalyseKPI`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddAnalyseKPI`(IN `pAnalyseKpiName` varchar(100),IN `pAnalyseKpiKValue` int,IN `pAnalyseKpiKUnit` varchar(100),IN `pAnalyseKpiPerform` varchar(200),IN `pAnalyseKpiReason` varchar(200),IN `pAnalyseKpiSuggest` varchar(200),IN `pAnalyseKpiDesc` varchar(200),IN `pAnalyseKpiOperatorId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddAnalyseKPI`(IN `pAnalyseKpiName` varchar(100),IN `pAnalyseKpiBasicId` int,IN `pAnalyseKpiKValue` int,IN `pAnalyseKpiKUnit` varchar(100),IN `pAnalyseKpiPerform` varchar(200),IN `pAnalyseKpiReason` varchar(200),IN `pAnalyseKpiSuggest` varchar(200),IN `pAnalyseKpiDesc` varchar(200),IN `pAnalyseKpiOperatorId` int)
 BEGIN
 	 INSERT INTO `analyse_kpi`(
         `Name`
+				,`BasicId`
         ,`KValue`
         ,`KUnit`
         ,`Perform`
@@ -361,7 +375,8 @@ BEGIN
         ,`OperatorId`
         ,`CreatedDate`
     ) VALUES (
-        pAnalyseKpiName        
+        pAnalyseKpiName
+				,pAnalyseKpiBasicId
         ,pAnalyseKpiKValue        
         ,pAnalyseKpiKUnit        
         ,pAnalyseKpiPerform        
@@ -604,7 +619,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspAddOrderRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddOrderRecord`(IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordRemark` varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspAddOrderRecord`(IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordType` varchar(50),IN `pOrderRecordRemark` varchar(200))
 BEGIN
 	
 	SELECT @toShopNum := COUNT(DISTINCT `front_record`.`CustomerId`) 
@@ -623,6 +638,7 @@ BEGIN
         ,`PrevPay`
         ,`ToShopNum`
         ,`Status`
+				,`Type`
         ,`Remark`
         ,`CreatedDate`
     ) VALUES (
@@ -635,7 +651,8 @@ BEGIN
         ,pOrderRecordDisPrice        
         ,pOrderRecordPrevPay        
         ,@toShopNum        
-        ,pOrderRecordStatus        
+        ,pOrderRecordStatus
+				,pOrderRecordType
         ,pOrderRecordRemark        
         ,NOW()        
     );
@@ -785,6 +802,69 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for uspDCCAnalyse
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspDCCAnalyse`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspDCCAnalyse`(IN `pConsultantId` int,IN `pStartDate` datetime,IN `pEndDate` datetime)
+BEGIN
+	#1、新增DCC线索量
+	SELECT COUNT(0)
+	FROM `dcc_record` 
+	WHERE `dcc_record`.CreatedDate >= pStartDate
+	AND `dcc_record`.`CreatedDate` <= pEndDate;
+
+	#2、24小时内首次电话跟进量
+	SELECT COUNT(0)
+	FROM	`dcc_record`
+	WHERE	`dcc_record`.`DurationTime` < '24:00:00'
+	AND `dcc_record`.CreatedDate >= pStartDate
+	AND `dcc_record`.`CreatedDate` <= pEndDate;
+
+	#3、有效潜客量 当月新增线索首次中进后有效线索量
+	SELECT COUNT(0)
+	FROM `dcc_record`
+	WHERE `dcc_record`.`Status` = 1
+	AND `dcc_record`.CreatedDate >= pStartDate
+	AND `dcc_record`.`CreatedDate` <= pEndDate; 
+
+	#4、当月首次进店量  如何区分 顾客性质区分?线索来源区分
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)
+	FROM `front_record`
+	WHERE `front_record`.`Source` IN( 
+			SELECT `basic_constant`.`Id`
+			FROM `basic_constant` 
+			WHERE `basic_constant`.`TypeKey` = 'DCCSource')
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate; 
+
+	#5、当月新增线索订单数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 1
+	AND `order_record`.`Type` = 'DCC'
+	AND `order_record`.`ConsultantId` = pConsultantId
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+	
+	#6、二次进店订单数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` > 1
+	AND `order_record`.`Type` = 'DCC'
+	AND `order_record`.`ConsultantId` = pConsultantId
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	#7、二次进店有效客户数
+
+	#8、当月新增订单数
+
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for uspDeleteAnalyseKPI
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspDeleteAnalyseKPI`;
@@ -891,42 +971,445 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspFrontAnalyse`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontAnalyse`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontAnalyse`(IN `pConsultantId` int,IN `pStartDate` datetime,IN `pEndDate` datetime)
 BEGIN
-	#1、首次接待量 = 所有首次进店接待客户数
-	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
-	FROM `front_record`
-	WHERE `front_record`.`ToShopNum` = 1;
-	# AND 时间段
+	DECLARE scjd FLOAT(9,2); #首次接待
+	DECLARE scyx FLOAT(9,2); #首次有效
+	DECLARE ecyx FLOAT(9,2); #二次有效
+	DECLARE sjkh FLOAT(9,2); #试驾客户数
+	DECLARE yyjd FLOAT(9,2); #邀约进店
+	DECLARE scdj FLOAT(9,2); #首次订交
+	DECLARE ecdj FLOAT(9,2); #二次订交
 
-	#2、首次进店有效客户数
-	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	#1、首次接待量 = 所有首次进店接待客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO scjd
 	FROM `front_record`
 	WHERE `front_record`.`ToShopNum` = 1
-	AND `front_record`.`PhoneStatus` = 1; #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId` = pConsultantId
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#2、首次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO scyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId` = pConsultantId
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
 
 	#3、二次进店有效客户数
-	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO ecyx
 	FROM `front_record`
-	WHERE `front_record`.`ToShopNum` = 2
-	AND `front_record`.`PhoneStatus` = 1; #留下手机号码有效 状态为1
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId` = pConsultantId
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
 
 	#4、试乘试驾客户数
-	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) 
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO sjkh
 	FROM `front_record`
-	WHERE `front_record`.`DriveStatus` = 1; #试驾 状态为1
+	WHERE `front_record`.`DriveStatus` = 1 #试驾 状态为1
+	AND `front_record`.`ConsultantId` = pConsultantId
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
 
-	#5、邀约进店量
+	#5、邀约进店量 (二次进店的客户数)
+	SELECT COUNT(0) INTO yyjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`ConsultantId` = pConsultantId
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
 
 	#6、首次进店订交数
-	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`) INTO scdj
 	FROM `order_record`
-	WHERE `order_record`.`ToShopNum` = 1;
+	WHERE `order_record`.`ToShopNum` = 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId` = pConsultantId
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
 
 	#7、二次进店订交数
-	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`) INTO ecdj
 	FROM `order_record`
-	WHERE `order_record`.`ToShopNum` = 2;
+	WHERE `order_record`.`ToShopNum` > 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId` = pConsultantId
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	SELECT  scjd,scyx,ecyx,sjkh,yyjd,scdj,ecdj;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspFrontAvgAnalyse
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspFrontAvgAnalyse`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontAvgAnalyse`(IN `pStartDate` datetime,IN `pEndDate` datetime)
+BEGIN
+	DECLARE scjd FLOAT(9,2); #首次接待
+	DECLARE scyx FLOAT(9,2); #首次有效
+	DECLARE ecyx FLOAT(9,2); #二次有效
+	DECLARE sjkh FLOAT(9,2); #试驾客户数
+	DECLARE yyjd FLOAT(9,2); #邀约进店
+	DECLARE scdj FLOAT(9,2); #首次订交
+	DECLARE ecdj FLOAT(9,2); #二次订交
+	DECLARE consulCnt INT; #展厅销售顾问数
+
+	DECLARE frontConsulRoleId INT;
+	SET frontConsulRoleId = 6;
+
+	#展厅销售顾问数
+	SELECT COUNT(`Id`) INTO consulCnt
+	FROM `user`
+	WHERE `user`.`RoleId` = frontConsulRoleId;
+
+	SET consulCnt = CASE WHEN consulCnt = 0 THEN 1 ELSE consulCnt END;
+
+	#1、首次接待量 = 所有首次进店接待客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulCnt INTO scjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`ConsultantId` IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#2、首次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulCnt INTO scyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#3、二次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulCnt INTO ecyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId`IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#4、试乘试驾客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulCnt INTO sjkh
+	FROM `front_record`
+	WHERE `front_record`.`DriveStatus` = 1 #试驾 状态为1
+	AND `front_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#5、邀约进店量 (二次进店的客户数)
+	SELECT COUNT(0)/consulCnt INTO yyjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`ConsultantId` IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#6、首次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)/consulCnt INTO scdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	#7、二次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)/consulCnt INTO ecdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` > 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+	
+	
+	SELECT  scjd,scyx,ecyx,sjkh,yyjd,scdj,ecdj;
+
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspFrontGroupAnalyse
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspFrontGroupAnalyse`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontGroupAnalyse`(IN `pGroupId` int,IN `pStartDate` datetime,IN `pEndDate` datetime)
+BEGIN
+	DECLARE scjd FLOAT(9,2); #首次接待
+	DECLARE scyx FLOAT(9,2); #首次有效
+	DECLARE ecyx FLOAT(9,2); #二次有效
+	DECLARE sjkh FLOAT(9,2); #试驾客户数
+	DECLARE yyjd FLOAT(9,2); #邀约进店
+	DECLARE scdj FLOAT(9,2); #首次订交
+	DECLARE ecdj FLOAT(9,2); #二次订交
+
+	DECLARE frontConsulRoleId INT;
+	SET frontConsulRoleId = 6;#展厅销售顾问
+
+	#1、首次接待量 = 所有首次进店接待客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO scjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#2、首次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO scyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#3、二次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO ecyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#4、试乘试驾客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`) INTO sjkh
+	FROM `front_record`
+	WHERE `front_record`.`DriveStatus` = 1 #试驾 状态为1
+	AND `front_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#5、邀约进店量 (二次进店的客户数)
+	SELECT COUNT(0) INTO yyjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#6、首次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`) INTO scdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	#7、二次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`) INTO ecdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` > 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId` IN(
+		SELECT `user`.`Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	SELECT  scjd,scyx,ecyx,sjkh,yyjd,scdj,ecdj;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspFrontGroupAvgAnalyse
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspFrontGroupAvgAnalyse`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspFrontGroupAvgAnalyse`(IN `pGroupId` int,IN `pStartDate` datetime,IN `pEndDate` datetime)
+BEGIN
+	DECLARE scjd FLOAT(9,2); #首次接待
+	DECLARE scyx FLOAT(9,2); #首次有效
+	DECLARE ecyx FLOAT(9,2); #二次有效
+	DECLARE sjkh FLOAT(9,2); #试驾客户数
+	DECLARE yyjd FLOAT(9,2); #邀约进店
+	DECLARE scdj FLOAT(9,2); #首次订交
+	DECLARE ecdj FLOAT(9,2); #二次订交
+	DECLARE consulGroupCnt INT; #展厅销售顾问团队数
+
+	DECLARE frontConsulRoleId INT;
+	SET frontConsulRoleId = 6;#展厅销售顾问
+
+	#展厅销售顾问数
+	SELECT COUNT(DISTINCT `user`.`GroupId`) INTO consulGroupCnt
+	FROM `user`
+	WHERE `user`.`RoleId` = frontConsulRoleId;
+	
+
+	SET consulGroupCnt = CASE WHEN consulGroupCnt = 0 THEN 1 ELSE consulGroupCnt END;
+
+	#1、首次接待量 = 所有首次进店接待客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulGroupCnt INTO scjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`ConsultantId` IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#2、首次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulGroupCnt INTO scyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` = 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#3、二次进店有效客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulGroupCnt INTO ecyx
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`PhoneStatus` = 1 #留下手机号码有效 状态为1
+	AND `front_record`.`ConsultantId`IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#4、试乘试驾客户数
+	SELECT COUNT(DISTINCT `front_record`.`CustomerId`)/consulGroupCnt INTO sjkh
+	FROM `front_record`
+	WHERE `front_record`.`DriveStatus` = 1 #试驾 状态为1
+	AND `front_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#5、邀约进店量 (二次进店的客户数)
+	SELECT COUNT(0)/consulGroupCnt INTO yyjd
+	FROM `front_record`
+	WHERE `front_record`.`ToShopNum` > 1
+	AND `front_record`.`ConsultantId` IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `front_record`.`ArrivalTime` >= pStartDate
+	AND `front_record`.`ArrivalTime` <= pEndDate;
+
+	#6、首次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)/consulGroupCnt INTO scdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` = 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+
+	#7、二次进店订交数
+	SELECT COUNT(DISTINCT `order_record`.`CustomerId`)/consulGroupCnt INTO ecdj
+	FROM `order_record`
+	WHERE `order_record`.`ToShopNum` > 1
+	AND `order_record`.`Type` = 'FRONT'
+	AND `order_record`.`ConsultantId`  IN (
+		SELECT `Id` 
+		FROM `user`
+		WHERE `user`.`RoleId` = frontConsulRoleId
+		AND `user`.`GroupId` = pGroupId
+	)
+	AND `order_record`.`CreatedDate` >= pStartDate
+	AND `order_record`.`CreatedDate` <= pEndDate;
+	
+	
+	SELECT  scjd,scyx,ecyx,sjkh,yyjd,scdj,ecdj;
+
 END
 ;;
 DELIMITER ;
@@ -939,8 +1422,9 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetAnalyseKPIs`()
 BEGIN
 	 SELECT 
-        `analyse_kpi`.`Id` as `AnalyseKpiId`        
-        ,`analyse_kpi`.`Name` as `AnalyseKpiName`        
+        `analyse_kpi`.`Id` as `AnalyseKpiId`       
+        ,`analyse_kpi`.`Name` as `AnalyseKpiName`
+				,`analyse_kpi`.`BasicId` as `AnalyseKpiBasicId`
         ,`analyse_kpi`.`KValue` as `AnalyseKpiKValue`        
         ,`analyse_kpi`.`KUnit` as `AnalyseKpiKUnit`        
         ,`analyse_kpi`.`Perform` as `AnalyseKpiPerform`        
@@ -1001,6 +1485,37 @@ BEGIN
         ,`car_type`.`CreatedDate` as `CarTypeCreatedDate`        
     FROM
         `car_type`;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for uspGetConsultants
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `uspGetConsultants`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetConsultants`(IN `pUserShopId` int)
+BEGIN
+		SELECT 
+        `user`.`Id` as `UserId`        
+        ,`user`.`ShopId` as `UserShopId`        
+        ,`user`.`RoleId` as `UserRoleId`        
+        ,`user`.`GroupId` as `UserGroupId`        
+        ,`user`.`UserName` as `UserUserName`        
+        ,`user`.`Pwd` as `UserPwd`        
+        ,`user`.`RealName` as `UserRealName`        
+        ,`user`.`Sex` as `UserSex`        
+        ,`user`.`Status` as `UserStatus`        
+        ,`user`.`Phone` as `UserPhone`        
+        ,`user`.`Telephone` as `UserTelephone`        
+        ,`user`.`UpdateDate` as `UserUpdateDate`        
+        ,`user`.`CreatedDate` as `UserCreatedDate`     
+    FROM
+        `user`
+		WHERE
+			`user`.`ShopId` = case when pUserShopId = 0 then `user`.`ShopId` else pUserShopId end
+		AND
+			`user`.`RoleId` IN (6,7,8); #6展厅销售顾问 7DCC销售顾问  8实习销售顾问
 END
 ;;
 DELIMITER ;
@@ -1231,8 +1746,9 @@ BEGIN
         ,`order_record`.`PrevPay` as `OrderRecordPrevPay`        
         ,`order_record`.`ToShopNum` as `OrderRecordToShopNum`        
         ,`order_record`.`Status` as `OrderRecordStatus`        
-        ,`order_record`.`Remark` as `OrderRecordRemark` 
-				,`order_record`.`UpdateDate` as `OrderRecordUpdateDate`  
+        ,`order_record`.`Type` as `OrderRecordType`        
+        ,`order_record`.`Remark` as `OrderRecordRemark`        
+        ,`order_record`.`UpdateDate` as `OrderRecordUpdateDate`        
         ,`order_record`.`CreatedDate` as `OrderRecordCreatedDate`        
     FROM
         `order_record`
@@ -1365,7 +1881,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspGetUsers`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetUsers`(IN `pUserShopId` int,IN `pUserRoleId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspGetUsers`(IN `pUserShopId` int)
 BEGIN
 		SELECT 
         `user`.`Id` as `UserId`        
@@ -1384,9 +1900,7 @@ BEGIN
     FROM
         `user`
 		WHERE
-			`user`.`ShopId` = case when pUserShopId = 0 then `user`.`ShopId` else pUserShopId end
-		AND
-			`user`.`RoleId` = case when pUserRoleId = 0 then `user`.`RoleId` else pUserRoleId end;
+			`user`.`ShopId` = case when pUserShopId = 0 then `user`.`ShopId` else pUserShopId end;
 END
 ;;
 DELIMITER ;
@@ -1706,12 +2220,13 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateAnalyseKPI`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateAnalyseKPI`(IN `pAnalyseKpiId` int,IN `pAnalyseKpiName` varchar(100),IN `pAnalyseKpiKValue` int,IN `pAnalyseKpiKUnit` varchar(100),IN `pAnalyseKpiPerform` varchar(200),IN `pAnalyseKpiReason` varchar(200),IN `pAnalyseKpiSuggest` varchar(200),IN `pAnalyseKpiDesc` varchar(200),IN `pAnalyseKpiOperatorId` int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateAnalyseKPI`(IN `pAnalyseKpiId` int,IN `pAnalyseKpiName` varchar(100),IN `pAnalyseKpiBasicId` int,IN `pAnalyseKpiKValue` int,IN `pAnalyseKpiKUnit` varchar(100),IN `pAnalyseKpiPerform` varchar(200),IN `pAnalyseKpiReason` varchar(200),IN `pAnalyseKpiSuggest` varchar(200),IN `pAnalyseKpiDesc` varchar(200),IN `pAnalyseKpiOperatorId` int)
 BEGIN
 	UPDATE `analyse_kpi`
     SET
         `analyse_kpi`.`Name` = case when pAnalyseKpiName is null then `analyse_kpi`.`Name` else pAnalyseKpiName end
-        ,`analyse_kpi`.`KValue` = case when pAnalyseKpiKValue is null then `analyse_kpi`.`KValue` else pAnalyseKpiKValue end
+        ,`analyse_kpi`.`BasicId` = case when pAnalyseKpiBasicId IS NULL then `analyse_kpi`.`BasicId` else pAnalyseKpiBasicId end
+				,`analyse_kpi`.`KValue` = case when pAnalyseKpiKValue is null then `analyse_kpi`.`KValue` else pAnalyseKpiKValue end
         ,`analyse_kpi`.`KUnit` = case when pAnalyseKpiKUnit is null then `analyse_kpi`.`KUnit` else pAnalyseKpiKUnit end
         ,`analyse_kpi`.`Perform` = case when pAnalyseKpiPerform is null then `analyse_kpi`.`Perform` else pAnalyseKpiPerform end
         ,`analyse_kpi`.`Reason` = case when pAnalyseKpiReason is null then `analyse_kpi`.`Reason` else pAnalyseKpiReason end
@@ -1871,7 +2386,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `uspUpdateOrderRecord`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateOrderRecord`(IN `pOrderRecordId` int,IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordRemark` varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `uspUpdateOrderRecord`(IN `pOrderRecordId` int,IN `pOrderRecordCustomerId` int,IN `pOrderRecordShopId` int,IN `pOrderRecordRecorderId` int,IN `pOrderRecordConsultantId` int,IN `pOrderRecordCarType` int,IN `pOrderRecordPrice` decimal(10, 2),IN `pOrderRecordDisPrice` decimal(10, 2),IN `pOrderRecordPrevPay` decimal(10, 2),IN `pOrderRecordStatus` int,IN `pOrderRecordType` varchar(50),IN `pOrderRecordRemark` varchar(200))
 BEGIN
 	UPDATE `order_record`
     SET
@@ -1884,6 +2399,7 @@ BEGIN
         ,`order_record`.`DisPrice` = case when pOrderRecordDisPrice is null then `order_record`.`DisPrice` else pOrderRecordDisPrice end
         ,`order_record`.`PrevPay` = case when pOrderRecordPrevPay is null then `order_record`.`PrevPay` else pOrderRecordPrevPay end
         ,`order_record`.`Status` = case when pOrderRecordStatus is null then `order_record`.`Status` else pOrderRecordStatus end
+				,`order_record`.`Type` = case when pOrderRecordType is null then `order_record`.`Type` else pOrderRecordType end
         ,`order_record`.`Remark` = case when pOrderRecordRemark is null then `order_record`.`Remark` else pOrderRecordRemark end
         ,`order_record`.`UpdateDate` = NOW()
     WHERE

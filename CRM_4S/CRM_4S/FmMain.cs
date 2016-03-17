@@ -194,6 +194,10 @@ namespace CRM_4S
                     fmAnalyseView = new FmDataAnalyseView();
                     fmAnalyseView.BtnGroupAnalyse = btnGroupAnalyse;
                     fmAnalyseView.BtnSingleAnalyse = btnSingleAnalyse;
+                    fmAnalyseView.TxtConsName = txtConsName;
+                    fmAnalyseView.TxtConsPhone = txtConsPhone;
+                    fmAnalyseView.DtStartDate = dtStartDate;
+                    fmAnalyseView.DtEndDate = dtEndDate;
                 }
 
                 return fmAnalyseView;

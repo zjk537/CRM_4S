@@ -37,20 +37,20 @@ namespace CRM_4S.BasicsManager
             this.txtPerform = new DevExpress.XtraEditors.MemoEdit();
             this.txtReason = new DevExpress.XtraEditors.MemoEdit();
             this.txtSuggest = new DevExpress.XtraEditors.MemoEdit();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtKValue = new DevExpress.XtraEditors.TextEdit();
             this.cbKUnit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtKDesc = new DevExpress.XtraEditors.MemoEdit();
+            this.cbKPI = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPerform.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReason.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSuggest.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKDesc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKPI.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -123,16 +123,6 @@ namespace CRM_4S.BasicsManager
             this.txtSuggest.Size = new System.Drawing.Size(333, 49);
             this.txtSuggest.TabIndex = 5;
             // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.EnterMoveNextControl = true;
-            this.txtName.Location = new System.Drawing.Point(66, 18);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(333, 21);
-            this.txtName.TabIndex = 0;
-            // 
             // txtKValue
             // 
             this.txtKValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -153,6 +143,7 @@ namespace CRM_4S.BasicsManager
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbKUnit.Properties.Items.AddRange(new object[] {
             "%"});
+            this.cbKUnit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbKUnit.Size = new System.Drawing.Size(83, 21);
             this.cbKUnit.TabIndex = 2;
             // 
@@ -178,6 +169,19 @@ namespace CRM_4S.BasicsManager
             this.txtKDesc.Size = new System.Drawing.Size(333, 49);
             this.txtKDesc.TabIndex = 6;
             // 
+            // cbKPI
+            // 
+            this.cbKPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbKPI.EnterMoveNextControl = true;
+            this.cbKPI.Location = new System.Drawing.Point(66, 18);
+            this.cbKPI.Name = "cbKPI";
+            this.cbKPI.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbKPI.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbKPI.Size = new System.Drawing.Size(333, 21);
+            this.cbKPI.TabIndex = 1005;
+            // 
             // FmAnalyseInfo
             // 
             this.Appearance.Font = new System.Drawing.Font("Tahoma", 13F);
@@ -185,11 +189,11 @@ namespace CRM_4S.BasicsManager
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 374);
+            this.Controls.Add(this.cbKPI);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.txtKDesc);
             this.Controls.Add(this.cbKUnit);
             this.Controls.Add(this.txtKValue);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
@@ -208,19 +212,19 @@ namespace CRM_4S.BasicsManager
             this.Controls.SetChildIndex(this.labelControl3, 0);
             this.Controls.SetChildIndex(this.labelControl4, 0);
             this.Controls.SetChildIndex(this.labelControl5, 0);
-            this.Controls.SetChildIndex(this.txtName, 0);
             this.Controls.SetChildIndex(this.txtKValue, 0);
             this.Controls.SetChildIndex(this.cbKUnit, 0);
             this.Controls.SetChildIndex(this.txtKDesc, 0);
             this.Controls.SetChildIndex(this.labelControl6, 0);
+            this.Controls.SetChildIndex(this.cbKPI, 0);
             ((System.ComponentModel.ISupportInitialize)(this.txtPerform.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReason.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSuggest.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKUnit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKDesc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKPI.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,11 +240,11 @@ namespace CRM_4S.BasicsManager
         private DevExpress.XtraEditors.MemoEdit txtPerform;
         private DevExpress.XtraEditors.MemoEdit txtReason;
         private DevExpress.XtraEditors.MemoEdit txtSuggest;
-        private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.TextEdit txtKValue;
         private DevExpress.XtraEditors.ComboBoxEdit cbKUnit;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.MemoEdit txtKDesc;
+        private DevExpress.XtraEditors.ComboBoxEdit cbKPI;
     }
 }

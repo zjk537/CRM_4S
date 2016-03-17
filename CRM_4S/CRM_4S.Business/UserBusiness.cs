@@ -26,7 +26,6 @@ namespace CRM_4S.Business
                 {
                     funcParms.Pams = new Dictionary<string, object>();
                     funcParms.Pams.Add("UserShopId", 0);
-                    funcParms.Pams.Add("UserRoleId", 0);
                 }
 
                 return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
@@ -38,6 +37,33 @@ namespace CRM_4S.Business
 
             }, null, "GetUsers.ConvertToList", true);
         }
+
+        public IList<UserInfo> GetConsultants(UserInfo info = null)
+        {
+            var result = DoFunctionWithLog<ResultValue>(() =>
+            {
+                var funcParms = new FunctionParms();
+                funcParms.FunctionName = "uspGetConsultants";
+                if (info != null)
+                {
+                    funcParms.Pams = info.GetPams();
+                }
+                else
+                {
+                    funcParms.Pams = new Dictionary<string, object>();
+                    funcParms.Pams.Add("UserShopId", 0);
+                }
+
+                return ServiceManager.Instance.ServiceClient.FuncGetResults(funcParms);
+            }, new ResultValue(), "GetUsers.uspGetConsultants", true);
+
+            return DoFunctionWithLog<List<UserInfo>>(() =>
+            {
+                return ConvertToList<UserInfo>(result);
+
+            }, null, "GetUsers.ConvertToList", true);
+        }
+
 
         public void AddUser(UserInfo info)
         {
@@ -100,7 +126,7 @@ namespace CRM_4S.Business
 
         public IList<UserShopRoleInfo> GetUserShopRoleInfos(int shopId)
         {
-            var users = GetUsers(new UserInfo() { ShopId = shopId, RoleId = 0 });
+            var users = GetUsers(new UserInfo() { ShopId = shopId});
             List<UserShopRoleInfo> results = new List<UserShopRoleInfo>();
 
             foreach (UserInfo user in users)

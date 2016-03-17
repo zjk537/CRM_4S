@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using CRM_4S.Business;
 using DevExpress.XtraEditors.DXErrorProvider;
+using CRM_4S.Model.EnumType;
 
 namespace CRM_4S.BasicsManager
 {
@@ -39,14 +40,23 @@ namespace CRM_4S.BasicsManager
             this.Text += IsNew ? "-新增" : "-修改";
             this.Btn_OK.Click += Btn_OK_Click;
 
-            this.txtName.DataBindings.Add("Text", newKpiInfo, "Name");
+            this.cbKPI.Properties.Items.AddRange(GlobalCaches.Instance.ConstantInfos
+                .Where(e => e.TypeValue == (int)BasicConstantType.FrontKPI || e.TypeValue == (int)BasicConstantType.DCCKPI).ToArray());
             this.cbKUnit.DataBindings.Add("EditValue", newKpiInfo, "KUnit");
             this.txtPerform.DataBindings.Add("Text", newKpiInfo, "Perform");
             this.txtReason.DataBindings.Add("Text", newKpiInfo, "Reason");
             this.txtSuggest.DataBindings.Add("Text", newKpiInfo, "Suggest");
             this.txtKDesc.DataBindings.Add("Text", newKpiInfo, "Desc");
             this.txtKValue.EditValue = newKpiInfo.KValue ?? 0;
-            //this.cbKUnit.SelectedText = newKpiInfo.KUnit;
+
+            if (string.IsNullOrEmpty(newKpiInfo.KUnit))
+                this.cbKUnit.SelectedIndex = 0;
+
+            if (newKpiInfo.BasicId > 0)
+                this.cbKPI.SelectedItem = GlobalCaches.Instance.ConstantInfos.FirstOrDefault(e => e.Id == newKpiInfo.BasicId);
+            else
+                this.cbKPI.SelectedIndex = 0;
+
         }
 
         void Btn_OK_Click(object sender, EventArgs e)
@@ -55,19 +65,22 @@ namespace CRM_4S.BasicsManager
             {
                 if (!Validation()) return;
 
+                var basicInfo = (BasicConstantInfo)this.cbKPI.SelectedItem;
+                if (IsNew || kpiInfo.BasicId != basicInfo.Id)
+                {
+                    newKpiInfo.BasicId = basicInfo.Id;
+                    newKpiInfo.Name = basicInfo.Name;
+                }
+
                 int kvalue = Convert.ToInt32(this.txtKValue.EditValue);
                 if (IsNew || newKpiInfo.KValue != kvalue)
-                {
                     newKpiInfo.KValue = kvalue;
-                }
 
                 if (!newKpiInfo.Equals(kpiInfo))
                 {
                     newKpiInfo.OperatorId = GlobalCaches.Instance.CurUser.Id;
                     if (IsNew)
-                    {
                         AnalyseKPIBusiness.Instance.AddAnalyseKPI(newKpiInfo);
-                    }
                     else
                     {
                         newKpiInfo.Id = kpiInfo.Id;
@@ -95,11 +108,6 @@ namespace CRM_4S.BasicsManager
         private bool Validation()
         {
             errorProvider.ClearErrors();
-
-            if (string.IsNullOrEmpty(this.txtName.Text.Trim()))
-            {
-                errorProvider.SetError(this.txtName, "不能为空", ErrorType.Warning);
-            }
 
             if (string.IsNullOrEmpty(this.txtKValue.Text.Trim()))
             {

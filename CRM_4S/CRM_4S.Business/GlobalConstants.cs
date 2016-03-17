@@ -45,10 +45,13 @@ namespace CRM_4S.Business
         public static int RoleIdShopFront = 5;
 
         /// <summary>
-        /// 销售顾问角色Id
+        /// 展厅 销售顾问角色Id
         /// </summary>
-        public static int RoleIdConsultant = 6;
+        public static int RoleIdFrontConsultant = 6;
 
-
+        /// <summary>
+        /// DCC 销售顾问角色Id
+        /// </summary>
+        public static int RoleIdDCCConsultant = 7;
     }
 }

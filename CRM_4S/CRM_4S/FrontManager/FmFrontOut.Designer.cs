@@ -38,6 +38,8 @@ namespace CRM_4S.FrontManager
             this.btnEvaluate = new DevExpress.XtraEditors.SimpleButton();
             this.txtLevelDesc = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.cbConsultant = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.rdInstallment = new DevExpress.XtraEditors.RadioGroup();
             this.rdDriveStatus = new DevExpress.XtraEditors.RadioGroup();
@@ -70,8 +72,6 @@ namespace CRM_4S.FrontManager
             this.txtCAddress = new DevExpress.XtraEditors.MemoEdit();
             this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.frontRecordInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbConsultant = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -83,6 +83,7 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.txtLevelDesc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdInstallment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdDriveStatus.Properties)).BeginInit();
@@ -101,7 +102,6 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -233,6 +233,28 @@ namespace CRM_4S.FrontManager
             this.groupControl2.Size = new System.Drawing.Size(530, 290);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "客户信息";
+            // 
+            // cbConsultant
+            // 
+            this.cbConsultant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbConsultant.Location = new System.Drawing.Point(338, 206);
+            this.cbConsultant.Name = "cbConsultant";
+            this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbConsultant.Properties.NullValuePrompt = "<必填>";
+            this.cbConsultant.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbConsultant.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbConsultant.Size = new System.Drawing.Size(182, 21);
+            this.cbConsultant.TabIndex = 14;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(283, 209);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(48, 14);
+            this.labelControl13.TabIndex = 1058;
+            this.labelControl13.Text = "销售顾问";
             // 
             // panelControl3
             // 
@@ -555,27 +577,6 @@ namespace CRM_4S.FrontManager
             // 
             this.frontRecordInfoBindingSource.DataSource = typeof(CRM_4S.Model.DataModel.FrontRecordInfo);
             // 
-            // cbConsultant
-            // 
-            this.cbConsultant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbConsultant.Location = new System.Drawing.Point(338, 206);
-            this.cbConsultant.Name = "cbConsultant";
-            this.cbConsultant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbConsultant.Properties.NullValuePrompt = "<必填>";
-            this.cbConsultant.Properties.NullValuePromptShowForEmptyValue = true;
-            this.cbConsultant.Size = new System.Drawing.Size(182, 21);
-            this.cbConsultant.TabIndex = 14;
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Location = new System.Drawing.Point(283, 209);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(48, 14);
-            this.labelControl13.TabIndex = 1058;
-            this.labelControl13.Text = "销售顾问";
-            // 
             // FmFrontOut
             // 
             this.Appearance.Font = new System.Drawing.Font("Tahoma", 13F);
@@ -601,6 +602,7 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdInstallment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdDriveStatus.Properties)).EndInit();
@@ -619,7 +621,6 @@ namespace CRM_4S.FrontManager
             ((System.ComponentModel.ISupportInitialize)(this.txtCAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frontRecordInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbConsultant.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -60,5 +60,15 @@ namespace CRM_4S.Model.EnumType
         /// </summary>
         TaskStauts = 12,
 
+        /// <summary>
+        /// 展厅销售顾问考核指标
+        /// </summary>
+        FrontKPI = 13,
+
+        /// <summary>
+        /// DCC销售顾问考核指标
+        /// </summary>
+        DCCKPI = 14
+
     }
 }

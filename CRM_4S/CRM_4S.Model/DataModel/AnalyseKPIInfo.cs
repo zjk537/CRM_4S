@@ -1,7 +1,7 @@
 ﻿/* ==============================================================================
  * 功能描述：
  * 创 建 者：zjk
- * 创建日期：2016-01-26 09:17
+ * 创建日期：2016-03-16 14:22
  * 修改日期：
  * 修改详情：
  * ==============================================================================*/
@@ -28,6 +28,15 @@ namespace CRM_4S.Model.DataModel
         /// </summary>
         [DBFieldAttribute("AnalyseKpiName")]
         public string Name { get { return name; } set { name = value; NameSpecify = true; } }
+
+
+        private int basicId = 0;
+        public bool BasicIdSpecify { get; set; }
+        /// <summary>
+        /// 获取或设置 对应basic_constant.TypeKey = FrontKPI | DCCKPI 
+        /// </summary>
+        [DBFieldAttribute("AnalyseKpiBasicId")]
+        public int BasicId { get { return basicId; } set { basicId = value; BasicIdSpecify = true; } }
 
 
         private int? kValue = null;
@@ -113,7 +122,7 @@ namespace CRM_4S.Model.DataModel
 
         public override string ToString()
         {
-            return this.Name;
+            return "";
         }
 
     }

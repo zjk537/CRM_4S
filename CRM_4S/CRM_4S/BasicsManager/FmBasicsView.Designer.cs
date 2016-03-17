@@ -436,7 +436,6 @@ namespace CRM_4S.BasicsManager
             this.gridControlAnalyse.TabIndex = 6;
             this.gridControlAnalyse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAnalyse});
-            this.gridControlAnalyse.DoubleClick += new System.EventHandler(this.defaultGridView_DoubleClick);
             // 
             // analyseKPIInfoBindingSource
             // 
@@ -554,6 +553,7 @@ namespace CRM_4S.BasicsManager
             this.clmLevelCreatedDate});
             this.gridViewLevel.GridControl = this.gridControlLevel;
             this.gridViewLevel.Name = "gridViewLevel";
+            this.gridViewLevel.OptionsBehavior.Editable = false;
             this.gridViewLevel.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewLevel.OptionsView.ShowGroupPanel = false;
             this.gridViewLevel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultGridView_MouseDown);

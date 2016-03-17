@@ -37,6 +37,7 @@ namespace CRM_4S.UserManager
             this.clmRealName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmRole = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUserGroup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,6 +80,7 @@ namespace CRM_4S.UserManager
             this.clmShopName,
             this.clmUserName,
             this.clmRealName,
+            this.clmRole,
             this.clmSex,
             this.clmPhone,
             this.clmUserGroup,
@@ -141,6 +143,14 @@ namespace CRM_4S.UserManager
             this.clmPhone.Visible = true;
             this.clmPhone.VisibleIndex = 4;
             // 
+            // clmRole
+            // 
+            this.clmRole.Caption = "用户角色";
+            this.clmRole.FieldName = "Role.Name";
+            this.clmRole.Name = "clmRole";
+            this.clmRole.Visible = true;
+            this.clmRole.VisibleIndex = 3;
+            // 
             // clmUserGroup
             // 
             this.clmUserGroup.AppearanceCell.Options.UseTextOptions = true;
@@ -149,7 +159,7 @@ namespace CRM_4S.UserManager
             this.clmUserGroup.FieldName = "User.GroupId";
             this.clmUserGroup.Name = "clmUserGroup";
             this.clmUserGroup.Visible = true;
-            this.clmUserGroup.VisibleIndex = 5;
+            this.clmUserGroup.VisibleIndex = 6;
             // 
             // clmUpdateDate
             // 
@@ -159,7 +169,7 @@ namespace CRM_4S.UserManager
             this.clmUpdateDate.FieldName = "User.UpdateDate";
             this.clmUpdateDate.Name = "clmUpdateDate";
             this.clmUpdateDate.Visible = true;
-            this.clmUpdateDate.VisibleIndex = 7;
+            this.clmUpdateDate.VisibleIndex = 8;
             // 
             // clmCreatedDate
             // 
@@ -169,7 +179,7 @@ namespace CRM_4S.UserManager
             this.clmCreatedDate.FieldName = "User.CreatedDate";
             this.clmCreatedDate.Name = "clmCreatedDate";
             this.clmCreatedDate.Visible = true;
-            this.clmCreatedDate.VisibleIndex = 6;
+            this.clmCreatedDate.VisibleIndex = 7;
             // 
             // clmRoleName
             // 
@@ -291,5 +301,6 @@ namespace CRM_4S.UserManager
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarEditItem btnAddGroup;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtGroupName;
+        private DevExpress.XtraGrid.Columns.GridColumn clmRole;
     }
 }

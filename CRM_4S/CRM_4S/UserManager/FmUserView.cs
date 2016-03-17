@@ -156,6 +156,8 @@ namespace CRM_4S.UserManager
             userGridControl.DataSource = dataSource;
             userGridControl.MainView.RefreshData();
             userGridView.ExpandAllGroups();
+
+            this.btnUpdate.Enabled = this.btnResetPwd.Enabled = dataSource.Count > 0;
         }
 
         UserShopRoleInfo SelectedUser
