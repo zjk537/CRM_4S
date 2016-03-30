@@ -198,8 +198,23 @@ namespace CRM_4S.UserManager
             {
                 return;
             }
+        }
+        private void userGridView_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (e.RowHandle < 0) return;
 
-
+            UserShopRoleInfo info = userGridView.GetRow(e.RowHandle) as UserShopRoleInfo;
+            if (info == null || !info.User.Status.HasValue) return;
+            //1:在职; 2:离职; 3:休假
+            if (info.User.Status == 2)
+            {
+                e.Appearance.BackColor = Color.FromArgb(240, 240, 240);
+                e.Appearance.ForeColor = Color.FromArgb(223, 223, 223);
+            }
+            else if (info.User.Status == 3)
+            {
+                e.Appearance.ForeColor = Color.LightGray;
+            }
         }
 
         #region 用户分组
@@ -310,8 +325,53 @@ namespace CRM_4S.UserManager
             // 设置用户分组
             BarButtonItem btnItem = ((BarManager)sender).PressedLink.Item as BarButtonItem;
             UserGroupInfo groupInfo = (UserGroupInfo)btnItem.Tag;
-            int[] rowHandles = userGridView.GetSelectedRows();
+            SetUserGroup(groupInfo);
+        }
 
+        private void txtGroupName_Leave(object sender, EventArgs e)
+        {
+            // create new group
+            TextEdit txtName = (TextEdit)sender;
+            string groupName = txtName.Text.Trim();
+            if (string.IsNullOrEmpty(groupName)) return;
+            // 判断是否重名
+            for (int i = 0; i < barManager1.Items.Count; i++)
+            {
+                BarItem item = barManager1.Items[i];
+                if (item.Caption == groupName)
+                {
+                    txtName.Text = "";
+                    return;
+                }
+            }
+
+            UserGroupInfo groupInfo = new UserGroupInfo()
+            {
+                ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                Name = groupName,
+                Desc = "添加分组-" + groupName
+            };
+            UserBusiness.Instance.AddGroup(groupInfo);
+
+            if (groupInfo.Id > 0)
+            {
+                this.GroupList.Add(groupInfo);
+                BarButtonItem btnItem = new BarButtonItem();
+                btnItem.Id = barManager1.Items.Count + 1;
+                btnItem.Caption = groupInfo.Name;
+                btnItem.Name = string.Format("popMenu_{0}", groupInfo.Id);
+                btnItem.Tag = groupInfo;
+                btnItem.ItemClick += popMenu_ItemClick;
+                BarItemLink itemLink = this.popMenuGroup.AddItem(btnItem);
+                txtName.Text = "";
+
+                SetUserGroup(groupInfo);
+            }
+        }
+
+        private void SetUserGroup(UserGroupInfo groupInfo)
+        {
+            int[] rowHandles = userGridView.GetSelectedRows();
 
             if (rowHandles.Length == 1)
             {
@@ -344,44 +404,9 @@ namespace CRM_4S.UserManager
             }
         }
 
-        private void txtGroupName_Leave(object sender, EventArgs e)
-        {
-            // create new group
-            TextEdit txtName = (TextEdit)sender;
-            string groupName = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(groupName)) return;
-            // 判断是否重名
-            for (int i = 0; i < barManager1.Items.Count; i++)
-            {
-                BarItem item = barManager1.Items[i];
-                if (item.Caption == groupName)
-                {
-                    txtName.Text = "";
-                    return;
-                }
-            }
-
-            UserGroupInfo groupInfo = new UserGroupInfo()
-            {
-                ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                Name = groupName,
-                Desc = "添加分组-" + groupName
-            };
-            UserBusiness.Instance.AddGroup(groupInfo);
-
-            if (groupInfo.Id > 0)
-            {
-                BarButtonItem btnItem = new BarButtonItem();
-                btnItem.Id = barManager1.Items.Count + 1;
-                btnItem.Caption = groupInfo.Name;
-                btnItem.Name = string.Format("popMenu_{0}", groupInfo.Id);
-                btnItem.Tag = groupInfo;
-                btnItem.ItemClick += popMenu_ItemClick;
-                this.popMenuGroup.AddItem(btnItem);
-                txtName.Text = "";
-            }
-        }
         #endregion
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
 using CRM_4S.Business.ViewModel;
+using CRM_4S.Model.EnumType;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
@@ -97,6 +98,8 @@ namespace CRM_4S.OrderManager
 
         private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
+
+
             DialogResult result = XtraMessageBox.Show("确认要取消订单，取消后不能恢复！", "提示", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
@@ -122,7 +125,13 @@ namespace CRM_4S.OrderManager
             var listResults = OrderRecordBusiness.Instance.GetCustomerOrderRecords(this.QInfo);
             gridControlOrderRecord.DataSource = listResults;
             gridControlOrderRecord.DefaultView.RefreshData();
-            this.btnDelete.Enabled = this.btnUpdate.Enabled = listResults.Count > 0;
+            if (listResults.Count == 0)
+                this.btnDelete.Enabled = this.btnUpdate.Enabled = false;
+            else
+            {
+                this.btnDelete.Enabled = listResults.FirstOrDefault().OrderRecord.Status == (int)OrderStatus.PrePay;
+            }
+
         }
 
         private ViewQueryInfo qInfo = null;
@@ -159,7 +168,13 @@ namespace CRM_4S.OrderManager
         {
             // 判断是否为左键双击
             if (e.Button != MouseButtons.Left || e.Clicks != 2)
+            {
+                Object rowData = gridViewOrderRecord.GetRow(gridViewOrderRecord.GetSelectedRows()[0]);
+                CustomerOrderRecordInfo info = rowData as CustomerOrderRecordInfo;
+                //只有预付订金可以取消交易
+                this.btnDelete.Enabled = info.OrderRecord.Status == (int)OrderStatus.PrePay;
                 return;
+            }
 
             GridHitInfo hInfo = gridViewOrderRecord.CalcHitInfo(new Point(e.X, e.Y));
             //判断光标是否在行范围内  
@@ -173,10 +188,32 @@ namespace CRM_4S.OrderManager
         {
             if (e.RowHandle < 0) return;
             CustomerOrderRecordInfo info = gridViewOrderRecord.GetRow(e.RowHandle) as CustomerOrderRecordInfo;
-            if (info != null && info.OrderRecord.Status == 3)
+            //1 预付订金; 2 订单完成 3 订单取消 
+            if (info == null || !info.OrderRecord.Status.HasValue) return;
+
+            switch (info.OrderRecord.Status)
             {
-                e.Appearance.BackColor = Color.LightGray;
-                e.Appearance.ForeColor = Color.DarkGray;
+                case (int)OrderStatus.PrePay:
+                    e.Appearance.ForeColor = Color.FromArgb(102, 168, 9);
+                    break;
+                case (int)OrderStatus.Finish:
+                    e.Appearance.ForeColor = Color.FromArgb(206, 146, 30);
+                    break;
+                case (int)OrderStatus.Cancel:
+                    e.Appearance.BackColor = Color.FromArgb(240, 240, 240);
+                    e.Appearance.ForeColor = Color.FromArgb(127, 127, 127);
+                    break;
+            }
+        }
+
+        private void gridViewOrderRecord_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "clmStatus")
+            {
+                int cellValue = Convert.ToInt32(e.CellValue);
+                if (cellValue == 1) e.DisplayText = "已下订金";
+                else if (cellValue == 2) e.DisplayText = "完成";
+                else if (cellValue == 3) e.DisplayText = "订单取消";
             }
         }
     }

@@ -1,4 +1,5 @@
 using CRM_4S.Business;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.Common;
 using DevExpress.XtraEditors;
 using System;
@@ -20,6 +21,21 @@ namespace CRM_4S.DCCManager
             InitializeComponent();
             CRM_4S.Common.DevViewDefine.ResetToNormalView(this.gridControl1.MainView, false);
             this.gridView1.IndicatorWidth = 50;
+        }
+
+        public event EventHandler RefreshTable;
+        private List<DateTime> dateList = new List<DateTime>();
+        public ViewQueryInfo QInfo
+        {
+            get
+            {
+                return new ViewQueryInfo()
+                {
+                    DateRange = QueryDateRange.Customer,
+                    StartDate = dateList.Min(),
+                    EndDate = dateList.Max().AddDays(1)
+                };
+            }
         }
 
         DataTable dtSource = null;
@@ -75,7 +91,7 @@ namespace CRM_4S.DCCManager
                 FmProgressBar progressBar = new FmProgressBar("数据导入中........");
                 var tempTable = DtSource.Copy();
                 string runMsg = string.Empty;
-                //bool isError = false;
+                bool bSuccess = true;
                 Task task = new Task(() =>
                 {
                     try
@@ -95,13 +111,18 @@ namespace CRM_4S.DCCManager
                             {
                                 datarow["客户电话"] = defaultPhone++;
                             }
+                            DateTime rowDate = Convert.ToDateTime(datarow["创建时间"]).Date;
+                            if (!dateList.Contains(rowDate))
+                                dateList.Add(rowDate);
                         }
-                        
+
                         DCCRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
+                        bSuccess = true;
                     }
                     catch (Exception ex)
                     {
+                        bSuccess = false;
                         runMsg = string.Format("导入失败：{0}", ex.ToString());
                     }
                     finally
@@ -109,15 +130,17 @@ namespace CRM_4S.DCCManager
                         tempTable.Dispose();
                         this.BeginInvoke(new MethodInvoker(delegate()
                         {
+                            progressBar.LoadCaption = runMsg;
                             progressBar.DialogResult = DialogResult.OK;
                             this.DialogResult = DialogResult.Cancel;
-                            XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
+                            //XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
+                            if (bSuccess && RefreshTable != null)
+                                RefreshTable(this, EventArgs.Empty);
                         }));
                     }
                 });
 
                 task.Start();
-
                 progressBar.ShowDialog();
             }
         }

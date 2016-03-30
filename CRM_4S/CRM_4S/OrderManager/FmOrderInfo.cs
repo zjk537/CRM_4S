@@ -29,7 +29,7 @@ namespace CRM_4S.OrderManager
             initForm(info);
         }
 
-        private bool IsNew { get { return recordInfo == null; } }
+        private bool IsNew { get { return recordInfo == null || recordInfo.Id == 0; } }
         private void initForm(OrderRecordInfo info)
         {
             if (info != null)

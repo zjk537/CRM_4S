@@ -131,7 +131,15 @@ namespace CRM_4S.DCCManager
 
         private void btnDCCImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmDCCImport().ShowDialog();
+            FmDCCImport fm = new FmDCCImport();
+            fm.RefreshTable += fm_RefreshTable;
+            fm.ShowDialog();
+        }
+
+        void fm_RefreshTable(object sender, EventArgs e)
+        {
+            FmDCCImport fm = (FmDCCImport)sender;
+            this.QInfo = fm.QInfo;
         }
         private void btnDCCRecall_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -160,12 +168,15 @@ namespace CRM_4S.DCCManager
         {
             get
             {
-                qInfo = new ViewQueryInfo()
+                if (qInfo == null)
                 {
-                    ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                    StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
-                    EndDate = DateTime.Now
-                };
+                    qInfo = new ViewQueryInfo()
+                    {
+                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                        EndDate = DateTime.Now
+                    };
+                }
                 return qInfo;
             }
             set

@@ -1,4 +1,5 @@
 using CRM_4S.Business;
+using CRM_4S.Business.ViewModel;
 using CRM_4S.Common;
 using DevExpress.XtraEditors;
 using System;
@@ -31,6 +32,23 @@ namespace CRM_4S.FrontManager
                 dtSource.TableName = "SourceTable";
             }
         }
+
+        public event EventHandler RefreshTable;
+
+        private List<DateTime> dateList = new List<DateTime>();
+        public ViewQueryInfo QInfo
+        {
+            get
+            {
+                return new ViewQueryInfo()
+                {
+                    DateRange = QueryDateRange.Customer,
+                    StartDate = dateList.Min(),
+                    EndDate = dateList.Max().AddDays(1)
+                };
+            }
+        }
+
         public FmFrontImport()
         {
             InitializeComponent();
@@ -74,7 +92,7 @@ namespace CRM_4S.FrontManager
                 FmProgressBar progressBar = new FmProgressBar("数据导入中........");
                 var tempTable = DtSource.Copy();
                 string runMsg = string.Empty;
-                //bool isError = false;
+                bool bSuccess = true;
                 Task task = new Task(() =>
                 {
                     try
@@ -99,13 +117,18 @@ namespace CRM_4S.FrontManager
                             string toShopNumDesc = datarow["几次来店"].ToString().Trim();
                             datarow["几次来店"] = toShopNumDesc == "首次" ? 1 : (toShopNumDesc == "二次" ? 2 : 3);
 
+                            DateTime rowDate = Convert.ToDateTime(datarow["日期"]);
+                            if (!dateList.Contains(rowDate))
+                                dateList.Add(rowDate);
+
                         }
                         FrontRecordBusiness.Instance.BulkInsertData(tempTable);
                         runMsg = "导入成功";
-
+                        bSuccess = true;
                     }
                     catch (Exception ex)
                     {
+                        bSuccess = false;
                         runMsg = string.Format("导入失败：{0}", ex.ToString());
                     }
                     finally
@@ -113,9 +136,12 @@ namespace CRM_4S.FrontManager
                         tempTable.Dispose();
                         this.BeginInvoke(new MethodInvoker(delegate()
                         {
+                            progressBar.LoadCaption = runMsg;
                             progressBar.DialogResult = DialogResult.OK;
                             this.DialogResult = DialogResult.Cancel;
-                            XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
+                            //XtraMessageBox.Show(runMsg, "提示", MessageBoxButtons.OK);
+                            if (bSuccess && RefreshTable != null)
+                                RefreshTable(this, EventArgs.Empty);
                         }));
                     }
                 });

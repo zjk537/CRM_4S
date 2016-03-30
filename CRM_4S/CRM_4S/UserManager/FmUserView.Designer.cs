@@ -35,9 +35,9 @@ namespace CRM_4S.UserManager
             this.clmShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUserName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRealName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmRole = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmSex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPhone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmRole = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUserGroup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmUpdateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,6 +96,7 @@ namespace CRM_4S.UserManager
             this.userGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.userGridView.OptionsView.ShowGroupPanel = false;
             this.userGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.userGridView_CustomDrawCell);
+            this.userGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.userGridView_RowStyle);
             this.userGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.userGridView_FocusedRowChanged);
             this.userGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.userGridView_MouseDown);
             this.userGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.userGridView_MouseUp);
@@ -125,6 +126,14 @@ namespace CRM_4S.UserManager
             this.clmRealName.Visible = true;
             this.clmRealName.VisibleIndex = 2;
             // 
+            // clmRole
+            // 
+            this.clmRole.Caption = "用户角色";
+            this.clmRole.FieldName = "Role.Name";
+            this.clmRole.Name = "clmRole";
+            this.clmRole.Visible = true;
+            this.clmRole.VisibleIndex = 3;
+            // 
             // clmSex
             // 
             this.clmSex.AppearanceCell.Options.UseTextOptions = true;
@@ -133,7 +142,7 @@ namespace CRM_4S.UserManager
             this.clmSex.FieldName = "User.Sex";
             this.clmSex.Name = "clmSex";
             this.clmSex.Visible = true;
-            this.clmSex.VisibleIndex = 3;
+            this.clmSex.VisibleIndex = 4;
             // 
             // clmPhone
             // 
@@ -141,15 +150,7 @@ namespace CRM_4S.UserManager
             this.clmPhone.FieldName = "User.Phone";
             this.clmPhone.Name = "clmPhone";
             this.clmPhone.Visible = true;
-            this.clmPhone.VisibleIndex = 4;
-            // 
-            // clmRole
-            // 
-            this.clmRole.Caption = "用户角色";
-            this.clmRole.FieldName = "Role.Name";
-            this.clmRole.Name = "clmRole";
-            this.clmRole.Visible = true;
-            this.clmRole.VisibleIndex = 3;
+            this.clmPhone.VisibleIndex = 5;
             // 
             // clmUserGroup
             // 

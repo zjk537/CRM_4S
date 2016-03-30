@@ -134,9 +134,15 @@ namespace CRM_4S
                     fmFrontView.BtnRefresh = btnFrontRefresh;
                     fmFrontView.BtnCustomerImport = btnFrontImport;
                     fmFrontView.BtnCustomerExport = btnFrontExport;
+                    fmFrontView.RibbonSwitch += fmFrontView_RibbonSwitch;
                 }
                 return fmFrontView;
             }
+        }
+
+        void fmFrontView_RibbonSwitch(object sender, EventArgs e)
+        {
+            ribbon.SelectedPage = rPageOrder;
         }
 
         FmDCCView fmDCCView = null;

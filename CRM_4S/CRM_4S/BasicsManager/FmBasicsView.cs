@@ -46,23 +46,21 @@ namespace CRM_4S.BasicsManager
                 gridControlConsultant.Dock = gridControlQuestion.Dock = gridControlAnalyse.Dock = DockStyle.Fill;
             gridControlShop.Visible = gridControlCarType.Visible = gridControlLevel.Visible =
                 gridControlConsultant.Visible = gridControlQuestion.Visible = gridControlAnalyse.Visible = false;
-
-            //navBtnItem_LinkClicked(this.navBtnShop, null);
-
-
         }
 
         private void FmBasicsView_Load(object sender, EventArgs e)
         {
+            if (GlobalCaches.Instance.CurUser.RoleId != GlobalConstants.RoleIdSysAdmin)
+                this.navBarGroup1.ItemLinks.Remove(this.navBtnShop);
+
             if (GlobalCaches.Instance.CurUser.RoleId == GlobalConstants.RoleIdConsultManager)
             {
-                this.navBarGroup1.ItemLinks.Remove(this.navBtnShop);
                 this.navBarGroup1.ItemLinks.Remove(this.navBtnQuestion);
                 this.navBarGroup1.ItemLinks.Remove(this.navBtnLevel);
                 this.navBarGroup1.ItemLinks.Remove(this.navBtnAnalyse);
             }
-
-            navBtnItem_LinkClicked(this.navBarGroup1.ItemLinks[0].Item, null);
+            //navBtnItem_LinkClicked(this.navBarGroup1.ItemLinks[0].Item, null);
+            this.navBarGroup1.ItemLinks[0].PerformClick();
         }
 
         #region Refresh View
@@ -221,37 +219,33 @@ namespace CRM_4S.BasicsManager
         void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (defaultGridView == null || defaultGridView.SelectedRowsCount <= 0)
-            {
                 return;
-            }
 
             if (!UICommon.DeleteConfirm())
-            {
                 return;
-            }
 
             Object rowData = defaultGridView.GetRow(defaultGridView.GetSelectedRows()[0]);
-            if (navBtnShop.Links[0].State == ObjectState.Selected)
+            if (gridControlShop.Visible)
             {
                 ShopBusiness.Instance.DeleteShop(rowData as ShopInfo);
             }
-            else if (navBtnCarType.Links[0].State == ObjectState.Selected)
+            else if (gridControlCarType.Visible)
             {
                 CarTypeBusiness.Instance.DeleteCarType(rowData as CarTypeInfo);
             }
-            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
+            else if (gridControlLevel.Visible)
             {
                 PurposeLevelBusiness.Instance.DeletePurposeLevel(rowData as PurposeLevelInfo);
             }
-            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            else if (gridControlConsultant.Visible)
             {
                 UserTaskBusiness.Instance.DeleteUserTask((rowData as UserCarTypeTaskInfo).UserTask);
             }
-            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            else if (gridControlQuestion.Visible)
             {
                 EvaluateQuestionBusiness.Instance.DeleteEvaluateQuestion(rowData as EvaluateQuestionInfo);
             }
-            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            else if (gridControlAnalyse.Visible)
             {
                 AnalyseKPIBusiness.Instance.DeleteAnalyseKPI(rowData as AnalyseKPIInfo);
             }
@@ -264,54 +258,54 @@ namespace CRM_4S.BasicsManager
             }
 
             Object rowData = defaultGridView.GetRow(defaultGridView.GetSelectedRows()[0]);
-            if (navBtnShop.Links[0].State == ObjectState.Selected)
+            if (gridControlShop.Visible)
             {
                 new FmShopInfo(rowData as ShopInfo).ShowDialog();
             }
-            else if (navBtnCarType.Links[0].State == ObjectState.Selected)
+            else if (gridControlCarType.Visible)
             {
                 new FmCarTypeInfo(rowData as CarTypeInfo).ShowDialog();
             }
-            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
+            else if (gridControlLevel.Visible)
             {
                 new FmPurposeLevelInfo(rowData as PurposeLevelInfo).ShowDialog();
             }
-            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            else if (gridControlConsultant.Visible)
             {
                 new FmConsultantTaskInfo(rowData as UserCarTypeTaskInfo).ShowDialog();
             }
-            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            else if (gridControlQuestion.Visible)
             {
                 new FmQuestionInfo(rowData as EvaluateQuestionInfo).ShowDialog();
             }
-            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            else if (gridControlAnalyse.Visible)
             {
                 new FmAnalyseInfo(rowData as AnalyseKPIInfo).ShowDialog();
             }
         }
         void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (navBtnShop.Links[0].State == ObjectState.Selected)
+            if (gridControlShop.Visible)
             {
                 new FmShopInfo().ShowDialog();
             }
-            else if (navBtnCarType.Links[0].State == ObjectState.Selected)
+            else if (gridControlCarType.Visible)
             {
                 new FmCarTypeInfo().ShowDialog();
             }
-            else if (navBtnLevel.Links[0].State == ObjectState.Selected)
+            else if (gridControlLevel.Visible)
             {
                 new FmPurposeLevelInfo().ShowDialog();
             }
-            else if (navBtnConsultantTask.Links[0].State == ObjectState.Selected)
+            else if (gridControlConsultant.Visible)
             {
                 new FmConsultantTaskInfo().ShowDialog();
             }
-            else if (navBtnQuestion.Links[0].State == ObjectState.Selected)
+            else if (gridControlQuestion.Visible)
             {
                 new FmQuestionInfo().ShowDialog();
             }
-            else if (navBtnAnalyse.Links[0].State == ObjectState.Selected)
+            else if (gridControlAnalyse.Visible)
             {
                 new FmAnalyseInfo().ShowDialog();
             }

@@ -2,6 +2,7 @@ using CRM_4S.Business;
 using CRM_4S.Business.BusinessModel;
 using CRM_4S.Business.ViewModel;
 using CRM_4S.Model.DataModel;
+using CRM_4S.OrderManager;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
@@ -19,6 +20,7 @@ namespace CRM_4S.FrontManager
 {
     public partial class FmFrontView : Form
     {
+        public event EventHandler RibbonSwitch;
         public FmFrontView()
         {
             InitializeComponent();
@@ -128,7 +130,15 @@ namespace CRM_4S.FrontManager
         }
         private void btnCustomerImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new FmFrontImport().ShowDialog();
+            FmFrontImport fm = new FmFrontImport();
+            fm.RefreshTable += fm_RfreshTable;
+            fm.ShowDialog();
+        }
+
+        void fm_RfreshTable(object sender, EventArgs e)
+        {
+            FmFrontImport fm = (FmFrontImport)sender;
+            this.QInfo = fm.QInfo;
         }
 
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -154,13 +164,15 @@ namespace CRM_4S.FrontManager
         {
             get
             {
-
-                qInfo = new ViewQueryInfo()
+                if (qInfo == null)
                 {
-                    ShopId = GlobalCaches.Instance.CurUser.ShopId,
-                    StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
-                    EndDate = DateTime.Now
-                };
+                    qInfo = new ViewQueryInfo()
+                    {
+                        ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                        StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
+                        EndDate = DateTime.Now
+                    };
+                }
                 return qInfo;
             }
             set
@@ -213,17 +225,49 @@ namespace CRM_4S.FrontManager
 
         private void gridViewFrontRecord_MouseDown(object sender, MouseEventArgs e)
         {
-            // 判断是否为左键双击
-            if (e.Button != MouseButtons.Left || e.Clicks != 2)
-                return;
-
             GridHitInfo hInfo = gridViewFrontRecord.CalcHitInfo(new Point(e.X, e.Y));
             //判断光标是否在行范围内  
             if (!hInfo.InRow || !hInfo.InRowCell)
                 return;
 
+            if (e.Button == MouseButtons.Right)
+            {
+                Point p = new Point(Cursor.Position.X, Cursor.Position.Y);
+                popMenu.ShowPopup(p);
+                return;
+            }
+
+            // 判断是否为左键双击
+            if (e.Button != MouseButtons.Left || e.Clicks != 2)
+                return;
+
             btnCustomerOut_ItemClick(sender, null);
 
         }
+
+        /// <summary>
+        /// 下单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 切换 ribbon page
+            if (RibbonSwitch != null)
+                RibbonSwitch(this, EventArgs.Empty);
+            int rowHandle = this.gridViewFrontRecord.GetSelectedRows()[0];
+            var rowInfo = this.gridViewFrontRecord.GetRow(rowHandle) as FrontCustomerRecordInfo;
+            OrderRecordInfo orderInfo = new OrderRecordInfo()
+            {
+                ShopId = GlobalCaches.Instance.CurUser.ShopId,
+                ConsultantId = rowInfo.ConsultantUser.Id,
+                CustomerId = rowInfo.Customer.Id,
+                CarType = rowInfo.FrontRecord.PurposeCar,
+                Type = "FRONT"
+            };
+            new FmOrderInfo(orderInfo, rowInfo.Customer).ShowDialog();
+        }
+
+
     }
 }

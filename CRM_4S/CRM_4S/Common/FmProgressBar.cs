@@ -23,7 +23,7 @@ namespace CRM_4S.Common
         {
             set
             {
-
+                this.labLoadCaption.Text = value;
             }
         }
     }

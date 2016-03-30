@@ -36,11 +36,11 @@
             this.clmCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmConsultantName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmCarType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clmStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmDisPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmPrePay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clmRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clmStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlOrderRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerOrderRecordInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewOrderRecord)).BeginInit();
@@ -69,15 +69,16 @@
             this.clmCustomerPhone,
             this.clmConsultantName,
             this.clmCarType,
+            this.clmStatus,
             this.clmPrice,
             this.clmDisPrice,
             this.clmPrePay,
-            this.clmRemark,
-            this.clmStatus});
+            this.clmRemark});
             this.gridViewOrderRecord.GridControl = this.gridControlOrderRecord;
             this.gridViewOrderRecord.Name = "gridViewOrderRecord";
             this.gridViewOrderRecord.OptionsBehavior.Editable = false;
             this.gridViewOrderRecord.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewOrderRecord.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridViewOrderRecord_CustomDrawCell);
             this.gridViewOrderRecord.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewOrderRecord_RowStyle);
             this.gridViewOrderRecord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridViewOrderRecord_MouseDown);
             // 
@@ -113,6 +114,16 @@
             this.clmCarType.Visible = true;
             this.clmCarType.VisibleIndex = 3;
             // 
+            // clmStatus
+            // 
+            this.clmStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.clmStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.clmStatus.Caption = "状态";
+            this.clmStatus.FieldName = "OrderRecord.Status";
+            this.clmStatus.Name = "clmStatus";
+            this.clmStatus.Visible = true;
+            this.clmStatus.VisibleIndex = 4;
+            // 
             // clmPrice
             // 
             this.clmPrice.AppearanceCell.Options.UseTextOptions = true;
@@ -123,7 +134,7 @@
             this.clmPrice.FieldName = "OrderRecord.Price";
             this.clmPrice.Name = "clmPrice";
             this.clmPrice.Visible = true;
-            this.clmPrice.VisibleIndex = 4;
+            this.clmPrice.VisibleIndex = 5;
             // 
             // clmDisPrice
             // 
@@ -135,7 +146,7 @@
             this.clmDisPrice.FieldName = "OrderRecord.DisPrice";
             this.clmDisPrice.Name = "clmDisPrice";
             this.clmDisPrice.Visible = true;
-            this.clmDisPrice.VisibleIndex = 5;
+            this.clmDisPrice.VisibleIndex = 6;
             // 
             // clmPrePay
             // 
@@ -147,7 +158,7 @@
             this.clmPrePay.FieldName = "OrderRecord.PrevPay";
             this.clmPrePay.Name = "clmPrePay";
             this.clmPrePay.Visible = true;
-            this.clmPrePay.VisibleIndex = 6;
+            this.clmPrePay.VisibleIndex = 7;
             // 
             // clmRemark
             // 
@@ -155,15 +166,7 @@
             this.clmRemark.FieldName = "OrderRecord.Remark";
             this.clmRemark.Name = "clmRemark";
             this.clmRemark.Visible = true;
-            this.clmRemark.VisibleIndex = 7;
-            // 
-            // clmStatus
-            // 
-            this.clmStatus.AppearanceCell.Options.UseTextOptions = true;
-            this.clmStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.clmStatus.Caption = "状态";
-            this.clmStatus.FieldName = "OrderRecord.Status";
-            this.clmStatus.Name = "clmStatus";
+            this.clmRemark.VisibleIndex = 8;
             // 
             // FmOrderView
             // 
